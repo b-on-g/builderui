@@ -1,4 +1,7 @@
 $bog_builderui_studio $bog_builderui_div
+	plugins /
+		<= Favicon $bog_favicon
+			Icon <= favicon_icon $mol_icon_palette
 	attr *
 		bog_builderui_lights <= lights? \dark
 		bog_builderui_base <= base? \slate
