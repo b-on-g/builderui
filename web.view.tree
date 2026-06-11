@@ -1298,6 +1298,8 @@ $bog_builderui_dialog $bog_builderui_div
 	showed? false
 	title \
 	text \
+	content /
+	confirm_title \Confirm
 	close? null
 	confirm? null
 	attr *
@@ -1311,12 +1313,13 @@ $bog_builderui_dialog $bog_builderui_div
 				<= title
 			<= Surface_text $mol_view sub /
 				<= text
+			<= Surface_content $mol_view sub <= content
 			<= Surface_actions $mol_view sub /
 				<= Cancel $bog_builderui_button
 					title \Cancel
 					click? <=> close? null
 				<= Confirm $bog_builderui_button
-					title \Confirm
+					title <= confirm_title
 					click? <=> confirm? null
 
 $bog_builderui_studio $bog_builderui_div
@@ -1576,3 +1579,14 @@ $bog_builderui_studio $bog_builderui_div
 			text \This action cannot be undone. Your saved theme will be permanently removed.
 			close? <=> dialog_close? null
 			confirm? <=> dialog_confirm? null
+		<= Get_code_dialog $bog_builderui_dialog
+			showed? <=> get_code_showed? false
+			title \Get Code
+			text \Pick an app name — it becomes the $bog_<name>_* namespace inside the kit.
+			confirm_title \Download
+			close? <=> get_code_close? null
+			confirm? <=> get_code_confirm? null
+			content /
+				<= App_name_field $bog_builderui_field
+					hint \myapp
+					value? <=> app_name? \myapp

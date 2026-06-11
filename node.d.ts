@@ -6864,32 +6864,37 @@ declare namespace $ {
 		,
 		ReturnType< $mol_view['sub'] >
 	>
-	type $bog_builderui_button__title_bog_builderui_dialog_4 = $mol_type_enforce<
+	type $mol_view__sub_bog_builderui_dialog_4 = $mol_type_enforce<
+		ReturnType< $bog_builderui_dialog['content'] >
+		,
+		ReturnType< $mol_view['sub'] >
+	>
+	type $bog_builderui_button__title_bog_builderui_dialog_5 = $mol_type_enforce<
 		string
 		,
 		ReturnType< $bog_builderui_button['title'] >
 	>
-	type $bog_builderui_button__click_bog_builderui_dialog_5 = $mol_type_enforce<
+	type $bog_builderui_button__click_bog_builderui_dialog_6 = $mol_type_enforce<
 		ReturnType< $bog_builderui_dialog['close'] >
 		,
 		ReturnType< $bog_builderui_button['click'] >
 	>
-	type $bog_builderui_button__title_bog_builderui_dialog_6 = $mol_type_enforce<
-		string
+	type $bog_builderui_button__title_bog_builderui_dialog_7 = $mol_type_enforce<
+		ReturnType< $bog_builderui_dialog['confirm_title'] >
 		,
 		ReturnType< $bog_builderui_button['title'] >
 	>
-	type $bog_builderui_button__click_bog_builderui_dialog_7 = $mol_type_enforce<
+	type $bog_builderui_button__click_bog_builderui_dialog_8 = $mol_type_enforce<
 		ReturnType< $bog_builderui_dialog['confirm'] >
 		,
 		ReturnType< $bog_builderui_button['click'] >
 	>
-	type $mol_view__sub_bog_builderui_dialog_8 = $mol_type_enforce<
+	type $mol_view__sub_bog_builderui_dialog_9 = $mol_type_enforce<
 		readonly(any)[]
 		,
 		ReturnType< $mol_view['sub'] >
 	>
-	type $bog_builderui_card__sub_bog_builderui_dialog_9 = $mol_type_enforce<
+	type $bog_builderui_card__sub_bog_builderui_dialog_10 = $mol_type_enforce<
 		readonly(any)[]
 		,
 		ReturnType< $bog_builderui_card['sub'] >
@@ -6899,6 +6904,7 @@ declare namespace $ {
 		Backdrop( ): $mol_view
 		Surface_title( ): $mol_view
 		Surface_text( ): $mol_view
+		Surface_content( ): $mol_view
 		Cancel( ): $bog_builderui_button
 		confirm( next?: any ): any
 		Confirm( ): $bog_builderui_button
@@ -6907,6 +6913,8 @@ declare namespace $ {
 		showed( next?: boolean ): boolean
 		title( ): string
 		text( ): string
+		content( ): readonly(any)[]
+		confirm_title( ): string
 		attr( ): ({ 
 			'bog_builderui_dialog_showed': ReturnType< $bog_builderui_dialog['showed'] >,
 		}) 
@@ -7796,6 +7804,51 @@ declare namespace $ {
 		,
 		ReturnType< $bog_builderui_dialog['confirm'] >
 	>
+	type $bog_builderui_field__hint_bog_builderui_studio_167 = $mol_type_enforce<
+		string
+		,
+		ReturnType< $bog_builderui_field['hint'] >
+	>
+	type $bog_builderui_field__value_bog_builderui_studio_168 = $mol_type_enforce<
+		ReturnType< $bog_builderui_studio['app_name'] >
+		,
+		ReturnType< $bog_builderui_field['value'] >
+	>
+	type $bog_builderui_dialog__showed_bog_builderui_studio_169 = $mol_type_enforce<
+		ReturnType< $bog_builderui_studio['get_code_showed'] >
+		,
+		ReturnType< $bog_builderui_dialog['showed'] >
+	>
+	type $bog_builderui_dialog__title_bog_builderui_studio_170 = $mol_type_enforce<
+		string
+		,
+		ReturnType< $bog_builderui_dialog['title'] >
+	>
+	type $bog_builderui_dialog__text_bog_builderui_studio_171 = $mol_type_enforce<
+		string
+		,
+		ReturnType< $bog_builderui_dialog['text'] >
+	>
+	type $bog_builderui_dialog__confirm_title_bog_builderui_studio_172 = $mol_type_enforce<
+		string
+		,
+		ReturnType< $bog_builderui_dialog['confirm_title'] >
+	>
+	type $bog_builderui_dialog__close_bog_builderui_studio_173 = $mol_type_enforce<
+		ReturnType< $bog_builderui_studio['get_code_close'] >
+		,
+		ReturnType< $bog_builderui_dialog['close'] >
+	>
+	type $bog_builderui_dialog__confirm_bog_builderui_studio_174 = $mol_type_enforce<
+		ReturnType< $bog_builderui_studio['get_code_confirm'] >
+		,
+		ReturnType< $bog_builderui_dialog['confirm'] >
+	>
+	type $bog_builderui_dialog__content_bog_builderui_studio_175 = $mol_type_enforce<
+		readonly(any)[]
+		,
+		ReturnType< $bog_builderui_dialog['content'] >
+	>
 	export class $bog_builderui_studio extends $bog_builderui_div {
 		favicon_icon( ): $mol_icon_palette
 		Favicon( ): $bog_favicon
@@ -7937,6 +7990,12 @@ declare namespace $ {
 		dialog_close( next?: any ): any
 		dialog_confirm( next?: any ): any
 		Dialog_modal( ): $bog_builderui_dialog
+		get_code_showed( next?: boolean ): boolean
+		get_code_close( next?: any ): any
+		get_code_confirm( next?: any ): any
+		app_name( next?: string ): string
+		App_name_field( ): $bog_builderui_field
+		Get_code_dialog( ): $bog_builderui_dialog
 		plugins( ): readonly(any)[]
 		attr( ): ({ 
 			'bog_builderui_lights': ReturnType< $bog_builderui_studio['lights'] >,
@@ -7985,6 +8044,8 @@ declare namespace $.$$ {
         chart_color_signups(): string;
         chart_color_logins(): string;
         get_code(): void;
+        get_code_close(): void;
+        get_code_confirm(): void;
         download_zip(): Promise<void>;
     }
     export {};
