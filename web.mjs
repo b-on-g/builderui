@@ -9509,6 +9509,13 @@ var $;
 
 ;
 "use strict";
+var $;
+(function ($) {
+    $mol_style_attach("bog/builderui/select/select.view.css", "[bog_builderui_select] {\n\ttransition: background-color 120ms, border-color 120ms;\n\tcursor: pointer;\n}\n\n[bog_builderui_select]:hover {\n\tbackground-color: var(--bog_builderui_hover);\n\tborder-color: var(--bog_builderui_focus);\n}\n\n[bog_builderui_select] [mol_select_trigger] {\n\tbackground-color: transparent;\n}\n\n[bog_builderui_select] [mol_select_trigger]:hover {\n\tbackground-color: transparent;\n}\n");
+})($ || ($ = {}));
+
+;
+"use strict";
 
 
 ;
@@ -9686,7 +9693,7 @@ var $;
 "use strict";
 var $;
 (function ($) {
-    $mol_style_attach("bog/builderui/studio/pick/pick.view.css", "[bog_builderui_studio_pick]:hover {\n\tbackground-color: #1f1f1f;\n\tborder-color: #404040;\n}\n\n[bog_builderui_studio_pick]:focus-visible {\n\toutline: 2px solid #525252;\n\toutline-offset: 2px;\n}\n\n[bog_builderui_studio_pick]:active {\n\tbackground-color: #262626;\n}\n\n[bog_builderui_studio_pick] [bog_builderui_studio_pick_dot] {\n\tbackground-color: var(--bog_builderui_studio_pick_dot);\n}\n");
+    $mol_style_attach("bog/builderui/studio/pick/pick.view.css", "[bog_builderui_studio_pick]:hover {\n\tbackground-color: #1f1f1f;\n\tborder-color: #404040;\n}\n\n[bog_builderui_studio_pick]:focus-visible {\n\toutline: 2px solid #525252;\n\toutline-offset: 2px;\n}\n\n[bog_builderui_studio_pick]:active {\n\tbackground-color: #262626;\n}\n\n[bog_builderui_studio_pick] [bog_builderui_studio_pick_dot] {\n\tbackground-color: var(--bog_builderui_studio_pick_dot);\n}\n\n[bog_builderui_studio_pick] [mol_select_trigger],\n[bog_builderui_studio_pick] [mol_select_trigger]:hover,\n[bog_builderui_studio_pick] [mol_check],\n[bog_builderui_studio_pick] [mol_check]:hover {\n\tbackground-color: transparent;\n\tpadding: 0;\n\tmargin: 0;\n\tbox-shadow: none;\n\tborder: 0;\n\twidth: 100%;\n\tflex: 1 1 auto;\n\tgap: 0.5rem;\n}\n\n");
 })($ || ($ = {}));
 
 ;
@@ -9802,7 +9809,7 @@ var $;
 "use strict";
 var $;
 (function ($) {
-    $mol_style_attach("bog/builderui/button/button.view.css", "[bog_builderui_button][bog_builderui_button_variant=\"secondary\"] {\n\tbackground-color: var(--bog_builderui_field);\n\tcolor: var(--bog_builderui_text);\n\tborder: 1px solid var(--bog_builderui_line);\n}\n\n[bog_builderui_button][bog_builderui_button_variant=\"outline\"] {\n\tbackground-color: transparent;\n\tcolor: var(--bog_builderui_text);\n\tborder: 1px solid var(--bog_builderui_line);\n}\n\n[bog_builderui_button][bog_builderui_button_variant=\"ghost\"] {\n\tbackground-color: transparent;\n\tcolor: var(--bog_builderui_text);\n\tborder: 0;\n}\n\n[bog_builderui_button][bog_builderui_button_variant=\"destructive\"] {\n\tbackground-color: #ef4444;\n\tcolor: #fafafa;\n\tborder: 0;\n}\n\n[bog_builderui_button][bog_builderui_button_variant=\"secondary\"]:hover,\n[bog_builderui_button][bog_builderui_button_variant=\"outline\"]:hover,\n[bog_builderui_button][bog_builderui_button_variant=\"ghost\"]:hover {\n\tbackground-color: var(--bog_builderui_hover);\n}\n");
+    $mol_style_attach("bog/builderui/button/button.view.css", "[bog_builderui_button][bog_builderui_button_variant=\"secondary\"] {\n\tbackground-color: var(--bog_builderui_field);\n\tcolor: var(--bog_builderui_text);\n\tborder: 1px solid var(--bog_builderui_line);\n}\n\n[bog_builderui_button][bog_builderui_button_variant=\"outline\"] {\n\tbackground-color: transparent;\n\tcolor: var(--bog_builderui_text);\n\tborder: 1px solid var(--bog_builderui_line);\n}\n\n[bog_builderui_button][bog_builderui_button_variant=\"ghost\"] {\n\tbackground-color: transparent;\n\tcolor: var(--bog_builderui_text);\n\tborder: 0;\n}\n\n[bog_builderui_button][bog_builderui_button_variant=\"destructive\"] {\n\tbackground-color: var(--bog_builderui_special);\n\tcolor: var(--bog_builderui_back);\n\tborder: 0;\n}\n\n[bog_builderui_button][bog_builderui_button_variant=\"secondary\"]:hover,\n[bog_builderui_button][bog_builderui_button_variant=\"outline\"]:hover,\n[bog_builderui_button][bog_builderui_button_variant=\"ghost\"]:hover {\n\tbackground-color: var(--bog_builderui_hover);\n}\n");
 })($ || ($ = {}));
 
 ;
@@ -9857,7 +9864,7 @@ var $;
 "use strict";
 var $;
 (function ($) {
-    $mol_style_attach("bog/builderui/badge/badge.view.css", "[bog_builderui_badge][bog_builderui_badge_variant=\"secondary\"] {\n\tbackground-color: var(--bog_builderui_field);\n\tcolor: var(--bog_builderui_text);\n}\n\n[bog_builderui_badge][bog_builderui_badge_variant=\"outline\"] {\n\tbackground-color: transparent;\n\tcolor: var(--bog_builderui_text);\n\tborder: 1px solid var(--bog_builderui_line);\n}\n\n[bog_builderui_badge][bog_builderui_badge_variant=\"destructive\"] {\n\tbackground-color: #ef4444;\n\tcolor: #fafafa;\n}\n");
+    $mol_style_attach("bog/builderui/badge/badge.view.css", "[bog_builderui_badge][bog_builderui_badge_variant=\"secondary\"] {\n\tbackground-color: var(--bog_builderui_field);\n\tcolor: var(--bog_builderui_text);\n}\n\n[bog_builderui_badge][bog_builderui_badge_variant=\"outline\"] {\n\tbackground-color: transparent;\n\tcolor: var(--bog_builderui_text);\n\tborder: 1px solid var(--bog_builderui_line);\n}\n\n[bog_builderui_badge][bog_builderui_badge_variant=\"destructive\"] {\n\tbackground-color: var(--bog_builderui_special);\n\tcolor: var(--bog_builderui_back);\n}\n");
 })($ || ($ = {}));
 
 ;
@@ -10124,7 +10131,14 @@ var $;
         flex: {
             direction: 'row',
             grow: 0,
+            shrink: 0,
+            basis: 'auto',
         },
+        align: {
+            self: 'flex-start',
+        },
+        width: 'fit-content',
+        maxWidth: 'fit-content',
         gap: '0.25rem',
         padding: {
             top: '0.25rem',
@@ -11923,6 +11937,12 @@ var $;
             maxWidth: '420px',
             width: '90%',
             gap: '0.5rem',
+            maxHeight: 'min-content',
+            flex: {
+                basis: 'auto',
+                grow: 0,
+                shrink: 0,
+            },
         },
         Surface_title: {
             font: {
@@ -11944,7 +11964,7 @@ var $;
             },
             gap: '0.5rem',
             justify: {
-                content: 'flex-end',
+                content: 'center',
             },
             padding: {
                 top: '0.5rem',
@@ -12399,13 +12419,25 @@ var $;
 			(obj.uri) = () => ("https://i.pravatar.cc/80?img=58");
 			return obj;
 		}
+		Avatar_five(){
+			const obj = new this.$.$bog_builderui_avatar();
+			(obj.uri) = () => ("https://i.pravatar.cc/80?img=64");
+			return obj;
+		}
+		Avatar_six(){
+			const obj = new this.$.$bog_builderui_avatar();
+			(obj.uri) = () => ("https://i.pravatar.cc/80?img=12");
+			return obj;
+		}
 		Avatars_row(){
 			const obj = new this.$.$mol_view();
 			(obj.sub) = () => ([
 				(this.Avatar_one()), 
 				(this.Avatar_two()), 
 				(this.Avatar_three()), 
-				(this.Avatar_four())
+				(this.Avatar_four()), 
+				(this.Avatar_five()), 
+				(this.Avatar_six())
 			]);
 			return obj;
 		}
@@ -12853,6 +12885,8 @@ var $;
 	($mol_mem(($.$bog_builderui_studio.prototype), "Avatar_two"));
 	($mol_mem(($.$bog_builderui_studio.prototype), "Avatar_three"));
 	($mol_mem(($.$bog_builderui_studio.prototype), "Avatar_four"));
+	($mol_mem(($.$bog_builderui_studio.prototype), "Avatar_five"));
+	($mol_mem(($.$bog_builderui_studio.prototype), "Avatar_six"));
 	($mol_mem(($.$bog_builderui_studio.prototype), "Avatars_row"));
 	($mol_mem(($.$bog_builderui_studio.prototype), "Avatars_card"));
 	($mol_mem(($.$bog_builderui_studio.prototype), "Sliders_title"));
@@ -13654,10 +13688,10 @@ var $;
             },
         },
         Field_card: {
-            maxHeight: '160px',
+            overflow: 'hidden',
         },
         Menu_card: {
-            maxHeight: '220px',
+            overflow: 'hidden',
         },
     });
 })($ || ($ = {}));

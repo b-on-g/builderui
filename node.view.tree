@@ -1068,6 +1068,8 @@ $bog_builderui_studio $bog_builderui_div
 						<= Avatar_two $bog_builderui_avatar uri \https://i.pravatar.cc/80?img=32
 						<= Avatar_three $bog_builderui_avatar uri \https://i.pravatar.cc/80?img=47
 						<= Avatar_four $bog_builderui_avatar uri \https://i.pravatar.cc/80?img=58
+						<= Avatar_five $bog_builderui_avatar uri \https://i.pravatar.cc/80?img=64
+						<= Avatar_six $bog_builderui_avatar uri \https://i.pravatar.cc/80?img=12
 				<= Sliders_card $bog_builderui_card sub /
 					<= Sliders_title $mol_view sub / \Slider
 					<= Slider_demo $bog_builderui_slider
