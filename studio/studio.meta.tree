@@ -1,3 +1,2 @@
-deploy \/bog/builderui/theme.css
-deploy \/bog/builderui/studio/studio.view.tree
+deploy \/mol/offline/install
 deploy \/bog/builderui/tokens/tokens.ts
