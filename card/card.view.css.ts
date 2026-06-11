@@ -27,5 +27,13 @@ namespace $ {
 			} ],
 		},
 		gap: '0.75rem',
+		flex: {
+			direction: 'column',
+			basis: '320px',
+			grow: 0,
+			shrink: 0,
+		},
+		minWidth: '320px',
+		maxWidth: '480px',
 	} )
 }

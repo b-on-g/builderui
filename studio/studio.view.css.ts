@@ -230,18 +230,18 @@ namespace $ {
 			},
 		},
 		Stack: {
-			flex: {
-				direction: 'column',
-				grow: 1,
-			},
 			padding: {
-				top: '2rem',
-				bottom: '2rem',
-				left: '2rem',
-				right: '2rem',
+				top: '1.5rem',
+				bottom: '1.5rem',
+				left: '1.5rem',
+				right: '1.5rem',
 			},
 			gap: '1rem',
-			maxWidth: '720px',
+			minWidth: '1080px',
+			align: {
+				items: 'flex-start',
+				content: 'flex-start',
+			},
 		},
 		Btns_row: {
 			flex: {
