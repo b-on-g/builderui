@@ -1,0 +1,42 @@
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&display=swap');
+
+:root {
+	--builderui_hue: 230deg;
+	--builderui_hue_spread: 90deg;
+	--builderui_radius: 8px;
+	--builderui_font_body: 'Manrope', system-ui, sans-serif;
+	--builderui_font_head: 'Manrope', system-ui, sans-serif;
+}
+
+:root,
+[builderui_lights="dark"],
+:where([builderui_lights="dark"]) [builderui_lights] {
+	--builderui_luma: -1;
+	--builderui_back: oklch(20% .03 var(--builderui_hue));
+	--builderui_card: oklch(28% .05 var(--builderui_hue) / .25);
+	--builderui_field: oklch(15% .01 var(--builderui_hue) / .25);
+	--builderui_hover: oklch(70% 0 var(--builderui_hue) / .1);
+	--builderui_text: oklch(82% .01 var(--builderui_hue));
+	--builderui_shade: oklch(60% 0 var(--builderui_hue));
+	--builderui_line: oklch(60% 0 var(--builderui_hue) / .25);
+	--builderui_focus: oklch(80% .2 calc(var(--builderui_hue) + 180deg));
+	--builderui_control: oklch(70% .15 var(--builderui_hue));
+	--builderui_current: oklch(70% .2 calc(var(--builderui_hue) - var(--builderui_hue_spread)));
+	--builderui_special: oklch(70% .2 calc(var(--builderui_hue) + var(--builderui_hue_spread)));
+}
+
+[builderui_lights="light"],
+:where([builderui_lights="light"]) [builderui_lights] {
+	--builderui_luma: 1;
+	--builderui_back: oklch(98% .005 var(--builderui_hue));
+	--builderui_card: oklch(100% 0 var(--builderui_hue) / .5);
+	--builderui_field: oklch(96% .01 var(--builderui_hue) / .75);
+	--builderui_hover: oklch(50% 0 var(--builderui_hue) / .08);
+	--builderui_text: oklch(18% .005 var(--builderui_hue));
+	--builderui_shade: oklch(50% 0 var(--builderui_hue));
+	--builderui_line: oklch(88% .01 var(--builderui_hue));
+	--builderui_focus: oklch(55% .22 calc(var(--builderui_hue) + 180deg));
+	--builderui_control: oklch(45% .18 var(--builderui_hue));
+	--builderui_current: oklch(50% .2 calc(var(--builderui_hue) - var(--builderui_hue_spread)));
+	--builderui_special: oklch(50% .2 calc(var(--builderui_hue) + var(--builderui_hue_spread)));
+}
