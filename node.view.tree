@@ -783,6 +783,82 @@ $bog_builderui_menu $bog_builderui_card
 
 $bog_builderui_menu_item $mol_button_minor
 
+$mol_stack $mol_view
+
+$mol_text_code_token $mol_dimmer
+	attr *
+		^
+		mol_text_code_token_type <= type \
+
+$mol_text_code_token_link $mol_text_code_token
+	dom_name \a
+	type \code-link
+	attr *
+		^
+		href <= uri \
+		target \_blank
+
+$mol_text_code_line $mol_paragraph
+	text \
+	minimal_height 24
+	numb_showed true
+	syntax null
+	uri_resolve* \
+	Numb $mol_view
+		sub /
+			<= numb 0
+	Token* $mol_text_code_token
+		type <= token_type* \
+		haystack <= token_text* \
+		needle <= highlight \
+	Token_link* $mol_text_code_token_link
+		haystack <= token_text* \
+		needle <= highlight \
+		uri <= token_uri* \
+	find_pos* null
+
+$mol_icon_clipboard $mol_icon path \M19,3H14.82C14.4,1.84 13.3,1 12,1C10.7,1 9.6,1.84 9.18,3H5A2,2 0 0,0 3,5V19A2,2 0 0,0 5,21H19A2,2 0 0,0 21,19V5A2,2 0 0,0 19,3M12,3A1,1 0 0,1 13,4A1,1 0 0,1 12,5A1,1 0 0,1 11,4A1,1 0 0,1 12,3
+
+$mol_icon_clipboard_outline $mol_icon path \M19,3H14.82C14.4,1.84 13.3,1 12,1C10.7,1 9.6,1.84 9.18,3H5A2,2 0 0,0 3,5V19A2,2 0 0,0 5,21H19A2,2 0 0,0 21,19V5A2,2 0 0,0 19,3M12,3A1,1 0 0,1 13,4A1,1 0 0,1 12,5A1,1 0 0,1 11,4A1,1 0 0,1 12,3M7,7H17V5H19V19H5V5H7V7Z
+
+$mol_button_copy $mol_button_minor
+	blobs /$mol_blob
+		<= text_blob? $mol_blob /
+			/BlobPart <= text <= title
+			* type \text/plain
+		<= html_blob? $mol_blob /
+			/BlobPart <= html \
+			* type \text/html
+	data *
+	sub /
+		<= Icon $mol_icon_clipboard_outline
+		<= title \
+
+$mol_text_code $mol_stack
+	attr *
+		^
+		mol_text_code_sidebar_showed <= sidebar_showed false
+	text \
+	text_lines /string
+	find_pos* null
+	uri_base \
+	row_themes /string
+	sub /
+		<= Rows $mol_list
+			render_visible_only <= render_visible_only false
+			rows <= rows /
+				<= Row*0 $mol_text_code_line
+					numb_showed <= sidebar_showed
+					numb <= row_numb* 0
+					theme <= row_theme* \
+					text <= row_text* \
+					syntax <= syntax null
+					uri_resolve* <= uri_resolve* \
+					highlight <= highlight \
+		<= Copy $mol_button_copy
+			hint @ \Copy whole code
+			text <= text_export \
+
 $mol_plot_bar $mol_plot_graph
 	style *
 		^
@@ -870,12 +946,8 @@ $mol_plot_ruler_vert $mol_plot_ruler
 	background_height \100%
 	background_width <= title_pos_x
 
-$bog_builderui_gallery $mol_gallery
-	-
-	Side* $bog_builderui_gallery
-		style *
-			flexGrow <= side_size* \1
-		items <= side_items* /$mol_view
+$bog_builderui_gallery $mol_view
+	sub <= items /$mol_view
 
 $bog_builderui_dialog $bog_builderui_div
 	showed? false
@@ -1064,12 +1136,12 @@ $bog_builderui_studio $bog_builderui_div
 				<= Avatars_card $bog_builderui_card sub /
 					<= Avatars_title $mol_view sub / \Avatars
 					<= Avatars_row $mol_view sub /
-						<= Avatar_one $bog_builderui_avatar uri \https://i.pravatar.cc/80?img=15
-						<= Avatar_two $bog_builderui_avatar uri \https://i.pravatar.cc/80?img=32
-						<= Avatar_three $bog_builderui_avatar uri \https://i.pravatar.cc/80?img=47
-						<= Avatar_four $bog_builderui_avatar uri \https://i.pravatar.cc/80?img=58
-						<= Avatar_five $bog_builderui_avatar uri \https://i.pravatar.cc/80?img=64
-						<= Avatar_six $bog_builderui_avatar uri \https://i.pravatar.cc/80?img=12
+						<= Avatar_one $bog_builderui_avatar uri \https://www.gravatar.com/avatar/c4ca4238a0b923820dcc509a6f75849b?d=identicon&s=80
+						<= Avatar_two $bog_builderui_avatar uri \https://www.gravatar.com/avatar/c81e728d9d4c2f636f067f89cc14862c?d=identicon&s=80
+						<= Avatar_three $bog_builderui_avatar uri \https://www.gravatar.com/avatar/eccbc87e4b5ce2fe28308fd9f2a7baf3?d=identicon&s=80
+						<= Avatar_four $bog_builderui_avatar uri \https://www.gravatar.com/avatar/a87ff679a2f3e71d9181a67b7542122c?d=identicon&s=80
+						<= Avatar_five $bog_builderui_avatar uri \https://www.gravatar.com/avatar/e4da3b7fbbce2345d7772b0674a318d5?d=identicon&s=80
+						<= Avatar_six $bog_builderui_avatar uri \https://www.gravatar.com/avatar/1679091c5a880faf6fb5e6087eb1b2dc?d=identicon&s=80
 				<= Sliders_card $bog_builderui_card sub /
 					<= Sliders_title $mol_view sub / \Slider
 					<= Slider_demo $bog_builderui_slider
@@ -1123,6 +1195,10 @@ $bog_builderui_studio $bog_builderui_div
 						<= Menu_item_one $bog_builderui_menu_item title \Profile
 						<= Menu_item_two $bog_builderui_menu_item title \Settings
 						<= Menu_item_three $bog_builderui_menu_item title \Sign out
+				<= Code_card $bog_builderui_card sub /
+					<= Code_title $mol_view sub / \Theme CSS
+					<= Code_preview $mol_text_code
+						text <= code_preview \
 				<= Chart_card $bog_builderui_card sub /
 					<= Chart_title $mol_view sub / \Chart
 					<= Chart_demo $bog_builderui_chart

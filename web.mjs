@@ -3658,12 +3658,11 @@ var $;
         gap: '0.75rem',
         flex: {
             direction: 'column',
-            basis: '320px',
-            grow: 0,
-            shrink: 0,
         },
-        minWidth: '320px',
-        maxWidth: '480px',
+        breakInside: 'avoid',
+        margin: {
+            bottom: '1rem',
+        },
     });
 })($ || ($ = {}));
 
@@ -9511,7 +9510,7 @@ var $;
 "use strict";
 var $;
 (function ($) {
-    $mol_style_attach("bog/builderui/select/select.view.css", "[bog_builderui_select] {\n\ttransition: background-color 120ms, border-color 120ms;\n\tcursor: pointer;\n}\n\n[bog_builderui_select]:hover {\n\tbackground-color: var(--bog_builderui_hover);\n\tborder-color: var(--bog_builderui_focus);\n}\n\n[bog_builderui_select] [mol_select_trigger] {\n\tbackground-color: transparent;\n}\n\n[bog_builderui_select] [mol_select_trigger]:hover {\n\tbackground-color: transparent;\n}\n");
+    $mol_style_attach("bog/builderui/select/select.view.css", "[bog_builderui_select] {\n\ttransition: background-color 120ms, border-color 120ms;\n\tcursor: pointer;\n}\n\n[bog_builderui_select]:hover {\n\tbackground-color: var(--bog_builderui_hover);\n\tborder-color: var(--bog_builderui_focus);\n}\n\n[bog_builderui_select] [mol_select_trigger],\n[bog_builderui_select] [mol_select_trigger]:hover,\n[bog_builderui_select] [mol_check],\n[bog_builderui_select] [mol_check]:hover {\n\tbackground-color: transparent !important;\n}\n");
 })($ || ($ = {}));
 
 ;
@@ -10114,7 +10113,7 @@ var $;
 "use strict";
 var $;
 (function ($) {
-    $mol_style_attach("bog/builderui/tabs/tabs.view.css", "[bog_builderui_tabs] [mol_check] {\n\tbackground-color: transparent;\n\tcolor: var(--bog_builderui_shade);\n\tborder-radius: calc(var(--bog_builderui_radius) - 2px);\n\tpadding: 0.375rem 0.875rem;\n\tfont-family: var(--bog_builderui_font_body);\n\tfont-weight: 500;\n\tbox-shadow: none;\n\ttransition: background-color 120ms, color 120ms;\n}\n\n[bog_builderui_tabs] [mol_check]:hover {\n\tcolor: var(--bog_builderui_text);\n}\n\n[bog_builderui_tabs] [mol_check][mol_check_checked=\"true\"] {\n\tbackground-color: var(--bog_builderui_back);\n\tcolor: var(--bog_builderui_text);\n\tbox-shadow: 0 1px 2px #00000033, 0 0 0 1px var(--bog_builderui_line);\n}\n");
+    $mol_style_attach("bog/builderui/tabs/tabs.view.css", "[bog_builderui_tabs][bog_builderui_tabs] {\n\tflex: 0 0 auto !important;\n\talign-self: flex-start !important;\n\twidth: fit-content !important;\n\tmax-width: fit-content !important;\n\tdisplay: inline-flex !important;\n}\n\n[bog_builderui_tabs] [mol_check] {\n\tbackground-color: transparent;\n\tcolor: var(--bog_builderui_shade);\n\tborder-radius: calc(var(--bog_builderui_radius) - 2px);\n\tpadding: 0.375rem 0.875rem;\n\tfont-family: var(--bog_builderui_font_body);\n\tfont-weight: 500;\n\tbox-shadow: none;\n\ttransition: background-color 120ms, color 120ms;\n}\n\n[bog_builderui_tabs] [mol_check]:hover {\n\tcolor: var(--bog_builderui_text);\n}\n\n[bog_builderui_tabs] [mol_check][mol_check_checked=\"true\"] {\n\tbackground-color: var(--bog_builderui_back);\n\tcolor: var(--bog_builderui_text);\n\tbox-shadow: 0 1px 2px #00000033, 0 0 0 1px var(--bog_builderui_line);\n}\n");
 })($ || ($ = {}));
 
 ;
@@ -10990,6 +10989,778 @@ var $;
 })($ || ($ = {}));
 
 ;
+	($.$mol_stack) = class $mol_stack extends ($.$mol_view) {};
+
+
+;
+"use strict";
+var $;
+(function ($) {
+    $mol_style_attach("mol/stack/stack.view.css", "[mol_stack] {\n\tdisplay: grid;\n\t/* width: max-content; */\n\t/* height: max-content; */\n\talign-items: flex-start;\n\tjustify-items: flex-start;\n}\n\n[mol_stack] > * {\n\tgrid-area: 1/1;\n}\n");
+})($ || ($ = {}));
+
+;
+"use strict";
+
+
+;
+	($.$mol_text_code_token) = class $mol_text_code_token extends ($.$mol_dimmer) {
+		type(){
+			return "";
+		}
+		attr(){
+			return {...(super.attr()), "mol_text_code_token_type": (this.type())};
+		}
+	};
+	($.$mol_text_code_token_link) = class $mol_text_code_token_link extends ($.$mol_text_code_token) {
+		uri(){
+			return "";
+		}
+		dom_name(){
+			return "a";
+		}
+		type(){
+			return "code-link";
+		}
+		attr(){
+			return {
+				...(super.attr()), 
+				"href": (this.uri()), 
+				"target": "_blank"
+			};
+		}
+	};
+
+
+;
+"use strict";
+
+
+;
+"use strict";
+var $;
+(function ($) {
+    var $$;
+    (function ($$) {
+        const { hsla } = $mol_style_func;
+        $mol_style_define($mol_text_code_token, {
+            display: 'inline',
+            textDecoration: 'none',
+            '@': {
+                mol_text_code_token_type: {
+                    'code-keyword': {
+                        color: hsla(0, 70, 60, 1),
+                    },
+                    'code-field': {
+                        color: hsla(300, 70, 50, 1),
+                    },
+                    'code-tag': {
+                        color: hsla(330, 70, 50, 1),
+                    },
+                    'code-global': {
+                        color: hsla(30, 80, 50, 1),
+                    },
+                    'code-decorator': {
+                        color: hsla(180, 40, 50, 1),
+                    },
+                    'code-punctuation': {
+                        color: hsla(0, 0, 50, 1),
+                    },
+                    'code-string': {
+                        color: hsla(90, 40, 50, 1),
+                    },
+                    'code-number': {
+                        color: hsla(55, 65, 45, 1),
+                    },
+                    'code-call': {
+                        color: hsla(270, 60, 50, 1),
+                    },
+                    'code-link': {
+                        color: hsla(210, 60, 50, 1),
+                    },
+                    'code-comment-inline': {
+                        opacity: .5,
+                    },
+                    'code-comment-block': {
+                        opacity: .5,
+                    },
+                    'code-docs': {
+                        opacity: .75,
+                    },
+                },
+            }
+        });
+    })($$ = $.$$ || ($.$$ = {}));
+})($ || ($ = {}));
+
+;
+	($.$mol_text_code_line) = class $mol_text_code_line extends ($.$mol_paragraph) {
+		numb(){
+			return 0;
+		}
+		token_type(id){
+			return "";
+		}
+		token_text(id){
+			return "";
+		}
+		highlight(){
+			return "";
+		}
+		token_uri(id){
+			return "";
+		}
+		text(){
+			return "";
+		}
+		minimal_height(){
+			return 24;
+		}
+		numb_showed(){
+			return true;
+		}
+		syntax(){
+			return null;
+		}
+		uri_resolve(id){
+			return "";
+		}
+		Numb(){
+			const obj = new this.$.$mol_view();
+			(obj.sub) = () => ([(this.numb())]);
+			return obj;
+		}
+		Token(id){
+			const obj = new this.$.$mol_text_code_token();
+			(obj.type) = () => ((this.token_type(id)));
+			(obj.haystack) = () => ((this.token_text(id)));
+			(obj.needle) = () => ((this.highlight()));
+			return obj;
+		}
+		Token_link(id){
+			const obj = new this.$.$mol_text_code_token_link();
+			(obj.haystack) = () => ((this.token_text(id)));
+			(obj.needle) = () => ((this.highlight()));
+			(obj.uri) = () => ((this.token_uri(id)));
+			return obj;
+		}
+		find_pos(id){
+			return null;
+		}
+	};
+	($mol_mem(($.$mol_text_code_line.prototype), "Numb"));
+	($mol_mem_key(($.$mol_text_code_line.prototype), "Token"));
+	($mol_mem_key(($.$mol_text_code_line.prototype), "Token_link"));
+
+
+;
+"use strict";
+var $;
+(function ($) {
+    /** Creates lexer by dictionary of lexems. Lexem that started first wins. Then lexem that declared earlier wins. Use regexp capture to take parts of token. */
+    class $mol_syntax2 {
+        lexems;
+        constructor(lexems) {
+            this.lexems = lexems;
+            for (let name in lexems) {
+                this.rules.push({
+                    name: name,
+                    regExp: lexems[name],
+                    size: RegExp('^$|' + lexems[name].source).exec('').length - 1,
+                });
+            }
+            const parts = '(' + this.rules.map(rule => rule.regExp.source).join(')|(') + ')';
+            this.regexp = RegExp(`([\\s\\S]*?)(?:(${parts})|$(?![^]))`, 'gmu');
+        }
+        rules = [];
+        regexp;
+        tokenize(text, handle) {
+            let end = 0;
+            lexing: while (end < text.length) {
+                const start = end;
+                this.regexp.lastIndex = start;
+                var found = this.regexp.exec(text);
+                end = this.regexp.lastIndex;
+                if (start === end)
+                    throw new Error('Empty token');
+                var prefix = found[1];
+                if (prefix)
+                    handle('', prefix, [prefix], start);
+                var suffix = found[2];
+                if (!suffix)
+                    continue;
+                let offset = 4;
+                for (let rule of this.rules) {
+                    if (found[offset - 1]) {
+                        handle(rule.name, suffix, found.slice(offset, offset + rule.size), start + prefix.length);
+                        continue lexing;
+                    }
+                    offset += rule.size + 1;
+                }
+                $mol_fail(new Error('$mol_syntax2 is broken'));
+            }
+        }
+        parse(text, handlers) {
+            this.tokenize(text, (name, ...args) => handlers[name](...args));
+        }
+    }
+    $.$mol_syntax2 = $mol_syntax2;
+})($ || ($ = {}));
+
+;
+"use strict";
+var $;
+(function ($) {
+    $.$mol_syntax2_md_flow = new $mol_syntax2({
+        'quote': /^((?:(?:[>"] )(?:[^]*?)$(\r?\n?))+)([\n\r]*)/,
+        'spoiler': /^((?:(?:[\?] )(?:[^]*?)$(\r?\n?))+)([\n\r]*)/,
+        'header': /^([#=]+)(\s+)(.*?)$([\n\r]*)/,
+        'list': /^((?:(?: ?([*+-])|(?:\d+[\.\)])+) +(?:[^]*?)$(?:\r?\n?)(?:  (?:[^]*?)$(?:\r?\n?))*)+)((?:\r?\n)*)/,
+        'code': /^(```)([\w.-]*)[\r\n]+([^]*?)^(```)$([\n\r]*)/,
+        'code-indent': /^((?:(?: |\t)(?:[^]*?)$\r?\n?)+)([\n\r]*)/,
+        'table': /((?:^\|.+?$\r?\n?)+)([\n\r]*)/,
+        'grid': /((?:^ *! .*?$\r?\n?)+)([\n\r]*)/,
+        'cut': /^--+$((?:\r?\n)*)/,
+        'block': /^(.*?)$((?:\r?\n)*)/,
+    });
+    $.$mol_syntax2_md_line = new $mol_syntax2({
+        'strong': /\*\*(.+?)\*\*/,
+        'emphasis': /\*(?!\s)(.+?)\*|\/\/(?!\s)(.+?)\/\//,
+        'code': /```(.+?)```|;;(.+?);;|`(.+?)`/,
+        'insert': /\+\+(.+?)\+\+/,
+        'delete': /~~(.+?)~~|--(.+?)--/,
+        // 'remark' : /(\()(.+?)(\))/ ,
+        // 'quote' : /(")(.+?)(")/ ,
+        'embed': /""(?:(.*?)\\)?(.*?)""/,
+        'link': /\\\\(?:(.*?)\\)?(.*?)\\\\/,
+        'image-link': /!\[([^\[\]]*?)\]\((.*?)\)/,
+        'text-link': /\[(.*?(?:\[[^\[\]]*?\][^\[\]]*?)*)\]\((.*?)\)/,
+        'text-link-http': /\b(https?:\/\/[^\s,.;:!?")]+(?:[,.;:!?")][^\s,.;:!?")]+)+)/,
+    });
+    $.$mol_syntax2_md_code = new $mol_syntax2({
+        'code-indent': /\t+/,
+        'code-docs': /\/\/\/.*?$/,
+        'code-comment-block': /(?:\/\*[^]*?\*\/|\/\+[^]*?\+\/|<![^]*?>)/,
+        'code-link': /(?:\w+:\/\/|#)\S+?(?=\s|\\\\|""|$)/,
+        'code-comment-inline': /\/\/.*?(?:$|\/\/)|- \\(?!\\).*|(?<=^| )#!? .*/,
+        'code-string': /(?:".*?"|'.*?'|`.*?`| ?\\\\.+?\\\\|\/.+?\/[dygimsu]*(?!\p{Letter})|[ \t]*\\[^\n]*)/u,
+        'code-number': /[+-]?(?:\d*\.)?\d+\w*/,
+        'code-call': /\.?\w+(?=\()/,
+        'code-sexpr': /\((\w+ )/,
+        'code-field': /(?:(?<=\.|::|->)[a-z][\w-]*|(?<=[, \t] |\t)[\w-]+\??:(?!\/\/|:))/,
+        'code-keyword': /(?<=^|\t|[ )(}{=] )((throw|readonly|unknown|keyof|typeof|never|from|class|struct|interface|type|function|extends|implements|module|namespace|import|export|include|require|var|val|let|const|for|do|while|until|in|out|of|new|if|then|else|switch|case|return|async|await|yield|try|catch|break|continue|get|set|public|private|protected|void|int|float|ref)( |$|;))+/,
+        'code-global': /[$]+\w*|\b[A-Z][a-z0-9]+[A-Z]\w*/,
+        'code-word': /\w+/,
+        'code-decorator': /(?<=^|  |\t)@\s*\S+/,
+        'code-tag': /<\/?[\w-]+\/?>?|&\w+;/,
+        'code-punctuation': /[\-\[\]\{\}\(\)<=>~!\?@#%&\*_\+\\\/\|;:\.,\^]+?/,
+    });
+})($ || ($ = {}));
+
+;
+"use strict";
+
+
+;
+"use strict";
+var $;
+(function ($) {
+    var $$;
+    (function ($$) {
+        class $mol_text_code_line extends $.$mol_text_code_line {
+            maximal_width() {
+                return this.text().length * this.letter_width();
+            }
+            syntax() {
+                return this.$.$mol_syntax2_md_code;
+            }
+            tokens(path) {
+                const tokens = [];
+                const text = (path.length > 0)
+                    // @FIXME: this logic compatible only with `string`
+                    ? this.tokens(path.slice(0, path.length - 1))[path[path.length - 1]].found.slice(1, -1)
+                    : this.text();
+                this.syntax().tokenize(text, (name, found, chunks) => {
+                    if (name === 'code-sexpr') {
+                        tokens.push({ name: 'code-punctuation', found: '(', chunks: [] });
+                        tokens.push({ name: 'code-call', found: chunks[0], chunks: [] });
+                    }
+                    else {
+                        tokens.push({ name, found, chunks });
+                    }
+                });
+                return tokens;
+            }
+            sub() {
+                return [
+                    ...this.numb_showed() ? [this.Numb()] : [],
+                    ...this.row_content([])
+                ];
+            }
+            row_content(path) {
+                const content = this.tokens(path).map((t, i) => this.Token([...path, i]));
+                return content.length ? content : ['\n'];
+            }
+            Token(path) {
+                return this.token_type(path) === 'code-link' ? this.Token_link(path) : super.Token(path);
+            }
+            token_type(path) {
+                return this.tokens([...path.slice(0, path.length - 1)])[path[path.length - 1]].name;
+            }
+            token_content(path) {
+                const tokens = this.tokens([...path.slice(0, path.length - 1)]);
+                const token = tokens[path[path.length - 1]];
+                switch (token.name) {
+                    case 'code-string': return [
+                        token.found[0],
+                        ...this.row_content(path),
+                        token.found[token.found.length - 1],
+                    ];
+                    default: return [token.found];
+                }
+            }
+            token_text(path) {
+                const tokens = this.tokens([...path.slice(0, path.length - 1)]);
+                const token = tokens[path[path.length - 1]];
+                return token.found;
+            }
+            token_uri(path) {
+                const uri = this.token_text(path);
+                return this.uri_resolve(uri);
+            }
+            *view_find(check, path = []) {
+                if (check(this, this.text())) {
+                    yield [...path, this];
+                }
+            }
+            find_pos(offset) {
+                return this.find_token_pos([offset]);
+            }
+            find_token_pos([offset, ...path]) {
+                for (const [index, token] of this.tokens(path).entries()) {
+                    if (token.found.length >= offset) {
+                        const token = this.Token([...path, index]);
+                        return { token, offset };
+                    }
+                    else {
+                        offset -= token.found.length;
+                    }
+                }
+                return null;
+            }
+        }
+        __decorate([
+            $mol_mem_key
+        ], $mol_text_code_line.prototype, "tokens", null);
+        __decorate([
+            $mol_mem_key
+        ], $mol_text_code_line.prototype, "row_content", null);
+        __decorate([
+            $mol_mem_key
+        ], $mol_text_code_line.prototype, "token_type", null);
+        __decorate([
+            $mol_mem_key
+        ], $mol_text_code_line.prototype, "token_content", null);
+        __decorate([
+            $mol_mem_key
+        ], $mol_text_code_line.prototype, "token_text", null);
+        __decorate([
+            $mol_mem_key
+        ], $mol_text_code_line.prototype, "token_uri", null);
+        __decorate([
+            $mol_mem_key
+        ], $mol_text_code_line.prototype, "find_pos", null);
+        __decorate([
+            $mol_mem_key
+        ], $mol_text_code_line.prototype, "find_token_pos", null);
+        $$.$mol_text_code_line = $mol_text_code_line;
+    })($$ = $.$$ || ($.$$ = {}));
+})($ || ($ = {}));
+
+;
+"use strict";
+var $;
+(function ($) {
+    var $$;
+    (function ($$) {
+        const { rem } = $mol_style_unit;
+        $mol_style_define($mol_text_code_line, {
+            display: 'block',
+            position: 'relative',
+            font: {
+                family: 'monospace',
+            },
+            Numb: {
+                textAlign: 'right',
+                color: $mol_theme.shade,
+                width: rem(3),
+                margin: {
+                    left: rem(-4),
+                },
+                display: 'inline-block',
+                whiteSpace: 'nowrap',
+                userSelect: 'none',
+                position: 'absolute',
+            },
+        });
+    })($$ = $.$$ || ($.$$ = {}));
+})($ || ($ = {}));
+
+;
+"use strict";
+
+;
+"use strict";
+// @ts-ignore
+var $node = $node || {};
+
+;
+"use strict";
+var $;
+(function ($) {
+    $.$mol_blob = ($node.buffer?.Blob ?? $mol_dom_context.Blob);
+})($ || ($ = {}));
+
+;
+	($.$mol_icon_clipboard) = class $mol_icon_clipboard extends ($.$mol_icon) {
+		path(){
+			return "M19,3H14.82C14.4,1.84 13.3,1 12,1C10.7,1 9.6,1.84 9.18,3H5A2,2 0 0,0 3,5V19A2,2 0 0,0 5,21H19A2,2 0 0,0 21,19V5A2,2 0 0,0 19,3M12,3A1,1 0 0,1 13,4A1,1 0 0,1 12,5A1,1 0 0,1 11,4A1,1 0 0,1 12,3";
+		}
+	};
+
+
+;
+"use strict";
+
+
+;
+	($.$mol_icon_clipboard_outline) = class $mol_icon_clipboard_outline extends ($.$mol_icon) {
+		path(){
+			return "M19,3H14.82C14.4,1.84 13.3,1 12,1C10.7,1 9.6,1.84 9.18,3H5A2,2 0 0,0 3,5V19A2,2 0 0,0 5,21H19A2,2 0 0,0 21,19V5A2,2 0 0,0 19,3M12,3A1,1 0 0,1 13,4A1,1 0 0,1 12,5A1,1 0 0,1 11,4A1,1 0 0,1 12,3M7,7H17V5H19V19H5V5H7V7Z";
+		}
+	};
+
+
+;
+"use strict";
+
+
+;
+	($.$mol_button_copy) = class $mol_button_copy extends ($.$mol_button_minor) {
+		text(){
+			return (this.title());
+		}
+		text_blob(next){
+			if(next !== undefined) return next;
+			const obj = new this.$.$mol_blob([(this.text())], {"type": "text/plain"});
+			return obj;
+		}
+		html(){
+			return "";
+		}
+		html_blob(next){
+			if(next !== undefined) return next;
+			const obj = new this.$.$mol_blob([(this.html())], {"type": "text/html"});
+			return obj;
+		}
+		Icon(){
+			const obj = new this.$.$mol_icon_clipboard_outline();
+			return obj;
+		}
+		title(){
+			return "";
+		}
+		blobs(){
+			return [(this.text_blob()), (this.html_blob())];
+		}
+		data(){
+			return {};
+		}
+		sub(){
+			return [(this.Icon()), (this.title())];
+		}
+	};
+	($mol_mem(($.$mol_button_copy.prototype), "text_blob"));
+	($mol_mem(($.$mol_button_copy.prototype), "html_blob"));
+	($mol_mem(($.$mol_button_copy.prototype), "Icon"));
+
+
+;
+"use strict";
+var $;
+(function ($) {
+    const mapping = {
+        '<': '&lt;',
+        '>': '&gt;',
+        '"': '&quot;',
+        '&': '&amp;',
+    };
+    function $mol_html_encode(text) {
+        return text.replace(/[&<">]/gi, str => mapping[str]);
+    }
+    $.$mol_html_encode = $mol_html_encode;
+})($ || ($ = {}));
+
+;
+"use strict";
+
+
+;
+"use strict";
+var $;
+(function ($) {
+    var $$;
+    (function ($$) {
+        /**
+         * Button copy text() value to clipboard
+         * @see https://mol.hyoo.ru/#!section=demos/demo=mol_button_demo
+         */
+        class $mol_button_copy extends $.$mol_button_copy {
+            data() {
+                return Object.fromEntries(this.blobs().map(blob => [blob.type, blob]));
+            }
+            html() {
+                return $mol_html_encode(this.text());
+            }
+            attachments() {
+                return [new ClipboardItem(this.data())];
+            }
+            click(event) {
+                const cb = $mol_wire_sync(this.$.$mol_dom_context.navigator.clipboard);
+                cb.writeText?.(this.text());
+                cb.write?.(this.attachments());
+                if (cb.writeText === undefined && cb.write === undefined) {
+                    throw new Error("doesn't support copy to clipoard");
+                }
+            }
+        }
+        __decorate([
+            $mol_mem
+        ], $mol_button_copy.prototype, "html", null);
+        __decorate([
+            $mol_mem
+        ], $mol_button_copy.prototype, "attachments", null);
+        $$.$mol_button_copy = $mol_button_copy;
+    })($$ = $.$$ || ($.$$ = {}));
+})($ || ($ = {}));
+
+;
+	($.$mol_text_code) = class $mol_text_code extends ($.$mol_stack) {
+		sidebar_showed(){
+			return false;
+		}
+		render_visible_only(){
+			return false;
+		}
+		row_numb(id){
+			return 0;
+		}
+		row_theme(id){
+			return "";
+		}
+		row_text(id){
+			return "";
+		}
+		syntax(){
+			return null;
+		}
+		uri_resolve(id){
+			return "";
+		}
+		highlight(){
+			return "";
+		}
+		Row(id){
+			const obj = new this.$.$mol_text_code_line();
+			(obj.numb_showed) = () => ((this.sidebar_showed()));
+			(obj.numb) = () => ((this.row_numb(id)));
+			(obj.theme) = () => ((this.row_theme(id)));
+			(obj.text) = () => ((this.row_text(id)));
+			(obj.syntax) = () => ((this.syntax()));
+			(obj.uri_resolve) = (id) => ((this.uri_resolve(id)));
+			(obj.highlight) = () => ((this.highlight()));
+			return obj;
+		}
+		rows(){
+			return [(this.Row("0"))];
+		}
+		Rows(){
+			const obj = new this.$.$mol_list();
+			(obj.render_visible_only) = () => ((this.render_visible_only()));
+			(obj.rows) = () => ((this.rows()));
+			return obj;
+		}
+		text_export(){
+			return "";
+		}
+		Copy(){
+			const obj = new this.$.$mol_button_copy();
+			(obj.hint) = () => ((this.$.$mol_locale.text("$mol_text_code_Copy_hint")));
+			(obj.text) = () => ((this.text_export()));
+			return obj;
+		}
+		attr(){
+			return {...(super.attr()), "mol_text_code_sidebar_showed": (this.sidebar_showed())};
+		}
+		text(){
+			return "";
+		}
+		text_lines(){
+			return [];
+		}
+		find_pos(id){
+			return null;
+		}
+		uri_base(){
+			return "";
+		}
+		row_themes(){
+			return [];
+		}
+		sub(){
+			return [(this.Rows()), (this.Copy())];
+		}
+	};
+	($mol_mem_key(($.$mol_text_code.prototype), "Row"));
+	($mol_mem(($.$mol_text_code.prototype), "Rows"));
+	($mol_mem(($.$mol_text_code.prototype), "Copy"));
+
+
+;
+"use strict";
+
+
+;
+"use strict";
+var $;
+(function ($) {
+    var $$;
+    (function ($$) {
+        /**
+         * Code visualizer.
+         * @see https://mol.hyoo.ru/#!section=demos/demo=mol_text_code_demo
+         */
+        class $mol_text_code extends $.$mol_text_code {
+            render_visible_only() {
+                return this.$.$mol_support_css_overflow_anchor();
+            }
+            text_lines() {
+                return (this.text() ?? '').split('\n');
+            }
+            rows() {
+                return this.text_lines().map((_, index) => this.Row(index + 1));
+            }
+            row_text(index) {
+                return this.text_lines()[index - 1];
+            }
+            row_numb(index) {
+                return index;
+            }
+            find_pos(offset) {
+                for (const [index, line] of this.text_lines().entries()) {
+                    if (line.length >= offset) {
+                        return this.Row(index + 1).find_pos(offset);
+                    }
+                    else {
+                        offset -= line.length + 1;
+                    }
+                }
+                return null;
+            }
+            sub() {
+                return [
+                    this.Rows(),
+                    ...this.sidebar_showed() ? [this.Copy()] : []
+                ];
+            }
+            syntax() {
+                return this.$.$mol_syntax2_md_code;
+            }
+            uri_base() {
+                return $mol_dom_context.document.location.href;
+            }
+            uri_resolve(uri) {
+                if (/^(\w+script+:)+/.test(uri))
+                    return null;
+                try {
+                    const url = new URL(uri, this.uri_base());
+                    return url.toString();
+                }
+                catch (error) {
+                    $mol_fail_log(error);
+                    return null;
+                }
+            }
+            text_export() {
+                return this.text() + '\n';
+            }
+            row_theme(row) {
+                return this.row_themes()[row - 1];
+            }
+        }
+        __decorate([
+            $mol_mem
+        ], $mol_text_code.prototype, "text_lines", null);
+        __decorate([
+            $mol_mem
+        ], $mol_text_code.prototype, "rows", null);
+        __decorate([
+            $mol_mem_key
+        ], $mol_text_code.prototype, "row_text", null);
+        __decorate([
+            $mol_mem_key
+        ], $mol_text_code.prototype, "find_pos", null);
+        __decorate([
+            $mol_mem
+        ], $mol_text_code.prototype, "sub", null);
+        __decorate([
+            $mol_mem_key
+        ], $mol_text_code.prototype, "uri_resolve", null);
+        $$.$mol_text_code = $mol_text_code;
+    })($$ = $.$$ || ($.$$ = {}));
+})($ || ($ = {}));
+
+;
+"use strict";
+var $;
+(function ($) {
+    var $$;
+    (function ($$) {
+        const { rem, px } = $mol_style_unit;
+        $mol_style_define($mol_text_code, {
+            whiteSpace: 'pre-wrap',
+            font: {
+                family: 'monospace',
+            },
+            Rows: {
+                padding: $mol_gap.text,
+                minWidth: 0,
+            },
+            Row: {
+                font: {
+                    family: 'inherit',
+                },
+            },
+            Copy: {
+                alignSelf: 'flex-start',
+                justifySelf: 'flex-start',
+            },
+            '@': {
+                'mol_text_code_sidebar_showed': {
+                    true: {
+                        $mol_text_code_line: {
+                            margin: {
+                                left: rem(1.75),
+                            },
+                        },
+                    },
+                },
+            },
+        });
+    })($$ = $.$$ || ($.$$ = {}));
+})($ || ($ = {}));
+
+;
 	($.$mol_plot_bar) = class $mol_plot_bar extends ($.$mol_plot_graph) {
 		stroke_width(){
 			return "1rem";
@@ -11743,21 +12514,14 @@ var $;
 })($ || ($ = {}));
 
 ;
-	($.$bog_builderui_gallery) = class $bog_builderui_gallery extends ($.$mol_gallery) {
-		side_size(id){
-			return "1";
-		}
-		side_items(id){
+	($.$bog_builderui_gallery) = class $bog_builderui_gallery extends ($.$mol_view) {
+		items(){
 			return [];
 		}
-		Side(id){
-			const obj = new this.$.$bog_builderui_gallery();
-			(obj.style) = () => ({"flexGrow": (this.side_size(id))});
-			(obj.items) = () => ((this.side_items(id)));
-			return obj;
+		sub(){
+			return (this.items());
 		}
 	};
-	($mol_mem_key(($.$bog_builderui_gallery.prototype), "Side"));
 
 
 ;
@@ -11771,44 +12535,23 @@ var $;
     var $$;
     (function ($$) {
         class $bog_builderui_gallery extends $.$bog_builderui_gallery {
-            columns_count() {
-                const n = this.items().length;
-                if (n <= 3)
-                    return 1;
-                if (n <= 6)
-                    return 2;
-                if (n <= 12)
-                    return 3;
-                return 4;
-            }
-            sub() {
-                const items = this.items();
-                const cols = this.columns_count();
-                if (cols <= 1)
-                    return items;
-                const sides = [];
-                for (let i = 0; i < cols; ++i)
-                    sides.push(this.Side(i));
-                return sides;
-            }
-            side_items(id) {
-                const items = this.items();
-                const cols = this.columns_count();
-                const per = Math.ceil(items.length / cols);
-                return items.slice(id * per, (id + 1) * per);
-            }
-            side_size(id) {
-                return String(this.side_items(id).length);
-            }
         }
-        __decorate([
-            $mol_mem
-        ], $bog_builderui_gallery.prototype, "sub", null);
-        __decorate([
-            $mol_mem_key
-        ], $bog_builderui_gallery.prototype, "side_items", null);
         $$.$bog_builderui_gallery = $bog_builderui_gallery;
     })($$ = $.$$ || ($.$$ = {}));
+})($ || ($ = {}));
+
+;
+"use strict";
+var $;
+(function ($) {
+    $mol_style_define($bog_builderui_gallery, {
+        display: 'block',
+        columnWidth: '340px',
+        columnGap: '1rem',
+        flex: {
+            grow: 1,
+        },
+    });
 })($ || ($ = {}));
 
 ;
@@ -12401,32 +13144,32 @@ var $;
 		}
 		Avatar_one(){
 			const obj = new this.$.$bog_builderui_avatar();
-			(obj.uri) = () => ("https://i.pravatar.cc/80?img=15");
+			(obj.uri) = () => ("https://www.gravatar.com/avatar/c4ca4238a0b923820dcc509a6f75849b?d=identicon&s=80");
 			return obj;
 		}
 		Avatar_two(){
 			const obj = new this.$.$bog_builderui_avatar();
-			(obj.uri) = () => ("https://i.pravatar.cc/80?img=32");
+			(obj.uri) = () => ("https://www.gravatar.com/avatar/c81e728d9d4c2f636f067f89cc14862c?d=identicon&s=80");
 			return obj;
 		}
 		Avatar_three(){
 			const obj = new this.$.$bog_builderui_avatar();
-			(obj.uri) = () => ("https://i.pravatar.cc/80?img=47");
+			(obj.uri) = () => ("https://www.gravatar.com/avatar/eccbc87e4b5ce2fe28308fd9f2a7baf3?d=identicon&s=80");
 			return obj;
 		}
 		Avatar_four(){
 			const obj = new this.$.$bog_builderui_avatar();
-			(obj.uri) = () => ("https://i.pravatar.cc/80?img=58");
+			(obj.uri) = () => ("https://www.gravatar.com/avatar/a87ff679a2f3e71d9181a67b7542122c?d=identicon&s=80");
 			return obj;
 		}
 		Avatar_five(){
 			const obj = new this.$.$bog_builderui_avatar();
-			(obj.uri) = () => ("https://i.pravatar.cc/80?img=64");
+			(obj.uri) = () => ("https://www.gravatar.com/avatar/e4da3b7fbbce2345d7772b0674a318d5?d=identicon&s=80");
 			return obj;
 		}
 		Avatar_six(){
 			const obj = new this.$.$bog_builderui_avatar();
-			(obj.uri) = () => ("https://i.pravatar.cc/80?img=12");
+			(obj.uri) = () => ("https://www.gravatar.com/avatar/1679091c5a880faf6fb5e6087eb1b2dc?d=identicon&s=80");
 			return obj;
 		}
 		Avatars_row(){
@@ -12676,6 +13419,24 @@ var $;
 			(obj.sub) = () => ([(this.Menu_title()), (this.Menu_demo())]);
 			return obj;
 		}
+		Code_title(){
+			const obj = new this.$.$mol_view();
+			(obj.sub) = () => (["Theme CSS"]);
+			return obj;
+		}
+		code_preview(){
+			return "";
+		}
+		Code_preview(){
+			const obj = new this.$.$mol_text_code();
+			(obj.text) = () => ((this.code_preview()));
+			return obj;
+		}
+		Code_card(){
+			const obj = new this.$.$bog_builderui_card();
+			(obj.sub) = () => ([(this.Code_title()), (this.Code_preview())]);
+			return obj;
+		}
 		Chart_title(){
 			const obj = new this.$.$mol_view();
 			(obj.sub) = () => (["Chart"]);
@@ -12769,6 +13530,7 @@ var $;
 				(this.Form_card()), 
 				(this.Field_card()), 
 				(this.Menu_card()), 
+				(this.Code_card()), 
 				(this.Chart_card())
 			]);
 			return obj;
@@ -12931,6 +13693,9 @@ var $;
 	($mol_mem(($.$bog_builderui_studio.prototype), "Menu_item_three"));
 	($mol_mem(($.$bog_builderui_studio.prototype), "Menu_demo"));
 	($mol_mem(($.$bog_builderui_studio.prototype), "Menu_card"));
+	($mol_mem(($.$bog_builderui_studio.prototype), "Code_title"));
+	($mol_mem(($.$bog_builderui_studio.prototype), "Code_preview"));
+	($mol_mem(($.$bog_builderui_studio.prototype), "Code_card"));
 	($mol_mem(($.$bog_builderui_studio.prototype), "Chart_title"));
 	($mol_mem(($.$bog_builderui_studio.prototype), "Chart_visits"));
 	($mol_mem(($.$bog_builderui_studio.prototype), "Chart_signups"));
@@ -13226,6 +13991,19 @@ Generated by BuilderUI Studio.
                     s.font === this.font_body() &&
                     s.radius === this.radius());
                 return i < 0 ? 'Custom' : styles[i].name;
+            }
+            code_preview() {
+                return [
+                    `<body`,
+                    `  bog_builderui_lights="${this.lights()}"`,
+                    `  bog_builderui_base="${this.base()}"`,
+                    `  bog_builderui_theme="${this.theme()}"`,
+                    `  bog_builderui_chart="${this.chart()}"`,
+                    `  bog_builderui_radius="${this.radius()}"`,
+                    `  bog_builderui_font_body="${this.font_body()}"`,
+                    `  bog_builderui_font_head="${this.font_head()}"`,
+                    `>`,
+                ].join('\n');
             }
             chart_visits() { return [24, 38, 32, 51, 44, 60, 55]; }
             chart_signups() { return [14, 22, 18, 30, 26, 36, 32]; }
@@ -13534,12 +14312,7 @@ var $;
                 left: '1.5rem',
                 right: '1.5rem',
             },
-            gap: '1rem',
             minWidth: '1080px',
-            align: {
-                items: 'flex-start',
-                content: 'flex-start',
-            },
         },
         Btns_row: {
             flex: {
@@ -13568,7 +14341,7 @@ var $;
             gap: '0.75rem',
         },
         Avatars_card: {
-            maxHeight: '140px',
+            maxHeight: 'min-content',
         },
         Avatars_title: card_title,
         Avatars_row: {
@@ -13679,7 +14452,7 @@ var $;
         },
         Chart_card: {
             minHeight: '420px',
-            minWidth: '420px',
+            minWidth: '600px',
         },
         Chart_demo: {
             minHeight: '340px',
@@ -13688,10 +14461,13 @@ var $;
             },
         },
         Field_card: {
-            overflow: 'hidden',
+            maxHeight: 'min-content',
         },
         Menu_card: {
-            overflow: 'hidden',
+            maxHeight: 'min-content',
+        },
+        Menu_demo: {
+            maxHeight: 'min-content',
         },
     });
 })($ || ($ = {}));
