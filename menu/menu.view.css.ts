@@ -8,6 +8,25 @@ namespace $ {
 			right: '0.375rem',
 		},
 		gap: '0.125rem',
+		flex: {
+			direction: 'column',
+			grow: 0,
+			shrink: 0,
+		},
+		align: {
+			self: 'stretch',
+		},
+		minWidth: 0,
+		maxWidth: 'none',
+		box: {
+			shadow: [ {
+				x: 0,
+				y: 0,
+				blur: 0,
+				spread: 0,
+				color: 'transparent',
+			} ],
+		},
 	} )
 
 	$mol_style_define( $bog_builderui_menu_item, {
@@ -31,6 +50,10 @@ namespace $ {
 		font: {
 			family: $bog_builderui_tokens.font_body,
 			size: '0.9rem',
+		},
+		flex: {
+			grow: 0,
+			shrink: 0,
 		},
 	} )
 }

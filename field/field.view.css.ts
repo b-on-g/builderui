@@ -20,5 +20,12 @@ namespace $ {
 			left: '0.75rem',
 			right: '0.75rem',
 		},
+		flex: {
+			grow: 0,
+			shrink: 0,
+		},
+		align: {
+			self: 'stretch',
+		},
 	} )
 }

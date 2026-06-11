@@ -271,6 +271,11 @@ namespace $ {
 		Avatars_row: {
 			flex: {
 				direction: 'row',
+				grow: 0,
+				shrink: 0,
+			},
+			align: {
+				items: 'flex-start',
 			},
 			gap: '0.5rem',
 		},
@@ -369,10 +374,10 @@ namespace $ {
 			color: $bog_builderui_tokens.shade,
 		},
 		Chart_card: {
-			minHeight: '320px',
+			minHeight: '420px',
 		},
 		Chart_demo: {
-			minHeight: '240px',
+			minHeight: '340px',
 			flex: {
 				grow: 1,
 			},

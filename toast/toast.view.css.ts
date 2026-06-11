@@ -40,7 +40,9 @@ namespace $ {
 			flex: {
 				direction: 'column',
 				grow: 1,
+				shrink: 1,
 			},
+			minWidth: 0,
 			gap: '0.125rem',
 		},
 		Title: {
@@ -56,6 +58,8 @@ namespace $ {
 			font: {
 				size: '0.85rem',
 			},
+			whiteSpace: 'normal',
+			overflowWrap: 'anywhere',
 		},
 	} )
 }
