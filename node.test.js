@@ -4783,11 +4783,14 @@ var $;
         },
         flex: {
             grow: 0,
-            shrink: 0,
+            shrink: 1,
         },
         align: {
             self: 'stretch',
         },
+        minWidth: 0,
+        maxWidth: '100%',
+        boxSizing: 'border-box',
     });
 })($ || ($ = {}));
 
