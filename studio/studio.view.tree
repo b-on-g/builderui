@@ -43,6 +43,9 @@ $bog_builderui_studio $bog_builderui_div
 				value <= lights_label \Dark
 				click? <=> lights_cycle? null
 			<= Spacer $mol_view
+			<= Shuffle $mol_button_minor
+				title \Shuffle
+				click? <=> shuffle? null
 			<= Get_code $mol_button_major
 				title \Get Code
 				click? <=> get_code? null
