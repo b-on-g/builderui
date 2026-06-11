@@ -4419,6 +4419,9 @@ declare namespace $.$$ {
 }
 
 declare namespace $ {
+}
+
+declare namespace $ {
 
 	export class $bog_builderui_tabs extends $mol_switch {
 	}

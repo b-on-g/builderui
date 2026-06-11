@@ -10569,6 +10569,13 @@ var $;
 
 ;
 "use strict";
+var $;
+(function ($) {
+    $mol_style_attach("bog/builderui/tabs/tabs.view.css", "[bog_builderui_tabs] [mol_check] {\n\tbackground-color: transparent;\n\tcolor: var(--bog_builderui_shade);\n\tborder-radius: calc(var(--bog_builderui_radius) - 2px);\n\tpadding: 0.375rem 0.875rem;\n\tfont-family: var(--bog_builderui_font_body);\n\tfont-weight: 500;\n\tbox-shadow: none;\n\ttransition: background-color 120ms, color 120ms;\n}\n\n[bog_builderui_tabs] [mol_check]:hover {\n\tcolor: var(--bog_builderui_text);\n}\n\n[bog_builderui_tabs] [mol_check][mol_check_checked=\"true\"] {\n\tbackground-color: var(--bog_builderui_back);\n\tcolor: var(--bog_builderui_text);\n\tbox-shadow: 0 1px 2px #00000033, 0 0 0 1px var(--bog_builderui_line);\n}\n");
+})($ || ($ = {}));
+
+;
+"use strict";
 
 
 ;
@@ -10641,6 +10648,14 @@ var $;
             color: $bog_builderui_tokens.focus,
         },
         gap: '0.25rem',
+        flex: {
+            grow: 0,
+            shrink: 0,
+        },
+        align: {
+            self: 'stretch',
+        },
+        maxHeight: '140px',
         Alert_title: {
             font: {
                 family: $bog_builderui_tokens.font_head,
@@ -13916,12 +13931,14 @@ var $;
         Btns_row: {
             flex: {
                 direction: 'row',
+                wrap: 'wrap',
             },
             gap: '0.5rem',
         },
         Badges_row: {
             flex: {
                 direction: 'row',
+                wrap: 'wrap',
             },
             gap: '0.5rem',
         },
@@ -13937,12 +13954,16 @@ var $;
         Toasts_card: {
             gap: '0.75rem',
         },
+        Avatars_card: {
+            maxHeight: '140px',
+        },
         Avatars_title: card_title,
         Avatars_row: {
             flex: {
                 direction: 'row',
                 grow: 0,
                 shrink: 0,
+                wrap: 'wrap',
             },
             align: {
                 items: 'flex-start',
@@ -14045,12 +14066,19 @@ var $;
         },
         Chart_card: {
             minHeight: '420px',
+            minWidth: '420px',
         },
         Chart_demo: {
             minHeight: '340px',
             flex: {
                 grow: 1,
             },
+        },
+        Field_card: {
+            maxHeight: '160px',
+        },
+        Menu_card: {
+            maxHeight: '220px',
         },
     });
 })($ || ($ = {}));
