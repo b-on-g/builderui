@@ -9,7 +9,7 @@ $bog_builderui_studio $bog_builderui_div
 		bog_builderui_font_head <= font_head? \inter
 	sub /
 		<= Sidebar $mol_view sub /
-			<= Title $mol_view sub / \BuilderUI
+			<= Title $mol_view sub / \$mol BuilderUI Studio
 			<= Group_style $mol_view sub /
 				<= Style_pick $bog_builderui_studio_pick
 					label \Style
@@ -207,9 +207,9 @@ $bog_builderui_studio $bog_builderui_div
 								labels <= chart_labels /string
 							<= Chart_ruler_vert $mol_plot_ruler_vert
 								title \Count
-			<= Dialog_modal $bog_builderui_dialog
-				showed? <=> dialog_showed? false
-				title \Delete this preset?
-				text \This action cannot be undone. Your saved theme will be permanently removed.
-				close? <=> dialog_close? null
-				confirm? <=> dialog_confirm? null
+		<= Dialog_modal $bog_builderui_dialog
+			showed? <=> dialog_showed? false
+			title \Delete this preset?
+			text \This action cannot be undone. Your saved theme will be permanently removed.
+			close? <=> dialog_close? null
+			confirm? <=> dialog_confirm? null
