@@ -230,3 +230,11 @@
 	padding: 0.5rem 0.75rem;
 }
 
+[bog_builderui_lights] [bog_builderui_select] [mol_select_trigger] {
+	gap: 0.5rem;
+	padding: 0 0.25rem 0 0;
+}
+[bog_builderui_lights] [bog_builderui_select] [mol_select_trigger] > * {
+	margin-right: 0;
+}
+
