@@ -1,0 +1,5 @@
+$bog_builderui_menu $bog_builderui_card
+	items /
+	sub <= items
+
+$bog_builderui_menu_item $mol_button_minor

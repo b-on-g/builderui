@@ -1,11 +1,11 @@
 $bog_builderui_studio $bog_builderui_div
 	attr *
-		bog_bog_builderui_lights <= lights? \dark
-		bog_bog_builderui_base <= base? \slate
-		bog_bog_builderui_theme <= theme? \sky
-		bog_bog_builderui_radius <= radius? \medium
-		bog_bog_builderui_font_body <= font_body? \inter
-		bog_bog_builderui_font_head <= font_head? \inter
+		bog_builderui_lights <= lights? \dark
+		bog_builderui_base <= base? \slate
+		bog_builderui_theme <= theme? \sky
+		bog_builderui_radius <= radius? \medium
+		bog_builderui_font_body <= font_body? \inter
+		bog_builderui_font_head <= font_head? \inter
 	sub /
 		<= Sidebar $mol_view sub /
 			<= Title $mol_view sub / \BuilderUI
@@ -33,6 +33,10 @@ $bog_builderui_studio $bog_builderui_div
 				label \Mode
 				value <= lights_label \Dark
 				click? <=> lights_cycle? null
+			<= Spacer $mol_view
+			<= Get_code $mol_button_major
+				title \Get Code
+				click? <=> get_code? null
 		<= Preview $mol_scroll sub /
 			<= Stack $mol_view sub /
 				<= Buttons_card $bog_builderui_card sub /
@@ -40,10 +44,33 @@ $bog_builderui_studio $bog_builderui_div
 					<= Btns_row $mol_view sub /
 						<= Btn_primary $bog_builderui_button title \Primary
 						<= Btn_secondary $bog_builderui_button title \Secondary
+				<= Badges_card $bog_builderui_card sub /
+					<= Badges_title $mol_view sub / \Badges
+					<= Badges_row $mol_view sub /
+						<= Badge_one $bog_builderui_badge title \Active
+						<= Badge_two $bog_builderui_badge title \Beta
+						<= Badge_three $bog_builderui_badge title \Pro
 				<= Card_demo $bog_builderui_card sub /
 					<= Card_title $mol_view sub / \Card
 					<= Card_text $mol_view sub / \A small description text inside the card.
+				<= Alert_demo $bog_builderui_alert
+					title \Heads up
+					text \You can swap the palette on the left and watch every component repaint.
 				<= Field_card $bog_builderui_card sub /
 					<= Field_title $mol_view sub / \Field
 					<= Field_demo $bog_builderui_field
 						hint \Type something
+				<= Menu_card $bog_builderui_card sub /
+					<= Menu_title $mol_view sub / \Menu
+					<= Menu_demo $bog_builderui_menu items /
+						<= Menu_item_one $bog_builderui_menu_item title \Profile
+						<= Menu_item_two $bog_builderui_menu_item title \Settings
+						<= Menu_item_three $bog_builderui_menu_item title \Sign out
+				<= Chart_card $bog_builderui_card sub /
+					<= Chart_title $mol_view sub / \Chart
+					<= Chart_demo $bog_builderui_chart
+						graphs /
+							<= Chart_bar $mol_plot_bar
+								series_y <= chart_series /number
+								color <= chart_color \var(--bog_builderui_control)
+								title \Visits

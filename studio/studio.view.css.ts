@@ -1,5 +1,15 @@
 /** @see $bog_builderui */
 namespace $ {
+
+	const card_title = {
+		font: {
+			family: $bog_builderui.font_head,
+			weight: 600,
+			size: '1rem',
+		},
+		color: $bog_builderui.text,
+	} as const
+
 	$mol_style_define( $bog_builderui_studio, {
 		minHeight: '100vh',
 		background: {
@@ -45,6 +55,35 @@ namespace $ {
 				right: '0.25rem',
 			},
 		},
+		Spacer: {
+			flex: {
+				grow: 1,
+			},
+		},
+		Get_code: {
+			justify: {
+				content: 'center',
+			},
+			padding: {
+				top: '0.75rem',
+				bottom: '0.75rem',
+				left: '1rem',
+				right: '1rem',
+			},
+			border: {
+				radius: '0.625rem',
+				width: 0,
+			},
+			background: {
+				color: '#fafafa',
+			},
+			color: '#0a0a0a',
+			font: {
+				family: $bog_builderui.font_body,
+				weight: 600,
+				size: '0.95rem',
+			},
+		},
 		Preview: {
 			flex: {
 				grow: 1,
@@ -70,32 +109,29 @@ namespace $ {
 			},
 			gap: '0.5rem',
 		},
-		Buttons_title: {
-			font: {
-				family: $bog_builderui.font_head,
-				weight: 600,
-				size: '1rem',
+		Badges_row: {
+			flex: {
+				direction: 'row',
 			},
-			color: $bog_builderui.shade,
+			gap: '0.5rem',
 		},
-		Card_title: {
-			font: {
-				family: $bog_builderui.font_head,
-				weight: 600,
-				size: '1rem',
-			},
-			color: $bog_builderui.text,
-		},
+		Buttons_title: card_title,
+		Badges_title: card_title,
+		Card_title: card_title,
+		Field_title: card_title,
+		Menu_title: card_title,
+		Chart_title: card_title,
 		Card_text: {
 			color: $bog_builderui.shade,
 		},
-		Field_title: {
-			font: {
-				family: $bog_builderui.font_head,
-				weight: 600,
-				size: '1rem',
+		Chart_card: {
+			minHeight: '320px',
+		},
+		Chart_demo: {
+			minHeight: '240px',
+			flex: {
+				grow: 1,
 			},
-			color: $bog_builderui.text,
 		},
 	} )
 }

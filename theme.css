@@ -1,34 +1,34 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Manrope:wght@400;500;600;700&family=DM+Sans:wght@400;500;600;700&family=EB+Garamond:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
 
 :root {
-	--bog_bog_bog_builderui_font_body: 'Inter', system-ui, sans-serif;
-	--bog_bog_bog_builderui_font_head: 'Inter', system-ui, sans-serif;
-	--bog_bog_bog_builderui_radius: 0.5rem;
+	--bog_bog_builderui_font_body: 'Inter', system-ui, sans-serif;
+	--bog_bog_builderui_font_head: 'Inter', system-ui, sans-serif;
+	--bog_bog_builderui_radius: 0.5rem;
 }
 
 /* ============================================================
    RADIUS PRESETS
    ============================================================ */
-[bog_bog_builderui_radius="none"] { --bog_bog_bog_builderui_radius: 0; }
-[bog_bog_builderui_radius="small"] { --bog_bog_bog_builderui_radius: 0.25rem; }
-[bog_bog_builderui_radius="medium"] { --bog_bog_bog_builderui_radius: 0.5rem; }
-[bog_bog_builderui_radius="large"] { --bog_bog_bog_builderui_radius: 1rem; }
+[bog_builderui_radius="none"] { --bog_bog_builderui_radius: 0; }
+[bog_builderui_radius="small"] { --bog_bog_builderui_radius: 0.25rem; }
+[bog_builderui_radius="medium"] { --bog_bog_builderui_radius: 0.5rem; }
+[bog_builderui_radius="large"] { --bog_bog_builderui_radius: 1rem; }
 
 /* ============================================================
    BODY FONT
    ============================================================ */
-[bog_bog_builderui_font_body="inter"] { --bog_bog_bog_builderui_font_body: 'Inter', system-ui, sans-serif; }
-[bog_bog_builderui_font_body="manrope"] { --bog_bog_bog_builderui_font_body: 'Manrope', system-ui, sans-serif; }
-[bog_bog_builderui_font_body="dm-sans"] { --bog_bog_bog_builderui_font_body: 'DM Sans', system-ui, sans-serif; }
-[bog_bog_builderui_font_body="eb-garamond"] { --bog_bog_bog_builderui_font_body: 'EB Garamond', Georgia, serif; }
+[bog_builderui_font_body="inter"] { --bog_bog_builderui_font_body: 'Inter', system-ui, sans-serif; }
+[bog_builderui_font_body="manrope"] { --bog_bog_builderui_font_body: 'Manrope', system-ui, sans-serif; }
+[bog_builderui_font_body="dm-sans"] { --bog_bog_builderui_font_body: 'DM Sans', system-ui, sans-serif; }
+[bog_builderui_font_body="eb-garamond"] { --bog_bog_builderui_font_body: 'EB Garamond', Georgia, serif; }
 
 /* ============================================================
    HEADING FONT
    ============================================================ */
-[bog_bog_builderui_font_head="inter"] { --bog_bog_bog_builderui_font_head: 'Inter', system-ui, sans-serif; }
-[bog_bog_builderui_font_head="manrope"] { --bog_bog_bog_builderui_font_head: 'Manrope', system-ui, sans-serif; }
-[bog_bog_builderui_font_head="dm-sans"] { --bog_bog_bog_builderui_font_head: 'DM Sans', system-ui, sans-serif; }
-[bog_bog_builderui_font_head="eb-garamond"] { --bog_bog_bog_builderui_font_head: 'EB Garamond', Georgia, serif; }
+[bog_builderui_font_head="inter"] { --bog_bog_builderui_font_head: 'Inter', system-ui, sans-serif; }
+[bog_builderui_font_head="manrope"] { --bog_bog_builderui_font_head: 'Manrope', system-ui, sans-serif; }
+[bog_builderui_font_head="dm-sans"] { --bog_bog_builderui_font_head: 'DM Sans', system-ui, sans-serif; }
+[bog_builderui_font_head="eb-garamond"] { --bog_bog_builderui_font_head: 'EB Garamond', Georgia, serif; }
 
 /* ============================================================
    BASE COLORS (neutral palette)
@@ -37,7 +37,7 @@
 
 /* === Slate (default) === */
 :root,
-[bog_bog_builderui_base="slate"][bog_bog_builderui_lights="dark"] {
+[bog_builderui_base="slate"][bog_builderui_lights="dark"] {
 	--bog_builderui_back: #020817;
 	--bog_builderui_card: #0f172a;
 	--bog_builderui_field: #1e293b;
@@ -46,7 +46,7 @@
 	--bog_builderui_line: #1e293b;
 	--bog_builderui_hover: #ffffff0d;
 }
-[bog_bog_builderui_base="slate"][bog_bog_builderui_lights="light"] {
+[bog_builderui_base="slate"][bog_builderui_lights="light"] {
 	--bog_builderui_back: #ffffff;
 	--bog_builderui_card: #f8fafc;
 	--bog_builderui_field: #f1f5f9;
@@ -57,7 +57,7 @@
 }
 
 /* === Stone === */
-[bog_bog_builderui_base="stone"][bog_bog_builderui_lights="dark"] {
+[bog_builderui_base="stone"][bog_builderui_lights="dark"] {
 	--bog_builderui_back: #0c0a09;
 	--bog_builderui_card: #1c1917;
 	--bog_builderui_field: #292524;
@@ -66,7 +66,7 @@
 	--bog_builderui_line: #292524;
 	--bog_builderui_hover: #ffffff0d;
 }
-[bog_bog_builderui_base="stone"][bog_bog_builderui_lights="light"] {
+[bog_builderui_base="stone"][bog_builderui_lights="light"] {
 	--bog_builderui_back: #fafaf9;
 	--bog_builderui_card: #ffffff;
 	--bog_builderui_field: #f5f5f4;
@@ -77,7 +77,7 @@
 }
 
 /* === Zinc === */
-[bog_bog_builderui_base="zinc"][bog_bog_builderui_lights="dark"] {
+[bog_builderui_base="zinc"][bog_builderui_lights="dark"] {
 	--bog_builderui_back: #09090b;
 	--bog_builderui_card: #18181b;
 	--bog_builderui_field: #27272a;
@@ -86,7 +86,7 @@
 	--bog_builderui_line: #27272a;
 	--bog_builderui_hover: #ffffff0d;
 }
-[bog_bog_builderui_base="zinc"][bog_bog_builderui_lights="light"] {
+[bog_builderui_base="zinc"][bog_builderui_lights="light"] {
 	--bog_builderui_back: #ffffff;
 	--bog_builderui_card: #fafafa;
 	--bog_builderui_field: #f4f4f5;
@@ -97,7 +97,7 @@
 }
 
 /* === Gray === */
-[bog_bog_builderui_base="gray"][bog_bog_builderui_lights="dark"] {
+[bog_builderui_base="gray"][bog_builderui_lights="dark"] {
 	--bog_builderui_back: #030712;
 	--bog_builderui_card: #111827;
 	--bog_builderui_field: #1f2937;
@@ -106,7 +106,7 @@
 	--bog_builderui_line: #1f2937;
 	--bog_builderui_hover: #ffffff0d;
 }
-[bog_bog_builderui_base="gray"][bog_bog_builderui_lights="light"] {
+[bog_builderui_base="gray"][bog_builderui_lights="light"] {
 	--bog_builderui_back: #ffffff;
 	--bog_builderui_card: #f9fafb;
 	--bog_builderui_field: #f3f4f6;
@@ -121,33 +121,51 @@
    ============================================================ */
 
 :root,
-[bog_bog_builderui_theme="sky"] {
+[bog_builderui_theme="sky"] {
 	--bog_builderui_control: #0ea5e9;
 	--bog_builderui_focus: #38bdf8;
 	--bog_builderui_current: #06b6d4;
 	--bog_builderui_special: #6366f1;
 }
-[bog_bog_builderui_theme="rose"] {
+[bog_builderui_theme="rose"] {
 	--bog_builderui_control: #f43f5e;
 	--bog_builderui_focus: #fb7185;
 	--bog_builderui_current: #ec4899;
 	--bog_builderui_special: #f97316;
 }
-[bog_bog_builderui_theme="violet"] {
+[bog_builderui_theme="violet"] {
 	--bog_builderui_control: #8b5cf6;
 	--bog_builderui_focus: #a78bfa;
 	--bog_builderui_current: #6366f1;
 	--bog_builderui_special: #d946ef;
 }
-[bog_bog_builderui_theme="emerald"] {
+[bog_builderui_theme="emerald"] {
 	--bog_builderui_control: #10b981;
 	--bog_builderui_focus: #34d399;
 	--bog_builderui_current: #14b8a6;
 	--bog_builderui_special: #84cc16;
 }
-[bog_bog_builderui_theme="amber"] {
+[bog_builderui_theme="amber"] {
 	--bog_builderui_control: #f59e0b;
 	--bog_builderui_focus: #fbbf24;
 	--bog_builderui_current: #f97316;
 	--bog_builderui_special: #eab308;
+}
+
+/* ============================================================
+   Bridge to --mol_theme_* so stock $mol components ($mol_chart,
+   $mol_button, $mol_string) pick up our palette automatically.
+   ============================================================ */
+:where([bog_builderui_lights]) {
+	--mol_theme_back: var(--bog_builderui_back);
+	--mol_theme_card: var(--bog_builderui_card);
+	--mol_theme_field: var(--bog_builderui_field);
+	--mol_theme_hover: var(--bog_builderui_hover);
+	--mol_theme_text: var(--bog_builderui_text);
+	--mol_theme_shade: var(--bog_builderui_shade);
+	--mol_theme_line: var(--bog_builderui_line);
+	--mol_theme_focus: var(--bog_builderui_focus);
+	--mol_theme_control: var(--bog_builderui_control);
+	--mol_theme_current: var(--bog_builderui_current);
+	--mol_theme_special: var(--bog_builderui_special);
 }
