@@ -55,3 +55,7 @@
 	deploy \/mol/app/quine/quine.view.ts
 	deploy \/mol/app/quine/index.html
 	deploy \/mol/app/quine/quine.locale=ru.json
+\/bog/builderui/studio
+	deploy \/bog/builderui/theme.css
+	deploy \/bog/builderui/studio/studio.view.tree
+	deploy \/bog/builderui/tokens/tokens.ts
