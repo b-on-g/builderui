@@ -120,6 +120,23 @@ $bog_builderui_studio $bog_builderui_div
 				<= Alert_demo $bog_builderui_alert
 					title \Heads up
 					text \You can swap the palette on the left and watch every component repaint.
+				<= Form_card $bog_builderui_card sub /
+					<= Form_title $mol_view sub / \Sign in
+					<= Form_subtitle $mol_view sub / \Enter your credentials to access the dashboard
+					<= Form_email_block $mol_view sub /
+						<= Form_email_label $mol_view sub / \Email
+						<= Form_email_input $bog_builderui_field
+							hint \you@example.com
+						<= Form_email_help $mol_view sub / \We'll never share your email.
+					<= Form_password_block $mol_view sub /
+						<= Form_password_label $mol_view sub / \Password
+						<= Form_password_input $bog_builderui_field
+							hint \••••••••
+							type \password
+					<= Form_actions $mol_view sub /
+						<= Form_submit $bog_builderui_button title \Continue
+						<= Form_secondary $bog_builderui_button
+							title \Cancel
 				<= Field_card $bog_builderui_card sub /
 					<= Field_title $mol_view sub / \Field
 					<= Field_demo $bog_builderui_field

@@ -185,6 +185,79 @@ namespace $ {
 		Field_title: card_title,
 		Menu_title: card_title,
 		Chart_title: card_title,
+		Tabs_title: card_title,
+		Select_title: card_title,
+		Form_title: {
+			font: {
+				family: $bog_builderui_tokens.font_head,
+				weight: 600,
+				size: '1.125rem',
+			},
+			color: $bog_builderui_tokens.text,
+		},
+		Form_subtitle: {
+			color: $bog_builderui_tokens.shade,
+			font: {
+				size: '0.875rem',
+			},
+			padding: {
+				bottom: '0.5rem',
+			},
+		},
+		Form_email_block: {
+			flex: {
+				direction: 'column',
+			},
+			gap: '0.375rem',
+		},
+		Form_password_block: {
+			flex: {
+				direction: 'column',
+			},
+			gap: '0.375rem',
+		},
+		Form_email_label: {
+			font: {
+				family: $bog_builderui_tokens.font_body,
+				weight: 500,
+				size: '0.85rem',
+			},
+			color: $bog_builderui_tokens.text,
+		},
+		Form_password_label: {
+			font: {
+				family: $bog_builderui_tokens.font_body,
+				weight: 500,
+				size: '0.85rem',
+			},
+			color: $bog_builderui_tokens.text,
+		},
+		Form_email_help: {
+			font: {
+				size: '0.75rem',
+			},
+			color: $bog_builderui_tokens.shade,
+		},
+		Form_actions: {
+			flex: {
+				direction: 'row',
+			},
+			gap: '0.5rem',
+			padding: {
+				top: '0.25rem',
+			},
+		},
+		Form_secondary: {
+			background: {
+				color: 'transparent',
+			},
+			color: $bog_builderui_tokens.text,
+			border: {
+				width: '1px',
+				style: 'solid',
+				color: $bog_builderui_tokens.line,
+			},
+		},
 		Card_text: {
 			color: $bog_builderui_tokens.shade,
 		},
