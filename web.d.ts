@@ -6040,6 +6040,9 @@ declare namespace $.$$ {
     export {};
 }
 
+declare namespace $ {
+}
+
 /** @see $bog_builderui_tokens */
 declare namespace $ {
 }
