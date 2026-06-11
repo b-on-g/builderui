@@ -11,3 +11,7 @@
 [bog_builderui_studio_pick]:active {
 	background-color: #262626;
 }
+
+[bog_builderui_studio_pick] [bog_builderui_studio_pick_dot] {
+	background-color: var(--bog_builderui_studio_pick_dot);
+}

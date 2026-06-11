@@ -60,7 +60,45 @@ namespace $ {
 				grow: 1,
 			},
 		},
+		Actions_row: {
+			flex: {
+				direction: 'row',
+			},
+			gap: '0.5rem',
+		},
 		Shuffle: {
+			flex: {
+				grow: 1,
+			},
+			justify: {
+				content: 'center',
+			},
+			padding: {
+				top: '0.625rem',
+				bottom: '0.625rem',
+				left: '1rem',
+				right: '1rem',
+			},
+			border: {
+				radius: '0.625rem',
+				width: '1px',
+				style: 'solid',
+				color: '#262626',
+			},
+			background: {
+				color: 'transparent',
+			},
+			color: '#fafafa',
+			font: {
+				family: $bog_builderui_tokens.font_body,
+				weight: 500,
+				size: '0.9rem',
+			},
+		},
+		Share: {
+			flex: {
+				grow: 1,
+			},
 			justify: {
 				content: 'center',
 			},

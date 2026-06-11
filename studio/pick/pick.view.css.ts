@@ -63,9 +63,6 @@ namespace $ {
 				radius: '50%',
 				width: 0,
 			},
-			background: {
-				color: 'var(--bog_builderui_studio_pick_dot)',
-			},
 		},
 	} )
 }
