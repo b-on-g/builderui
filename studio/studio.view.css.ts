@@ -267,6 +267,25 @@ namespace $ {
 		Toasts_card: {
 			gap: '0.75rem',
 		},
+		Avatars_title: card_title,
+		Avatars_row: {
+			flex: {
+				direction: 'row',
+			},
+			gap: '0.5rem',
+		},
+		Skeletons_title: card_title,
+		Skeleton_title_line: {
+			maxWidth: '40%',
+			minHeight: '1.25rem',
+		},
+		Skeleton_line_one: {
+			minHeight: '0.875rem',
+		},
+		Skeleton_line_two: {
+			maxWidth: '70%',
+			minHeight: '0.875rem',
+		},
 		Form_title: {
 			font: {
 				family: $bog_builderui_tokens.font_head,

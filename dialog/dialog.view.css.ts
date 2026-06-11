@@ -3,23 +3,16 @@ namespace $ {
 	$mol_style_define( $bog_builderui_dialog, {
 		position: 'fixed',
 		top: 0,
-		right: 0,
-		bottom: 0,
 		left: 0,
-		zIndex: 100,
+		width: '100vw',
+		height: '100vh',
+		zIndex: 1000,
 		display: 'none',
 		justify: {
 			content: 'center',
 		},
 		align: {
 			items: 'center',
-		},
-		'@': {
-			'bog_builderui_dialog_showed': {
-				true: {
-					display: 'flex',
-				},
-			},
 		},
 		Backdrop: {
 			position: 'absolute',

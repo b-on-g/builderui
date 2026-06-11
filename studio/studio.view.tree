@@ -142,6 +142,18 @@ $bog_builderui_studio $bog_builderui_div
 						kind \error
 						title \Build failed
 						text \exit code 1 — see the audit log for the offending TS error.
+				<= Avatars_card $bog_builderui_card sub /
+					<= Avatars_title $mol_view sub / \Avatars
+					<= Avatars_row $mol_view sub /
+						<= Avatar_one $bog_builderui_avatar id \kirill
+						<= Avatar_two $bog_builderui_avatar id \novgorodcev
+						<= Avatar_three $bog_builderui_avatar id \claude
+						<= Avatar_four $bog_builderui_avatar id \builderui
+				<= Skeletons_card $bog_builderui_card sub /
+					<= Skeletons_title $mol_view sub / \Skeleton
+					<= Skeleton_title_line $bog_builderui_skeleton
+					<= Skeleton_line_one $bog_builderui_skeleton
+					<= Skeleton_line_two $bog_builderui_skeleton
 				<= Dialog_card $bog_builderui_card sub /
 					<= Dialog_card_title $mol_view sub / \Dialog
 					<= Dialog_open_btn $bog_builderui_button
