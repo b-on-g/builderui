@@ -1,1 +1,3 @@
 $bog_builderui_skeleton $bog_builderui_div
+	attr *
+		mol_view_error \Promise

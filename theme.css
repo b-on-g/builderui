@@ -238,3 +238,34 @@
 	margin-right: 0;
 }
 
+/* ============================================================
+   Skeleton — any $mol_view in pending state gets a pulsing surface
+   ============================================================ */
+@keyframes bog_builderui_skeleton_pulse {
+	0%, 100% { opacity: 1; }
+	50% { opacity: 0.5; }
+}
+
+[bog_builderui_lights] [mol_view][mol_view_error="Promise"],
+[bog_builderui_lights] [mol_view][mol_view_error="$mol_promise_blocker"] {
+	border-radius: var(--bog_builderui_radius);
+	background-color: var(--bog_builderui_field);
+	color: transparent;
+	animation: bog_builderui_skeleton_pulse 1.6s ease-in-out infinite;
+}
+
+/* ============================================================
+   Tooltip surface
+   ============================================================ */
+[bog_builderui_lights] [bog_builderui_tooltip] [mol_pop_bubble] {
+	background-color: var(--bog_builderui_text);
+	color: var(--bog_builderui_back);
+	border: none;
+	border-radius: calc(var(--bog_builderui_radius) - 2px);
+	padding: 0.375rem 0.625rem;
+	font-family: var(--bog_builderui_font_body);
+	font-size: 0.8rem;
+	box-shadow: 0 4px 12px #0000004d;
+	min-width: 0;
+}
+

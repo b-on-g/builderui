@@ -1,0 +1,12 @@
+[bog_builderui_progress]::-webkit-progress-bar {
+	background-color: var(--bog_builderui_field);
+	border-radius: 9999px;
+}
+[bog_builderui_progress]::-webkit-progress-value {
+	background-color: var(--bog_builderui_control);
+	border-radius: 9999px;
+}
+[bog_builderui_progress]::-moz-progress-bar {
+	background-color: var(--bog_builderui_control);
+	border-radius: 9999px;
+}

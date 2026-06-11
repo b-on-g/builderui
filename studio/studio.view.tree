@@ -89,7 +89,7 @@ $bog_builderui_studio $bog_builderui_div
 				title \Get Code
 				click? <=> get_code? null
 		<= Preview $mol_scroll sub /
-			<= Stack $mol_view sub /
+			<= Stack $mol_gallery items /
 				<= Buttons_card $bog_builderui_card sub /
 					<= Buttons_title $mol_view sub / \Buttons
 					<= Btns_row $mol_view sub /
@@ -145,10 +145,26 @@ $bog_builderui_studio $bog_builderui_div
 				<= Avatars_card $bog_builderui_card sub /
 					<= Avatars_title $mol_view sub / \Avatars
 					<= Avatars_row $mol_view sub /
-						<= Avatar_one $bog_builderui_avatar id \kirill
-						<= Avatar_two $bog_builderui_avatar id \novgorodcev
-						<= Avatar_three $bog_builderui_avatar id \claude
-						<= Avatar_four $bog_builderui_avatar id \builderui
+						<= Avatar_one $bog_builderui_avatar uri \https://i.pravatar.cc/80?img=15
+						<= Avatar_two $bog_builderui_avatar uri \https://i.pravatar.cc/80?img=32
+						<= Avatar_three $bog_builderui_avatar uri \https://i.pravatar.cc/80?img=47
+						<= Avatar_four $bog_builderui_avatar uri \https://i.pravatar.cc/80?img=58
+				<= Sliders_card $bog_builderui_card sub /
+					<= Sliders_title $mol_view sub / \Slider
+					<= Slider_demo $bog_builderui_slider
+						value? <=> slider_value? 40
+						min 0
+						max 100
+				<= Progress_card $bog_builderui_card sub /
+					<= Progress_title $mol_view sub / \Progress
+					<= Progress_demo $bog_builderui_progress
+						value 64
+						max 100
+				<= Tooltip_card $bog_builderui_card sub /
+					<= Tooltip_title $mol_view sub / \Tooltip
+					<= Tooltip_demo $bog_builderui_tooltip
+						Anchor <= Tooltip_anchor $bog_builderui_button title \Hover me
+						bubble_content / \Hello from a tooltip
 				<= Skeletons_card $bog_builderui_card sub /
 					<= Skeletons_title $mol_view sub / \Skeleton
 					<= Skeleton_title_line $bog_builderui_skeleton

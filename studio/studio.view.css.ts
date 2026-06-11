@@ -274,6 +274,14 @@ namespace $ {
 			},
 			gap: '0.5rem',
 		},
+		Sliders_title: card_title,
+		Progress_title: card_title,
+		Tooltip_title: card_title,
+		Dialog_open_btn: {
+			align: {
+				self: 'flex-start',
+			},
+		},
 		Skeletons_title: card_title,
 		Skeleton_title_line: {
 			maxWidth: '40%',
