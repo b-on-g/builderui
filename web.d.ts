@@ -7717,41 +7717,51 @@ declare namespace $ {
 		ReturnType< $bog_builderui_field['hint'] >
 	>
 	type $bog_builderui_field__value_bog_builderui_studio_168 = $mol_type_enforce<
+		ReturnType< $bog_builderui_studio['namespace'] >
+		,
+		ReturnType< $bog_builderui_field['value'] >
+	>
+	type $bog_builderui_field__hint_bog_builderui_studio_169 = $mol_type_enforce<
+		string
+		,
+		ReturnType< $bog_builderui_field['hint'] >
+	>
+	type $bog_builderui_field__value_bog_builderui_studio_170 = $mol_type_enforce<
 		ReturnType< $bog_builderui_studio['app_name'] >
 		,
 		ReturnType< $bog_builderui_field['value'] >
 	>
-	type $bog_builderui_dialog__showed_bog_builderui_studio_169 = $mol_type_enforce<
+	type $bog_builderui_dialog__showed_bog_builderui_studio_171 = $mol_type_enforce<
 		ReturnType< $bog_builderui_studio['get_code_showed'] >
 		,
 		ReturnType< $bog_builderui_dialog['showed'] >
 	>
-	type $bog_builderui_dialog__title_bog_builderui_studio_170 = $mol_type_enforce<
+	type $bog_builderui_dialog__title_bog_builderui_studio_172 = $mol_type_enforce<
 		string
 		,
 		ReturnType< $bog_builderui_dialog['title'] >
 	>
-	type $bog_builderui_dialog__text_bog_builderui_studio_171 = $mol_type_enforce<
+	type $bog_builderui_dialog__text_bog_builderui_studio_173 = $mol_type_enforce<
 		string
 		,
 		ReturnType< $bog_builderui_dialog['text'] >
 	>
-	type $bog_builderui_dialog__confirm_title_bog_builderui_studio_172 = $mol_type_enforce<
+	type $bog_builderui_dialog__confirm_title_bog_builderui_studio_174 = $mol_type_enforce<
 		string
 		,
 		ReturnType< $bog_builderui_dialog['confirm_title'] >
 	>
-	type $bog_builderui_dialog__close_bog_builderui_studio_173 = $mol_type_enforce<
+	type $bog_builderui_dialog__close_bog_builderui_studio_175 = $mol_type_enforce<
 		ReturnType< $bog_builderui_studio['get_code_close'] >
 		,
 		ReturnType< $bog_builderui_dialog['close'] >
 	>
-	type $bog_builderui_dialog__confirm_bog_builderui_studio_174 = $mol_type_enforce<
+	type $bog_builderui_dialog__confirm_bog_builderui_studio_176 = $mol_type_enforce<
 		ReturnType< $bog_builderui_studio['get_code_confirm'] >
 		,
 		ReturnType< $bog_builderui_dialog['confirm'] >
 	>
-	type $bog_builderui_dialog__content_bog_builderui_studio_175 = $mol_type_enforce<
+	type $bog_builderui_dialog__content_bog_builderui_studio_177 = $mol_type_enforce<
 		readonly(any)[]
 		,
 		ReturnType< $bog_builderui_dialog['content'] >
@@ -7900,6 +7910,8 @@ declare namespace $ {
 		get_code_showed( next?: boolean ): boolean
 		get_code_close( next?: any ): any
 		get_code_confirm( next?: any ): any
+		namespace( next?: string ): string
+		Namespace_field( ): $bog_builderui_field
 		app_name( next?: string ): string
 		App_name_field( ): $bog_builderui_field
 		Get_code_dialog( ): $bog_builderui_dialog
