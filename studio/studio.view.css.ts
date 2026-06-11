@@ -236,12 +236,7 @@ namespace $ {
 				left: '1.5rem',
 				right: '1.5rem',
 			},
-			gap: '1rem',
 			minWidth: '1080px',
-			align: {
-				items: 'flex-start',
-				content: 'flex-start',
-			},
 		},
 		Btns_row: {
 			flex: {
@@ -270,7 +265,7 @@ namespace $ {
 			gap: '0.75rem',
 		},
 		Avatars_card: {
-			maxHeight: '140px',
+			maxHeight: 'min-content',
 		},
 		Avatars_title: card_title,
 		Avatars_row: {
@@ -381,7 +376,7 @@ namespace $ {
 		},
 		Chart_card: {
 			minHeight: '420px',
-			minWidth: '420px',
+			minWidth: '600px',
 		},
 		Chart_demo: {
 			minHeight: '340px',
@@ -390,10 +385,13 @@ namespace $ {
 			},
 		},
 		Field_card: {
-			overflow: 'hidden',
+			maxHeight: 'min-content',
 		},
 		Menu_card: {
-			overflow: 'hidden',
+			maxHeight: 'min-content',
+		},
+		Menu_demo: {
+			maxHeight: 'min-content',
 		},
 	} )
 }

@@ -160,12 +160,12 @@ $bog_builderui_studio $bog_builderui_div
 				<= Avatars_card $bog_builderui_card sub /
 					<= Avatars_title $mol_view sub / \Avatars
 					<= Avatars_row $mol_view sub /
-						<= Avatar_one $bog_builderui_avatar uri \https://i.pravatar.cc/80?img=15
-						<= Avatar_two $bog_builderui_avatar uri \https://i.pravatar.cc/80?img=32
-						<= Avatar_three $bog_builderui_avatar uri \https://i.pravatar.cc/80?img=47
-						<= Avatar_four $bog_builderui_avatar uri \https://i.pravatar.cc/80?img=58
-						<= Avatar_five $bog_builderui_avatar uri \https://i.pravatar.cc/80?img=64
-						<= Avatar_six $bog_builderui_avatar uri \https://i.pravatar.cc/80?img=12
+						<= Avatar_one $bog_builderui_avatar uri \https://www.gravatar.com/avatar/c4ca4238a0b923820dcc509a6f75849b?d=identicon&s=80
+						<= Avatar_two $bog_builderui_avatar uri \https://www.gravatar.com/avatar/c81e728d9d4c2f636f067f89cc14862c?d=identicon&s=80
+						<= Avatar_three $bog_builderui_avatar uri \https://www.gravatar.com/avatar/eccbc87e4b5ce2fe28308fd9f2a7baf3?d=identicon&s=80
+						<= Avatar_four $bog_builderui_avatar uri \https://www.gravatar.com/avatar/a87ff679a2f3e71d9181a67b7542122c?d=identicon&s=80
+						<= Avatar_five $bog_builderui_avatar uri \https://www.gravatar.com/avatar/e4da3b7fbbce2345d7772b0674a318d5?d=identicon&s=80
+						<= Avatar_six $bog_builderui_avatar uri \https://www.gravatar.com/avatar/1679091c5a880faf6fb5e6087eb1b2dc?d=identicon&s=80
 				<= Sliders_card $bog_builderui_card sub /
 					<= Sliders_title $mol_view sub / \Slider
 					<= Slider_demo $bog_builderui_slider
@@ -219,6 +219,10 @@ $bog_builderui_studio $bog_builderui_div
 						<= Menu_item_one $bog_builderui_menu_item title \Profile
 						<= Menu_item_two $bog_builderui_menu_item title \Settings
 						<= Menu_item_three $bog_builderui_menu_item title \Sign out
+				<= Code_card $bog_builderui_card sub /
+					<= Code_title $mol_view sub / \Theme CSS
+					<= Code_preview $mol_text_code
+						text <= code_preview \
 				<= Chart_card $bog_builderui_card sub /
 					<= Chart_title $mol_view sub / \Chart
 					<= Chart_demo $bog_builderui_chart

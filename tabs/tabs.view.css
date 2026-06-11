@@ -1,3 +1,11 @@
+[bog_builderui_tabs][bog_builderui_tabs] {
+	flex: 0 0 auto !important;
+	align-self: flex-start !important;
+	width: fit-content !important;
+	max-width: fit-content !important;
+	display: inline-flex !important;
+}
+
 [bog_builderui_tabs] [mol_check] {
 	background-color: transparent;
 	color: var(--bog_builderui_shade);

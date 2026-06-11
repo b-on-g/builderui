@@ -1,6 +1,2 @@
-$bog_builderui_gallery $mol_gallery
-	-
-	Side* $bog_builderui_gallery
-		style *
-			flexGrow <= side_size* \1
-		items <= side_items* /$mol_view
+$bog_builderui_gallery $mol_view
+	sub <= items /$mol_view

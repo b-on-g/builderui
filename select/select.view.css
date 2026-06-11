@@ -8,10 +8,9 @@
 	border-color: var(--bog_builderui_focus);
 }
 
-[bog_builderui_select] [mol_select_trigger] {
-	background-color: transparent;
-}
-
-[bog_builderui_select] [mol_select_trigger]:hover {
-	background-color: transparent;
+[bog_builderui_select] [mol_select_trigger],
+[bog_builderui_select] [mol_select_trigger]:hover,
+[bog_builderui_select] [mol_check],
+[bog_builderui_select] [mol_check]:hover {
+	background-color: transparent !important;
 }
