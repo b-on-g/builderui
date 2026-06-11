@@ -51,6 +51,15 @@ namespace $ {
 				size: '0.9rem',
 			},
 		},
+		Surface_content: {
+			flex: {
+				direction: 'column',
+			},
+			gap: '0.5rem',
+			padding: {
+				top: '0.25rem',
+			},
+		},
 		Surface_actions: {
 			flex: {
 				direction: 'row',
