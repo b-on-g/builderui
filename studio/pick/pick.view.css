@@ -15,3 +15,18 @@
 [bog_builderui_studio_pick] [bog_builderui_studio_pick_dot] {
 	background-color: var(--bog_builderui_studio_pick_dot);
 }
+
+[bog_builderui_studio_pick] [mol_select_trigger],
+[bog_builderui_studio_pick] [mol_select_trigger]:hover,
+[bog_builderui_studio_pick] [mol_check],
+[bog_builderui_studio_pick] [mol_check]:hover {
+	background-color: transparent;
+	padding: 0;
+	margin: 0;
+	box-shadow: none;
+	border: 0;
+	width: 100%;
+	flex: 1 1 auto;
+	gap: 0.5rem;
+}
+

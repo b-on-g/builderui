@@ -390,10 +390,10 @@ namespace $ {
 			},
 		},
 		Field_card: {
-			maxHeight: '160px',
+			overflow: 'hidden',
 		},
 		Menu_card: {
-			maxHeight: '220px',
+			overflow: 'hidden',
 		},
 	} )
 }

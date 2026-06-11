@@ -30,6 +30,12 @@ namespace $ {
 			maxWidth: '420px',
 			width: '90%',
 			gap: '0.5rem',
+			maxHeight: 'min-content',
+			flex: {
+				basis: 'auto',
+				grow: 0,
+				shrink: 0,
+			},
 		},
 		Surface_title: {
 			font: {
@@ -51,7 +57,7 @@ namespace $ {
 			},
 			gap: '0.5rem',
 			justify: {
-				content: 'flex-end',
+				content: 'center',
 			},
 			padding: {
 				top: '0.5rem',

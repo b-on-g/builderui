@@ -5,7 +5,14 @@ namespace $ {
 		flex: {
 			direction: 'row',
 			grow: 0,
+			shrink: 0,
+			basis: 'auto',
 		},
+		align: {
+			self: 'flex-start',
+		},
+		width: 'fit-content',
+		maxWidth: 'fit-content',
 		gap: '0.25rem',
 		padding: {
 			top: '0.25rem',

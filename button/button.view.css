@@ -17,8 +17,8 @@
 }
 
 [bog_builderui_button][bog_builderui_button_variant="destructive"] {
-	background-color: #ef4444;
-	color: #fafafa;
+	background-color: var(--bog_builderui_special);
+	color: var(--bog_builderui_back);
 	border: 0;
 }
 

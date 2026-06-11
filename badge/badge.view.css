@@ -10,6 +10,6 @@
 }
 
 [bog_builderui_badge][bog_builderui_badge_variant="destructive"] {
-	background-color: #ef4444;
-	color: #fafafa;
+	background-color: var(--bog_builderui_special);
+	color: var(--bog_builderui_back);
 }
