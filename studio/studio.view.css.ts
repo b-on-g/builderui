@@ -42,16 +42,12 @@ namespace $ {
 				direction: 'column',
 			},
 		},
-		Header_row: {
-			flex: {
-				direction: 'row',
+		Title: {
+			font: {
+				weight: 700,
+				size: '1.1rem',
 			},
-			align: {
-				items: 'center',
-			},
-			justify: {
-				content: 'space-between',
-			},
+			color: '#fafafa',
 			padding: {
 				top: '0.25rem',
 				bottom: '0.5rem',
@@ -66,17 +62,12 @@ namespace $ {
 				},
 			},
 		},
-		Title: {
-			font: {
-				weight: 700,
-				size: '1.1rem',
+		Style_pick: {
+			background: {
+				color: '#1f1f1f',
 			},
-			color: '#fafafa',
-		},
-		Hamburger: {
-			color: '#737373',
-			font: {
-				size: '1.25rem',
+			border: {
+				color: '#363636',
 			},
 		},
 		Group_style: {
@@ -138,29 +129,6 @@ namespace $ {
 					style: 'solid',
 					color: '#1f1f1f',
 				},
-			},
-		},
-		Preset_id: {
-			flex: {
-				direction: 'row',
-			},
-			gap: '0.375rem',
-			padding: {
-				top: '0.5rem',
-				bottom: '0.5rem',
-				left: '0.75rem',
-				right: '0.75rem',
-			},
-			border: {
-				radius: '0.5rem',
-				width: '1px',
-				style: 'solid',
-				color: '#262626',
-			},
-			color: '#737373',
-			font: {
-				family: '"JetBrains Mono", ui-monospace, monospace',
-				size: '0.75rem',
 			},
 		},
 		Spacer: {
@@ -295,6 +263,10 @@ namespace $ {
 		Chart_title: card_title,
 		Tabs_title: card_title,
 		Select_title: card_title,
+		Toasts_title: card_title,
+		Toasts_card: {
+			gap: '0.75rem',
+		},
 		Form_title: {
 			font: {
 				family: $bog_builderui_tokens.font_head,

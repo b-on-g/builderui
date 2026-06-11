@@ -1,0 +1,8 @@
+[bog_builderui_toast_kind="info"]    { --bog_builderui_toast_accent: #3b82f6; background-color: #3b82f614; border-color: #3b82f640; }
+[bog_builderui_toast_kind="success"] { --bog_builderui_toast_accent: #10b981; background-color: #10b98114; border-color: #10b98140; }
+[bog_builderui_toast_kind="warning"] { --bog_builderui_toast_accent: #f59e0b; background-color: #f59e0b14; border-color: #f59e0b40; }
+[bog_builderui_toast_kind="error"]   { --bog_builderui_toast_accent: #ef4444; background-color: #ef444414; border-color: #ef444440; }
+
+[bog_builderui_toast] [bog_builderui_toast_dot] {
+	background-color: var(--bog_builderui_toast_accent);
+}

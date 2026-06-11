@@ -9,9 +9,7 @@ $bog_builderui_studio $bog_builderui_div
 		bog_builderui_font_head <= font_head? \inter
 	sub /
 		<= Sidebar $mol_view sub /
-			<= Header_row $mol_view sub /
-				<= Title $mol_view sub / \Menu
-				<= Hamburger $mol_view sub / \☰
+			<= Title $mol_view sub / \BuilderUI
 			<= Group_style $mol_view sub /
 				<= Style_pick $bog_builderui_studio_pick
 					label \Style
@@ -80,10 +78,6 @@ $bog_builderui_studio $bog_builderui_div
 						dark \Dark
 						light \Light
 			<= Spacer $mol_view
-			<= Preset_id $mol_view sub /
-				<= Preset_label $mol_view sub / \--preset
-				<= Preset_value $mol_view sub /
-					<= preset_id \
 			<= Actions_row $mol_view sub /
 				<= Shuffle $mol_button_minor
 					title \Shuffle
@@ -130,6 +124,24 @@ $bog_builderui_studio $bog_builderui_div
 				<= Alert_demo $bog_builderui_alert
 					title \Heads up
 					text \You can swap the palette on the left and watch every component repaint.
+				<= Toasts_card $bog_builderui_card sub /
+					<= Toasts_title $mol_view sub / \Toasts
+					<= Toast_info $bog_builderui_toast
+						kind \info
+						title \Heads up
+						text \We've rotated the API tokens. Update your config before Friday.
+					<= Toast_success $bog_builderui_toast
+						kind \success
+						title \Saved
+						text \Your theme has been published and is available to teammates.
+					<= Toast_warning $bog_builderui_toast
+						kind \warning
+						title \Trial ends soon
+						text \Switch to a paid plan in the next 3 days to keep your workspace.
+					<= Toast_error $bog_builderui_toast
+						kind \error
+						title \Build failed
+						text \exit code 1 — see the audit log for the offending TS error.
 				<= Dialog_card $bog_builderui_card sub /
 					<= Dialog_card_title $mol_view sub / \Dialog
 					<= Dialog_open_btn $bog_builderui_button
