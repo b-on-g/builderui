@@ -1,4 +1,4 @@
-/** @see $bog_builderui */
+/** @see $bog_builderui_tokens */
 namespace $ {
 	$mol_style_define( $bog_builderui_badge, {
 		display: 'inline-flex',
@@ -21,11 +21,11 @@ namespace $ {
 			width: 0,
 		},
 		background: {
-			color: $bog_builderui.control,
+			color: $bog_builderui_tokens.control,
 		},
-		color: $bog_builderui.back,
+		color: $bog_builderui_tokens.back,
 		font: {
-			family: $bog_builderui.font_body,
+			family: $bog_builderui_tokens.font_body,
 			weight: 500,
 			size: '0.75rem',
 		},

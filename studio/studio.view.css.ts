@@ -1,19 +1,19 @@
-/** @see $bog_builderui */
+/** @see $bog_builderui_tokens */
 namespace $ {
 
 	const card_title = {
 		font: {
-			family: $bog_builderui.font_head,
+			family: $bog_builderui_tokens.font_head,
 			weight: 600,
 			size: '1rem',
 		},
-		color: $bog_builderui.text,
+		color: $bog_builderui_tokens.text,
 	} as const
 
 	$mol_style_define( $bog_builderui_studio, {
 		minHeight: '100vh',
 		background: {
-			color: $bog_builderui.back,
+			color: $bog_builderui_tokens.back,
 		},
 		flex: {
 			direction: 'row',
@@ -79,7 +79,7 @@ namespace $ {
 			},
 			color: '#0a0a0a',
 			font: {
-				family: $bog_builderui.font_body,
+				family: $bog_builderui_tokens.font_body,
 				weight: 600,
 				size: '0.95rem',
 			},
@@ -122,7 +122,7 @@ namespace $ {
 		Menu_title: card_title,
 		Chart_title: card_title,
 		Card_text: {
-			color: $bog_builderui.shade,
+			color: $bog_builderui_tokens.shade,
 		},
 		Chart_card: {
 			minHeight: '320px',

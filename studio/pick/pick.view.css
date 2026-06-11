@@ -1,0 +1,13 @@
+[bog_builderui_studio_pick]:hover {
+	background-color: #1f1f1f;
+	border-color: #404040;
+}
+
+[bog_builderui_studio_pick]:focus-visible {
+	outline: 2px solid #525252;
+	outline-offset: 2px;
+}
+
+[bog_builderui_studio_pick]:active {
+	background-color: #262626;
+}

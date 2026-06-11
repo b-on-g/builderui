@@ -1,10 +1,18 @@
 /** @see $bog_builderui_tokens */
 namespace $ {
-	$mol_style_define( $bog_builderui_field, {
-		font: {
-			family: $bog_builderui_tokens.font_body,
+	$mol_style_define( $bog_builderui_tabs, {
+		display: 'inline-flex',
+		flex: {
+			direction: 'row',
+			grow: 0,
 		},
-		color: $bog_builderui_tokens.text,
+		gap: '0.25rem',
+		padding: {
+			top: '0.25rem',
+			bottom: '0.25rem',
+			left: '0.25rem',
+			right: '0.25rem',
+		},
 		background: {
 			color: $bog_builderui_tokens.field,
 		},
@@ -13,12 +21,6 @@ namespace $ {
 			width: '1px',
 			style: 'solid',
 			color: $bog_builderui_tokens.line,
-		},
-		padding: {
-			top: '0.5rem',
-			bottom: '0.5rem',
-			left: '0.75rem',
-			right: '0.75rem',
 		},
 	} )
 }

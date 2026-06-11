@@ -1,15 +1,15 @@
-/** @see $bog_builderui */
+/** @see $bog_builderui_tokens */
 namespace $ {
 	$mol_style_define( $bog_builderui_card, {
 		background: {
-			color: $bog_builderui.card,
+			color: $bog_builderui_tokens.card,
 		},
-		color: $bog_builderui.text,
+		color: $bog_builderui_tokens.text,
 		border: {
-			radius: $bog_builderui.radius,
+			radius: $bog_builderui_tokens.radius,
 			width: '1px',
 			style: 'solid',
-			color: $bog_builderui.line,
+			color: $bog_builderui_tokens.line,
 		},
 		padding: {
 			top: '1rem',

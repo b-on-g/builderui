@@ -1,4 +1,4 @@
-/** @see $bog_builderui */
+/** @see $bog_builderui_tokens */
 namespace $ {
 	$mol_style_define( $bog_builderui_menu, {
 		padding: {
@@ -21,15 +21,15 @@ namespace $ {
 			right: '0.75rem',
 		},
 		border: {
-			radius: $bog_builderui.radius,
+			radius: $bog_builderui_tokens.radius,
 			width: 0,
 		},
 		background: {
 			color: 'transparent',
 		},
-		color: $bog_builderui.text,
+		color: $bog_builderui_tokens.text,
 		font: {
-			family: $bog_builderui.font_body,
+			family: $bog_builderui_tokens.font_body,
 			size: '0.9rem',
 		},
 	} )

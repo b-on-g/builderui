@@ -169,3 +169,14 @@
 	--mol_theme_current: var(--bog_builderui_current);
 	--mol_theme_special: var(--bog_builderui_special);
 }
+
+/* ============================================================
+   CHART COLOR — independent accent for the chart bar/line
+   ============================================================ */
+:root,
+[bog_builderui_chart="blue"] { --bog_builderui_chart: #3b82f6; }
+[bog_builderui_chart="green"] { --bog_builderui_chart: #10b981; }
+[bog_builderui_chart="red"] { --bog_builderui_chart: #ef4444; }
+[bog_builderui_chart="yellow"] { --bog_builderui_chart: #eab308; }
+[bog_builderui_chart="purple"] { --bog_builderui_chart: #a855f7; }
+

@@ -1,4 +1,4 @@
-/** @see $bog_builderui */
+/** @see $bog_builderui_tokens */
 namespace $ {
 	$mol_style_define( $bog_builderui_studio_pick, {
 		flex: {

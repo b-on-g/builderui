@@ -3,12 +3,17 @@ $bog_builderui_studio $bog_builderui_div
 		bog_builderui_lights <= lights? \dark
 		bog_builderui_base <= base? \slate
 		bog_builderui_theme <= theme? \sky
+		bog_builderui_chart <= chart? \blue
 		bog_builderui_radius <= radius? \medium
 		bog_builderui_font_body <= font_body? \inter
 		bog_builderui_font_head <= font_head? \inter
 	sub /
 		<= Sidebar $mol_view sub /
 			<= Title $mol_view sub / \BuilderUI
+			<= Style_pick $bog_builderui_studio_pick
+				label \Style
+				value <= style_label \Default
+				click? <=> style_cycle? null
 			<= Base_pick $bog_builderui_studio_pick
 				label \Base Color
 				value <= base_label \Slate
@@ -17,6 +22,10 @@ $bog_builderui_studio $bog_builderui_div
 				label \Theme
 				value <= theme_label \Sky
 				click? <=> theme_cycle? null
+			<= Chart_pick $bog_builderui_studio_pick
+				label \Chart Color
+				value <= chart_label \Blue
+				click? <=> chart_cycle? null
 			<= Head_pick $bog_builderui_studio_pick
 				label \Heading
 				value <= font_head_label \Inter
@@ -50,6 +59,23 @@ $bog_builderui_studio $bog_builderui_div
 						<= Badge_one $bog_builderui_badge title \Active
 						<= Badge_two $bog_builderui_badge title \Beta
 						<= Badge_three $bog_builderui_badge title \Pro
+				<= Tabs_card $bog_builderui_card sub /
+					<= Tabs_title $mol_view sub / \Tabs
+					<= Tabs_demo $bog_builderui_tabs
+						value? <=> tabs_value? \overview
+						options *
+							overview \Overview
+							activity \Activity
+							settings \Settings
+				<= Select_card $bog_builderui_card sub /
+					<= Select_title $mol_view sub / \Select
+					<= Select_demo $bog_builderui_select
+						value? <=> select_value? \medium
+						dictionary *
+							none \None
+							small \Small
+							medium \Medium
+							large \Large
 				<= Card_demo $bog_builderui_card sub /
 					<= Card_title $mol_view sub / \Card
 					<= Card_text $mol_view sub / \A small description text inside the card.
@@ -71,6 +97,11 @@ $bog_builderui_studio $bog_builderui_div
 					<= Chart_demo $bog_builderui_chart
 						graphs /
 							<= Chart_bar $mol_plot_bar
-								series_y <= chart_series /number
-								color <= chart_color \var(--bog_builderui_control)
 								title \Visits
+								series_y <= chart_series /number
+								color <= chart_color \
+							<= Chart_mark_hor $mol_plot_mark_hor
+								title \Day
+								labels <= chart_labels /string
+							<= Chart_ruler_vert $mol_plot_ruler_vert
+								title \Count
