@@ -9989,10 +9989,87 @@ var $;
 })($ || ($ = {}));
 
 ;
+	($.$mol_pop_over) = class $mol_pop_over extends ($.$mol_pop) {
+		hovered(next){
+			if(next !== undefined) return next;
+			return false;
+		}
+		event_show(next){
+			if(next !== undefined) return next;
+			return null;
+		}
+		event_hide(next){
+			if(next !== undefined) return next;
+			return null;
+		}
+		showed(){
+			return (this.hovered());
+		}
+		attr(){
+			return {...(super.attr()), "tabindex": 0};
+		}
+		event(){
+			return {
+				...(super.event()), 
+				"mouseenter": (next) => (this.event_show(next)), 
+				"mouseleave": (next) => (this.event_hide(next))
+			};
+		}
+	};
+	($mol_mem(($.$mol_pop_over.prototype), "hovered"));
+	($mol_mem(($.$mol_pop_over.prototype), "event_show"));
+	($mol_mem(($.$mol_pop_over.prototype), "event_hide"));
+
+
+;
+"use strict";
+
+
+;
 "use strict";
 var $;
 (function ($) {
-    $mol_style_attach("bog/builderui/theme.css", "@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Manrope:wght@400;500;600;700&family=DM+Sans:wght@400;500;600;700&family=EB+Garamond:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');\n\n:root {\n\t--bog_builderui_font_body: 'Inter', system-ui, sans-serif;\n\t--bog_builderui_font_head: 'Inter', system-ui, sans-serif;\n\t--bog_builderui_radius: 0.5rem;\n}\n\n/* ============================================================\n   RADIUS PRESETS\n   ============================================================ */\n[bog_builderui_radius=\"none\"] { --bog_builderui_radius: 0; }\n[bog_builderui_radius=\"small\"] { --bog_builderui_radius: 0.25rem; }\n[bog_builderui_radius=\"medium\"] { --bog_builderui_radius: 0.5rem; }\n[bog_builderui_radius=\"large\"] { --bog_builderui_radius: 1rem; }\n\n/* ============================================================\n   BODY FONT\n   ============================================================ */\n[bog_builderui_font_body=\"inter\"] { --bog_builderui_font_body: 'Inter', system-ui, sans-serif; }\n[bog_builderui_font_body=\"manrope\"] { --bog_builderui_font_body: 'Manrope', system-ui, sans-serif; }\n[bog_builderui_font_body=\"dm-sans\"] { --bog_builderui_font_body: 'DM Sans', system-ui, sans-serif; }\n[bog_builderui_font_body=\"eb-garamond\"] { --bog_builderui_font_body: 'EB Garamond', Georgia, serif; }\n\n/* ============================================================\n   HEADING FONT\n   ============================================================ */\n[bog_builderui_font_head=\"inter\"] { --bog_builderui_font_head: 'Inter', system-ui, sans-serif; }\n[bog_builderui_font_head=\"manrope\"] { --bog_builderui_font_head: 'Manrope', system-ui, sans-serif; }\n[bog_builderui_font_head=\"dm-sans\"] { --bog_builderui_font_head: 'DM Sans', system-ui, sans-serif; }\n[bog_builderui_font_head=\"eb-garamond\"] { --bog_builderui_font_head: 'EB Garamond', Georgia, serif; }\n\n/* ============================================================\n   BASE COLORS (neutral palette)\n   Vars: back, card, field, text, shade, line, hover\n   ============================================================ */\n\n/* === Slate (default) === */\n:root,\n[bog_builderui_base=\"slate\"][bog_builderui_lights=\"dark\"] {\n\t--bog_builderui_back: #020817;\n\t--bog_builderui_card: #0f172a;\n\t--bog_builderui_field: #1e293b;\n\t--bog_builderui_text: #f8fafc;\n\t--bog_builderui_shade: #94a3b8;\n\t--bog_builderui_line: #1e293b;\n\t--bog_builderui_hover: #ffffff0d;\n}\n[bog_builderui_base=\"slate\"][bog_builderui_lights=\"light\"] {\n\t--bog_builderui_back: #ffffff;\n\t--bog_builderui_card: #f8fafc;\n\t--bog_builderui_field: #f1f5f9;\n\t--bog_builderui_text: #0f172a;\n\t--bog_builderui_shade: #64748b;\n\t--bog_builderui_line: #e2e8f0;\n\t--bog_builderui_hover: #0000000a;\n}\n\n/* === Stone === */\n[bog_builderui_base=\"stone\"][bog_builderui_lights=\"dark\"] {\n\t--bog_builderui_back: #0c0a09;\n\t--bog_builderui_card: #1c1917;\n\t--bog_builderui_field: #292524;\n\t--bog_builderui_text: #fafaf9;\n\t--bog_builderui_shade: #a8a29e;\n\t--bog_builderui_line: #292524;\n\t--bog_builderui_hover: #ffffff0d;\n}\n[bog_builderui_base=\"stone\"][bog_builderui_lights=\"light\"] {\n\t--bog_builderui_back: #fafaf9;\n\t--bog_builderui_card: #ffffff;\n\t--bog_builderui_field: #f5f5f4;\n\t--bog_builderui_text: #0c0a09;\n\t--bog_builderui_shade: #78716c;\n\t--bog_builderui_line: #e7e5e4;\n\t--bog_builderui_hover: #0000000a;\n}\n\n/* === Zinc === */\n[bog_builderui_base=\"zinc\"][bog_builderui_lights=\"dark\"] {\n\t--bog_builderui_back: #09090b;\n\t--bog_builderui_card: #18181b;\n\t--bog_builderui_field: #27272a;\n\t--bog_builderui_text: #fafafa;\n\t--bog_builderui_shade: #a1a1aa;\n\t--bog_builderui_line: #27272a;\n\t--bog_builderui_hover: #ffffff0d;\n}\n[bog_builderui_base=\"zinc\"][bog_builderui_lights=\"light\"] {\n\t--bog_builderui_back: #ffffff;\n\t--bog_builderui_card: #fafafa;\n\t--bog_builderui_field: #f4f4f5;\n\t--bog_builderui_text: #09090b;\n\t--bog_builderui_shade: #71717a;\n\t--bog_builderui_line: #e4e4e7;\n\t--bog_builderui_hover: #0000000a;\n}\n\n/* === Gray === */\n[bog_builderui_base=\"gray\"][bog_builderui_lights=\"dark\"] {\n\t--bog_builderui_back: #030712;\n\t--bog_builderui_card: #111827;\n\t--bog_builderui_field: #1f2937;\n\t--bog_builderui_text: #f9fafb;\n\t--bog_builderui_shade: #9ca3af;\n\t--bog_builderui_line: #1f2937;\n\t--bog_builderui_hover: #ffffff0d;\n}\n[bog_builderui_base=\"gray\"][bog_builderui_lights=\"light\"] {\n\t--bog_builderui_back: #ffffff;\n\t--bog_builderui_card: #f9fafb;\n\t--bog_builderui_field: #f3f4f6;\n\t--bog_builderui_text: #030712;\n\t--bog_builderui_shade: #6b7280;\n\t--bog_builderui_line: #e5e7eb;\n\t--bog_builderui_hover: #0000000a;\n}\n\n/* ============================================================\n   ACCENT THEMES (vars: control, focus, current, special)\n   ============================================================ */\n\n:root,\n[bog_builderui_theme=\"sky\"] {\n\t--bog_builderui_control: #0ea5e9;\n\t--bog_builderui_focus: #38bdf8;\n\t--bog_builderui_current: #06b6d4;\n\t--bog_builderui_special: #6366f1;\n}\n[bog_builderui_theme=\"rose\"] {\n\t--bog_builderui_control: #f43f5e;\n\t--bog_builderui_focus: #fb7185;\n\t--bog_builderui_current: #ec4899;\n\t--bog_builderui_special: #f97316;\n}\n[bog_builderui_theme=\"violet\"] {\n\t--bog_builderui_control: #8b5cf6;\n\t--bog_builderui_focus: #a78bfa;\n\t--bog_builderui_current: #6366f1;\n\t--bog_builderui_special: #d946ef;\n}\n[bog_builderui_theme=\"emerald\"] {\n\t--bog_builderui_control: #10b981;\n\t--bog_builderui_focus: #34d399;\n\t--bog_builderui_current: #14b8a6;\n\t--bog_builderui_special: #84cc16;\n}\n[bog_builderui_theme=\"amber\"] {\n\t--bog_builderui_control: #f59e0b;\n\t--bog_builderui_focus: #fbbf24;\n\t--bog_builderui_current: #f97316;\n\t--bog_builderui_special: #eab308;\n}\n\n/* ============================================================\n   Bridge to --mol_theme_* so stock $mol components ($mol_chart,\n   $mol_button, $mol_string) pick up our palette automatically.\n   ============================================================ */\n:where([bog_builderui_lights]) {\n\t--mol_theme_back: var(--bog_builderui_back);\n\t--mol_theme_card: var(--bog_builderui_card);\n\t--mol_theme_field: var(--bog_builderui_field);\n\t--mol_theme_hover: var(--bog_builderui_hover);\n\t--mol_theme_text: var(--bog_builderui_text);\n\t--mol_theme_shade: var(--bog_builderui_shade);\n\t--mol_theme_line: var(--bog_builderui_line);\n\t--mol_theme_focus: var(--bog_builderui_focus);\n\t--mol_theme_control: var(--bog_builderui_control);\n\t--mol_theme_current: var(--bog_builderui_current);\n\t--mol_theme_special: var(--bog_builderui_special);\n}\n\n/* ============================================================\n   CHART COLOR — independent accent for the chart bar/line\n   ============================================================ */\n:root,\n[bog_builderui_chart=\"blue\"] { --bog_builderui_chart: #3b82f6; }\n[bog_builderui_chart=\"green\"] { --bog_builderui_chart: #10b981; }\n[bog_builderui_chart=\"red\"] { --bog_builderui_chart: #ef4444; }\n[bog_builderui_chart=\"yellow\"] { --bog_builderui_chart: #eab308; }\n[bog_builderui_chart=\"purple\"] { --bog_builderui_chart: #a855f7; }\n\n/* ============================================================\n   Popover for $bog_builderui_select (style the $mol_pop bubble\n   when it sits inside our scope or carries our marker)\n   ============================================================ */\n[bog_builderui_lights] [mol_pop_bubble],\n[bog_builderui_pop] {\n\tbackground-color: var(--bog_builderui_card);\n\tborder: 1px solid var(--bog_builderui_line);\n\tborder-radius: var(--bog_builderui_radius);\n\tbox-shadow: 0 10px 30px #00000059;\n\tpadding: 0.375rem;\n\tgap: 0.125rem;\n\tmin-width: 14rem;\n\toverflow: hidden;\n}\n\n[bog_builderui_lights] [mol_select_filter] {\n\tbackground-color: var(--bog_builderui_field);\n\tcolor: var(--bog_builderui_text);\n\tborder: 1px solid var(--bog_builderui_line);\n\tborder-radius: calc(var(--bog_builderui_radius) - 2px);\n\tpadding: 0.5rem 0.75rem;\n\tmargin-bottom: 0.25rem;\n\tfont-family: var(--bog_builderui_font_body);\n\tfont-size: 0.9rem;\n}\n\n[bog_builderui_lights] [mol_select_option_row] {\n\tborder-radius: calc(var(--bog_builderui_radius) - 2px);\n\tpadding: 0.5rem 0.75rem;\n\tcolor: var(--bog_builderui_text);\n\tfont-family: var(--bog_builderui_font_body);\n\tfont-size: 0.9rem;\n\tbackground-color: transparent;\n}\n\n[bog_builderui_lights] [mol_select_option_row]:hover {\n\tbackground-color: var(--bog_builderui_hover);\n}\n\n[bog_builderui_lights] [mol_select_option_label] {\n\tpadding: 0;\n\tcolor: inherit;\n}\n\n[bog_builderui_lights] [mol_select_no_options] {\n\tcolor: var(--bog_builderui_shade);\n\tpadding: 0.5rem 0.75rem;\n}\n\n[bog_builderui_lights] [bog_builderui_select] [mol_select_trigger] {\n\tgap: 0.5rem;\n\tpadding: 0 0.25rem 0 0;\n}\n[bog_builderui_lights] [bog_builderui_select] [mol_select_trigger] > * {\n\tmargin-right: 0;\n}\n\n");
+    var $$;
+    (function ($$) {
+        /**
+         * Bubble that can be shown anchored to Anchor element.
+         * @see https://mol.hyoo.ru/#!section=demos/demo=mol_pop_over_demo
+         */
+        class $mol_pop_over extends $.$mol_pop_over {
+            event_show(event) {
+                this.hovered(true);
+            }
+            event_hide(event) {
+                this.hovered(false);
+            }
+            showed() {
+                return this.focused() || this.hovered();
+            }
+        }
+        $$.$mol_pop_over = $mol_pop_over;
+    })($$ = $.$$ || ($.$$ = {}));
+})($ || ($ = {}));
+
+;
+"use strict";
+var $;
+(function ($) {
+    $mol_style_attach("mol/pop/over/over.view.css", "[mol_pop_over]:focus {\r\n\toutline: none;\r\n}");
+})($ || ($ = {}));
+
+;
+	($.$bog_builderui_tooltip) = class $bog_builderui_tooltip extends ($.$mol_pop_over) {};
+
+
+;
+"use strict";
+
+
+;
+"use strict";
+var $;
+(function ($) {
+    $mol_style_attach("bog/builderui/theme.css", "@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Manrope:wght@400;500;600;700&family=DM+Sans:wght@400;500;600;700&family=EB+Garamond:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');\n\n:root {\n\t--bog_builderui_font_body: 'Inter', system-ui, sans-serif;\n\t--bog_builderui_font_head: 'Inter', system-ui, sans-serif;\n\t--bog_builderui_radius: 0.5rem;\n}\n\n/* ============================================================\n   RADIUS PRESETS\n   ============================================================ */\n[bog_builderui_radius=\"none\"] { --bog_builderui_radius: 0; }\n[bog_builderui_radius=\"small\"] { --bog_builderui_radius: 0.25rem; }\n[bog_builderui_radius=\"medium\"] { --bog_builderui_radius: 0.5rem; }\n[bog_builderui_radius=\"large\"] { --bog_builderui_radius: 1rem; }\n\n/* ============================================================\n   BODY FONT\n   ============================================================ */\n[bog_builderui_font_body=\"inter\"] { --bog_builderui_font_body: 'Inter', system-ui, sans-serif; }\n[bog_builderui_font_body=\"manrope\"] { --bog_builderui_font_body: 'Manrope', system-ui, sans-serif; }\n[bog_builderui_font_body=\"dm-sans\"] { --bog_builderui_font_body: 'DM Sans', system-ui, sans-serif; }\n[bog_builderui_font_body=\"eb-garamond\"] { --bog_builderui_font_body: 'EB Garamond', Georgia, serif; }\n\n/* ============================================================\n   HEADING FONT\n   ============================================================ */\n[bog_builderui_font_head=\"inter\"] { --bog_builderui_font_head: 'Inter', system-ui, sans-serif; }\n[bog_builderui_font_head=\"manrope\"] { --bog_builderui_font_head: 'Manrope', system-ui, sans-serif; }\n[bog_builderui_font_head=\"dm-sans\"] { --bog_builderui_font_head: 'DM Sans', system-ui, sans-serif; }\n[bog_builderui_font_head=\"eb-garamond\"] { --bog_builderui_font_head: 'EB Garamond', Georgia, serif; }\n\n/* ============================================================\n   BASE COLORS (neutral palette)\n   Vars: back, card, field, text, shade, line, hover\n   ============================================================ */\n\n/* === Slate (default) === */\n:root,\n[bog_builderui_base=\"slate\"][bog_builderui_lights=\"dark\"] {\n\t--bog_builderui_back: #020817;\n\t--bog_builderui_card: #0f172a;\n\t--bog_builderui_field: #1e293b;\n\t--bog_builderui_text: #f8fafc;\n\t--bog_builderui_shade: #94a3b8;\n\t--bog_builderui_line: #1e293b;\n\t--bog_builderui_hover: #ffffff0d;\n}\n[bog_builderui_base=\"slate\"][bog_builderui_lights=\"light\"] {\n\t--bog_builderui_back: #ffffff;\n\t--bog_builderui_card: #f8fafc;\n\t--bog_builderui_field: #f1f5f9;\n\t--bog_builderui_text: #0f172a;\n\t--bog_builderui_shade: #64748b;\n\t--bog_builderui_line: #e2e8f0;\n\t--bog_builderui_hover: #0000000a;\n}\n\n/* === Stone === */\n[bog_builderui_base=\"stone\"][bog_builderui_lights=\"dark\"] {\n\t--bog_builderui_back: #0c0a09;\n\t--bog_builderui_card: #1c1917;\n\t--bog_builderui_field: #292524;\n\t--bog_builderui_text: #fafaf9;\n\t--bog_builderui_shade: #a8a29e;\n\t--bog_builderui_line: #292524;\n\t--bog_builderui_hover: #ffffff0d;\n}\n[bog_builderui_base=\"stone\"][bog_builderui_lights=\"light\"] {\n\t--bog_builderui_back: #fafaf9;\n\t--bog_builderui_card: #ffffff;\n\t--bog_builderui_field: #f5f5f4;\n\t--bog_builderui_text: #0c0a09;\n\t--bog_builderui_shade: #78716c;\n\t--bog_builderui_line: #e7e5e4;\n\t--bog_builderui_hover: #0000000a;\n}\n\n/* === Zinc === */\n[bog_builderui_base=\"zinc\"][bog_builderui_lights=\"dark\"] {\n\t--bog_builderui_back: #09090b;\n\t--bog_builderui_card: #18181b;\n\t--bog_builderui_field: #27272a;\n\t--bog_builderui_text: #fafafa;\n\t--bog_builderui_shade: #a1a1aa;\n\t--bog_builderui_line: #27272a;\n\t--bog_builderui_hover: #ffffff0d;\n}\n[bog_builderui_base=\"zinc\"][bog_builderui_lights=\"light\"] {\n\t--bog_builderui_back: #ffffff;\n\t--bog_builderui_card: #fafafa;\n\t--bog_builderui_field: #f4f4f5;\n\t--bog_builderui_text: #09090b;\n\t--bog_builderui_shade: #71717a;\n\t--bog_builderui_line: #e4e4e7;\n\t--bog_builderui_hover: #0000000a;\n}\n\n/* === Gray === */\n[bog_builderui_base=\"gray\"][bog_builderui_lights=\"dark\"] {\n\t--bog_builderui_back: #030712;\n\t--bog_builderui_card: #111827;\n\t--bog_builderui_field: #1f2937;\n\t--bog_builderui_text: #f9fafb;\n\t--bog_builderui_shade: #9ca3af;\n\t--bog_builderui_line: #1f2937;\n\t--bog_builderui_hover: #ffffff0d;\n}\n[bog_builderui_base=\"gray\"][bog_builderui_lights=\"light\"] {\n\t--bog_builderui_back: #ffffff;\n\t--bog_builderui_card: #f9fafb;\n\t--bog_builderui_field: #f3f4f6;\n\t--bog_builderui_text: #030712;\n\t--bog_builderui_shade: #6b7280;\n\t--bog_builderui_line: #e5e7eb;\n\t--bog_builderui_hover: #0000000a;\n}\n\n/* ============================================================\n   ACCENT THEMES (vars: control, focus, current, special)\n   ============================================================ */\n\n:root,\n[bog_builderui_theme=\"sky\"] {\n\t--bog_builderui_control: #0ea5e9;\n\t--bog_builderui_focus: #38bdf8;\n\t--bog_builderui_current: #06b6d4;\n\t--bog_builderui_special: #6366f1;\n}\n[bog_builderui_theme=\"rose\"] {\n\t--bog_builderui_control: #f43f5e;\n\t--bog_builderui_focus: #fb7185;\n\t--bog_builderui_current: #ec4899;\n\t--bog_builderui_special: #f97316;\n}\n[bog_builderui_theme=\"violet\"] {\n\t--bog_builderui_control: #8b5cf6;\n\t--bog_builderui_focus: #a78bfa;\n\t--bog_builderui_current: #6366f1;\n\t--bog_builderui_special: #d946ef;\n}\n[bog_builderui_theme=\"emerald\"] {\n\t--bog_builderui_control: #10b981;\n\t--bog_builderui_focus: #34d399;\n\t--bog_builderui_current: #14b8a6;\n\t--bog_builderui_special: #84cc16;\n}\n[bog_builderui_theme=\"amber\"] {\n\t--bog_builderui_control: #f59e0b;\n\t--bog_builderui_focus: #fbbf24;\n\t--bog_builderui_current: #f97316;\n\t--bog_builderui_special: #eab308;\n}\n\n/* ============================================================\n   Bridge to --mol_theme_* so stock $mol components ($mol_chart,\n   $mol_button, $mol_string) pick up our palette automatically.\n   ============================================================ */\n:where([bog_builderui_lights]) {\n\t--mol_theme_back: var(--bog_builderui_back);\n\t--mol_theme_card: var(--bog_builderui_card);\n\t--mol_theme_field: var(--bog_builderui_field);\n\t--mol_theme_hover: var(--bog_builderui_hover);\n\t--mol_theme_text: var(--bog_builderui_text);\n\t--mol_theme_shade: var(--bog_builderui_shade);\n\t--mol_theme_line: var(--bog_builderui_line);\n\t--mol_theme_focus: var(--bog_builderui_focus);\n\t--mol_theme_control: var(--bog_builderui_control);\n\t--mol_theme_current: var(--bog_builderui_current);\n\t--mol_theme_special: var(--bog_builderui_special);\n}\n\n/* ============================================================\n   CHART COLOR — independent accent for the chart bar/line\n   ============================================================ */\n:root,\n[bog_builderui_chart=\"blue\"] { --bog_builderui_chart: #3b82f6; }\n[bog_builderui_chart=\"green\"] { --bog_builderui_chart: #10b981; }\n[bog_builderui_chart=\"red\"] { --bog_builderui_chart: #ef4444; }\n[bog_builderui_chart=\"yellow\"] { --bog_builderui_chart: #eab308; }\n[bog_builderui_chart=\"purple\"] { --bog_builderui_chart: #a855f7; }\n\n/* ============================================================\n   Popover for $bog_builderui_select (style the $mol_pop bubble\n   when it sits inside our scope or carries our marker)\n   ============================================================ */\n[bog_builderui_lights] [mol_pop_bubble],\n[bog_builderui_pop] {\n\tbackground-color: var(--bog_builderui_card);\n\tborder: 1px solid var(--bog_builderui_line);\n\tborder-radius: var(--bog_builderui_radius);\n\tbox-shadow: 0 10px 30px #00000059;\n\tpadding: 0.375rem;\n\tgap: 0.125rem;\n\tmin-width: 14rem;\n\toverflow: hidden;\n}\n\n[bog_builderui_lights] [mol_select_filter] {\n\tbackground-color: var(--bog_builderui_field);\n\tcolor: var(--bog_builderui_text);\n\tborder: 1px solid var(--bog_builderui_line);\n\tborder-radius: calc(var(--bog_builderui_radius) - 2px);\n\tpadding: 0.5rem 0.75rem;\n\tmargin-bottom: 0.25rem;\n\tfont-family: var(--bog_builderui_font_body);\n\tfont-size: 0.9rem;\n}\n\n[bog_builderui_lights] [mol_select_option_row] {\n\tborder-radius: calc(var(--bog_builderui_radius) - 2px);\n\tpadding: 0.5rem 0.75rem;\n\tcolor: var(--bog_builderui_text);\n\tfont-family: var(--bog_builderui_font_body);\n\tfont-size: 0.9rem;\n\tbackground-color: transparent;\n}\n\n[bog_builderui_lights] [mol_select_option_row]:hover {\n\tbackground-color: var(--bog_builderui_hover);\n}\n\n[bog_builderui_lights] [mol_select_option_label] {\n\tpadding: 0;\n\tcolor: inherit;\n}\n\n[bog_builderui_lights] [mol_select_no_options] {\n\tcolor: var(--bog_builderui_shade);\n\tpadding: 0.5rem 0.75rem;\n}\n\n[bog_builderui_lights] [bog_builderui_select] [mol_select_trigger] {\n\tgap: 0.5rem;\n\tpadding: 0 0.25rem 0 0;\n}\n[bog_builderui_lights] [bog_builderui_select] [mol_select_trigger] > * {\n\tmargin-right: 0;\n}\n\n/* ============================================================\n   Skeleton — any $mol_view in pending state gets a pulsing surface\n   ============================================================ */\n@keyframes bog_builderui_skeleton_pulse {\n\t0%, 100% { opacity: 1; }\n\t50% { opacity: 0.5; }\n}\n\n[bog_builderui_lights] [mol_view][mol_view_error=\"Promise\"],\n[bog_builderui_lights] [mol_view][mol_view_error=\"$mol_promise_blocker\"] {\n\tborder-radius: var(--bog_builderui_radius);\n\tbackground-color: var(--bog_builderui_field);\n\tcolor: transparent;\n\tanimation: bog_builderui_skeleton_pulse 1.6s ease-in-out infinite;\n}\n\n/* ============================================================\n   Tooltip surface\n   ============================================================ */\n[bog_builderui_lights] [bog_builderui_tooltip] [mol_pop_bubble] {\n\tbackground-color: var(--bog_builderui_text);\n\tcolor: var(--bog_builderui_back);\n\tborder: none;\n\tborder-radius: calc(var(--bog_builderui_radius) - 2px);\n\tpadding: 0.375rem 0.625rem;\n\tfont-family: var(--bog_builderui_font_body);\n\tfont-size: 0.8rem;\n\tbox-shadow: 0 4px 12px #0000004d;\n\tmin-width: 0;\n}\n\n");
 })($ || ($ = {}));
 
 ;
@@ -10661,58 +10738,60 @@ var $;
 })($ || ($ = {}));
 
 ;
-	($.$mol_avatar) = class $mol_avatar extends ($.$mol_icon) {
-		view_box(){
-			return "0 0 24 24";
-		}
-		id(){
+	($.$mol_image) = class $mol_image extends ($.$mol_view) {
+		uri(){
 			return "";
 		}
-		path(){
-			return "M 12 12 l 0 0 M 0 0 l 0 0 M 24 24 l 0 0 M 0 24 l 0 0 M 24 0 l 0 0";
+		title(){
+			return "";
+		}
+		loading(){
+			return "lazy";
+		}
+		decoding(){
+			return "async";
+		}
+		cors(){
+			return null;
+		}
+		natural_width(){
+			return 0;
+		}
+		natural_height(){
+			return 0;
+		}
+		load(next){
+			if(next !== undefined) return next;
+			return null;
+		}
+		dom_name(){
+			return "img";
+		}
+		attr(){
+			return {
+				...(super.attr()), 
+				"src": (this.uri()), 
+				"title": (this.hint()), 
+				"alt": (this.title()), 
+				"loading": (this.loading()), 
+				"decoding": (this.decoding()), 
+				"crossOrigin": (this.cors()), 
+				"width": (this.natural_width()), 
+				"height": (this.natural_height())
+			};
+		}
+		event(){
+			return {"load": (next) => (this.load(next))};
+		}
+		minimal_width(){
+			return 16;
+		}
+		minimal_height(){
+			return 16;
 		}
 	};
+	($mol_mem(($.$mol_image.prototype), "load"));
 
-
-;
-"use strict";
-var $;
-(function ($) {
-    /**
-     * 48-bit streamable array hash function
-     * Based on cyrb53: https://stackoverflow.com/a/52171480
-     */
-    function $mol_hash_numbers(buff, seed = 0) {
-        let h1 = 0xdeadbeef ^ seed;
-        let h2 = 0x41c6ce57 ^ seed;
-        for (let i = 0; i < buff.length; ++i) {
-            const item = buff[i];
-            h1 = Math.imul(h1 ^ item, 2654435761);
-            h2 = Math.imul(h2 ^ item, 1597334677);
-        }
-        h1 = Math.imul(h1 ^ (h1 >>> 16), 2246822507) ^ Math.imul(h2 ^ (h2 >>> 13), 3266489909);
-        h2 = Math.imul(h2 ^ (h2 >>> 16), 2246822507) ^ Math.imul(h1 ^ (h1 >>> 13), 3266489909);
-        return 4294967296 * (((1 << 16) - 1) & h2) + (h1 >>> 0);
-    }
-    $.$mol_hash_numbers = $mol_hash_numbers;
-})($ || ($ = {}));
-
-;
-"use strict";
-var $;
-(function ($) {
-    /**
-     * 48-bit streamable string hash function
-     * Based on cyrb53: https://stackoverflow.com/a/52171480
-     */
-    function $mol_hash_string(str, seed = 0) {
-        let nums = new Array(str.length);
-        for (let i = 0; i < str.length; ++i)
-            nums[i] = str.charCodeAt(i);
-        return $mol_hash_numbers(nums);
-    }
-    $.$mol_hash_string = $mol_hash_string;
-})($ || ($ = {}));
 
 ;
 "use strict";
@@ -10724,32 +10803,33 @@ var $;
 (function ($) {
     var $$;
     (function ($$) {
-        /**
-         * Avatar uniquely-generated by id string
-         * @see https://mol.hyoo.ru/#!section=demos/demo=mol_avatar_demo
-         */
-        class $mol_avatar extends $.$mol_avatar {
-            path() {
-                const id = $mol_hash_string(this.id());
-                const p = 2.1;
-                const m = 2.7;
-                let path = '';
-                for (let x = 0; x < 4; ++x) {
-                    for (let y = 0; y < 8; ++y) {
-                        if ((id >> (x + y * 7)) & 1) {
-                            const mxp = Math.ceil(m * x + p);
-                            const myp = Math.ceil(m * y + p);
-                            path += `M ${mxp} ${myp} l 0 0 ` + `M ${24 - mxp} ${myp} l 0 0 `;
-                        }
-                    }
-                }
-                return path;
+        class $mol_image extends $.$mol_image {
+            natural_width(next) {
+                const dom = this.dom_node();
+                if (dom.naturalWidth)
+                    return dom.naturalWidth;
+                const found = this.uri().match(/\bwidth=(\d+)/);
+                return found ? Number(found[1]) : null;
+            }
+            natural_height(next) {
+                const dom = this.dom_node();
+                if (dom.naturalHeight)
+                    return dom.naturalHeight;
+                const found = this.uri().match(/\bheight=(\d+)/);
+                return found ? Number(found[1]) : null;
+            }
+            load() {
+                this.natural_width(null);
+                this.natural_height(null);
             }
         }
         __decorate([
             $mol_mem
-        ], $mol_avatar.prototype, "path", null);
-        $$.$mol_avatar = $mol_avatar;
+        ], $mol_image.prototype, "natural_width", null);
+        __decorate([
+            $mol_mem
+        ], $mol_image.prototype, "natural_height", null);
+        $$.$mol_image = $mol_image;
     })($$ = $.$$ || ($.$$ = {}));
 })($ || ($ = {}));
 
@@ -10757,11 +10837,11 @@ var $;
 "use strict";
 var $;
 (function ($) {
-    $mol_style_attach("mol/avatar/avatar.view.css", "[mol_avatar] {\n\tstroke-linecap: round;\n\tstroke-width: 3.5px;\n\tfill: none;\n\tstroke: currentColor;\n\t/* width: 1.5rem;\n\theight: 1.5rem;\n\tmargin: 0 -.25rem; */\n\t/* box-shadow: 0 0 0 1px var(--mol_theme_line); */\n}\n");
+    $mol_style_attach("mol/image/image.view.css", "[mol_image] {\n\tborder-radius: var(--mol_gap_round);\n\toverflow: hidden;\n\tflex: 0 1 auto;\n\tmax-width: 100%;\n\tobject-fit: cover;\n\theight: fit-content;\n}\n");
 })($ || ($ = {}));
 
 ;
-	($.$bog_builderui_avatar) = class $bog_builderui_avatar extends ($.$mol_avatar) {};
+	($.$bog_builderui_avatar) = class $bog_builderui_avatar extends ($.$mol_image) {};
 
 
 ;
@@ -10786,25 +10866,425 @@ var $;
         background: {
             color: $bog_builderui_tokens.field,
         },
-        color: $bog_builderui_tokens.text,
-        padding: {
-            top: '0.25rem',
-            bottom: '0.25rem',
-            left: '0.25rem',
-            right: '0.25rem',
-        },
     });
 })($ || ($ = {}));
 
 ;
-	($.$bog_builderui_skeleton) = class $bog_builderui_skeleton extends ($.$bog_builderui_div) {};
+	($.$rise_range) = class $rise_range extends ($.$mol_view) {
+		label_min(){
+			return "";
+		}
+		Min(){
+			const obj = new this.$.$mol_view();
+			(obj.sub) = () => ([(this.label_min())]);
+			return obj;
+		}
+		label_medium(){
+			return "";
+		}
+		Medium(){
+			const obj = new this.$.$mol_view();
+			(obj.sub) = () => ([(this.label_medium())]);
+			return obj;
+		}
+		label_max(){
+			return "";
+		}
+		Max(){
+			const obj = new this.$.$mol_view();
+			(obj.sub) = () => ([(this.label_max())]);
+			return obj;
+		}
+		Labels(){
+			const obj = new this.$.$mol_view();
+			(obj.sub) = () => ([
+				(this.Min()), 
+				(this.Medium()), 
+				(this.Max())
+			]);
+			return obj;
+		}
+		disabled(){
+			return false;
+		}
+		min(next){
+			if(next !== undefined) return next;
+			return 0;
+		}
+		max(next){
+			if(next !== undefined) return next;
+			return 10;
+		}
+		step(next){
+			if(next !== undefined) return next;
+			return 1;
+		}
+		value(next){
+			if(next !== undefined) return next;
+			return 0;
+		}
+		event_input(next){
+			if(next !== undefined) return next;
+			return null;
+		}
+		Input(){
+			const obj = new this.$.$rise_range_input();
+			(obj.disabled) = () => ((this.disabled()));
+			(obj.min) = () => ((this.min()));
+			(obj.max) = () => ((this.max()));
+			(obj.step) = () => ((this.step()));
+			(obj.value) = (next) => ((this.value(next)));
+			(obj.event_input) = (next) => ((this.event_input(next)));
+			return obj;
+		}
+		Value(){
+			const obj = new this.$.$rise_range_value();
+			(obj.sub) = () => ([(this.value())]);
+			(obj.disabled) = () => ((this.disabled()));
+			return obj;
+		}
+		Current(){
+			const obj = new this.$.$mol_view();
+			(obj.sub) = () => ([(this.Value())]);
+			return obj;
+		}
+		percent(){
+			return "0%";
+		}
+		minimal_height(){
+			return 48;
+		}
+		unit(){
+			return "";
+		}
+		medium(next){
+			if(next !== undefined) return next;
+			return 5;
+		}
+		enabled(){
+			return true;
+		}
+		sub(){
+			return [
+				(this.Labels()), 
+				(this.Input()), 
+				(this.Current())
+			];
+		}
+		attr(){
+			return {...(super.attr()), "disabled": (this.disabled())};
+		}
+		style(){
+			return {...(super.style()), "--rise_range_percent": (this.percent())};
+		}
+	};
+	($mol_mem(($.$rise_range.prototype), "Min"));
+	($mol_mem(($.$rise_range.prototype), "Medium"));
+	($mol_mem(($.$rise_range.prototype), "Max"));
+	($mol_mem(($.$rise_range.prototype), "Labels"));
+	($mol_mem(($.$rise_range.prototype), "min"));
+	($mol_mem(($.$rise_range.prototype), "max"));
+	($mol_mem(($.$rise_range.prototype), "step"));
+	($mol_mem(($.$rise_range.prototype), "value"));
+	($mol_mem(($.$rise_range.prototype), "event_input"));
+	($mol_mem(($.$rise_range.prototype), "Input"));
+	($mol_mem(($.$rise_range.prototype), "Value"));
+	($mol_mem(($.$rise_range.prototype), "Current"));
+	($mol_mem(($.$rise_range.prototype), "medium"));
+	($.$rise_range_input) = class $rise_range_input extends ($.$mol_view) {
+		disabled(){
+			return false;
+		}
+		min(next){
+			if(next !== undefined) return next;
+			return 0;
+		}
+		max(next){
+			if(next !== undefined) return next;
+			return 10;
+		}
+		step(next){
+			if(next !== undefined) return next;
+			return 1;
+		}
+		value(next){
+			if(next !== undefined) return next;
+			return 0;
+		}
+		event_input(next){
+			if(next !== undefined) return next;
+			return null;
+		}
+		dom_name(){
+			return "input";
+		}
+		attr(){
+			return {
+				...(super.attr()), 
+				"type": "range", 
+				"disabled": (this.disabled())
+			};
+		}
+		field(){
+			return {
+				...(super.field()), 
+				"min": (this.min()), 
+				"max": (this.max()), 
+				"step": (this.step()), 
+				"value": (this.value())
+			};
+		}
+		event(){
+			return {...(super.event()), "input": (next) => (this.event_input(next))};
+		}
+	};
+	($mol_mem(($.$rise_range_input.prototype), "min"));
+	($mol_mem(($.$rise_range_input.prototype), "max"));
+	($mol_mem(($.$rise_range_input.prototype), "step"));
+	($mol_mem(($.$rise_range_input.prototype), "value"));
+	($mol_mem(($.$rise_range_input.prototype), "event_input"));
+	($.$rise_range_value) = class $rise_range_value extends ($.$mol_view) {
+		disabled(){
+			return false;
+		}
+		attr(){
+			return {...(super.attr()), "disabled": (this.disabled())};
+		}
+	};
+
+
+;
+"use strict";
 
 
 ;
 "use strict";
 var $;
 (function ($) {
-    $mol_style_attach("bog/builderui/skeleton/skeleton.view.css", "@keyframes bog_builderui_skeleton_pulse {\n\t0%, 100% { opacity: 1; }\n\t50% { opacity: 0.5; }\n}\n\n[bog_builderui_skeleton] {\n\tanimation: bog_builderui_skeleton_pulse 1.6s ease-in-out infinite;\n}\n");
+    var $$;
+    (function ($$) {
+        class $rise_range extends $.$rise_range {
+            event_input(event) {
+                const el = event.target;
+                this.value(Number(el.value));
+            }
+            medium() {
+                return Math.round((this.min() + this.max()) / 2);
+            }
+            label_min() {
+                return this.min() + ' ' + this.unit();
+            }
+            label_max() {
+                return this.max() + ' ' + this.unit();
+            }
+            label_medium() {
+                return this.medium() + ' ' + this.unit();
+            }
+            percent() {
+                const val = this.value() - this.min();
+                const range = this.max() - this.min();
+                return (val / range) * 100 + '%';
+            }
+            disabled() {
+                return !this.enabled();
+            }
+        }
+        __decorate([
+            $mol_action
+        ], $rise_range.prototype, "event_input", null);
+        $$.$rise_range = $rise_range;
+    })($$ = $.$$ || ($.$$ = {}));
+})($ || ($ = {}));
+
+;
+"use strict";
+var $;
+(function ($) {
+    var $$;
+    (function ($$) {
+        const Thumb_size = $mol_gap.block;
+        const Track_height = $mol_gap.space;
+        const Track_margin = $mol_gap.block; // expands vertical clickable area
+        $mol_style_define($rise_range, {
+            flex: {
+                grow: 1,
+                direction: 'column',
+            },
+            padding: {
+                top: $mol_gap.space,
+                bottom: $mol_gap.space,
+            },
+            Labels: {
+                pointerEvents: 'none',
+                left: 0,
+                right: 0,
+                justify: {
+                    content: 'space-between',
+                },
+            },
+            Current: {
+                pointerEvents: 'none',
+                position: 'relative',
+                height: '1.5rem',
+                margin: {
+                    left: $mol_style_func.calc(`${Thumb_size} / 2`),
+                    right: $mol_style_func.calc(`${Thumb_size} / 2`),
+                },
+            },
+            '[disabled]': {
+                'true': {
+                    Value: {
+                        color: $mol_theme.shade,
+                    },
+                },
+            },
+            Value: {
+                position: 'absolute',
+                left: $mol_style_func.vary('--rise_range_percent'),
+                transform: 'translateX(-50%)',
+                color: $mol_theme.current,
+            },
+        });
+        const Track = {
+            height: Track_height,
+            border: {
+                radius: $mol_gap.round,
+            },
+            background: {
+                color: $mol_theme.line,
+            },
+        };
+        const Thumb = {
+            height: Thumb_size,
+            width: Thumb_size,
+            margin: {
+                top: $mol_style_func.calc(`(${Track_height} - ${Thumb_size}) / 2`),
+            },
+            appearance: 'none',
+            border: {
+                radius: '50%',
+            },
+            background: {
+                color: $mol_theme.current,
+            },
+        };
+        $mol_style_define($rise_range_input, {
+            height: $mol_style_func.calc(`${Thumb_size} + 2 * ${Track_margin}`),
+            margin: {
+                top: $mol_style_func.calc(`-1 * ${Track_margin} / 2 - var(--mol_gap_space)`),
+                bottom: $mol_style_func.calc(`-1 * ${Track_margin} / 2`),
+                left: 0,
+                right: 0,
+            },
+            '::-webkit-slider-runnable-track': Track,
+            ['::-moz-range-track']: Track,
+            '::-webkit-slider-thumb': Thumb,
+            ['::-moz-range-thumb']: Thumb,
+            appearance: 'none',
+            background: {
+                color: 'transparent',
+            },
+            cursor: 'pointer',
+            ':disabled': {
+                cursor: 'default',
+                '::-webkit-slider-thumb': {
+                    background: {
+                        color: $mol_theme.shade,
+                    },
+                },
+                ['::-moz-range-thumb']: {
+                    background: {
+                        color: $mol_theme.shade,
+                    },
+                },
+            },
+            ':focus': {
+                outline: 'none',
+            },
+        });
+        $mol_style_define($rise_range_value, {
+            '[disabled]': {
+                'true': {
+                    color: $mol_theme.shade,
+                },
+            },
+        });
+    })($$ = $.$$ || ($.$$ = {}));
+})($ || ($ = {}));
+
+;
+	($.$bog_builderui_slider) = class $bog_builderui_slider extends ($.$rise_range) {};
+
+
+;
+"use strict";
+
+
+;
+	($.$bog_builderui_progress) = class $bog_builderui_progress extends ($.$mol_view) {
+		value(){
+			return 50;
+		}
+		max(){
+			return 100;
+		}
+		dom_name(){
+			return "progress";
+		}
+		attr(){
+			return {
+				...(super.attr()), 
+				"value": (this.value()), 
+				"max": (this.max())
+			};
+		}
+	};
+
+
+;
+"use strict";
+var $;
+(function ($) {
+    $mol_style_attach("bog/builderui/progress/progress.view.css", "[bog_builderui_progress]::-webkit-progress-bar {\n\tbackground-color: var(--bog_builderui_field);\n\tborder-radius: 9999px;\n}\n[bog_builderui_progress]::-webkit-progress-value {\n\tbackground-color: var(--bog_builderui_control);\n\tborder-radius: 9999px;\n}\n[bog_builderui_progress]::-moz-progress-bar {\n\tbackground-color: var(--bog_builderui_control);\n\tborder-radius: 9999px;\n}\n");
+})($ || ($ = {}));
+
+;
+"use strict";
+
+
+;
+"use strict";
+/** @see $bog_builderui_tokens */
+var $;
+(function ($) {
+    $mol_style_define($bog_builderui_progress, {
+        appearance: 'none',
+        width: '100%',
+        height: '0.5rem',
+        border: {
+            radius: '9999px',
+            width: 0,
+        },
+        background: {
+            color: $bog_builderui_tokens.field,
+        },
+        color: $bog_builderui_tokens.control,
+    });
+})($ || ($ = {}));
+
+;
+	($.$bog_builderui_skeleton) = class $bog_builderui_skeleton extends ($.$bog_builderui_div) {
+		attr(){
+			return {"mol_view_error": "Promise"};
+		}
+	};
+
+
+;
+"use strict";
+var $;
+(function ($) {
+    $mol_style_attach("bog/builderui/skeleton/skeleton.view.css", "");
 })($ || ($ = {}));
 
 ;
@@ -10818,13 +11298,6 @@ var $;
 (function ($) {
     $mol_style_define($bog_builderui_skeleton, {
         minHeight: '1rem',
-        border: {
-            radius: $bog_builderui_tokens.radius,
-            width: 0,
-        },
-        background: {
-            color: $bog_builderui_tokens.field,
-        },
     });
 })($ || ($ = {}));
 
@@ -12193,22 +12666,22 @@ var $;
 		}
 		Avatar_one(){
 			const obj = new this.$.$bog_builderui_avatar();
-			(obj.id) = () => ("kirill");
+			(obj.uri) = () => ("https://i.pravatar.cc/80?img=15");
 			return obj;
 		}
 		Avatar_two(){
 			const obj = new this.$.$bog_builderui_avatar();
-			(obj.id) = () => ("novgorodcev");
+			(obj.uri) = () => ("https://i.pravatar.cc/80?img=32");
 			return obj;
 		}
 		Avatar_three(){
 			const obj = new this.$.$bog_builderui_avatar();
-			(obj.id) = () => ("claude");
+			(obj.uri) = () => ("https://i.pravatar.cc/80?img=47");
 			return obj;
 		}
 		Avatar_four(){
 			const obj = new this.$.$bog_builderui_avatar();
-			(obj.id) = () => ("builderui");
+			(obj.uri) = () => ("https://i.pravatar.cc/80?img=58");
 			return obj;
 		}
 		Avatars_row(){
@@ -12224,6 +12697,64 @@ var $;
 		Avatars_card(){
 			const obj = new this.$.$bog_builderui_card();
 			(obj.sub) = () => ([(this.Avatars_title()), (this.Avatars_row())]);
+			return obj;
+		}
+		Sliders_title(){
+			const obj = new this.$.$mol_view();
+			(obj.sub) = () => (["Slider"]);
+			return obj;
+		}
+		slider_value(next){
+			if(next !== undefined) return next;
+			return 40;
+		}
+		Slider_demo(){
+			const obj = new this.$.$bog_builderui_slider();
+			(obj.value) = (next) => ((this.slider_value(next)));
+			(obj.min) = () => (0);
+			(obj.max) = () => (100);
+			return obj;
+		}
+		Sliders_card(){
+			const obj = new this.$.$bog_builderui_card();
+			(obj.sub) = () => ([(this.Sliders_title()), (this.Slider_demo())]);
+			return obj;
+		}
+		Progress_title(){
+			const obj = new this.$.$mol_view();
+			(obj.sub) = () => (["Progress"]);
+			return obj;
+		}
+		Progress_demo(){
+			const obj = new this.$.$bog_builderui_progress();
+			(obj.value) = () => (64);
+			(obj.max) = () => (100);
+			return obj;
+		}
+		Progress_card(){
+			const obj = new this.$.$bog_builderui_card();
+			(obj.sub) = () => ([(this.Progress_title()), (this.Progress_demo())]);
+			return obj;
+		}
+		Tooltip_title(){
+			const obj = new this.$.$mol_view();
+			(obj.sub) = () => (["Tooltip"]);
+			return obj;
+		}
+		Tooltip_anchor(){
+			const obj = new this.$.$bog_builderui_button();
+			(obj.title) = () => ("Hover me");
+			return obj;
+		}
+		Tooltip_demo(){
+			const obj = new this.$.$bog_builderui_tooltip();
+			(obj.Anchor) = () => ((this.Tooltip_anchor()));
+			(obj.bubble_content) = () => (["Hello from a tooltip"]);
+			return obj;
+		}
+		Tooltip_card(){
+			const obj = new this.$.$bog_builderui_card();
+			(obj.sub) = () => ([(this.Tooltip_title()), (this.Tooltip_demo())]);
 			return obj;
 		}
 		Skeletons_title(){
@@ -12473,8 +13004,8 @@ var $;
 			return obj;
 		}
 		Stack(){
-			const obj = new this.$.$mol_view();
-			(obj.sub) = () => ([
+			const obj = new this.$.$mol_gallery();
+			(obj.items) = () => ([
 				(this.Buttons_card()), 
 				(this.Badges_card()), 
 				(this.Tabs_card()), 
@@ -12483,6 +13014,9 @@ var $;
 				(this.Alert_demo()), 
 				(this.Toasts_card()), 
 				(this.Avatars_card()), 
+				(this.Sliders_card()), 
+				(this.Progress_card()), 
+				(this.Tooltip_card()), 
 				(this.Skeletons_card()), 
 				(this.Dialog_card()), 
 				(this.Form_card()), 
@@ -12603,6 +13137,17 @@ var $;
 	($mol_mem(($.$bog_builderui_studio.prototype), "Avatar_four"));
 	($mol_mem(($.$bog_builderui_studio.prototype), "Avatars_row"));
 	($mol_mem(($.$bog_builderui_studio.prototype), "Avatars_card"));
+	($mol_mem(($.$bog_builderui_studio.prototype), "Sliders_title"));
+	($mol_mem(($.$bog_builderui_studio.prototype), "slider_value"));
+	($mol_mem(($.$bog_builderui_studio.prototype), "Slider_demo"));
+	($mol_mem(($.$bog_builderui_studio.prototype), "Sliders_card"));
+	($mol_mem(($.$bog_builderui_studio.prototype), "Progress_title"));
+	($mol_mem(($.$bog_builderui_studio.prototype), "Progress_demo"));
+	($mol_mem(($.$bog_builderui_studio.prototype), "Progress_card"));
+	($mol_mem(($.$bog_builderui_studio.prototype), "Tooltip_title"));
+	($mol_mem(($.$bog_builderui_studio.prototype), "Tooltip_anchor"));
+	($mol_mem(($.$bog_builderui_studio.prototype), "Tooltip_demo"));
+	($mol_mem(($.$bog_builderui_studio.prototype), "Tooltip_card"));
 	($mol_mem(($.$bog_builderui_studio.prototype), "Skeletons_title"));
 	($mol_mem(($.$bog_builderui_studio.prototype), "Skeleton_title_line"));
 	($mol_mem(($.$bog_builderui_studio.prototype), "Skeleton_line_one"));
@@ -13221,6 +13766,14 @@ var $;
                 direction: 'row',
             },
             gap: '0.5rem',
+        },
+        Sliders_title: card_title,
+        Progress_title: card_title,
+        Tooltip_title: card_title,
+        Dialog_open_btn: {
+            align: {
+                self: 'flex-start',
+            },
         },
         Skeletons_title: card_title,
         Skeleton_title_line: {
