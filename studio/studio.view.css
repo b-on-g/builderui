@@ -18,3 +18,33 @@
 	padding: 4px;
 	box-sizing: border-box;
 }
+
+@media (max-width: 900px) {
+	[bog_builderui_studio] {
+		flex-direction: column;
+	}
+	[bog_builderui_studio] [bog_builderui_studio_sidebar] {
+		min-width: 0;
+		max-width: 100%;
+		width: 100%;
+	}
+}
+
+@media (max-width: 720px) {
+	[bog_builderui_studio] [bog_builderui_studio_stack] {
+		min-width: 0;
+		column-width: auto;
+		column-count: 1;
+		padding: 0.75rem;
+	}
+	[bog_builderui_studio] [bog_builderui_studio_pick] {
+		padding: 0.5rem 0.75rem;
+	}
+	[bog_builderui_studio] [bog_builderui_card] {
+		padding: 0.75rem 1rem;
+		min-width: 0 !important;
+	}
+	[bog_builderui_studio] [mol_chart] {
+		min-width: 0 !important;
+	}
+}
