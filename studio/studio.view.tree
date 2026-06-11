@@ -258,11 +258,14 @@ $bog_builderui_studio $bog_builderui_div
 		<= Get_code_dialog $bog_builderui_dialog
 			showed? <=> get_code_showed? false
 			title \Get Code
-			text \Pick an app name — it becomes the $bog_<name>_* namespace inside the kit.
+			text \Components will be exported as $<namespace>_<app>_*. Namespace can be empty.
 			confirm_title \Download
 			close? <=> get_code_close? null
 			confirm? <=> get_code_confirm? null
 			content /
+				<= Namespace_field $bog_builderui_field
+					hint \bog (optional)
+					value? <=> namespace? \bog
 				<= App_name_field $bog_builderui_field
 					hint \myapp
 					value? <=> app_name? \myapp
