@@ -9974,7 +9974,7 @@ var $;
 "use strict";
 var $;
 (function ($) {
-    $mol_style_attach("bog/builderui/select/select.view.css", "[bog_builderui_select] {\n\ttransition: background-color 120ms, border-color 120ms;\n\tcursor: pointer;\n}\n\n[bog_builderui_select]:hover {\n\tbackground-color: var(--bog_builderui_hover);\n\tborder-color: var(--bog_builderui_focus);\n}\n\n[bog_builderui_select] [mol_select_trigger],\n[bog_builderui_select] [mol_select_trigger]:hover,\n[bog_builderui_select] [mol_check],\n[bog_builderui_select] [mol_check]:hover {\n\tbackground-color: transparent !important;\n}\n");
+    $mol_style_attach("bog/builderui/select/select.view.css", "[bog_builderui_select] {\n\ttransition: background-color 120ms, border-color 120ms;\n\tcursor: pointer;\n}\n\n[bog_builderui_select]:hover {\n\tbackground-color: var(--bog_builderui_hover);\n\tborder-color: var(--bog_builderui_focus);\n}\n\n[bog_builderui_select] [mol_select_trigger],\n[bog_builderui_select] [mol_select_trigger]:hover,\n[bog_builderui_select] [mol_select_trigger]:focus,\n[bog_builderui_select] [mol_select_trigger]:focus-visible,\n[bog_builderui_select] [mol_check],\n[bog_builderui_select] [mol_check]:hover,\n[bog_builderui_select] [mol_check]:focus,\n[bog_builderui_select] [mol_check]:focus-visible {\n\tbackground-color: transparent !important;\n\tbox-shadow: none !important;\n\toutline: none !important;\n\tfilter: none !important;\n\tcolor: inherit !important;\n}\n");
 })($ || ($ = {}));
 
 ;
