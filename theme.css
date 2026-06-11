@@ -1,42 +1,153 @@
-@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Manrope:wght@400;500;600;700&family=DM+Sans:wght@400;500;600;700&family=EB+Garamond:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
 
 :root {
-	--builderui_hue: 230deg;
-	--builderui_hue_spread: 90deg;
-	--builderui_radius: 8px;
-	--builderui_font_body: 'Manrope', system-ui, sans-serif;
-	--builderui_font_head: 'Manrope', system-ui, sans-serif;
+	--builderui_font_body: 'Inter', system-ui, sans-serif;
+	--builderui_font_head: 'Inter', system-ui, sans-serif;
+	--builderui_radius: 0.5rem;
 }
+
+/* ============================================================
+   RADIUS PRESETS
+   ============================================================ */
+[builderui_radius="none"] { --builderui_radius: 0; }
+[builderui_radius="small"] { --builderui_radius: 0.25rem; }
+[builderui_radius="medium"] { --builderui_radius: 0.5rem; }
+[builderui_radius="large"] { --builderui_radius: 1rem; }
+
+/* ============================================================
+   BODY FONT
+   ============================================================ */
+[builderui_font_body="inter"] { --builderui_font_body: 'Inter', system-ui, sans-serif; }
+[builderui_font_body="manrope"] { --builderui_font_body: 'Manrope', system-ui, sans-serif; }
+[builderui_font_body="dm-sans"] { --builderui_font_body: 'DM Sans', system-ui, sans-serif; }
+[builderui_font_body="eb-garamond"] { --builderui_font_body: 'EB Garamond', Georgia, serif; }
+
+/* ============================================================
+   HEADING FONT
+   ============================================================ */
+[builderui_font_head="inter"] { --builderui_font_head: 'Inter', system-ui, sans-serif; }
+[builderui_font_head="manrope"] { --builderui_font_head: 'Manrope', system-ui, sans-serif; }
+[builderui_font_head="dm-sans"] { --builderui_font_head: 'DM Sans', system-ui, sans-serif; }
+[builderui_font_head="eb-garamond"] { --builderui_font_head: 'EB Garamond', Georgia, serif; }
+
+/* ============================================================
+   BASE COLORS (neutral palette)
+   Vars: back, card, field, text, shade, line, hover
+   ============================================================ */
+
+/* === Slate (default) === */
+:root,
+[builderui_base="slate"][builderui_lights="dark"] {
+	--builderui_back: #020817;
+	--builderui_card: #0f172a;
+	--builderui_field: #1e293b;
+	--builderui_text: #f8fafc;
+	--builderui_shade: #94a3b8;
+	--builderui_line: #1e293b;
+	--builderui_hover: #ffffff0d;
+}
+[builderui_base="slate"][builderui_lights="light"] {
+	--builderui_back: #ffffff;
+	--builderui_card: #f8fafc;
+	--builderui_field: #f1f5f9;
+	--builderui_text: #0f172a;
+	--builderui_shade: #64748b;
+	--builderui_line: #e2e8f0;
+	--builderui_hover: #0000000a;
+}
+
+/* === Stone === */
+[builderui_base="stone"][builderui_lights="dark"] {
+	--builderui_back: #0c0a09;
+	--builderui_card: #1c1917;
+	--builderui_field: #292524;
+	--builderui_text: #fafaf9;
+	--builderui_shade: #a8a29e;
+	--builderui_line: #292524;
+	--builderui_hover: #ffffff0d;
+}
+[builderui_base="stone"][builderui_lights="light"] {
+	--builderui_back: #fafaf9;
+	--builderui_card: #ffffff;
+	--builderui_field: #f5f5f4;
+	--builderui_text: #0c0a09;
+	--builderui_shade: #78716c;
+	--builderui_line: #e7e5e4;
+	--builderui_hover: #0000000a;
+}
+
+/* === Zinc === */
+[builderui_base="zinc"][builderui_lights="dark"] {
+	--builderui_back: #09090b;
+	--builderui_card: #18181b;
+	--builderui_field: #27272a;
+	--builderui_text: #fafafa;
+	--builderui_shade: #a1a1aa;
+	--builderui_line: #27272a;
+	--builderui_hover: #ffffff0d;
+}
+[builderui_base="zinc"][builderui_lights="light"] {
+	--builderui_back: #ffffff;
+	--builderui_card: #fafafa;
+	--builderui_field: #f4f4f5;
+	--builderui_text: #09090b;
+	--builderui_shade: #71717a;
+	--builderui_line: #e4e4e7;
+	--builderui_hover: #0000000a;
+}
+
+/* === Gray === */
+[builderui_base="gray"][builderui_lights="dark"] {
+	--builderui_back: #030712;
+	--builderui_card: #111827;
+	--builderui_field: #1f2937;
+	--builderui_text: #f9fafb;
+	--builderui_shade: #9ca3af;
+	--builderui_line: #1f2937;
+	--builderui_hover: #ffffff0d;
+}
+[builderui_base="gray"][builderui_lights="light"] {
+	--builderui_back: #ffffff;
+	--builderui_card: #f9fafb;
+	--builderui_field: #f3f4f6;
+	--builderui_text: #030712;
+	--builderui_shade: #6b7280;
+	--builderui_line: #e5e7eb;
+	--builderui_hover: #0000000a;
+}
+
+/* ============================================================
+   ACCENT THEMES (vars: control, focus, current, special)
+   ============================================================ */
 
 :root,
-[builderui_lights="dark"],
-:where([builderui_lights="dark"]) [builderui_lights] {
-	--builderui_luma: -1;
-	--builderui_back: oklch(20% .03 var(--builderui_hue));
-	--builderui_card: oklch(28% .05 var(--builderui_hue) / .25);
-	--builderui_field: oklch(15% .01 var(--builderui_hue) / .25);
-	--builderui_hover: oklch(70% 0 var(--builderui_hue) / .1);
-	--builderui_text: oklch(82% .01 var(--builderui_hue));
-	--builderui_shade: oklch(60% 0 var(--builderui_hue));
-	--builderui_line: oklch(60% 0 var(--builderui_hue) / .25);
-	--builderui_focus: oklch(80% .2 calc(var(--builderui_hue) + 180deg));
-	--builderui_control: oklch(70% .15 var(--builderui_hue));
-	--builderui_current: oklch(70% .2 calc(var(--builderui_hue) - var(--builderui_hue_spread)));
-	--builderui_special: oklch(70% .2 calc(var(--builderui_hue) + var(--builderui_hue_spread)));
+[builderui_theme="sky"] {
+	--builderui_control: #0ea5e9;
+	--builderui_focus: #38bdf8;
+	--builderui_current: #06b6d4;
+	--builderui_special: #6366f1;
 }
-
-[builderui_lights="light"],
-:where([builderui_lights="light"]) [builderui_lights] {
-	--builderui_luma: 1;
-	--builderui_back: oklch(98% .005 var(--builderui_hue));
-	--builderui_card: oklch(100% 0 var(--builderui_hue) / .5);
-	--builderui_field: oklch(96% .01 var(--builderui_hue) / .75);
-	--builderui_hover: oklch(50% 0 var(--builderui_hue) / .08);
-	--builderui_text: oklch(18% .005 var(--builderui_hue));
-	--builderui_shade: oklch(50% 0 var(--builderui_hue));
-	--builderui_line: oklch(88% .01 var(--builderui_hue));
-	--builderui_focus: oklch(55% .22 calc(var(--builderui_hue) + 180deg));
-	--builderui_control: oklch(45% .18 var(--builderui_hue));
-	--builderui_current: oklch(50% .2 calc(var(--builderui_hue) - var(--builderui_hue_spread)));
-	--builderui_special: oklch(50% .2 calc(var(--builderui_hue) + var(--builderui_hue_spread)));
+[builderui_theme="rose"] {
+	--builderui_control: #f43f5e;
+	--builderui_focus: #fb7185;
+	--builderui_current: #ec4899;
+	--builderui_special: #f97316;
+}
+[builderui_theme="violet"] {
+	--builderui_control: #8b5cf6;
+	--builderui_focus: #a78bfa;
+	--builderui_current: #6366f1;
+	--builderui_special: #d946ef;
+}
+[builderui_theme="emerald"] {
+	--builderui_control: #10b981;
+	--builderui_focus: #34d399;
+	--builderui_current: #14b8a6;
+	--builderui_special: #84cc16;
+}
+[builderui_theme="amber"] {
+	--builderui_control: #f59e0b;
+	--builderui_focus: #fbbf24;
+	--builderui_current: #f97316;
+	--builderui_special: #eab308;
 }
