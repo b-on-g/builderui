@@ -197,14 +197,7 @@
 }
 
 [bog_builderui_lights] [mol_select_filter] {
-	background-color: var(--bog_builderui_field);
-	color: var(--bog_builderui_text);
-	border: 1px solid var(--bog_builderui_line);
-	border-radius: calc(var(--bog_builderui_radius) - 2px);
-	padding: 0.5rem 0.75rem;
-	margin-bottom: 0.25rem;
-	font-family: var(--bog_builderui_font_body);
-	font-size: 0.9rem;
+	display: none;
 }
 
 [bog_builderui_lights] [mol_select_option_row] {
