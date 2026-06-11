@@ -236,6 +236,7 @@
     "$mol_math_round",
     "$mol_math",
     "$mol_plot_ruler_vert",
+    "$bog_builderui_gallery",
     "$bog_builderui_dialog",
     "$mol_state_arg"
   ],

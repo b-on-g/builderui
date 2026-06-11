@@ -634,9 +634,17 @@ $mol_button_major $mol_button_minor
 $bog_builderui_button $mol_button_minor
 	minimal_height 32
 	minimal_width 0
+	variant \default
+	attr *
+		^
+		bog_builderui_button_variant <= variant
 
 $bog_builderui_badge $bog_builderui_div
 	title \
+	variant \default
+	attr *
+		^
+		bog_builderui_badge_variant <= variant
 	sub /
 		<= title
 
@@ -862,6 +870,13 @@ $mol_plot_ruler_vert $mol_plot_ruler
 	background_height \100%
 	background_width <= title_pos_x
 
+$bog_builderui_gallery $mol_gallery
+	-
+	Side* $bog_builderui_gallery
+		style *
+			flexGrow <= side_size* \1
+		items <= side_items* /$mol_view
+
 $bog_builderui_dialog $bog_builderui_div
 	showed? false
 	title \
@@ -978,18 +993,33 @@ $bog_builderui_studio $bog_builderui_div
 				title \Get Code
 				click? <=> get_code? null
 		<= Preview $mol_scroll sub /
-			<= Stack $mol_gallery items /
+			<= Stack $bog_builderui_gallery items /
 				<= Buttons_card $bog_builderui_card sub /
 					<= Buttons_title $mol_view sub / \Buttons
 					<= Btns_row $mol_view sub /
 						<= Btn_primary $bog_builderui_button title \Primary
-						<= Btn_secondary $bog_builderui_button title \Secondary
+						<= Btn_secondary $bog_builderui_button
+							title \Secondary
+							variant \secondary
+						<= Btn_outline $bog_builderui_button
+							title \Outline
+							variant \outline
+						<= Btn_ghost $bog_builderui_button
+							title \Ghost
+							variant \ghost
 				<= Badges_card $bog_builderui_card sub /
 					<= Badges_title $mol_view sub / \Badges
 					<= Badges_row $mol_view sub /
 						<= Badge_one $bog_builderui_badge title \Active
-						<= Badge_two $bog_builderui_badge title \Beta
-						<= Badge_three $bog_builderui_badge title \Pro
+						<= Badge_two $bog_builderui_badge
+							title \Beta
+							variant \secondary
+						<= Badge_three $bog_builderui_badge
+							title \Pro
+							variant \outline
+						<= Badge_four $bog_builderui_badge
+							title \Hot
+							variant \destructive
 				<= Tabs_card $bog_builderui_card sub /
 					<= Tabs_title $mol_view sub / \Tabs
 					<= Tabs_demo $bog_builderui_tabs

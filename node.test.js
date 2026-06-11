@@ -4782,6 +4782,13 @@ var $;
             left: '0.75rem',
             right: '0.75rem',
         },
+        flex: {
+            grow: 0,
+            shrink: 0,
+        },
+        align: {
+            self: 'stretch',
+        },
     });
 })($ || ($ = {}));
 
@@ -10237,8 +10244,21 @@ var $;
 		minimal_width(){
 			return 0;
 		}
+		variant(){
+			return "default";
+		}
+		attr(){
+			return {...(super.attr()), "bog_builderui_button_variant": (this.variant())};
+		}
 	};
 
+
+;
+"use strict";
+var $;
+(function ($) {
+    $mol_style_attach("bog/builderui/button/button.view.css", "[bog_builderui_button][bog_builderui_button_variant=\"secondary\"] {\n\tbackground-color: var(--bog_builderui_field);\n\tcolor: var(--bog_builderui_text);\n\tborder: 1px solid var(--bog_builderui_line);\n}\n\n[bog_builderui_button][bog_builderui_button_variant=\"outline\"] {\n\tbackground-color: transparent;\n\tcolor: var(--bog_builderui_text);\n\tborder: 1px solid var(--bog_builderui_line);\n}\n\n[bog_builderui_button][bog_builderui_button_variant=\"ghost\"] {\n\tbackground-color: transparent;\n\tcolor: var(--bog_builderui_text);\n\tborder: 0;\n}\n\n[bog_builderui_button][bog_builderui_button_variant=\"destructive\"] {\n\tbackground-color: #ef4444;\n\tcolor: #fafafa;\n\tborder: 0;\n}\n\n[bog_builderui_button][bog_builderui_button_variant=\"secondary\"]:hover,\n[bog_builderui_button][bog_builderui_button_variant=\"outline\"]:hover,\n[bog_builderui_button][bog_builderui_button_variant=\"ghost\"]:hover {\n\tbackground-color: var(--bog_builderui_hover);\n}\n");
+})($ || ($ = {}));
 
 ;
 "use strict";
@@ -10276,11 +10296,24 @@ var $;
 		title(){
 			return "";
 		}
+		variant(){
+			return "default";
+		}
+		attr(){
+			return {...(super.attr()), "bog_builderui_badge_variant": (this.variant())};
+		}
 		sub(){
 			return [(this.title())];
 		}
 	};
 
+
+;
+"use strict";
+var $;
+(function ($) {
+    $mol_style_attach("bog/builderui/badge/badge.view.css", "[bog_builderui_badge][bog_builderui_badge_variant=\"secondary\"] {\n\tbackground-color: var(--bog_builderui_field);\n\tcolor: var(--bog_builderui_text);\n}\n\n[bog_builderui_badge][bog_builderui_badge_variant=\"outline\"] {\n\tbackground-color: transparent;\n\tcolor: var(--bog_builderui_text);\n\tborder: 1px solid var(--bog_builderui_line);\n}\n\n[bog_builderui_badge][bog_builderui_badge_variant=\"destructive\"] {\n\tbackground-color: #ef4444;\n\tcolor: #fafafa;\n}\n");
+})($ || ($ = {}));
 
 ;
 "use strict";
@@ -10716,7 +10749,9 @@ var $;
             flex: {
                 direction: 'column',
                 grow: 1,
+                shrink: 1,
             },
+            minWidth: 0,
             gap: '0.125rem',
         },
         Title: {
@@ -10732,6 +10767,8 @@ var $;
             font: {
                 size: '0.85rem',
             },
+            whiteSpace: 'normal',
+            overflowWrap: 'anywhere',
         },
     });
 })($ || ($ = {}));
@@ -11329,6 +11366,25 @@ var $;
             right: '0.375rem',
         },
         gap: '0.125rem',
+        flex: {
+            direction: 'column',
+            grow: 0,
+            shrink: 0,
+        },
+        align: {
+            self: 'stretch',
+        },
+        minWidth: 0,
+        maxWidth: 'none',
+        box: {
+            shadow: [{
+                    x: 0,
+                    y: 0,
+                    blur: 0,
+                    spread: 0,
+                    color: 'transparent',
+                }],
+        },
     });
     $mol_style_define($bog_builderui_menu_item, {
         justify: {
@@ -11351,6 +11407,10 @@ var $;
         font: {
             family: $bog_builderui_tokens.font_body,
             size: '0.9rem',
+        },
+        flex: {
+            grow: 0,
+            shrink: 0,
         },
     });
 })($ || ($ = {}));
@@ -12109,6 +12169,75 @@ var $;
 })($ || ($ = {}));
 
 ;
+	($.$bog_builderui_gallery) = class $bog_builderui_gallery extends ($.$mol_gallery) {
+		side_size(id){
+			return "1";
+		}
+		side_items(id){
+			return [];
+		}
+		Side(id){
+			const obj = new this.$.$bog_builderui_gallery();
+			(obj.style) = () => ({"flexGrow": (this.side_size(id))});
+			(obj.items) = () => ((this.side_items(id)));
+			return obj;
+		}
+	};
+	($mol_mem_key(($.$bog_builderui_gallery.prototype), "Side"));
+
+
+;
+"use strict";
+
+
+;
+"use strict";
+var $;
+(function ($) {
+    var $$;
+    (function ($$) {
+        class $bog_builderui_gallery extends $.$bog_builderui_gallery {
+            columns_count() {
+                const n = this.items().length;
+                if (n <= 3)
+                    return 1;
+                if (n <= 6)
+                    return 2;
+                if (n <= 12)
+                    return 3;
+                return 4;
+            }
+            sub() {
+                const items = this.items();
+                const cols = this.columns_count();
+                if (cols <= 1)
+                    return items;
+                const sides = [];
+                for (let i = 0; i < cols; ++i)
+                    sides.push(this.Side(i));
+                return sides;
+            }
+            side_items(id) {
+                const items = this.items();
+                const cols = this.columns_count();
+                const per = Math.ceil(items.length / cols);
+                return items.slice(id * per, (id + 1) * per);
+            }
+            side_size(id) {
+                return String(this.side_items(id).length);
+            }
+        }
+        __decorate([
+            $mol_mem
+        ], $bog_builderui_gallery.prototype, "sub", null);
+        __decorate([
+            $mol_mem_key
+        ], $bog_builderui_gallery.prototype, "side_items", null);
+        $$.$bog_builderui_gallery = $bog_builderui_gallery;
+    })($$ = $.$$ || ($.$$ = {}));
+})($ || ($ = {}));
+
+;
 	($.$bog_builderui_dialog) = class $bog_builderui_dialog extends ($.$bog_builderui_div) {
 		close(next){
 			if(next !== undefined) return next;
@@ -12498,11 +12627,29 @@ var $;
 		Btn_secondary(){
 			const obj = new this.$.$bog_builderui_button();
 			(obj.title) = () => ("Secondary");
+			(obj.variant) = () => ("secondary");
+			return obj;
+		}
+		Btn_outline(){
+			const obj = new this.$.$bog_builderui_button();
+			(obj.title) = () => ("Outline");
+			(obj.variant) = () => ("outline");
+			return obj;
+		}
+		Btn_ghost(){
+			const obj = new this.$.$bog_builderui_button();
+			(obj.title) = () => ("Ghost");
+			(obj.variant) = () => ("ghost");
 			return obj;
 		}
 		Btns_row(){
 			const obj = new this.$.$mol_view();
-			(obj.sub) = () => ([(this.Btn_primary()), (this.Btn_secondary())]);
+			(obj.sub) = () => ([
+				(this.Btn_primary()), 
+				(this.Btn_secondary()), 
+				(this.Btn_outline()), 
+				(this.Btn_ghost())
+			]);
 			return obj;
 		}
 		Buttons_card(){
@@ -12523,11 +12670,19 @@ var $;
 		Badge_two(){
 			const obj = new this.$.$bog_builderui_badge();
 			(obj.title) = () => ("Beta");
+			(obj.variant) = () => ("secondary");
 			return obj;
 		}
 		Badge_three(){
 			const obj = new this.$.$bog_builderui_badge();
 			(obj.title) = () => ("Pro");
+			(obj.variant) = () => ("outline");
+			return obj;
+		}
+		Badge_four(){
+			const obj = new this.$.$bog_builderui_badge();
+			(obj.title) = () => ("Hot");
+			(obj.variant) = () => ("destructive");
 			return obj;
 		}
 		Badges_row(){
@@ -12535,7 +12690,8 @@ var $;
 			(obj.sub) = () => ([
 				(this.Badge_one()), 
 				(this.Badge_two()), 
-				(this.Badge_three())
+				(this.Badge_three()), 
+				(this.Badge_four())
 			]);
 			return obj;
 		}
@@ -13003,7 +13159,7 @@ var $;
 			return obj;
 		}
 		Stack(){
-			const obj = new this.$.$mol_gallery();
+			const obj = new this.$.$bog_builderui_gallery();
 			(obj.items) = () => ([
 				(this.Buttons_card()), 
 				(this.Badges_card()), 
@@ -13103,12 +13259,15 @@ var $;
 	($mol_mem(($.$bog_builderui_studio.prototype), "Buttons_title"));
 	($mol_mem(($.$bog_builderui_studio.prototype), "Btn_primary"));
 	($mol_mem(($.$bog_builderui_studio.prototype), "Btn_secondary"));
+	($mol_mem(($.$bog_builderui_studio.prototype), "Btn_outline"));
+	($mol_mem(($.$bog_builderui_studio.prototype), "Btn_ghost"));
 	($mol_mem(($.$bog_builderui_studio.prototype), "Btns_row"));
 	($mol_mem(($.$bog_builderui_studio.prototype), "Buttons_card"));
 	($mol_mem(($.$bog_builderui_studio.prototype), "Badges_title"));
 	($mol_mem(($.$bog_builderui_studio.prototype), "Badge_one"));
 	($mol_mem(($.$bog_builderui_studio.prototype), "Badge_two"));
 	($mol_mem(($.$bog_builderui_studio.prototype), "Badge_three"));
+	($mol_mem(($.$bog_builderui_studio.prototype), "Badge_four"));
 	($mol_mem(($.$bog_builderui_studio.prototype), "Badges_row"));
 	($mol_mem(($.$bog_builderui_studio.prototype), "Badges_card"));
 	($mol_mem(($.$bog_builderui_studio.prototype), "Tabs_title"));
@@ -13773,6 +13932,11 @@ var $;
         Avatars_row: {
             flex: {
                 direction: 'row',
+                grow: 0,
+                shrink: 0,
+            },
+            align: {
+                items: 'flex-start',
             },
             gap: '0.5rem',
         },
@@ -13871,10 +14035,10 @@ var $;
             color: $bog_builderui_tokens.shade,
         },
         Chart_card: {
-            minHeight: '320px',
+            minHeight: '420px',
         },
         Chart_demo: {
-            minHeight: '240px',
+            minHeight: '340px',
             flex: {
                 grow: 1,
             },
