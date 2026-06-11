@@ -17,14 +17,17 @@ $bog_builderui_studio $bog_builderui_div
 			<= Base_pick $bog_builderui_studio_pick
 				label \Base Color
 				value <= base_label \Slate
+				dot_color \var(--bog_builderui_shade)
 				click? <=> base_cycle? null
 			<= Theme_pick $bog_builderui_studio_pick
 				label \Theme
 				value <= theme_label \Sky
+				dot_color \var(--bog_builderui_control)
 				click? <=> theme_cycle? null
 			<= Chart_pick $bog_builderui_studio_pick
 				label \Chart Color
 				value <= chart_label \Blue
+				dot_color \var(--bog_builderui_chart)
 				click? <=> chart_cycle? null
 			<= Head_pick $bog_builderui_studio_pick
 				label \Heading

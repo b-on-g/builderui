@@ -52,5 +52,20 @@ namespace $ {
 			},
 			color: '#fafafa',
 		},
+		Dot: {
+			align: {
+				self: 'center',
+			},
+			width: '14px',
+			height: '14px',
+			minWidth: '14px',
+			border: {
+				radius: '50%',
+				width: 0,
+			},
+			background: {
+				color: 'var(--bog_builderui_studio_pick_dot)',
+			},
+		},
 	} )
 }
