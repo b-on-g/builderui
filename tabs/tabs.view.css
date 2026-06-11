@@ -1,0 +1,20 @@
+[bog_builderui_tabs] [mol_check] {
+	background-color: transparent;
+	color: var(--bog_builderui_shade);
+	border-radius: calc(var(--bog_builderui_radius) - 2px);
+	padding: 0.375rem 0.875rem;
+	font-family: var(--bog_builderui_font_body);
+	font-weight: 500;
+	box-shadow: none;
+	transition: background-color 120ms, color 120ms;
+}
+
+[bog_builderui_tabs] [mol_check]:hover {
+	color: var(--bog_builderui_text);
+}
+
+[bog_builderui_tabs] [mol_check][mol_check_checked="true"] {
+	background-color: var(--bog_builderui_back);
+	color: var(--bog_builderui_text);
+	box-shadow: 0 1px 2px #00000033, 0 0 0 1px var(--bog_builderui_line);
+}

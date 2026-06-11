@@ -246,12 +246,14 @@ namespace $ {
 		Btns_row: {
 			flex: {
 				direction: 'row',
+				wrap: 'wrap',
 			},
 			gap: '0.5rem',
 		},
 		Badges_row: {
 			flex: {
 				direction: 'row',
+				wrap: 'wrap',
 			},
 			gap: '0.5rem',
 		},
@@ -267,12 +269,16 @@ namespace $ {
 		Toasts_card: {
 			gap: '0.75rem',
 		},
+		Avatars_card: {
+			maxHeight: '140px',
+		},
 		Avatars_title: card_title,
 		Avatars_row: {
 			flex: {
 				direction: 'row',
 				grow: 0,
 				shrink: 0,
+				wrap: 'wrap',
 			},
 			align: {
 				items: 'flex-start',
@@ -375,12 +381,19 @@ namespace $ {
 		},
 		Chart_card: {
 			minHeight: '420px',
+			minWidth: '420px',
 		},
 		Chart_demo: {
 			minHeight: '340px',
 			flex: {
 				grow: 1,
 			},
+		},
+		Field_card: {
+			maxHeight: '160px',
+		},
+		Menu_card: {
+			maxHeight: '220px',
 		},
 	} )
 }

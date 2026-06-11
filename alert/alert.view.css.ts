@@ -5,6 +5,14 @@ namespace $ {
 			color: $bog_builderui_tokens.focus,
 		},
 		gap: '0.25rem',
+		flex: {
+			grow: 0,
+			shrink: 0,
+		},
+		align: {
+			self: 'stretch',
+		},
+		maxHeight: '140px',
 		Alert_title: {
 			font: {
 				family: $bog_builderui_tokens.font_head,
