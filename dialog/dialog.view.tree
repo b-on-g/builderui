@@ -2,6 +2,8 @@ $bog_builderui_dialog $bog_builderui_div
 	showed? false
 	title \
 	text \
+	content /
+	confirm_title \Confirm
 	close? null
 	confirm? null
 	attr *
@@ -15,10 +17,11 @@ $bog_builderui_dialog $bog_builderui_div
 				<= title
 			<= Surface_text $mol_view sub /
 				<= text
+			<= Surface_content $mol_view sub <= content
 			<= Surface_actions $mol_view sub /
 				<= Cancel $bog_builderui_button
 					title \Cancel
 					click? <=> close? null
 				<= Confirm $bog_builderui_button
-					title \Confirm
+					title <= confirm_title
 					click? <=> confirm? null
