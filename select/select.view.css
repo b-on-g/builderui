@@ -15,7 +15,11 @@
 [bog_builderui_select] [mol_check],
 [bog_builderui_select] [mol_check]:hover,
 [bog_builderui_select] [mol_check]:focus,
-[bog_builderui_select] [mol_check]:focus-visible {
+[bog_builderui_select] [mol_check]:focus-visible,
+[bog_builderui_select] [mol_button_typed],
+[bog_builderui_select] [mol_button_typed]:hover,
+[bog_builderui_select] [mol_button_typed]:focus,
+[bog_builderui_select] [mol_button_typed]:focus-visible {
 	background-color: transparent !important;
 	box-shadow: none !important;
 	outline: none !important;
