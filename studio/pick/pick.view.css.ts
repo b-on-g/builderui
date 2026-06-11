@@ -9,6 +9,7 @@ namespace $ {
 			content: 'flex-start',
 		},
 		align: {
+			self: 'stretch',
 			items: 'stretch',
 		},
 		padding: {

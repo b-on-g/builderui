@@ -1,13 +1,12 @@
-$bog_builderui_studio_pick $mol_button
+$bog_builderui_studio_pick $mol_select
 	label \
-	value \
 	dot_color \transparent
 	style *
 		--bog_builderui_studio_pick_dot <= dot_color
-	sub /
+	trigger_content /
 		<= Texts $mol_view sub /
 			<= Label $mol_view sub /
 				<= label
 			<= Value $mol_view sub /
-				<= value
+				<= title
 		<= Dot $mol_view

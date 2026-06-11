@@ -12,39 +12,67 @@ $bog_builderui_studio $bog_builderui_div
 			<= Title $mol_view sub / \BuilderUI
 			<= Style_pick $bog_builderui_studio_pick
 				label \Style
-				value <= style_label \Default
-				click? <=> style_cycle? null
+				value? <=> style_id? \Default
+				dictionary <= style_dict *
 			<= Base_pick $bog_builderui_studio_pick
 				label \Base Color
-				value <= base_label \Slate
+				value? <=> base? \slate
 				dot_color \var(--bog_builderui_shade)
-				click? <=> base_cycle? null
+				dictionary *
+					slate \Slate
+					stone \Stone
+					zinc \Zinc
+					gray \Gray
 			<= Theme_pick $bog_builderui_studio_pick
 				label \Theme
-				value <= theme_label \Sky
+				value? <=> theme? \sky
 				dot_color \var(--bog_builderui_control)
-				click? <=> theme_cycle? null
+				dictionary *
+					sky \Sky
+					rose \Rose
+					violet \Violet
+					emerald \Emerald
+					amber \Amber
 			<= Chart_pick $bog_builderui_studio_pick
 				label \Chart Color
-				value <= chart_label \Blue
+				value? <=> chart? \blue
 				dot_color \var(--bog_builderui_chart)
-				click? <=> chart_cycle? null
+				dictionary *
+					blue \Blue
+					green \Green
+					red \Red
+					yellow \Yellow
+					purple \Purple
 			<= Head_pick $bog_builderui_studio_pick
 				label \Heading
-				value <= font_head_label \Inter
-				click? <=> font_head_cycle? null
+				value? <=> font_head? \inter
+				dictionary *
+					inter \Inter
+					manrope \Manrope
+					dm-sans \DM Sans
+					eb-garamond \EB Garamond
 			<= Body_pick $bog_builderui_studio_pick
 				label \Font
-				value <= font_body_label \Inter
-				click? <=> font_body_cycle? null
+				value? <=> font_body? \inter
+				dictionary *
+					inter \Inter
+					manrope \Manrope
+					dm-sans \DM Sans
+					eb-garamond \EB Garamond
 			<= Radius_pick $bog_builderui_studio_pick
 				label \Radius
-				value <= radius_label \Medium
-				click? <=> radius_cycle? null
+				value? <=> radius? \medium
+				dictionary *
+					none \None
+					small \Small
+					medium \Medium
+					large \Large
 			<= Lights_pick $bog_builderui_studio_pick
 				label \Mode
-				value <= lights_label \Dark
-				click? <=> lights_cycle? null
+				value? <=> lights? \dark
+				dictionary *
+					dark \Dark
+					light \Light
 			<= Spacer $mol_view
 			<= Actions_row $mol_view sub /
 				<= Shuffle $mol_button_minor
