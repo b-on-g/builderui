@@ -7544,122 +7544,127 @@ declare namespace $ {
 		,
 		ReturnType< $mol_view['sub'] >
 	>
-	type $mol_app_quine__paths_bog_builderui_studio_141 = $mol_type_enforce<
+	type $mol_app_quine__Head_bog_builderui_studio_141 = $mol_type_enforce<
+		any
+		,
+		ReturnType< $mol_app_quine['Head'] >
+	>
+	type $mol_app_quine__paths_bog_builderui_studio_142 = $mol_type_enforce<
 		readonly(any)[]
 		,
 		ReturnType< $mol_app_quine['paths'] >
 	>
-	type $bog_builderui_card__sub_bog_builderui_studio_142 = $mol_type_enforce<
+	type $bog_builderui_card__sub_bog_builderui_studio_143 = $mol_type_enforce<
 		readonly(any)[]
 		,
 		ReturnType< $bog_builderui_card['sub'] >
 	>
-	type $mol_view__sub_bog_builderui_studio_143 = $mol_type_enforce<
+	type $mol_view__sub_bog_builderui_studio_144 = $mol_type_enforce<
 		readonly(any)[]
 		,
 		ReturnType< $mol_view['sub'] >
 	>
-	type $mol_plot_bar__title_bog_builderui_studio_144 = $mol_type_enforce<
+	type $mol_plot_bar__title_bog_builderui_studio_145 = $mol_type_enforce<
 		string
 		,
 		ReturnType< $mol_plot_bar['title'] >
 	>
-	type $mol_plot_bar__series_y_bog_builderui_studio_145 = $mol_type_enforce<
+	type $mol_plot_bar__series_y_bog_builderui_studio_146 = $mol_type_enforce<
 		ReturnType< $bog_builderui_studio['chart_visits'] >
 		,
 		ReturnType< $mol_plot_bar['series_y'] >
 	>
-	type $mol_plot_bar__color_bog_builderui_studio_146 = $mol_type_enforce<
+	type $mol_plot_bar__color_bog_builderui_studio_147 = $mol_type_enforce<
 		ReturnType< $bog_builderui_studio['chart_color_visits'] >
 		,
 		ReturnType< $mol_plot_bar['color'] >
 	>
-	type $mol_plot_bar__title_bog_builderui_studio_147 = $mol_type_enforce<
+	type $mol_plot_bar__title_bog_builderui_studio_148 = $mol_type_enforce<
 		string
 		,
 		ReturnType< $mol_plot_bar['title'] >
 	>
-	type $mol_plot_bar__series_y_bog_builderui_studio_148 = $mol_type_enforce<
+	type $mol_plot_bar__series_y_bog_builderui_studio_149 = $mol_type_enforce<
 		ReturnType< $bog_builderui_studio['chart_signups'] >
 		,
 		ReturnType< $mol_plot_bar['series_y'] >
 	>
-	type $mol_plot_bar__color_bog_builderui_studio_149 = $mol_type_enforce<
+	type $mol_plot_bar__color_bog_builderui_studio_150 = $mol_type_enforce<
 		ReturnType< $bog_builderui_studio['chart_color_signups'] >
 		,
 		ReturnType< $mol_plot_bar['color'] >
 	>
-	type $mol_plot_bar__title_bog_builderui_studio_150 = $mol_type_enforce<
+	type $mol_plot_bar__title_bog_builderui_studio_151 = $mol_type_enforce<
 		string
 		,
 		ReturnType< $mol_plot_bar['title'] >
 	>
-	type $mol_plot_bar__series_y_bog_builderui_studio_151 = $mol_type_enforce<
+	type $mol_plot_bar__series_y_bog_builderui_studio_152 = $mol_type_enforce<
 		ReturnType< $bog_builderui_studio['chart_logins'] >
 		,
 		ReturnType< $mol_plot_bar['series_y'] >
 	>
-	type $mol_plot_bar__color_bog_builderui_studio_152 = $mol_type_enforce<
+	type $mol_plot_bar__color_bog_builderui_studio_153 = $mol_type_enforce<
 		ReturnType< $bog_builderui_studio['chart_color_logins'] >
 		,
 		ReturnType< $mol_plot_bar['color'] >
 	>
-	type $mol_plot_mark_hor__title_bog_builderui_studio_153 = $mol_type_enforce<
+	type $mol_plot_mark_hor__title_bog_builderui_studio_154 = $mol_type_enforce<
 		string
 		,
 		ReturnType< $mol_plot_mark_hor['title'] >
 	>
-	type $mol_plot_mark_hor__labels_bog_builderui_studio_154 = $mol_type_enforce<
+	type $mol_plot_mark_hor__labels_bog_builderui_studio_155 = $mol_type_enforce<
 		ReturnType< $bog_builderui_studio['chart_labels'] >
 		,
 		ReturnType< $mol_plot_mark_hor['labels'] >
 	>
-	type $mol_plot_ruler_vert__title_bog_builderui_studio_155 = $mol_type_enforce<
+	type $mol_plot_ruler_vert__title_bog_builderui_studio_156 = $mol_type_enforce<
 		string
 		,
 		ReturnType< $mol_plot_ruler_vert['title'] >
 	>
-	type $bog_builderui_chart__graphs_bog_builderui_studio_156 = $mol_type_enforce<
+	type $bog_builderui_chart__graphs_bog_builderui_studio_157 = $mol_type_enforce<
 		readonly(any)[]
 		,
 		ReturnType< $bog_builderui_chart['graphs'] >
 	>
-	type $bog_builderui_card__sub_bog_builderui_studio_157 = $mol_type_enforce<
+	type $bog_builderui_card__sub_bog_builderui_studio_158 = $mol_type_enforce<
 		readonly(any)[]
 		,
 		ReturnType< $bog_builderui_card['sub'] >
 	>
-	type $bog_builderui_gallery__items_bog_builderui_studio_158 = $mol_type_enforce<
+	type $bog_builderui_gallery__items_bog_builderui_studio_159 = $mol_type_enforce<
 		readonly(any)[]
 		,
 		ReturnType< $bog_builderui_gallery['items'] >
 	>
-	type $mol_scroll__sub_bog_builderui_studio_159 = $mol_type_enforce<
+	type $mol_scroll__sub_bog_builderui_studio_160 = $mol_type_enforce<
 		readonly(any)[]
 		,
 		ReturnType< $mol_scroll['sub'] >
 	>
-	type $bog_builderui_dialog__showed_bog_builderui_studio_160 = $mol_type_enforce<
+	type $bog_builderui_dialog__showed_bog_builderui_studio_161 = $mol_type_enforce<
 		ReturnType< $bog_builderui_studio['dialog_showed'] >
 		,
 		ReturnType< $bog_builderui_dialog['showed'] >
 	>
-	type $bog_builderui_dialog__title_bog_builderui_studio_161 = $mol_type_enforce<
+	type $bog_builderui_dialog__title_bog_builderui_studio_162 = $mol_type_enforce<
 		string
 		,
 		ReturnType< $bog_builderui_dialog['title'] >
 	>
-	type $bog_builderui_dialog__text_bog_builderui_studio_162 = $mol_type_enforce<
+	type $bog_builderui_dialog__text_bog_builderui_studio_163 = $mol_type_enforce<
 		string
 		,
 		ReturnType< $bog_builderui_dialog['text'] >
 	>
-	type $bog_builderui_dialog__close_bog_builderui_studio_163 = $mol_type_enforce<
+	type $bog_builderui_dialog__close_bog_builderui_studio_164 = $mol_type_enforce<
 		ReturnType< $bog_builderui_studio['dialog_close'] >
 		,
 		ReturnType< $bog_builderui_dialog['close'] >
 	>
-	type $bog_builderui_dialog__confirm_bog_builderui_studio_164 = $mol_type_enforce<
+	type $bog_builderui_dialog__confirm_bog_builderui_studio_165 = $mol_type_enforce<
 		ReturnType< $bog_builderui_studio['dialog_confirm'] >
 		,
 		ReturnType< $bog_builderui_dialog['confirm'] >

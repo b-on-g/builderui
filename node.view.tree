@@ -1538,9 +1538,8 @@ $bog_builderui_studio $bog_builderui_div
 				<= Code_card $bog_builderui_card sub /
 					<= Code_title $mol_view sub / \Sources
 					<= Code_preview $mol_app_quine
+						Head null
 						paths /
-							\bog/builderui/theme.css
-							\bog/builderui/studio/studio.view.tree
 							\bog/builderui/tokens/tokens.ts
 				<= Chart_card $bog_builderui_card sub /
 					<= Chart_title $mol_view sub / \Chart

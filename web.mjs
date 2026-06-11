@@ -15953,11 +15953,8 @@ var $;
 		}
 		Code_preview(){
 			const obj = new this.$.$mol_app_quine();
-			(obj.paths) = () => ([
-				"bog/builderui/theme.css", 
-				"bog/builderui/studio/studio.view.tree", 
-				"bog/builderui/tokens/tokens.ts"
-			]);
+			(obj.Head) = () => (null);
+			(obj.paths) = () => (["bog/builderui/tokens/tokens.ts"]);
 			return obj;
 		}
 		Code_card(){
