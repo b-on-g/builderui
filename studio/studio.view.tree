@@ -96,10 +96,18 @@ $bog_builderui_studio $bog_builderui_div
 					<= Chart_title $mol_view sub / \Chart
 					<= Chart_demo $bog_builderui_chart
 						graphs /
-							<= Chart_bar $mol_plot_bar
+							<= Chart_visits $mol_plot_bar
 								title \Visits
-								series_y <= chart_series /number
-								color <= chart_color \
+								series_y <= chart_visits /number
+								color <= chart_color_visits \
+							<= Chart_signups $mol_plot_bar
+								title \Signups
+								series_y <= chart_signups /number
+								color <= chart_color_signups \
+							<= Chart_logins $mol_plot_bar
+								title \Logins
+								series_y <= chart_logins /number
+								color <= chart_color_logins \
 							<= Chart_mark_hor $mol_plot_mark_hor
 								title \Day
 								labels <= chart_labels /string

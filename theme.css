@@ -1,34 +1,34 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Manrope:wght@400;500;600;700&family=DM+Sans:wght@400;500;600;700&family=EB+Garamond:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
 
 :root {
-	--bog_bog_builderui_font_body: 'Inter', system-ui, sans-serif;
-	--bog_bog_builderui_font_head: 'Inter', system-ui, sans-serif;
-	--bog_bog_builderui_radius: 0.5rem;
+	--bog_builderui_font_body: 'Inter', system-ui, sans-serif;
+	--bog_builderui_font_head: 'Inter', system-ui, sans-serif;
+	--bog_builderui_radius: 0.5rem;
 }
 
 /* ============================================================
    RADIUS PRESETS
    ============================================================ */
-[bog_builderui_radius="none"] { --bog_bog_builderui_radius: 0; }
-[bog_builderui_radius="small"] { --bog_bog_builderui_radius: 0.25rem; }
-[bog_builderui_radius="medium"] { --bog_bog_builderui_radius: 0.5rem; }
-[bog_builderui_radius="large"] { --bog_bog_builderui_radius: 1rem; }
+[bog_builderui_radius="none"] { --bog_builderui_radius: 0; }
+[bog_builderui_radius="small"] { --bog_builderui_radius: 0.25rem; }
+[bog_builderui_radius="medium"] { --bog_builderui_radius: 0.5rem; }
+[bog_builderui_radius="large"] { --bog_builderui_radius: 1rem; }
 
 /* ============================================================
    BODY FONT
    ============================================================ */
-[bog_builderui_font_body="inter"] { --bog_bog_builderui_font_body: 'Inter', system-ui, sans-serif; }
-[bog_builderui_font_body="manrope"] { --bog_bog_builderui_font_body: 'Manrope', system-ui, sans-serif; }
-[bog_builderui_font_body="dm-sans"] { --bog_bog_builderui_font_body: 'DM Sans', system-ui, sans-serif; }
-[bog_builderui_font_body="eb-garamond"] { --bog_bog_builderui_font_body: 'EB Garamond', Georgia, serif; }
+[bog_builderui_font_body="inter"] { --bog_builderui_font_body: 'Inter', system-ui, sans-serif; }
+[bog_builderui_font_body="manrope"] { --bog_builderui_font_body: 'Manrope', system-ui, sans-serif; }
+[bog_builderui_font_body="dm-sans"] { --bog_builderui_font_body: 'DM Sans', system-ui, sans-serif; }
+[bog_builderui_font_body="eb-garamond"] { --bog_builderui_font_body: 'EB Garamond', Georgia, serif; }
 
 /* ============================================================
    HEADING FONT
    ============================================================ */
-[bog_builderui_font_head="inter"] { --bog_bog_builderui_font_head: 'Inter', system-ui, sans-serif; }
-[bog_builderui_font_head="manrope"] { --bog_bog_builderui_font_head: 'Manrope', system-ui, sans-serif; }
-[bog_builderui_font_head="dm-sans"] { --bog_bog_builderui_font_head: 'DM Sans', system-ui, sans-serif; }
-[bog_builderui_font_head="eb-garamond"] { --bog_bog_builderui_font_head: 'EB Garamond', Georgia, serif; }
+[bog_builderui_font_head="inter"] { --bog_builderui_font_head: 'Inter', system-ui, sans-serif; }
+[bog_builderui_font_head="manrope"] { --bog_builderui_font_head: 'Manrope', system-ui, sans-serif; }
+[bog_builderui_font_head="dm-sans"] { --bog_builderui_font_head: 'DM Sans', system-ui, sans-serif; }
+[bog_builderui_font_head="eb-garamond"] { --bog_builderui_font_head: 'EB Garamond', Georgia, serif; }
 
 /* ============================================================
    BASE COLORS (neutral palette)
