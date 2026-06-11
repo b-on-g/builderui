@@ -1,0 +1,3 @@
+deploy \/bog/builderui/theme.css
+deploy \/bog/builderui/studio/studio.view.tree
+deploy \/bog/builderui/tokens/tokens.ts
