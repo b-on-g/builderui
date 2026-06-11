@@ -10,7 +10,15 @@
 
 [bog_builderui_select] [mol_select_trigger],
 [bog_builderui_select] [mol_select_trigger]:hover,
+[bog_builderui_select] [mol_select_trigger]:focus,
+[bog_builderui_select] [mol_select_trigger]:focus-visible,
 [bog_builderui_select] [mol_check],
-[bog_builderui_select] [mol_check]:hover {
+[bog_builderui_select] [mol_check]:hover,
+[bog_builderui_select] [mol_check]:focus,
+[bog_builderui_select] [mol_check]:focus-visible {
 	background-color: transparent !important;
+	box-shadow: none !important;
+	outline: none !important;
+	filter: none !important;
+	color: inherit !important;
 }
