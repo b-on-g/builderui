@@ -4224,6 +4224,35 @@ declare namespace $ {
 
 declare namespace $ {
 
+	export class $mol_icon_palette extends $mol_icon {
+		path( ): string
+	}
+	
+}
+
+//# sourceMappingURL=palette.view.tree.d.ts.map
+declare namespace $ {
+
+	export class $bog_favicon extends $mol_plugin {
+		Icon( ): $mol_view
+	}
+	
+}
+
+//# sourceMappingURL=favicon.view.tree.d.ts.map
+declare namespace $.$$ {
+    /** Плагин, который ставит favicon из переданного $mol_icon_* и подобных */
+    class $bog_favicon extends $.$bog_favicon {
+        Icon(next?: $mol_view): $mol_view;
+        favicon_data(): string;
+        apply_favicon(): void;
+        auto(): any;
+        sub(): readonly [];
+    }
+}
+
+declare namespace $ {
+
 	type $mol_view__sub_bog_builderui_studio_pick_1 = $mol_type_enforce<
 		readonly(any)[]
 		,
@@ -6893,47 +6922,52 @@ declare namespace $ {
 
 declare namespace $ {
 
-	type $mol_view__sub_bog_builderui_studio_1 = $mol_type_enforce<
+	type $bog_favicon__Icon_bog_builderui_studio_1 = $mol_type_enforce<
+		ReturnType< $bog_builderui_studio['favicon_icon'] >
+		,
+		ReturnType< $bog_favicon['Icon'] >
+	>
+	type $mol_view__sub_bog_builderui_studio_2 = $mol_type_enforce<
 		readonly(any)[]
 		,
 		ReturnType< $mol_view['sub'] >
 	>
-	type $bog_builderui_studio_pick__label_bog_builderui_studio_2 = $mol_type_enforce<
+	type $bog_builderui_studio_pick__label_bog_builderui_studio_3 = $mol_type_enforce<
 		string
 		,
 		ReturnType< $bog_builderui_studio_pick['label'] >
 	>
-	type $bog_builderui_studio_pick__value_bog_builderui_studio_3 = $mol_type_enforce<
+	type $bog_builderui_studio_pick__value_bog_builderui_studio_4 = $mol_type_enforce<
 		ReturnType< $bog_builderui_studio['style_id'] >
 		,
 		ReturnType< $bog_builderui_studio_pick['value'] >
 	>
-	type $bog_builderui_studio_pick__dictionary_bog_builderui_studio_4 = $mol_type_enforce<
+	type $bog_builderui_studio_pick__dictionary_bog_builderui_studio_5 = $mol_type_enforce<
 		ReturnType< $bog_builderui_studio['style_dict'] >
 		,
 		ReturnType< $bog_builderui_studio_pick['dictionary'] >
 	>
-	type $mol_view__sub_bog_builderui_studio_5 = $mol_type_enforce<
+	type $mol_view__sub_bog_builderui_studio_6 = $mol_type_enforce<
 		readonly(any)[]
 		,
 		ReturnType< $mol_view['sub'] >
 	>
-	type $bog_builderui_studio_pick__label_bog_builderui_studio_6 = $mol_type_enforce<
+	type $bog_builderui_studio_pick__label_bog_builderui_studio_7 = $mol_type_enforce<
 		string
 		,
 		ReturnType< $bog_builderui_studio_pick['label'] >
 	>
-	type $bog_builderui_studio_pick__value_bog_builderui_studio_7 = $mol_type_enforce<
+	type $bog_builderui_studio_pick__value_bog_builderui_studio_8 = $mol_type_enforce<
 		ReturnType< $bog_builderui_studio['base'] >
 		,
 		ReturnType< $bog_builderui_studio_pick['value'] >
 	>
-	type $bog_builderui_studio_pick__dot_color_bog_builderui_studio_8 = $mol_type_enforce<
+	type $bog_builderui_studio_pick__dot_color_bog_builderui_studio_9 = $mol_type_enforce<
 		string
 		,
 		ReturnType< $bog_builderui_studio_pick['dot_color'] >
 	>
-	type $bog_builderui_studio_pick__dictionary_bog_builderui_studio_9 = $mol_type_enforce<
+	type $bog_builderui_studio_pick__dictionary_bog_builderui_studio_10 = $mol_type_enforce<
 		({ 
 			'slate': string,
 			'stone': string,
@@ -6943,22 +6977,22 @@ declare namespace $ {
 		,
 		ReturnType< $bog_builderui_studio_pick['dictionary'] >
 	>
-	type $bog_builderui_studio_pick__label_bog_builderui_studio_10 = $mol_type_enforce<
+	type $bog_builderui_studio_pick__label_bog_builderui_studio_11 = $mol_type_enforce<
 		string
 		,
 		ReturnType< $bog_builderui_studio_pick['label'] >
 	>
-	type $bog_builderui_studio_pick__value_bog_builderui_studio_11 = $mol_type_enforce<
+	type $bog_builderui_studio_pick__value_bog_builderui_studio_12 = $mol_type_enforce<
 		ReturnType< $bog_builderui_studio['theme'] >
 		,
 		ReturnType< $bog_builderui_studio_pick['value'] >
 	>
-	type $bog_builderui_studio_pick__dot_color_bog_builderui_studio_12 = $mol_type_enforce<
+	type $bog_builderui_studio_pick__dot_color_bog_builderui_studio_13 = $mol_type_enforce<
 		string
 		,
 		ReturnType< $bog_builderui_studio_pick['dot_color'] >
 	>
-	type $bog_builderui_studio_pick__dictionary_bog_builderui_studio_13 = $mol_type_enforce<
+	type $bog_builderui_studio_pick__dictionary_bog_builderui_studio_14 = $mol_type_enforce<
 		({ 
 			'sky': string,
 			'rose': string,
@@ -6969,22 +7003,22 @@ declare namespace $ {
 		,
 		ReturnType< $bog_builderui_studio_pick['dictionary'] >
 	>
-	type $bog_builderui_studio_pick__label_bog_builderui_studio_14 = $mol_type_enforce<
+	type $bog_builderui_studio_pick__label_bog_builderui_studio_15 = $mol_type_enforce<
 		string
 		,
 		ReturnType< $bog_builderui_studio_pick['label'] >
 	>
-	type $bog_builderui_studio_pick__value_bog_builderui_studio_15 = $mol_type_enforce<
+	type $bog_builderui_studio_pick__value_bog_builderui_studio_16 = $mol_type_enforce<
 		ReturnType< $bog_builderui_studio['chart'] >
 		,
 		ReturnType< $bog_builderui_studio_pick['value'] >
 	>
-	type $bog_builderui_studio_pick__dot_color_bog_builderui_studio_16 = $mol_type_enforce<
+	type $bog_builderui_studio_pick__dot_color_bog_builderui_studio_17 = $mol_type_enforce<
 		string
 		,
 		ReturnType< $bog_builderui_studio_pick['dot_color'] >
 	>
-	type $bog_builderui_studio_pick__dictionary_bog_builderui_studio_17 = $mol_type_enforce<
+	type $bog_builderui_studio_pick__dictionary_bog_builderui_studio_18 = $mol_type_enforce<
 		({ 
 			'blue': string,
 			'green': string,
@@ -6995,22 +7029,22 @@ declare namespace $ {
 		,
 		ReturnType< $bog_builderui_studio_pick['dictionary'] >
 	>
-	type $mol_view__sub_bog_builderui_studio_18 = $mol_type_enforce<
+	type $mol_view__sub_bog_builderui_studio_19 = $mol_type_enforce<
 		readonly(any)[]
 		,
 		ReturnType< $mol_view['sub'] >
 	>
-	type $bog_builderui_studio_pick__label_bog_builderui_studio_19 = $mol_type_enforce<
+	type $bog_builderui_studio_pick__label_bog_builderui_studio_20 = $mol_type_enforce<
 		string
 		,
 		ReturnType< $bog_builderui_studio_pick['label'] >
 	>
-	type $bog_builderui_studio_pick__value_bog_builderui_studio_20 = $mol_type_enforce<
+	type $bog_builderui_studio_pick__value_bog_builderui_studio_21 = $mol_type_enforce<
 		ReturnType< $bog_builderui_studio['font_head'] >
 		,
 		ReturnType< $bog_builderui_studio_pick['value'] >
 	>
-	type $bog_builderui_studio_pick__dictionary_bog_builderui_studio_21 = $mol_type_enforce<
+	type $bog_builderui_studio_pick__dictionary_bog_builderui_studio_22 = $mol_type_enforce<
 		({ 
 			'inter': string,
 			'manrope': string,
@@ -7020,17 +7054,17 @@ declare namespace $ {
 		,
 		ReturnType< $bog_builderui_studio_pick['dictionary'] >
 	>
-	type $bog_builderui_studio_pick__label_bog_builderui_studio_22 = $mol_type_enforce<
+	type $bog_builderui_studio_pick__label_bog_builderui_studio_23 = $mol_type_enforce<
 		string
 		,
 		ReturnType< $bog_builderui_studio_pick['label'] >
 	>
-	type $bog_builderui_studio_pick__value_bog_builderui_studio_23 = $mol_type_enforce<
+	type $bog_builderui_studio_pick__value_bog_builderui_studio_24 = $mol_type_enforce<
 		ReturnType< $bog_builderui_studio['font_body'] >
 		,
 		ReturnType< $bog_builderui_studio_pick['value'] >
 	>
-	type $bog_builderui_studio_pick__dictionary_bog_builderui_studio_24 = $mol_type_enforce<
+	type $bog_builderui_studio_pick__dictionary_bog_builderui_studio_25 = $mol_type_enforce<
 		({ 
 			'inter': string,
 			'manrope': string,
@@ -7040,22 +7074,22 @@ declare namespace $ {
 		,
 		ReturnType< $bog_builderui_studio_pick['dictionary'] >
 	>
-	type $mol_view__sub_bog_builderui_studio_25 = $mol_type_enforce<
+	type $mol_view__sub_bog_builderui_studio_26 = $mol_type_enforce<
 		readonly(any)[]
 		,
 		ReturnType< $mol_view['sub'] >
 	>
-	type $bog_builderui_studio_pick__label_bog_builderui_studio_26 = $mol_type_enforce<
+	type $bog_builderui_studio_pick__label_bog_builderui_studio_27 = $mol_type_enforce<
 		string
 		,
 		ReturnType< $bog_builderui_studio_pick['label'] >
 	>
-	type $bog_builderui_studio_pick__value_bog_builderui_studio_27 = $mol_type_enforce<
+	type $bog_builderui_studio_pick__value_bog_builderui_studio_28 = $mol_type_enforce<
 		ReturnType< $bog_builderui_studio['radius'] >
 		,
 		ReturnType< $bog_builderui_studio_pick['value'] >
 	>
-	type $bog_builderui_studio_pick__dictionary_bog_builderui_studio_28 = $mol_type_enforce<
+	type $bog_builderui_studio_pick__dictionary_bog_builderui_studio_29 = $mol_type_enforce<
 		({ 
 			'none': string,
 			'small': string,
@@ -7065,17 +7099,17 @@ declare namespace $ {
 		,
 		ReturnType< $bog_builderui_studio_pick['dictionary'] >
 	>
-	type $bog_builderui_studio_pick__label_bog_builderui_studio_29 = $mol_type_enforce<
+	type $bog_builderui_studio_pick__label_bog_builderui_studio_30 = $mol_type_enforce<
 		string
 		,
 		ReturnType< $bog_builderui_studio_pick['label'] >
 	>
-	type $bog_builderui_studio_pick__value_bog_builderui_studio_30 = $mol_type_enforce<
+	type $bog_builderui_studio_pick__value_bog_builderui_studio_31 = $mol_type_enforce<
 		ReturnType< $bog_builderui_studio['lights'] >
 		,
 		ReturnType< $bog_builderui_studio_pick['value'] >
 	>
-	type $bog_builderui_studio_pick__dictionary_bog_builderui_studio_31 = $mol_type_enforce<
+	type $bog_builderui_studio_pick__dictionary_bog_builderui_studio_32 = $mol_type_enforce<
 		({ 
 			'dark': string,
 			'light': string,
@@ -7083,162 +7117,162 @@ declare namespace $ {
 		,
 		ReturnType< $bog_builderui_studio_pick['dictionary'] >
 	>
-	type $mol_view__sub_bog_builderui_studio_32 = $mol_type_enforce<
+	type $mol_view__sub_bog_builderui_studio_33 = $mol_type_enforce<
 		readonly(any)[]
 		,
 		ReturnType< $mol_view['sub'] >
 	>
-	type $mol_button_minor__title_bog_builderui_studio_33 = $mol_type_enforce<
+	type $mol_button_minor__title_bog_builderui_studio_34 = $mol_type_enforce<
 		string
 		,
 		ReturnType< $mol_button_minor['title'] >
 	>
-	type $mol_button_minor__click_bog_builderui_studio_34 = $mol_type_enforce<
+	type $mol_button_minor__click_bog_builderui_studio_35 = $mol_type_enforce<
 		ReturnType< $bog_builderui_studio['shuffle'] >
 		,
 		ReturnType< $mol_button_minor['click'] >
 	>
-	type $mol_button_minor__title_bog_builderui_studio_35 = $mol_type_enforce<
+	type $mol_button_minor__title_bog_builderui_studio_36 = $mol_type_enforce<
 		string
 		,
 		ReturnType< $mol_button_minor['title'] >
 	>
-	type $mol_button_minor__click_bog_builderui_studio_36 = $mol_type_enforce<
+	type $mol_button_minor__click_bog_builderui_studio_37 = $mol_type_enforce<
 		ReturnType< $bog_builderui_studio['share'] >
 		,
 		ReturnType< $mol_button_minor['click'] >
 	>
-	type $mol_view__sub_bog_builderui_studio_37 = $mol_type_enforce<
+	type $mol_view__sub_bog_builderui_studio_38 = $mol_type_enforce<
 		readonly(any)[]
 		,
 		ReturnType< $mol_view['sub'] >
 	>
-	type $mol_button_major__title_bog_builderui_studio_38 = $mol_type_enforce<
+	type $mol_button_major__title_bog_builderui_studio_39 = $mol_type_enforce<
 		string
 		,
 		ReturnType< $mol_button_major['title'] >
 	>
-	type $mol_button_major__click_bog_builderui_studio_39 = $mol_type_enforce<
+	type $mol_button_major__click_bog_builderui_studio_40 = $mol_type_enforce<
 		ReturnType< $bog_builderui_studio['get_code'] >
 		,
 		ReturnType< $mol_button_major['click'] >
-	>
-	type $mol_view__sub_bog_builderui_studio_40 = $mol_type_enforce<
-		readonly(any)[]
-		,
-		ReturnType< $mol_view['sub'] >
 	>
 	type $mol_view__sub_bog_builderui_studio_41 = $mol_type_enforce<
 		readonly(any)[]
 		,
 		ReturnType< $mol_view['sub'] >
 	>
-	type $bog_builderui_button__title_bog_builderui_studio_42 = $mol_type_enforce<
-		string
+	type $mol_view__sub_bog_builderui_studio_42 = $mol_type_enforce<
+		readonly(any)[]
 		,
-		ReturnType< $bog_builderui_button['title'] >
+		ReturnType< $mol_view['sub'] >
 	>
 	type $bog_builderui_button__title_bog_builderui_studio_43 = $mol_type_enforce<
 		string
 		,
 		ReturnType< $bog_builderui_button['title'] >
 	>
-	type $bog_builderui_button__variant_bog_builderui_studio_44 = $mol_type_enforce<
-		string
-		,
-		ReturnType< $bog_builderui_button['variant'] >
-	>
-	type $bog_builderui_button__title_bog_builderui_studio_45 = $mol_type_enforce<
+	type $bog_builderui_button__title_bog_builderui_studio_44 = $mol_type_enforce<
 		string
 		,
 		ReturnType< $bog_builderui_button['title'] >
 	>
-	type $bog_builderui_button__variant_bog_builderui_studio_46 = $mol_type_enforce<
+	type $bog_builderui_button__variant_bog_builderui_studio_45 = $mol_type_enforce<
 		string
 		,
 		ReturnType< $bog_builderui_button['variant'] >
 	>
-	type $bog_builderui_button__title_bog_builderui_studio_47 = $mol_type_enforce<
+	type $bog_builderui_button__title_bog_builderui_studio_46 = $mol_type_enforce<
 		string
 		,
 		ReturnType< $bog_builderui_button['title'] >
 	>
-	type $bog_builderui_button__variant_bog_builderui_studio_48 = $mol_type_enforce<
+	type $bog_builderui_button__variant_bog_builderui_studio_47 = $mol_type_enforce<
 		string
 		,
 		ReturnType< $bog_builderui_button['variant'] >
 	>
-	type $mol_view__sub_bog_builderui_studio_49 = $mol_type_enforce<
+	type $bog_builderui_button__title_bog_builderui_studio_48 = $mol_type_enforce<
+		string
+		,
+		ReturnType< $bog_builderui_button['title'] >
+	>
+	type $bog_builderui_button__variant_bog_builderui_studio_49 = $mol_type_enforce<
+		string
+		,
+		ReturnType< $bog_builderui_button['variant'] >
+	>
+	type $mol_view__sub_bog_builderui_studio_50 = $mol_type_enforce<
 		readonly(any)[]
 		,
 		ReturnType< $mol_view['sub'] >
 	>
-	type $bog_builderui_card__sub_bog_builderui_studio_50 = $mol_type_enforce<
+	type $bog_builderui_card__sub_bog_builderui_studio_51 = $mol_type_enforce<
 		readonly(any)[]
 		,
 		ReturnType< $bog_builderui_card['sub'] >
 	>
-	type $mol_view__sub_bog_builderui_studio_51 = $mol_type_enforce<
+	type $mol_view__sub_bog_builderui_studio_52 = $mol_type_enforce<
 		readonly(any)[]
 		,
 		ReturnType< $mol_view['sub'] >
-	>
-	type $bog_builderui_badge__title_bog_builderui_studio_52 = $mol_type_enforce<
-		string
-		,
-		ReturnType< $bog_builderui_badge['title'] >
 	>
 	type $bog_builderui_badge__title_bog_builderui_studio_53 = $mol_type_enforce<
 		string
 		,
 		ReturnType< $bog_builderui_badge['title'] >
 	>
-	type $bog_builderui_badge__variant_bog_builderui_studio_54 = $mol_type_enforce<
-		string
-		,
-		ReturnType< $bog_builderui_badge['variant'] >
-	>
-	type $bog_builderui_badge__title_bog_builderui_studio_55 = $mol_type_enforce<
+	type $bog_builderui_badge__title_bog_builderui_studio_54 = $mol_type_enforce<
 		string
 		,
 		ReturnType< $bog_builderui_badge['title'] >
 	>
-	type $bog_builderui_badge__variant_bog_builderui_studio_56 = $mol_type_enforce<
+	type $bog_builderui_badge__variant_bog_builderui_studio_55 = $mol_type_enforce<
 		string
 		,
 		ReturnType< $bog_builderui_badge['variant'] >
 	>
-	type $bog_builderui_badge__title_bog_builderui_studio_57 = $mol_type_enforce<
+	type $bog_builderui_badge__title_bog_builderui_studio_56 = $mol_type_enforce<
 		string
 		,
 		ReturnType< $bog_builderui_badge['title'] >
 	>
-	type $bog_builderui_badge__variant_bog_builderui_studio_58 = $mol_type_enforce<
+	type $bog_builderui_badge__variant_bog_builderui_studio_57 = $mol_type_enforce<
 		string
 		,
 		ReturnType< $bog_builderui_badge['variant'] >
 	>
-	type $mol_view__sub_bog_builderui_studio_59 = $mol_type_enforce<
+	type $bog_builderui_badge__title_bog_builderui_studio_58 = $mol_type_enforce<
+		string
+		,
+		ReturnType< $bog_builderui_badge['title'] >
+	>
+	type $bog_builderui_badge__variant_bog_builderui_studio_59 = $mol_type_enforce<
+		string
+		,
+		ReturnType< $bog_builderui_badge['variant'] >
+	>
+	type $mol_view__sub_bog_builderui_studio_60 = $mol_type_enforce<
 		readonly(any)[]
 		,
 		ReturnType< $mol_view['sub'] >
 	>
-	type $bog_builderui_card__sub_bog_builderui_studio_60 = $mol_type_enforce<
+	type $bog_builderui_card__sub_bog_builderui_studio_61 = $mol_type_enforce<
 		readonly(any)[]
 		,
 		ReturnType< $bog_builderui_card['sub'] >
 	>
-	type $mol_view__sub_bog_builderui_studio_61 = $mol_type_enforce<
+	type $mol_view__sub_bog_builderui_studio_62 = $mol_type_enforce<
 		readonly(any)[]
 		,
 		ReturnType< $mol_view['sub'] >
 	>
-	type $bog_builderui_tabs__value_bog_builderui_studio_62 = $mol_type_enforce<
+	type $bog_builderui_tabs__value_bog_builderui_studio_63 = $mol_type_enforce<
 		ReturnType< $bog_builderui_studio['tabs_value'] >
 		,
 		ReturnType< $bog_builderui_tabs['value'] >
 	>
-	type $bog_builderui_tabs__options_bog_builderui_studio_63 = $mol_type_enforce<
+	type $bog_builderui_tabs__options_bog_builderui_studio_64 = $mol_type_enforce<
 		({ 
 			'overview': string,
 			'activity': string,
@@ -7247,22 +7281,22 @@ declare namespace $ {
 		,
 		ReturnType< $bog_builderui_tabs['options'] >
 	>
-	type $bog_builderui_card__sub_bog_builderui_studio_64 = $mol_type_enforce<
+	type $bog_builderui_card__sub_bog_builderui_studio_65 = $mol_type_enforce<
 		readonly(any)[]
 		,
 		ReturnType< $bog_builderui_card['sub'] >
 	>
-	type $mol_view__sub_bog_builderui_studio_65 = $mol_type_enforce<
+	type $mol_view__sub_bog_builderui_studio_66 = $mol_type_enforce<
 		readonly(any)[]
 		,
 		ReturnType< $mol_view['sub'] >
 	>
-	type $bog_builderui_select__value_bog_builderui_studio_66 = $mol_type_enforce<
+	type $bog_builderui_select__value_bog_builderui_studio_67 = $mol_type_enforce<
 		ReturnType< $bog_builderui_studio['select_value'] >
 		,
 		ReturnType< $bog_builderui_select['value'] >
 	>
-	type $bog_builderui_select__dictionary_bog_builderui_studio_67 = $mol_type_enforce<
+	type $bog_builderui_select__dictionary_bog_builderui_studio_68 = $mol_type_enforce<
 		({ 
 			'none': string,
 			'small': string,
@@ -7272,115 +7306,110 @@ declare namespace $ {
 		,
 		ReturnType< $bog_builderui_select['dictionary'] >
 	>
-	type $bog_builderui_card__sub_bog_builderui_studio_68 = $mol_type_enforce<
+	type $bog_builderui_card__sub_bog_builderui_studio_69 = $mol_type_enforce<
 		readonly(any)[]
 		,
 		ReturnType< $bog_builderui_card['sub'] >
-	>
-	type $mol_view__sub_bog_builderui_studio_69 = $mol_type_enforce<
-		readonly(any)[]
-		,
-		ReturnType< $mol_view['sub'] >
 	>
 	type $mol_view__sub_bog_builderui_studio_70 = $mol_type_enforce<
 		readonly(any)[]
 		,
 		ReturnType< $mol_view['sub'] >
 	>
-	type $bog_builderui_card__sub_bog_builderui_studio_71 = $mol_type_enforce<
+	type $mol_view__sub_bog_builderui_studio_71 = $mol_type_enforce<
+		readonly(any)[]
+		,
+		ReturnType< $mol_view['sub'] >
+	>
+	type $bog_builderui_card__sub_bog_builderui_studio_72 = $mol_type_enforce<
 		readonly(any)[]
 		,
 		ReturnType< $bog_builderui_card['sub'] >
 	>
-	type $bog_builderui_alert__title_bog_builderui_studio_72 = $mol_type_enforce<
+	type $bog_builderui_alert__title_bog_builderui_studio_73 = $mol_type_enforce<
 		string
 		,
 		ReturnType< $bog_builderui_alert['title'] >
 	>
-	type $bog_builderui_alert__text_bog_builderui_studio_73 = $mol_type_enforce<
+	type $bog_builderui_alert__text_bog_builderui_studio_74 = $mol_type_enforce<
 		string
 		,
 		ReturnType< $bog_builderui_alert['text'] >
 	>
-	type $mol_view__sub_bog_builderui_studio_74 = $mol_type_enforce<
+	type $mol_view__sub_bog_builderui_studio_75 = $mol_type_enforce<
 		readonly(any)[]
 		,
 		ReturnType< $mol_view['sub'] >
 	>
-	type $bog_builderui_toast__kind_bog_builderui_studio_75 = $mol_type_enforce<
+	type $bog_builderui_toast__kind_bog_builderui_studio_76 = $mol_type_enforce<
 		string
 		,
 		ReturnType< $bog_builderui_toast['kind'] >
 	>
-	type $bog_builderui_toast__title_bog_builderui_studio_76 = $mol_type_enforce<
+	type $bog_builderui_toast__title_bog_builderui_studio_77 = $mol_type_enforce<
 		string
 		,
 		ReturnType< $bog_builderui_toast['title'] >
 	>
-	type $bog_builderui_toast__text_bog_builderui_studio_77 = $mol_type_enforce<
+	type $bog_builderui_toast__text_bog_builderui_studio_78 = $mol_type_enforce<
 		string
 		,
 		ReturnType< $bog_builderui_toast['text'] >
 	>
-	type $bog_builderui_toast__kind_bog_builderui_studio_78 = $mol_type_enforce<
+	type $bog_builderui_toast__kind_bog_builderui_studio_79 = $mol_type_enforce<
 		string
 		,
 		ReturnType< $bog_builderui_toast['kind'] >
 	>
-	type $bog_builderui_toast__title_bog_builderui_studio_79 = $mol_type_enforce<
+	type $bog_builderui_toast__title_bog_builderui_studio_80 = $mol_type_enforce<
 		string
 		,
 		ReturnType< $bog_builderui_toast['title'] >
 	>
-	type $bog_builderui_toast__text_bog_builderui_studio_80 = $mol_type_enforce<
+	type $bog_builderui_toast__text_bog_builderui_studio_81 = $mol_type_enforce<
 		string
 		,
 		ReturnType< $bog_builderui_toast['text'] >
 	>
-	type $bog_builderui_toast__kind_bog_builderui_studio_81 = $mol_type_enforce<
+	type $bog_builderui_toast__kind_bog_builderui_studio_82 = $mol_type_enforce<
 		string
 		,
 		ReturnType< $bog_builderui_toast['kind'] >
 	>
-	type $bog_builderui_toast__title_bog_builderui_studio_82 = $mol_type_enforce<
+	type $bog_builderui_toast__title_bog_builderui_studio_83 = $mol_type_enforce<
 		string
 		,
 		ReturnType< $bog_builderui_toast['title'] >
 	>
-	type $bog_builderui_toast__text_bog_builderui_studio_83 = $mol_type_enforce<
+	type $bog_builderui_toast__text_bog_builderui_studio_84 = $mol_type_enforce<
 		string
 		,
 		ReturnType< $bog_builderui_toast['text'] >
 	>
-	type $bog_builderui_toast__kind_bog_builderui_studio_84 = $mol_type_enforce<
+	type $bog_builderui_toast__kind_bog_builderui_studio_85 = $mol_type_enforce<
 		string
 		,
 		ReturnType< $bog_builderui_toast['kind'] >
 	>
-	type $bog_builderui_toast__title_bog_builderui_studio_85 = $mol_type_enforce<
+	type $bog_builderui_toast__title_bog_builderui_studio_86 = $mol_type_enforce<
 		string
 		,
 		ReturnType< $bog_builderui_toast['title'] >
 	>
-	type $bog_builderui_toast__text_bog_builderui_studio_86 = $mol_type_enforce<
+	type $bog_builderui_toast__text_bog_builderui_studio_87 = $mol_type_enforce<
 		string
 		,
 		ReturnType< $bog_builderui_toast['text'] >
 	>
-	type $bog_builderui_card__sub_bog_builderui_studio_87 = $mol_type_enforce<
+	type $bog_builderui_card__sub_bog_builderui_studio_88 = $mol_type_enforce<
 		readonly(any)[]
 		,
 		ReturnType< $bog_builderui_card['sub'] >
 	>
-	type $mol_view__sub_bog_builderui_studio_88 = $mol_type_enforce<
+	type $mol_view__sub_bog_builderui_studio_89 = $mol_type_enforce<
 		readonly(any)[]
 		,
 		ReturnType< $mol_view['sub'] >
-	>
-	type $bog_builderui_avatar__uri_bog_builderui_studio_89 = $mol_type_enforce<
-		string
-		,
-		ReturnType< $bog_builderui_avatar['uri'] >
 	>
 	type $bog_builderui_avatar__uri_bog_builderui_studio_90 = $mol_type_enforce<
 		string
@@ -7392,10 +7421,10 @@ declare namespace $ {
 		,
 		ReturnType< $bog_builderui_avatar['uri'] >
 	>
-	type $mol_avatar__id_bog_builderui_studio_92 = $mol_type_enforce<
+	type $bog_builderui_avatar__uri_bog_builderui_studio_92 = $mol_type_enforce<
 		string
 		,
-		ReturnType< $mol_avatar['id'] >
+		ReturnType< $bog_builderui_avatar['uri'] >
 	>
 	type $mol_avatar__id_bog_builderui_studio_93 = $mol_type_enforce<
 		string
@@ -7407,120 +7436,120 @@ declare namespace $ {
 		,
 		ReturnType< $mol_avatar['id'] >
 	>
-	type $mol_view__sub_bog_builderui_studio_95 = $mol_type_enforce<
+	type $mol_avatar__id_bog_builderui_studio_95 = $mol_type_enforce<
+		string
+		,
+		ReturnType< $mol_avatar['id'] >
+	>
+	type $mol_view__sub_bog_builderui_studio_96 = $mol_type_enforce<
 		readonly(any)[]
 		,
 		ReturnType< $mol_view['sub'] >
 	>
-	type $bog_builderui_card__sub_bog_builderui_studio_96 = $mol_type_enforce<
+	type $bog_builderui_card__sub_bog_builderui_studio_97 = $mol_type_enforce<
 		readonly(any)[]
 		,
 		ReturnType< $bog_builderui_card['sub'] >
 	>
-	type $mol_view__sub_bog_builderui_studio_97 = $mol_type_enforce<
+	type $mol_view__sub_bog_builderui_studio_98 = $mol_type_enforce<
 		readonly(any)[]
 		,
 		ReturnType< $mol_view['sub'] >
 	>
-	type $bog_builderui_slider__value_bog_builderui_studio_98 = $mol_type_enforce<
+	type $bog_builderui_slider__value_bog_builderui_studio_99 = $mol_type_enforce<
 		ReturnType< $bog_builderui_studio['slider_value'] >
 		,
 		ReturnType< $bog_builderui_slider['value'] >
 	>
-	type $bog_builderui_slider__min_bog_builderui_studio_99 = $mol_type_enforce<
+	type $bog_builderui_slider__min_bog_builderui_studio_100 = $mol_type_enforce<
 		number
 		,
 		ReturnType< $bog_builderui_slider['min'] >
 	>
-	type $bog_builderui_slider__max_bog_builderui_studio_100 = $mol_type_enforce<
+	type $bog_builderui_slider__max_bog_builderui_studio_101 = $mol_type_enforce<
 		number
 		,
 		ReturnType< $bog_builderui_slider['max'] >
 	>
-	type $bog_builderui_card__sub_bog_builderui_studio_101 = $mol_type_enforce<
+	type $bog_builderui_card__sub_bog_builderui_studio_102 = $mol_type_enforce<
 		readonly(any)[]
 		,
 		ReturnType< $bog_builderui_card['sub'] >
 	>
-	type $mol_view__sub_bog_builderui_studio_102 = $mol_type_enforce<
+	type $mol_view__sub_bog_builderui_studio_103 = $mol_type_enforce<
 		readonly(any)[]
 		,
 		ReturnType< $mol_view['sub'] >
 	>
-	type $bog_builderui_progress__value_bog_builderui_studio_103 = $mol_type_enforce<
+	type $bog_builderui_progress__value_bog_builderui_studio_104 = $mol_type_enforce<
 		number
 		,
 		ReturnType< $bog_builderui_progress['value'] >
 	>
-	type $bog_builderui_progress__max_bog_builderui_studio_104 = $mol_type_enforce<
+	type $bog_builderui_progress__max_bog_builderui_studio_105 = $mol_type_enforce<
 		number
 		,
 		ReturnType< $bog_builderui_progress['max'] >
 	>
-	type $bog_builderui_card__sub_bog_builderui_studio_105 = $mol_type_enforce<
+	type $bog_builderui_card__sub_bog_builderui_studio_106 = $mol_type_enforce<
 		readonly(any)[]
 		,
 		ReturnType< $bog_builderui_card['sub'] >
 	>
-	type $mol_view__sub_bog_builderui_studio_106 = $mol_type_enforce<
+	type $mol_view__sub_bog_builderui_studio_107 = $mol_type_enforce<
 		readonly(any)[]
 		,
 		ReturnType< $mol_view['sub'] >
 	>
-	type $bog_builderui_button__title_bog_builderui_studio_107 = $mol_type_enforce<
+	type $bog_builderui_button__title_bog_builderui_studio_108 = $mol_type_enforce<
 		string
 		,
 		ReturnType< $bog_builderui_button['title'] >
 	>
-	type $bog_builderui_tooltip__Anchor_bog_builderui_studio_108 = $mol_type_enforce<
+	type $bog_builderui_tooltip__Anchor_bog_builderui_studio_109 = $mol_type_enforce<
 		ReturnType< $bog_builderui_studio['Tooltip_anchor'] >
 		,
 		ReturnType< $bog_builderui_tooltip['Anchor'] >
 	>
-	type $bog_builderui_tooltip__bubble_content_bog_builderui_studio_109 = $mol_type_enforce<
+	type $bog_builderui_tooltip__bubble_content_bog_builderui_studio_110 = $mol_type_enforce<
 		readonly(any)[]
 		,
 		ReturnType< $bog_builderui_tooltip['bubble_content'] >
 	>
-	type $bog_builderui_card__sub_bog_builderui_studio_110 = $mol_type_enforce<
+	type $bog_builderui_card__sub_bog_builderui_studio_111 = $mol_type_enforce<
 		readonly(any)[]
 		,
 		ReturnType< $bog_builderui_card['sub'] >
 	>
-	type $mol_view__sub_bog_builderui_studio_111 = $mol_type_enforce<
+	type $mol_view__sub_bog_builderui_studio_112 = $mol_type_enforce<
 		readonly(any)[]
 		,
 		ReturnType< $mol_view['sub'] >
 	>
-	type $bog_builderui_card__sub_bog_builderui_studio_112 = $mol_type_enforce<
+	type $bog_builderui_card__sub_bog_builderui_studio_113 = $mol_type_enforce<
 		readonly(any)[]
 		,
 		ReturnType< $bog_builderui_card['sub'] >
 	>
-	type $mol_view__sub_bog_builderui_studio_113 = $mol_type_enforce<
+	type $mol_view__sub_bog_builderui_studio_114 = $mol_type_enforce<
 		readonly(any)[]
 		,
 		ReturnType< $mol_view['sub'] >
 	>
-	type $bog_builderui_button__title_bog_builderui_studio_114 = $mol_type_enforce<
+	type $bog_builderui_button__title_bog_builderui_studio_115 = $mol_type_enforce<
 		string
 		,
 		ReturnType< $bog_builderui_button['title'] >
 	>
-	type $bog_builderui_button__click_bog_builderui_studio_115 = $mol_type_enforce<
+	type $bog_builderui_button__click_bog_builderui_studio_116 = $mol_type_enforce<
 		ReturnType< $bog_builderui_studio['dialog_open'] >
 		,
 		ReturnType< $bog_builderui_button['click'] >
 	>
-	type $bog_builderui_card__sub_bog_builderui_studio_116 = $mol_type_enforce<
+	type $bog_builderui_card__sub_bog_builderui_studio_117 = $mol_type_enforce<
 		readonly(any)[]
 		,
 		ReturnType< $bog_builderui_card['sub'] >
-	>
-	type $mol_view__sub_bog_builderui_studio_117 = $mol_type_enforce<
-		readonly(any)[]
-		,
-		ReturnType< $mol_view['sub'] >
 	>
 	type $mol_view__sub_bog_builderui_studio_118 = $mol_type_enforce<
 		readonly(any)[]
@@ -7532,15 +7561,15 @@ declare namespace $ {
 		,
 		ReturnType< $mol_view['sub'] >
 	>
-	type $bog_builderui_field__hint_bog_builderui_studio_120 = $mol_type_enforce<
-		string
-		,
-		ReturnType< $bog_builderui_field['hint'] >
-	>
-	type $mol_view__sub_bog_builderui_studio_121 = $mol_type_enforce<
+	type $mol_view__sub_bog_builderui_studio_120 = $mol_type_enforce<
 		readonly(any)[]
 		,
 		ReturnType< $mol_view['sub'] >
+	>
+	type $bog_builderui_field__hint_bog_builderui_studio_121 = $mol_type_enforce<
+		string
+		,
+		ReturnType< $bog_builderui_field['hint'] >
 	>
 	type $mol_view__sub_bog_builderui_studio_122 = $mol_type_enforce<
 		readonly(any)[]
@@ -7552,65 +7581,65 @@ declare namespace $ {
 		,
 		ReturnType< $mol_view['sub'] >
 	>
-	type $bog_builderui_field__hint_bog_builderui_studio_124 = $mol_type_enforce<
-		string
-		,
-		ReturnType< $bog_builderui_field['hint'] >
-	>
-	type $bog_builderui_field__type_bog_builderui_studio_125 = $mol_type_enforce<
-		string
-		,
-		ReturnType< $bog_builderui_field['type'] >
-	>
-	type $mol_view__sub_bog_builderui_studio_126 = $mol_type_enforce<
+	type $mol_view__sub_bog_builderui_studio_124 = $mol_type_enforce<
 		readonly(any)[]
 		,
 		ReturnType< $mol_view['sub'] >
 	>
-	type $bog_builderui_button__title_bog_builderui_studio_127 = $mol_type_enforce<
+	type $bog_builderui_field__hint_bog_builderui_studio_125 = $mol_type_enforce<
 		string
 		,
-		ReturnType< $bog_builderui_button['title'] >
+		ReturnType< $bog_builderui_field['hint'] >
+	>
+	type $bog_builderui_field__type_bog_builderui_studio_126 = $mol_type_enforce<
+		string
+		,
+		ReturnType< $bog_builderui_field['type'] >
+	>
+	type $mol_view__sub_bog_builderui_studio_127 = $mol_type_enforce<
+		readonly(any)[]
+		,
+		ReturnType< $mol_view['sub'] >
 	>
 	type $bog_builderui_button__title_bog_builderui_studio_128 = $mol_type_enforce<
 		string
 		,
 		ReturnType< $bog_builderui_button['title'] >
 	>
-	type $mol_view__sub_bog_builderui_studio_129 = $mol_type_enforce<
+	type $bog_builderui_button__title_bog_builderui_studio_129 = $mol_type_enforce<
+		string
+		,
+		ReturnType< $bog_builderui_button['title'] >
+	>
+	type $mol_view__sub_bog_builderui_studio_130 = $mol_type_enforce<
 		readonly(any)[]
 		,
 		ReturnType< $mol_view['sub'] >
 	>
-	type $bog_builderui_card__sub_bog_builderui_studio_130 = $mol_type_enforce<
+	type $bog_builderui_card__sub_bog_builderui_studio_131 = $mol_type_enforce<
 		readonly(any)[]
 		,
 		ReturnType< $bog_builderui_card['sub'] >
 	>
-	type $mol_view__sub_bog_builderui_studio_131 = $mol_type_enforce<
+	type $mol_view__sub_bog_builderui_studio_132 = $mol_type_enforce<
 		readonly(any)[]
 		,
 		ReturnType< $mol_view['sub'] >
 	>
-	type $bog_builderui_field__hint_bog_builderui_studio_132 = $mol_type_enforce<
+	type $bog_builderui_field__hint_bog_builderui_studio_133 = $mol_type_enforce<
 		string
 		,
 		ReturnType< $bog_builderui_field['hint'] >
 	>
-	type $bog_builderui_card__sub_bog_builderui_studio_133 = $mol_type_enforce<
+	type $bog_builderui_card__sub_bog_builderui_studio_134 = $mol_type_enforce<
 		readonly(any)[]
 		,
 		ReturnType< $bog_builderui_card['sub'] >
 	>
-	type $mol_view__sub_bog_builderui_studio_134 = $mol_type_enforce<
+	type $mol_view__sub_bog_builderui_studio_135 = $mol_type_enforce<
 		readonly(any)[]
 		,
 		ReturnType< $mol_view['sub'] >
-	>
-	type $bog_builderui_menu_item__title_bog_builderui_studio_135 = $mol_type_enforce<
-		string
-		,
-		ReturnType< $bog_builderui_menu_item['title'] >
 	>
 	type $bog_builderui_menu_item__title_bog_builderui_studio_136 = $mol_type_enforce<
 		string
@@ -7622,147 +7651,154 @@ declare namespace $ {
 		,
 		ReturnType< $bog_builderui_menu_item['title'] >
 	>
-	type $bog_builderui_menu__items_bog_builderui_studio_138 = $mol_type_enforce<
+	type $bog_builderui_menu_item__title_bog_builderui_studio_138 = $mol_type_enforce<
+		string
+		,
+		ReturnType< $bog_builderui_menu_item['title'] >
+	>
+	type $bog_builderui_menu__items_bog_builderui_studio_139 = $mol_type_enforce<
 		readonly(any)[]
 		,
 		ReturnType< $bog_builderui_menu['items'] >
 	>
-	type $bog_builderui_card__sub_bog_builderui_studio_139 = $mol_type_enforce<
+	type $bog_builderui_card__sub_bog_builderui_studio_140 = $mol_type_enforce<
 		readonly(any)[]
 		,
 		ReturnType< $bog_builderui_card['sub'] >
 	>
-	type $mol_view__sub_bog_builderui_studio_140 = $mol_type_enforce<
+	type $mol_view__sub_bog_builderui_studio_141 = $mol_type_enforce<
 		readonly(any)[]
 		,
 		ReturnType< $mol_view['sub'] >
 	>
-	type $mol_app_quine__Head_bog_builderui_studio_141 = $mol_type_enforce<
+	type $mol_app_quine__Head_bog_builderui_studio_142 = $mol_type_enforce<
 		any
 		,
 		ReturnType< $mol_app_quine['Head'] >
 	>
-	type $mol_app_quine__paths_bog_builderui_studio_142 = $mol_type_enforce<
+	type $mol_app_quine__paths_bog_builderui_studio_143 = $mol_type_enforce<
 		readonly(any)[]
 		,
 		ReturnType< $mol_app_quine['paths'] >
 	>
-	type $bog_builderui_card__sub_bog_builderui_studio_143 = $mol_type_enforce<
+	type $bog_builderui_card__sub_bog_builderui_studio_144 = $mol_type_enforce<
 		readonly(any)[]
 		,
 		ReturnType< $bog_builderui_card['sub'] >
 	>
-	type $mol_view__sub_bog_builderui_studio_144 = $mol_type_enforce<
+	type $mol_view__sub_bog_builderui_studio_145 = $mol_type_enforce<
 		readonly(any)[]
 		,
 		ReturnType< $mol_view['sub'] >
 	>
-	type $mol_plot_bar__title_bog_builderui_studio_145 = $mol_type_enforce<
+	type $mol_plot_bar__title_bog_builderui_studio_146 = $mol_type_enforce<
 		string
 		,
 		ReturnType< $mol_plot_bar['title'] >
 	>
-	type $mol_plot_bar__series_y_bog_builderui_studio_146 = $mol_type_enforce<
+	type $mol_plot_bar__series_y_bog_builderui_studio_147 = $mol_type_enforce<
 		ReturnType< $bog_builderui_studio['chart_visits'] >
 		,
 		ReturnType< $mol_plot_bar['series_y'] >
 	>
-	type $mol_plot_bar__color_bog_builderui_studio_147 = $mol_type_enforce<
+	type $mol_plot_bar__color_bog_builderui_studio_148 = $mol_type_enforce<
 		ReturnType< $bog_builderui_studio['chart_color_visits'] >
 		,
 		ReturnType< $mol_plot_bar['color'] >
 	>
-	type $mol_plot_bar__title_bog_builderui_studio_148 = $mol_type_enforce<
+	type $mol_plot_bar__title_bog_builderui_studio_149 = $mol_type_enforce<
 		string
 		,
 		ReturnType< $mol_plot_bar['title'] >
 	>
-	type $mol_plot_bar__series_y_bog_builderui_studio_149 = $mol_type_enforce<
+	type $mol_plot_bar__series_y_bog_builderui_studio_150 = $mol_type_enforce<
 		ReturnType< $bog_builderui_studio['chart_signups'] >
 		,
 		ReturnType< $mol_plot_bar['series_y'] >
 	>
-	type $mol_plot_bar__color_bog_builderui_studio_150 = $mol_type_enforce<
+	type $mol_plot_bar__color_bog_builderui_studio_151 = $mol_type_enforce<
 		ReturnType< $bog_builderui_studio['chart_color_signups'] >
 		,
 		ReturnType< $mol_plot_bar['color'] >
 	>
-	type $mol_plot_bar__title_bog_builderui_studio_151 = $mol_type_enforce<
+	type $mol_plot_bar__title_bog_builderui_studio_152 = $mol_type_enforce<
 		string
 		,
 		ReturnType< $mol_plot_bar['title'] >
 	>
-	type $mol_plot_bar__series_y_bog_builderui_studio_152 = $mol_type_enforce<
+	type $mol_plot_bar__series_y_bog_builderui_studio_153 = $mol_type_enforce<
 		ReturnType< $bog_builderui_studio['chart_logins'] >
 		,
 		ReturnType< $mol_plot_bar['series_y'] >
 	>
-	type $mol_plot_bar__color_bog_builderui_studio_153 = $mol_type_enforce<
+	type $mol_plot_bar__color_bog_builderui_studio_154 = $mol_type_enforce<
 		ReturnType< $bog_builderui_studio['chart_color_logins'] >
 		,
 		ReturnType< $mol_plot_bar['color'] >
 	>
-	type $mol_plot_mark_hor__title_bog_builderui_studio_154 = $mol_type_enforce<
+	type $mol_plot_mark_hor__title_bog_builderui_studio_155 = $mol_type_enforce<
 		string
 		,
 		ReturnType< $mol_plot_mark_hor['title'] >
 	>
-	type $mol_plot_mark_hor__labels_bog_builderui_studio_155 = $mol_type_enforce<
+	type $mol_plot_mark_hor__labels_bog_builderui_studio_156 = $mol_type_enforce<
 		ReturnType< $bog_builderui_studio['chart_labels'] >
 		,
 		ReturnType< $mol_plot_mark_hor['labels'] >
 	>
-	type $mol_plot_ruler_vert__title_bog_builderui_studio_156 = $mol_type_enforce<
+	type $mol_plot_ruler_vert__title_bog_builderui_studio_157 = $mol_type_enforce<
 		string
 		,
 		ReturnType< $mol_plot_ruler_vert['title'] >
 	>
-	type $bog_builderui_chart__graphs_bog_builderui_studio_157 = $mol_type_enforce<
+	type $bog_builderui_chart__graphs_bog_builderui_studio_158 = $mol_type_enforce<
 		readonly(any)[]
 		,
 		ReturnType< $bog_builderui_chart['graphs'] >
 	>
-	type $bog_builderui_card__sub_bog_builderui_studio_158 = $mol_type_enforce<
+	type $bog_builderui_card__sub_bog_builderui_studio_159 = $mol_type_enforce<
 		readonly(any)[]
 		,
 		ReturnType< $bog_builderui_card['sub'] >
 	>
-	type $bog_builderui_gallery__items_bog_builderui_studio_159 = $mol_type_enforce<
+	type $bog_builderui_gallery__items_bog_builderui_studio_160 = $mol_type_enforce<
 		readonly(any)[]
 		,
 		ReturnType< $bog_builderui_gallery['items'] >
 	>
-	type $mol_scroll__sub_bog_builderui_studio_160 = $mol_type_enforce<
+	type $mol_scroll__sub_bog_builderui_studio_161 = $mol_type_enforce<
 		readonly(any)[]
 		,
 		ReturnType< $mol_scroll['sub'] >
 	>
-	type $bog_builderui_dialog__showed_bog_builderui_studio_161 = $mol_type_enforce<
+	type $bog_builderui_dialog__showed_bog_builderui_studio_162 = $mol_type_enforce<
 		ReturnType< $bog_builderui_studio['dialog_showed'] >
 		,
 		ReturnType< $bog_builderui_dialog['showed'] >
 	>
-	type $bog_builderui_dialog__title_bog_builderui_studio_162 = $mol_type_enforce<
+	type $bog_builderui_dialog__title_bog_builderui_studio_163 = $mol_type_enforce<
 		string
 		,
 		ReturnType< $bog_builderui_dialog['title'] >
 	>
-	type $bog_builderui_dialog__text_bog_builderui_studio_163 = $mol_type_enforce<
+	type $bog_builderui_dialog__text_bog_builderui_studio_164 = $mol_type_enforce<
 		string
 		,
 		ReturnType< $bog_builderui_dialog['text'] >
 	>
-	type $bog_builderui_dialog__close_bog_builderui_studio_164 = $mol_type_enforce<
+	type $bog_builderui_dialog__close_bog_builderui_studio_165 = $mol_type_enforce<
 		ReturnType< $bog_builderui_studio['dialog_close'] >
 		,
 		ReturnType< $bog_builderui_dialog['close'] >
 	>
-	type $bog_builderui_dialog__confirm_bog_builderui_studio_165 = $mol_type_enforce<
+	type $bog_builderui_dialog__confirm_bog_builderui_studio_166 = $mol_type_enforce<
 		ReturnType< $bog_builderui_studio['dialog_confirm'] >
 		,
 		ReturnType< $bog_builderui_dialog['confirm'] >
 	>
 	export class $bog_builderui_studio extends $bog_builderui_div {
+		favicon_icon( ): $mol_icon_palette
+		Favicon( ): $bog_favicon
 		lights( next?: string ): string
 		base( next?: string ): string
 		theme( next?: string ): string
@@ -7901,6 +7937,7 @@ declare namespace $ {
 		dialog_close( next?: any ): any
 		dialog_confirm( next?: any ): any
 		Dialog_modal( ): $bog_builderui_dialog
+		plugins( ): readonly(any)[]
 		attr( ): ({ 
 			'bog_builderui_lights': ReturnType< $bog_builderui_studio['lights'] >,
 			'bog_builderui_base': ReturnType< $bog_builderui_studio['base'] >,

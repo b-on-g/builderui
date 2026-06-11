@@ -10094,6 +10094,89 @@ var $;
 })($ || ($ = {}));
 
 ;
+	($.$mol_icon_palette) = class $mol_icon_palette extends ($.$mol_icon) {
+		path(){
+			return "M17.5,12A1.5,1.5 0 0,1 16,10.5A1.5,1.5 0 0,1 17.5,9A1.5,1.5 0 0,1 19,10.5A1.5,1.5 0 0,1 17.5,12M14.5,8A1.5,1.5 0 0,1 13,6.5A1.5,1.5 0 0,1 14.5,5A1.5,1.5 0 0,1 16,6.5A1.5,1.5 0 0,1 14.5,8M9.5,8A1.5,1.5 0 0,1 8,6.5A1.5,1.5 0 0,1 9.5,5A1.5,1.5 0 0,1 11,6.5A1.5,1.5 0 0,1 9.5,8M6.5,12A1.5,1.5 0 0,1 5,10.5A1.5,1.5 0 0,1 6.5,9A1.5,1.5 0 0,1 8,10.5A1.5,1.5 0 0,1 6.5,12M12,3A9,9 0 0,0 3,12A9,9 0 0,0 12,21A1.5,1.5 0 0,0 13.5,19.5C13.5,19.11 13.35,18.76 13.11,18.5C12.88,18.23 12.73,17.88 12.73,17.5A1.5,1.5 0 0,1 14.23,16H16A5,5 0 0,0 21,11C21,6.58 16.97,3 12,3Z";
+		}
+	};
+
+
+;
+"use strict";
+
+
+;
+	($.$bog_favicon) = class $bog_favicon extends ($.$mol_plugin) {
+		Icon(){
+			const obj = new this.$.$mol_view();
+			return obj;
+		}
+	};
+	($mol_mem(($.$bog_favicon.prototype), "Icon"));
+
+
+;
+"use strict";
+
+
+;
+"use strict";
+var $;
+(function ($) {
+    var $$;
+    (function ($$) {
+        /** Плагин, который ставит favicon из переданного $mol_icon_* и подобных */
+        class $bog_favicon extends $.$bog_favicon {
+            // сюда передаем Icon <= icon $mol_icon_waze
+            Icon(next) {
+                if (next !== undefined)
+                    return next;
+                throw new Error('[bog_favicon] Icon is required: use `Icon <= icon $mol_icon_*` in view.tree');
+            }
+            favicon_data() {
+                const icon = this.Icon();
+                const node = icon.dom_tree();
+                if (!node.getAttribute('xmlns')) {
+                    node.setAttribute('xmlns', 'http://www.w3.org/2000/svg');
+                }
+                const svg = node.outerHTML;
+                return 'data:image/svg+xml,' + encodeURIComponent(svg);
+            }
+            apply_favicon() {
+                const doc = $mol_dom_context.document;
+                if (!doc)
+                    return;
+                const href = this.favicon_data();
+                let link = doc.querySelector('link[rel="icon"]');
+                if (!link) {
+                    link = doc.createElement('link');
+                    link.rel = 'icon';
+                    doc.head.appendChild(link);
+                }
+                link.type = 'image/svg+xml';
+                if (link.href !== href)
+                    link.href = href;
+            }
+            auto() {
+                this.favicon_data();
+                this.apply_favicon();
+                return null;
+            }
+            sub() {
+                return [];
+            }
+        }
+        __decorate([
+            $mol_mem
+        ], $bog_favicon.prototype, "Icon", null);
+        __decorate([
+            $mol_mem
+        ], $bog_favicon.prototype, "favicon_data", null);
+        $$.$bog_favicon = $bog_favicon;
+    })($$ = $.$$ || ($.$$ = {}));
+})($ || ($ = {}));
+
+;
 	($.$bog_builderui_studio_pick) = class $bog_builderui_studio_pick extends ($.$mol_select) {
 		Label(){
 			const obj = new this.$.$mol_view();
@@ -15669,6 +15752,15 @@ var $;
 
 ;
 	($.$bog_builderui_studio) = class $bog_builderui_studio extends ($.$bog_builderui_div) {
+		favicon_icon(){
+			const obj = new this.$.$mol_icon_palette();
+			return obj;
+		}
+		Favicon(){
+			const obj = new this.$.$bog_favicon();
+			(obj.Icon) = () => ((this.favicon_icon()));
+			return obj;
+		}
 		lights(next){
 			if(next !== undefined) return next;
 			return "dark";
@@ -16499,6 +16591,9 @@ var $;
 			(obj.confirm) = (next) => ((this.dialog_confirm(next)));
 			return obj;
 		}
+		plugins(){
+			return [(this.Favicon())];
+		}
 		attr(){
 			return {
 				"bog_builderui_lights": (this.lights()), 
@@ -16518,6 +16613,8 @@ var $;
 			];
 		}
 	};
+	($mol_mem(($.$bog_builderui_studio.prototype), "favicon_icon"));
+	($mol_mem(($.$bog_builderui_studio.prototype), "Favicon"));
 	($mol_mem(($.$bog_builderui_studio.prototype), "lights"));
 	($mol_mem(($.$bog_builderui_studio.prototype), "base"));
 	($mol_mem(($.$bog_builderui_studio.prototype), "theme"));
@@ -16649,9 +16746,6 @@ var $;
 	($mol_mem(($.$bog_builderui_studio.prototype), "dialog_confirm"));
 	($mol_mem(($.$bog_builderui_studio.prototype), "Dialog_modal"));
 
-
-;
-var $node = $node || {} ; $node[ "/bog/builderui/studio/favicon.svg" ] = "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2NCA2NCI+Cgk8cmVjdCB3aWR0aD0iNjQiIGhlaWdodD0iNjQiIHJ4PSIxNCIgZmlsbD0iIzBhMGEwYSIvPgoJPHJlY3QgeD0iMTIiIHk9IjEyIiB3aWR0aD0iMTgiIGhlaWdodD0iMTgiIHJ4PSI0IiBmaWxsPSIjMGVhNWU5Ii8+Cgk8cmVjdCB4PSIzNCIgeT0iMTIiIHdpZHRoPSIxOCIgaGVpZ2h0PSIxOCIgcng9IjQiIGZpbGw9IiMxZjFmMWYiLz4KCTxyZWN0IHg9IjEyIiB5PSIzNCIgd2lkdGg9IjE4IiBoZWlnaHQ9IjE4IiByeD0iNCIgZmlsbD0iIzFmMWYxZiIvPgoJPHJlY3QgeD0iMzQiIHk9IjM0IiB3aWR0aD0iMTgiIGhlaWdodD0iMTgiIHJ4PSI0IiBmaWxsPSIjZmFmYWZhIi8+Cjwvc3ZnPgo="
 
 ;
 "use strict";
