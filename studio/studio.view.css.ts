@@ -22,8 +22,8 @@ namespace $ {
 			minWidth: '320px',
 			maxWidth: '320px',
 			padding: {
-				top: '1.5rem',
-				bottom: '1.5rem',
+				top: '1rem',
+				bottom: '1rem',
 				left: '1rem',
 				right: '1rem',
 			},
@@ -42,17 +42,125 @@ namespace $ {
 				direction: 'column',
 			},
 		},
+		Header_row: {
+			flex: {
+				direction: 'row',
+			},
+			align: {
+				items: 'center',
+			},
+			justify: {
+				content: 'space-between',
+			},
+			padding: {
+				top: '0.25rem',
+				bottom: '0.5rem',
+				left: '0.25rem',
+				right: '0.25rem',
+			},
+			border: {
+				bottom: {
+					width: '1px',
+					style: 'solid',
+					color: '#1f1f1f',
+				},
+			},
+		},
 		Title: {
 			font: {
 				weight: 700,
-				size: '1.25rem',
+				size: '1.1rem',
 			},
 			color: '#fafafa',
+		},
+		Hamburger: {
+			color: '#737373',
+			font: {
+				size: '1.25rem',
+			},
+		},
+		Group_style: {
+			flex: {
+				direction: 'column',
+			},
+			gap: '0.5rem',
 			padding: {
-				top: '0.25rem',
+				top: '0.75rem',
 				bottom: '0.75rem',
-				left: '0.25rem',
-				right: '0.25rem',
+			},
+		},
+		Group_colors: {
+			flex: {
+				direction: 'column',
+			},
+			gap: '0.5rem',
+			padding: {
+				top: '0.75rem',
+				bottom: '0.75rem',
+			},
+			border: {
+				top: {
+					width: '1px',
+					style: 'solid',
+					color: '#1f1f1f',
+				},
+			},
+		},
+		Group_fonts: {
+			flex: {
+				direction: 'column',
+			},
+			gap: '0.5rem',
+			padding: {
+				top: '0.75rem',
+				bottom: '0.75rem',
+			},
+			border: {
+				top: {
+					width: '1px',
+					style: 'solid',
+					color: '#1f1f1f',
+				},
+			},
+		},
+		Group_misc: {
+			flex: {
+				direction: 'column',
+			},
+			gap: '0.5rem',
+			padding: {
+				top: '0.75rem',
+				bottom: '0.75rem',
+			},
+			border: {
+				top: {
+					width: '1px',
+					style: 'solid',
+					color: '#1f1f1f',
+				},
+			},
+		},
+		Preset_id: {
+			flex: {
+				direction: 'row',
+			},
+			gap: '0.375rem',
+			padding: {
+				top: '0.5rem',
+				bottom: '0.5rem',
+				left: '0.75rem',
+				right: '0.75rem',
+			},
+			border: {
+				radius: '0.5rem',
+				width: '1px',
+				style: 'solid',
+				color: '#262626',
+			},
+			color: '#737373',
+			font: {
+				family: '"JetBrains Mono", ui-monospace, monospace',
+				size: '0.75rem',
 			},
 		},
 		Spacer: {

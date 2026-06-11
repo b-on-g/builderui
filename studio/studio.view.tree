@@ -9,71 +9,81 @@ $bog_builderui_studio $bog_builderui_div
 		bog_builderui_font_head <= font_head? \inter
 	sub /
 		<= Sidebar $mol_view sub /
-			<= Title $mol_view sub / \BuilderUI
-			<= Style_pick $bog_builderui_studio_pick
-				label \Style
-				value? <=> style_id? \Default
-				dictionary <= style_dict *
-			<= Base_pick $bog_builderui_studio_pick
-				label \Base Color
-				value? <=> base? \slate
-				dot_color \var(--bog_builderui_shade)
-				dictionary *
-					slate \Slate
-					stone \Stone
-					zinc \Zinc
-					gray \Gray
-			<= Theme_pick $bog_builderui_studio_pick
-				label \Theme
-				value? <=> theme? \sky
-				dot_color \var(--bog_builderui_control)
-				dictionary *
-					sky \Sky
-					rose \Rose
-					violet \Violet
-					emerald \Emerald
-					amber \Amber
-			<= Chart_pick $bog_builderui_studio_pick
-				label \Chart Color
-				value? <=> chart? \blue
-				dot_color \var(--bog_builderui_chart)
-				dictionary *
-					blue \Blue
-					green \Green
-					red \Red
-					yellow \Yellow
-					purple \Purple
-			<= Head_pick $bog_builderui_studio_pick
-				label \Heading
-				value? <=> font_head? \inter
-				dictionary *
-					inter \Inter
-					manrope \Manrope
-					dm-sans \DM Sans
-					eb-garamond \EB Garamond
-			<= Body_pick $bog_builderui_studio_pick
-				label \Font
-				value? <=> font_body? \inter
-				dictionary *
-					inter \Inter
-					manrope \Manrope
-					dm-sans \DM Sans
-					eb-garamond \EB Garamond
-			<= Radius_pick $bog_builderui_studio_pick
-				label \Radius
-				value? <=> radius? \medium
-				dictionary *
-					none \None
-					small \Small
-					medium \Medium
-					large \Large
-			<= Lights_pick $bog_builderui_studio_pick
-				label \Mode
-				value? <=> lights? \dark
-				dictionary *
-					dark \Dark
-					light \Light
+			<= Header_row $mol_view sub /
+				<= Title $mol_view sub / \Menu
+				<= Hamburger $mol_view sub / \☰
+			<= Group_style $mol_view sub /
+				<= Style_pick $bog_builderui_studio_pick
+					label \Style
+					value? <=> style_id? \Default
+					dictionary <= style_dict *
+			<= Group_colors $mol_view sub /
+				<= Base_pick $bog_builderui_studio_pick
+					label \Base Color
+					value? <=> base? \slate
+					dot_color \var(--bog_builderui_shade)
+					dictionary *
+						slate \Slate
+						stone \Stone
+						zinc \Zinc
+						gray \Gray
+				<= Theme_pick $bog_builderui_studio_pick
+					label \Theme
+					value? <=> theme? \sky
+					dot_color \var(--bog_builderui_control)
+					dictionary *
+						sky \Sky
+						rose \Rose
+						violet \Violet
+						emerald \Emerald
+						amber \Amber
+				<= Chart_pick $bog_builderui_studio_pick
+					label \Chart Color
+					value? <=> chart? \blue
+					dot_color \var(--bog_builderui_chart)
+					dictionary *
+						blue \Blue
+						green \Green
+						red \Red
+						yellow \Yellow
+						purple \Purple
+			<= Group_fonts $mol_view sub /
+				<= Head_pick $bog_builderui_studio_pick
+					label \Heading
+					value? <=> font_head? \inter
+					dictionary *
+						inter \Inter
+						manrope \Manrope
+						dm-sans \DM Sans
+						eb-garamond \EB Garamond
+				<= Body_pick $bog_builderui_studio_pick
+					label \Font
+					value? <=> font_body? \inter
+					dictionary *
+						inter \Inter
+						manrope \Manrope
+						dm-sans \DM Sans
+						eb-garamond \EB Garamond
+			<= Group_misc $mol_view sub /
+				<= Radius_pick $bog_builderui_studio_pick
+					label \Radius
+					value? <=> radius? \medium
+					dictionary *
+						none \None
+						small \Small
+						medium \Medium
+						large \Large
+				<= Lights_pick $bog_builderui_studio_pick
+					label \Mode
+					value? <=> lights? \dark
+					dictionary *
+						dark \Dark
+						light \Light
 			<= Spacer $mol_view
+			<= Preset_id $mol_view sub /
+				<= Preset_label $mol_view sub / \--preset
+				<= Preset_value $mol_view sub /
+					<= preset_id \
 			<= Actions_row $mol_view sub /
 				<= Shuffle $mol_button_minor
 					title \Shuffle
@@ -120,6 +130,11 @@ $bog_builderui_studio $bog_builderui_div
 				<= Alert_demo $bog_builderui_alert
 					title \Heads up
 					text \You can swap the palette on the left and watch every component repaint.
+				<= Dialog_card $bog_builderui_card sub /
+					<= Dialog_card_title $mol_view sub / \Dialog
+					<= Dialog_open_btn $bog_builderui_button
+						title \Open dialog
+						click? <=> dialog_open? null
 				<= Form_card $bog_builderui_card sub /
 					<= Form_title $mol_view sub / \Sign in
 					<= Form_subtitle $mol_view sub / \Enter your credentials to access the dashboard
@@ -168,3 +183,9 @@ $bog_builderui_studio $bog_builderui_div
 								labels <= chart_labels /string
 							<= Chart_ruler_vert $mol_plot_ruler_vert
 								title \Count
+			<= Dialog_modal $bog_builderui_dialog
+				showed? <=> dialog_showed? false
+				title \Delete this preset?
+				text \This action cannot be undone. Your saved theme will be permanently removed.
+				close? <=> dialog_close? null
+				confirm? <=> dialog_confirm? null
