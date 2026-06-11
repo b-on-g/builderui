@@ -1,10 +1,10 @@
-/** @see $builderui */
+/** @see $bog_builderui */
 namespace $ {
-	$mol_style_define( $builderui_div, {
+	$mol_style_define( $bog_builderui_div, {
 		font: {
-			family: $builderui.font_body,
+			family: $bog_builderui.font_body,
 		},
-		color: $builderui.text,
+		color: $bog_builderui.text,
 		flex: {
 			direction: 'column',
 		},

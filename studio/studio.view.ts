@@ -14,7 +14,7 @@ namespace $.$$ {
 		return list[ ( i + 1 ) % list.length ]
 	}
 
-	export class $builderui_studio extends $.$builderui_studio {
+	export class $bog_builderui_studio extends $.$bog_builderui_studio {
 
 		base_cycle() { this.base( cycle( bases, this.base() as typeof bases[ number ] ) ) }
 		theme_cycle() { this.theme( cycle( themes, this.theme() as typeof themes[ number ] ) ) }

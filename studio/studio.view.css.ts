@@ -1,9 +1,9 @@
-/** @see $builderui */
+/** @see $bog_builderui */
 namespace $ {
-	$mol_style_define( $builderui_studio, {
+	$mol_style_define( $bog_builderui_studio, {
 		minHeight: '100vh',
 		background: {
-			color: $builderui.back,
+			color: $bog_builderui.back,
 		},
 		flex: {
 			direction: 'row',
@@ -72,30 +72,30 @@ namespace $ {
 		},
 		Buttons_title: {
 			font: {
-				family: $builderui.font_head,
+				family: $bog_builderui.font_head,
 				weight: 600,
 				size: '1rem',
 			},
-			color: $builderui.shade,
+			color: $bog_builderui.shade,
 		},
 		Card_title: {
 			font: {
-				family: $builderui.font_head,
+				family: $bog_builderui.font_head,
 				weight: 600,
 				size: '1rem',
 			},
-			color: $builderui.text,
+			color: $bog_builderui.text,
 		},
 		Card_text: {
-			color: $builderui.shade,
+			color: $bog_builderui.shade,
 		},
 		Field_title: {
 			font: {
-				family: $builderui.font_head,
+				family: $bog_builderui.font_head,
 				weight: 600,
 				size: '1rem',
 			},
-			color: $builderui.text,
+			color: $bog_builderui.text,
 		},
 	} )
 }

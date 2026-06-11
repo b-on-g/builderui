@@ -1,11 +1,11 @@
 namespace $ {
 
 	/**
-	 * BuilderUI design tokens — CSS variables in --builderui_*.
-	 * Used in .view.css.ts via $builderui.text, $builderui.back, etc.
+	 * BuilderUI design tokens — CSS variables in --bog_builderui_*.
+	 * Used in .view.css.ts via $bog_builderui.text, $bog_builderui.back, etc.
 	 */
-	export const $builderui = $mol_style_prop(
-		'builderui',
+	export const $bog_builderui = $mol_style_prop(
+		'bog_builderui',
 		[
 			'back',
 			'card',

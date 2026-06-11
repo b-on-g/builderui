@@ -1,49 +1,49 @@
-$builderui_studio $builderui_div
+$bog_builderui_studio $bog_builderui_div
 	attr *
-		builderui_lights <= lights? \dark
-		builderui_base <= base? \slate
-		builderui_theme <= theme? \sky
-		builderui_radius <= radius? \medium
-		builderui_font_body <= font_body? \inter
-		builderui_font_head <= font_head? \inter
+		bog_bog_builderui_lights <= lights? \dark
+		bog_bog_builderui_base <= base? \slate
+		bog_bog_builderui_theme <= theme? \sky
+		bog_bog_builderui_radius <= radius? \medium
+		bog_bog_builderui_font_body <= font_body? \inter
+		bog_bog_builderui_font_head <= font_head? \inter
 	sub /
 		<= Sidebar $mol_view sub /
 			<= Title $mol_view sub / \BuilderUI
-			<= Base_pick $builderui_studio_pick
+			<= Base_pick $bog_builderui_studio_pick
 				label \Base Color
 				value <= base_label \Slate
 				click? <=> base_cycle? null
-			<= Theme_pick $builderui_studio_pick
+			<= Theme_pick $bog_builderui_studio_pick
 				label \Theme
 				value <= theme_label \Sky
 				click? <=> theme_cycle? null
-			<= Head_pick $builderui_studio_pick
+			<= Head_pick $bog_builderui_studio_pick
 				label \Heading
 				value <= font_head_label \Inter
 				click? <=> font_head_cycle? null
-			<= Body_pick $builderui_studio_pick
+			<= Body_pick $bog_builderui_studio_pick
 				label \Font
 				value <= font_body_label \Inter
 				click? <=> font_body_cycle? null
-			<= Radius_pick $builderui_studio_pick
+			<= Radius_pick $bog_builderui_studio_pick
 				label \Radius
 				value <= radius_label \Medium
 				click? <=> radius_cycle? null
-			<= Lights_pick $builderui_studio_pick
+			<= Lights_pick $bog_builderui_studio_pick
 				label \Mode
 				value <= lights_label \Dark
 				click? <=> lights_cycle? null
 		<= Preview $mol_scroll sub /
 			<= Stack $mol_view sub /
-				<= Buttons_card $builderui_card sub /
+				<= Buttons_card $bog_builderui_card sub /
 					<= Buttons_title $mol_view sub / \Buttons
 					<= Btns_row $mol_view sub /
-						<= Btn_primary $builderui_button title \Primary
-						<= Btn_secondary $builderui_button title \Secondary
-				<= Card_demo $builderui_card sub /
+						<= Btn_primary $bog_builderui_button title \Primary
+						<= Btn_secondary $bog_builderui_button title \Secondary
+				<= Card_demo $bog_builderui_card sub /
 					<= Card_title $mol_view sub / \Card
 					<= Card_text $mol_view sub / \A small description text inside the card.
-				<= Field_card $builderui_card sub /
+				<= Field_card $bog_builderui_card sub /
 					<= Field_title $mol_view sub / \Field
-					<= Field_demo $builderui_field
+					<= Field_demo $bog_builderui_field
 						hint \Type something

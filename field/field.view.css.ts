@@ -1,18 +1,18 @@
-/** @see $builderui */
+/** @see $bog_builderui */
 namespace $ {
-	$mol_style_define( $builderui_field, {
+	$mol_style_define( $bog_builderui_field, {
 		font: {
-			family: $builderui.font_body,
+			family: $bog_builderui.font_body,
 		},
-		color: $builderui.text,
+		color: $bog_builderui.text,
 		background: {
-			color: $builderui.field,
+			color: $bog_builderui.field,
 		},
 		border: {
-			radius: $builderui.radius,
+			radius: $bog_builderui.radius,
 			width: '1px',
 			style: 'solid',
-			color: $builderui.line,
+			color: $bog_builderui.line,
 		},
 		padding: {
 			top: '0.5rem',

@@ -1,16 +1,16 @@
-/** @see $builderui */
+/** @see $bog_builderui */
 namespace $ {
-	$mol_style_define( $builderui_button, {
+	$mol_style_define( $bog_builderui_button, {
 		font: {
-			family: $builderui.font_body,
+			family: $bog_builderui.font_body,
 			weight: 500,
 		},
-		color: $builderui.back,
+		color: $bog_builderui.back,
 		background: {
-			color: $builderui.control,
+			color: $bog_builderui.control,
 		},
 		border: {
-			radius: $builderui.radius,
+			radius: $bog_builderui.radius,
 			width: 0,
 		},
 		padding: {

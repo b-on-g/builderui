@@ -1,6 +1,6 @@
-/** @see $builderui */
+/** @see $bog_builderui */
 namespace $ {
-	$mol_style_define( $builderui_studio_pick, {
+	$mol_style_define( $bog_builderui_studio_pick, {
 		flex: {
 			direction: 'row',
 			grow: 0,
