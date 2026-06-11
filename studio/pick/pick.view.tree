@@ -1,0 +1,9 @@
+$builderui_studio_pick $mol_button
+	label \
+	value \
+	sub /
+		<= Texts $mol_view sub /
+			<= Label $mol_view sub /
+				<= label
+			<= Value $mol_view sub /
+				<= value
