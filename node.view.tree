@@ -793,34 +793,21 @@ $bog_builderui_menu $bog_builderui_card
 
 $bog_builderui_menu_item $mol_button_minor
 
-$mol_link $mol_view
-	uri \
-	dom_name \a
-	uri_off \
-	uri_native null
-	external false
-	attr *
-		^
-		href <= uri_toggle \
-		title <= hint_safe <= hint \
-		target <= target \_self
-		download <= file_name \
-		mol_link_current <= current false
-		rel <= relation \
-	sub /$mol_view_content
-		<= title
-	arg *
-	event *
-		^
-		click? <=> click? <=> event_click? null
-
 $bog_builderui_breadcrumbs $mol_view
 	items /
 	sub <= items
 
-$bog_builderui_breadcrumbs_item $mol_link
+$bog_builderui_breadcrumbs_item $mol_view
+	dom_name \a
 	title \
-	arg *
+	path \
+	current false
+	sub /
+		<= title
+	attr *
+		^
+		href <= path
+		bog_builderui_breadcrumbs_current <= current
 
 $mol_page $mol_view
 	dom_name \article
@@ -992,6 +979,27 @@ $mol_grid_cell $mol_view
 	minimal_height 40
 
 $mol_grid_number $mol_grid_cell
+
+$mol_link $mol_view
+	uri \
+	dom_name \a
+	uri_off \
+	uri_native null
+	external false
+	attr *
+		^
+		href <= uri_toggle \
+		title <= hint_safe <= hint \
+		target <= target \_self
+		download <= file_name \
+		mol_link_current <= current false
+		rel <= relation \
+	sub /$mol_view_content
+		<= title
+	arg *
+	event *
+		^
+		click? <=> click? <=> event_click? null
 
 $mol_link_iconed $mol_link
 	sub /
@@ -1559,16 +1567,13 @@ $bog_builderui_studio $bog_builderui_div
 					<= Breadcrumbs_demo $bog_builderui_breadcrumbs items /
 						<= Breadcrumb_home $bog_builderui_breadcrumbs_item
 							title \Home
-							arg *
-								crumb \home
+							path \home
 						<= Breadcrumb_library $bog_builderui_breadcrumbs_item
 							title \Library
-							arg *
-								crumb \library
+							path \home/library
 						<= Breadcrumb_data $bog_builderui_breadcrumbs_item
 							title \Data
-							arg *
-								crumb \data
+							path \home/library/data
 				<= Code_card $bog_builderui_card sub /
 					<= Code_title $mol_view sub / \Sources
 					<= Code_preview $mol_app_quine

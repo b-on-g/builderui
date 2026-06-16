@@ -4857,79 +4857,35 @@ declare namespace $ {
 
 declare namespace $ {
 
-	export class $mol_link extends $mol_view {
-		uri_toggle( ): string
-		hint( ): string
-		hint_safe( ): ReturnType< $mol_link['hint'] >
-		target( ): string
-		file_name( ): string
-		current( ): boolean
-		relation( ): string
-		event_click( next?: any ): any
-		click( next?: ReturnType< $mol_link['event_click'] > ): ReturnType< $mol_link['event_click'] >
-		uri( ): string
+	export class $bog_builderui_breadcrumbs extends $mol_view {
+		items( ): readonly(any)[]
+		sub( ): ReturnType< $bog_builderui_breadcrumbs['items'] >
+	}
+	
+	export class $bog_builderui_breadcrumbs_item extends $mol_view {
 		dom_name( ): string
-		uri_off( ): string
-		uri_native( ): any
-		external( ): boolean
+		title( ): string
+		path( ): string
+		current( ): boolean
+		sub( ): readonly(any)[]
 		attr( ): ({ 
-			'href': ReturnType< $mol_link['uri_toggle'] >,
-			'title': ReturnType< $mol_link['hint_safe'] >,
-			'target': ReturnType< $mol_link['target'] >,
-			'download': ReturnType< $mol_link['file_name'] >,
-			'mol_link_current': ReturnType< $mol_link['current'] >,
-			'rel': ReturnType< $mol_link['relation'] >,
+			'href': ReturnType< $bog_builderui_breadcrumbs_item['path'] >,
+			'bog_builderui_breadcrumbs_current': ReturnType< $bog_builderui_breadcrumbs_item['current'] >,
 		})  & ReturnType< $mol_view['attr'] >
-		sub( ): readonly($mol_view_content)[]
-		arg( ): Record<string, any>
-		event( ): ({ 
-			click( next?: ReturnType< $mol_link['click'] > ): ReturnType< $mol_link['click'] >,
-		})  & ReturnType< $mol_view['event'] >
 	}
 	
 }
 
-//# sourceMappingURL=link.view.tree.d.ts.map
+//# sourceMappingURL=breadcrumbs.view.tree.d.ts.map
 declare namespace $.$$ {
-    /**
-     * Dynamic hyperlink. It can add, change or remove parameters. A link that leads to the current page has [mol_link_current] attribute set to true.
-     * @see https://mol.hyoo.ru/#!section=demos/demo=mol_link_demo
-     */
-    class $mol_link extends $.$mol_link {
-        uri_toggle(): string;
-        uri(): string;
-        uri_off(): string;
-        uri_native(): URL;
+    class $bog_builderui_breadcrumbs_item extends $.$bog_builderui_breadcrumbs_item {
         current(): boolean;
-        file_name(): string;
-        minimal_height(): number;
-        external(): boolean;
-        target(): '_self' | '_blank' | '_top' | '_parent' | string;
-        hint_safe(): string;
     }
 }
 
 declare namespace $ {
 }
 
-declare namespace $ {
-}
-
-declare namespace $ {
-
-	export class $bog_builderui_breadcrumbs extends $mol_view {
-		items( ): readonly(any)[]
-		sub( ): ReturnType< $bog_builderui_breadcrumbs['items'] >
-	}
-	
-	export class $bog_builderui_breadcrumbs_item extends $mol_link {
-		title( ): string
-		arg( ): Record<string, any>
-	}
-	
-}
-
-//# sourceMappingURL=breadcrumbs.view.tree.d.ts.map
 /** @see $bog_builderui_tokens */
 declare namespace $ {
 }
@@ -5652,6 +5608,63 @@ declare namespace $.$$ {
             row: string[];
         }, next?: boolean): boolean;
         sub(): readonly any[];
+    }
+}
+
+declare namespace $ {
+}
+
+declare namespace $ {
+
+	export class $mol_link extends $mol_view {
+		uri_toggle( ): string
+		hint( ): string
+		hint_safe( ): ReturnType< $mol_link['hint'] >
+		target( ): string
+		file_name( ): string
+		current( ): boolean
+		relation( ): string
+		event_click( next?: any ): any
+		click( next?: ReturnType< $mol_link['event_click'] > ): ReturnType< $mol_link['event_click'] >
+		uri( ): string
+		dom_name( ): string
+		uri_off( ): string
+		uri_native( ): any
+		external( ): boolean
+		attr( ): ({ 
+			'href': ReturnType< $mol_link['uri_toggle'] >,
+			'title': ReturnType< $mol_link['hint_safe'] >,
+			'target': ReturnType< $mol_link['target'] >,
+			'download': ReturnType< $mol_link['file_name'] >,
+			'mol_link_current': ReturnType< $mol_link['current'] >,
+			'rel': ReturnType< $mol_link['relation'] >,
+		})  & ReturnType< $mol_view['attr'] >
+		sub( ): readonly($mol_view_content)[]
+		arg( ): Record<string, any>
+		event( ): ({ 
+			click( next?: ReturnType< $mol_link['click'] > ): ReturnType< $mol_link['click'] >,
+		})  & ReturnType< $mol_view['event'] >
+	}
+	
+}
+
+//# sourceMappingURL=link.view.tree.d.ts.map
+declare namespace $.$$ {
+    /**
+     * Dynamic hyperlink. It can add, change or remove parameters. A link that leads to the current page has [mol_link_current] attribute set to true.
+     * @see https://mol.hyoo.ru/#!section=demos/demo=mol_link_demo
+     */
+    class $mol_link extends $.$mol_link {
+        uri_toggle(): string;
+        uri(): string;
+        uri_off(): string;
+        uri_native(): URL;
+        current(): boolean;
+        file_name(): string;
+        minimal_height(): number;
+        external(): boolean;
+        target(): '_self' | '_blank' | '_top' | '_parent' | string;
+        hint_safe(): string;
     }
 }
 
@@ -7715,36 +7728,30 @@ declare namespace $ {
 		,
 		ReturnType< $bog_builderui_breadcrumbs_item['title'] >
 	>
-	type $bog_builderui_breadcrumbs_item__arg_bog_builderui_studio_143 = $mol_type_enforce<
-		({ 
-			'crumb': string,
-		}) 
+	type $bog_builderui_breadcrumbs_item__path_bog_builderui_studio_143 = $mol_type_enforce<
+		string
 		,
-		ReturnType< $bog_builderui_breadcrumbs_item['arg'] >
+		ReturnType< $bog_builderui_breadcrumbs_item['path'] >
 	>
 	type $bog_builderui_breadcrumbs_item__title_bog_builderui_studio_144 = $mol_type_enforce<
 		string
 		,
 		ReturnType< $bog_builderui_breadcrumbs_item['title'] >
 	>
-	type $bog_builderui_breadcrumbs_item__arg_bog_builderui_studio_145 = $mol_type_enforce<
-		({ 
-			'crumb': string,
-		}) 
+	type $bog_builderui_breadcrumbs_item__path_bog_builderui_studio_145 = $mol_type_enforce<
+		string
 		,
-		ReturnType< $bog_builderui_breadcrumbs_item['arg'] >
+		ReturnType< $bog_builderui_breadcrumbs_item['path'] >
 	>
 	type $bog_builderui_breadcrumbs_item__title_bog_builderui_studio_146 = $mol_type_enforce<
 		string
 		,
 		ReturnType< $bog_builderui_breadcrumbs_item['title'] >
 	>
-	type $bog_builderui_breadcrumbs_item__arg_bog_builderui_studio_147 = $mol_type_enforce<
-		({ 
-			'crumb': string,
-		}) 
+	type $bog_builderui_breadcrumbs_item__path_bog_builderui_studio_147 = $mol_type_enforce<
+		string
 		,
-		ReturnType< $bog_builderui_breadcrumbs_item['arg'] >
+		ReturnType< $bog_builderui_breadcrumbs_item['path'] >
 	>
 	type $bog_builderui_breadcrumbs__items_bog_builderui_studio_148 = $mol_type_enforce<
 		readonly(any)[]
