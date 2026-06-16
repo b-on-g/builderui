@@ -38,7 +38,7 @@ namespace $ {
 		font: {
 			family: $bog_builderui_tokens.font_body,
 			size: '0.875rem',
-			weight: '500',
+			weight: 500,
 		},
 		minWidth: 0,
 		whiteSpace: 'nowrap',
