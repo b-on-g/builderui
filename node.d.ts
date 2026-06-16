@@ -4829,6 +4829,112 @@ declare namespace $ {
 }
 
 declare namespace $ {
+    /** State of arguments like `foo=bar xxx` */
+    class $mol_state_arg extends $mol_object {
+        prefix: string;
+        static prolog: string;
+        static separator: string;
+        static href(next?: string): string;
+        static href_normal(): string;
+        static dict(next?: {
+            [key: string]: string | null;
+        }): Readonly<{
+            [key: string]: string;
+        }>;
+        static value(key: string, next?: string | null): string | null;
+        static link(next: Record<string, string | null>): string;
+        static make_link(next: Record<string, string | null>): string;
+        static go(next: {
+            [key: string]: string | null;
+        }): void;
+        static commit(): void;
+        constructor(prefix?: string);
+        value(key: string, next?: string): string | null;
+        sub(postfix: string): $mol_state_arg;
+        link(next: Record<string, string | null>): string;
+    }
+}
+
+declare namespace $ {
+
+	export class $mol_link extends $mol_view {
+		uri_toggle( ): string
+		hint( ): string
+		hint_safe( ): ReturnType< $mol_link['hint'] >
+		target( ): string
+		file_name( ): string
+		current( ): boolean
+		relation( ): string
+		event_click( next?: any ): any
+		click( next?: ReturnType< $mol_link['event_click'] > ): ReturnType< $mol_link['event_click'] >
+		uri( ): string
+		dom_name( ): string
+		uri_off( ): string
+		uri_native( ): any
+		external( ): boolean
+		attr( ): ({ 
+			'href': ReturnType< $mol_link['uri_toggle'] >,
+			'title': ReturnType< $mol_link['hint_safe'] >,
+			'target': ReturnType< $mol_link['target'] >,
+			'download': ReturnType< $mol_link['file_name'] >,
+			'mol_link_current': ReturnType< $mol_link['current'] >,
+			'rel': ReturnType< $mol_link['relation'] >,
+		})  & ReturnType< $mol_view['attr'] >
+		sub( ): readonly($mol_view_content)[]
+		arg( ): Record<string, any>
+		event( ): ({ 
+			click( next?: ReturnType< $mol_link['click'] > ): ReturnType< $mol_link['click'] >,
+		})  & ReturnType< $mol_view['event'] >
+	}
+	
+}
+
+//# sourceMappingURL=link.view.tree.d.ts.map
+declare namespace $.$$ {
+    /**
+     * Dynamic hyperlink. It can add, change or remove parameters. A link that leads to the current page has [mol_link_current] attribute set to true.
+     * @see https://mol.hyoo.ru/#!section=demos/demo=mol_link_demo
+     */
+    class $mol_link extends $.$mol_link {
+        uri_toggle(): string;
+        uri(): string;
+        uri_off(): string;
+        uri_native(): URL;
+        current(): boolean;
+        file_name(): string;
+        minimal_height(): number;
+        external(): boolean;
+        target(): '_self' | '_blank' | '_top' | '_parent' | string;
+        hint_safe(): string;
+    }
+}
+
+declare namespace $ {
+}
+
+declare namespace $ {
+}
+
+declare namespace $ {
+
+	export class $bog_builderui_breadcrumbs extends $mol_view {
+		items( ): readonly(any)[]
+		sub( ): ReturnType< $bog_builderui_breadcrumbs['items'] >
+	}
+	
+	export class $bog_builderui_breadcrumbs_item extends $mol_link {
+		title( ): string
+		arg( ): Record<string, any>
+	}
+	
+}
+
+//# sourceMappingURL=breadcrumbs.view.tree.d.ts.map
+/** @see $bog_builderui_tokens */
+declare namespace $ {
+}
+
+declare namespace $ {
 
 	type $mol_view__dom_name_mol_page_1 = $mol_type_enforce<
 		string
@@ -5546,90 +5652,6 @@ declare namespace $.$$ {
             row: string[];
         }, next?: boolean): boolean;
         sub(): readonly any[];
-    }
-}
-
-declare namespace $ {
-}
-
-declare namespace $ {
-    /** State of arguments like `foo=bar xxx` */
-    class $mol_state_arg extends $mol_object {
-        prefix: string;
-        static prolog: string;
-        static separator: string;
-        static href(next?: string): string;
-        static href_normal(): string;
-        static dict(next?: {
-            [key: string]: string | null;
-        }): Readonly<{
-            [key: string]: string;
-        }>;
-        static value(key: string, next?: string | null): string | null;
-        static link(next: Record<string, string | null>): string;
-        static make_link(next: Record<string, string | null>): string;
-        static go(next: {
-            [key: string]: string | null;
-        }): void;
-        static commit(): void;
-        constructor(prefix?: string);
-        value(key: string, next?: string): string | null;
-        sub(postfix: string): $mol_state_arg;
-        link(next: Record<string, string | null>): string;
-    }
-}
-
-declare namespace $ {
-
-	export class $mol_link extends $mol_view {
-		uri_toggle( ): string
-		hint( ): string
-		hint_safe( ): ReturnType< $mol_link['hint'] >
-		target( ): string
-		file_name( ): string
-		current( ): boolean
-		relation( ): string
-		event_click( next?: any ): any
-		click( next?: ReturnType< $mol_link['event_click'] > ): ReturnType< $mol_link['event_click'] >
-		uri( ): string
-		dom_name( ): string
-		uri_off( ): string
-		uri_native( ): any
-		external( ): boolean
-		attr( ): ({ 
-			'href': ReturnType< $mol_link['uri_toggle'] >,
-			'title': ReturnType< $mol_link['hint_safe'] >,
-			'target': ReturnType< $mol_link['target'] >,
-			'download': ReturnType< $mol_link['file_name'] >,
-			'mol_link_current': ReturnType< $mol_link['current'] >,
-			'rel': ReturnType< $mol_link['relation'] >,
-		})  & ReturnType< $mol_view['attr'] >
-		sub( ): readonly($mol_view_content)[]
-		arg( ): Record<string, any>
-		event( ): ({ 
-			click( next?: ReturnType< $mol_link['click'] > ): ReturnType< $mol_link['click'] >,
-		})  & ReturnType< $mol_view['event'] >
-	}
-	
-}
-
-//# sourceMappingURL=link.view.tree.d.ts.map
-declare namespace $.$$ {
-    /**
-     * Dynamic hyperlink. It can add, change or remove parameters. A link that leads to the current page has [mol_link_current] attribute set to true.
-     * @see https://mol.hyoo.ru/#!section=demos/demo=mol_link_demo
-     */
-    class $mol_link extends $.$mol_link {
-        uri_toggle(): string;
-        uri(): string;
-        uri_off(): string;
-        uri_native(): URL;
-        current(): boolean;
-        file_name(): string;
-        minimal_height(): number;
-        external(): boolean;
-        target(): '_self' | '_blank' | '_top' | '_parent' | string;
-        hint_safe(): string;
     }
 }
 
@@ -7688,153 +7710,159 @@ declare namespace $ {
 		,
 		ReturnType< $mol_view['sub'] >
 	>
-	type $mol_app_quine__Head_bog_builderui_studio_142 = $mol_type_enforce<
-		any
+	type $bog_builderui_breadcrumbs_item__title_bog_builderui_studio_142 = $mol_type_enforce<
+		string
 		,
-		ReturnType< $mol_app_quine['Head'] >
+		ReturnType< $bog_builderui_breadcrumbs_item['title'] >
 	>
-	type $mol_app_quine__paths_bog_builderui_studio_143 = $mol_type_enforce<
+	type $bog_builderui_breadcrumbs_item__arg_bog_builderui_studio_143 = $mol_type_enforce<
+		({ 
+			'crumb': string,
+		}) 
+		,
+		ReturnType< $bog_builderui_breadcrumbs_item['arg'] >
+	>
+	type $bog_builderui_breadcrumbs_item__title_bog_builderui_studio_144 = $mol_type_enforce<
+		string
+		,
+		ReturnType< $bog_builderui_breadcrumbs_item['title'] >
+	>
+	type $bog_builderui_breadcrumbs_item__arg_bog_builderui_studio_145 = $mol_type_enforce<
+		({ 
+			'crumb': string,
+		}) 
+		,
+		ReturnType< $bog_builderui_breadcrumbs_item['arg'] >
+	>
+	type $bog_builderui_breadcrumbs_item__title_bog_builderui_studio_146 = $mol_type_enforce<
+		string
+		,
+		ReturnType< $bog_builderui_breadcrumbs_item['title'] >
+	>
+	type $bog_builderui_breadcrumbs_item__arg_bog_builderui_studio_147 = $mol_type_enforce<
+		({ 
+			'crumb': string,
+		}) 
+		,
+		ReturnType< $bog_builderui_breadcrumbs_item['arg'] >
+	>
+	type $bog_builderui_breadcrumbs__items_bog_builderui_studio_148 = $mol_type_enforce<
 		readonly(any)[]
 		,
-		ReturnType< $mol_app_quine['paths'] >
+		ReturnType< $bog_builderui_breadcrumbs['items'] >
 	>
-	type $bog_builderui_card__sub_bog_builderui_studio_144 = $mol_type_enforce<
+	type $bog_builderui_card__sub_bog_builderui_studio_149 = $mol_type_enforce<
 		readonly(any)[]
 		,
 		ReturnType< $bog_builderui_card['sub'] >
 	>
-	type $mol_view__sub_bog_builderui_studio_145 = $mol_type_enforce<
+	type $mol_view__sub_bog_builderui_studio_150 = $mol_type_enforce<
 		readonly(any)[]
 		,
 		ReturnType< $mol_view['sub'] >
 	>
-	type $mol_plot_bar__title_bog_builderui_studio_146 = $mol_type_enforce<
-		string
+	type $mol_app_quine__Head_bog_builderui_studio_151 = $mol_type_enforce<
+		any
 		,
-		ReturnType< $mol_plot_bar['title'] >
+		ReturnType< $mol_app_quine['Head'] >
 	>
-	type $mol_plot_bar__series_y_bog_builderui_studio_147 = $mol_type_enforce<
-		ReturnType< $bog_builderui_studio['chart_visits'] >
-		,
-		ReturnType< $mol_plot_bar['series_y'] >
-	>
-	type $mol_plot_bar__color_bog_builderui_studio_148 = $mol_type_enforce<
-		ReturnType< $bog_builderui_studio['chart_color_visits'] >
-		,
-		ReturnType< $mol_plot_bar['color'] >
-	>
-	type $mol_plot_bar__title_bog_builderui_studio_149 = $mol_type_enforce<
-		string
-		,
-		ReturnType< $mol_plot_bar['title'] >
-	>
-	type $mol_plot_bar__series_y_bog_builderui_studio_150 = $mol_type_enforce<
-		ReturnType< $bog_builderui_studio['chart_signups'] >
-		,
-		ReturnType< $mol_plot_bar['series_y'] >
-	>
-	type $mol_plot_bar__color_bog_builderui_studio_151 = $mol_type_enforce<
-		ReturnType< $bog_builderui_studio['chart_color_signups'] >
-		,
-		ReturnType< $mol_plot_bar['color'] >
-	>
-	type $mol_plot_bar__title_bog_builderui_studio_152 = $mol_type_enforce<
-		string
-		,
-		ReturnType< $mol_plot_bar['title'] >
-	>
-	type $mol_plot_bar__series_y_bog_builderui_studio_153 = $mol_type_enforce<
-		ReturnType< $bog_builderui_studio['chart_logins'] >
-		,
-		ReturnType< $mol_plot_bar['series_y'] >
-	>
-	type $mol_plot_bar__color_bog_builderui_studio_154 = $mol_type_enforce<
-		ReturnType< $bog_builderui_studio['chart_color_logins'] >
-		,
-		ReturnType< $mol_plot_bar['color'] >
-	>
-	type $mol_plot_mark_hor__title_bog_builderui_studio_155 = $mol_type_enforce<
-		string
-		,
-		ReturnType< $mol_plot_mark_hor['title'] >
-	>
-	type $mol_plot_mark_hor__labels_bog_builderui_studio_156 = $mol_type_enforce<
-		ReturnType< $bog_builderui_studio['chart_labels'] >
-		,
-		ReturnType< $mol_plot_mark_hor['labels'] >
-	>
-	type $mol_plot_ruler_vert__title_bog_builderui_studio_157 = $mol_type_enforce<
-		string
-		,
-		ReturnType< $mol_plot_ruler_vert['title'] >
-	>
-	type $bog_builderui_chart__graphs_bog_builderui_studio_158 = $mol_type_enforce<
+	type $mol_app_quine__paths_bog_builderui_studio_152 = $mol_type_enforce<
 		readonly(any)[]
 		,
-		ReturnType< $bog_builderui_chart['graphs'] >
+		ReturnType< $mol_app_quine['paths'] >
 	>
-	type $bog_builderui_card__sub_bog_builderui_studio_159 = $mol_type_enforce<
+	type $bog_builderui_card__sub_bog_builderui_studio_153 = $mol_type_enforce<
 		readonly(any)[]
 		,
 		ReturnType< $bog_builderui_card['sub'] >
 	>
-	type $bog_builderui_gallery__items_bog_builderui_studio_160 = $mol_type_enforce<
+	type $mol_view__sub_bog_builderui_studio_154 = $mol_type_enforce<
+		readonly(any)[]
+		,
+		ReturnType< $mol_view['sub'] >
+	>
+	type $mol_plot_bar__title_bog_builderui_studio_155 = $mol_type_enforce<
+		string
+		,
+		ReturnType< $mol_plot_bar['title'] >
+	>
+	type $mol_plot_bar__series_y_bog_builderui_studio_156 = $mol_type_enforce<
+		ReturnType< $bog_builderui_studio['chart_visits'] >
+		,
+		ReturnType< $mol_plot_bar['series_y'] >
+	>
+	type $mol_plot_bar__color_bog_builderui_studio_157 = $mol_type_enforce<
+		ReturnType< $bog_builderui_studio['chart_color_visits'] >
+		,
+		ReturnType< $mol_plot_bar['color'] >
+	>
+	type $mol_plot_bar__title_bog_builderui_studio_158 = $mol_type_enforce<
+		string
+		,
+		ReturnType< $mol_plot_bar['title'] >
+	>
+	type $mol_plot_bar__series_y_bog_builderui_studio_159 = $mol_type_enforce<
+		ReturnType< $bog_builderui_studio['chart_signups'] >
+		,
+		ReturnType< $mol_plot_bar['series_y'] >
+	>
+	type $mol_plot_bar__color_bog_builderui_studio_160 = $mol_type_enforce<
+		ReturnType< $bog_builderui_studio['chart_color_signups'] >
+		,
+		ReturnType< $mol_plot_bar['color'] >
+	>
+	type $mol_plot_bar__title_bog_builderui_studio_161 = $mol_type_enforce<
+		string
+		,
+		ReturnType< $mol_plot_bar['title'] >
+	>
+	type $mol_plot_bar__series_y_bog_builderui_studio_162 = $mol_type_enforce<
+		ReturnType< $bog_builderui_studio['chart_logins'] >
+		,
+		ReturnType< $mol_plot_bar['series_y'] >
+	>
+	type $mol_plot_bar__color_bog_builderui_studio_163 = $mol_type_enforce<
+		ReturnType< $bog_builderui_studio['chart_color_logins'] >
+		,
+		ReturnType< $mol_plot_bar['color'] >
+	>
+	type $mol_plot_mark_hor__title_bog_builderui_studio_164 = $mol_type_enforce<
+		string
+		,
+		ReturnType< $mol_plot_mark_hor['title'] >
+	>
+	type $mol_plot_mark_hor__labels_bog_builderui_studio_165 = $mol_type_enforce<
+		ReturnType< $bog_builderui_studio['chart_labels'] >
+		,
+		ReturnType< $mol_plot_mark_hor['labels'] >
+	>
+	type $mol_plot_ruler_vert__title_bog_builderui_studio_166 = $mol_type_enforce<
+		string
+		,
+		ReturnType< $mol_plot_ruler_vert['title'] >
+	>
+	type $bog_builderui_chart__graphs_bog_builderui_studio_167 = $mol_type_enforce<
+		readonly(any)[]
+		,
+		ReturnType< $bog_builderui_chart['graphs'] >
+	>
+	type $bog_builderui_card__sub_bog_builderui_studio_168 = $mol_type_enforce<
+		readonly(any)[]
+		,
+		ReturnType< $bog_builderui_card['sub'] >
+	>
+	type $bog_builderui_gallery__items_bog_builderui_studio_169 = $mol_type_enforce<
 		readonly(any)[]
 		,
 		ReturnType< $bog_builderui_gallery['items'] >
 	>
-	type $mol_scroll__sub_bog_builderui_studio_161 = $mol_type_enforce<
+	type $mol_scroll__sub_bog_builderui_studio_170 = $mol_type_enforce<
 		readonly(any)[]
 		,
 		ReturnType< $mol_scroll['sub'] >
 	>
-	type $bog_builderui_dialog__showed_bog_builderui_studio_162 = $mol_type_enforce<
-		ReturnType< $bog_builderui_studio['dialog_showed'] >
-		,
-		ReturnType< $bog_builderui_dialog['showed'] >
-	>
-	type $bog_builderui_dialog__title_bog_builderui_studio_163 = $mol_type_enforce<
-		string
-		,
-		ReturnType< $bog_builderui_dialog['title'] >
-	>
-	type $bog_builderui_dialog__text_bog_builderui_studio_164 = $mol_type_enforce<
-		string
-		,
-		ReturnType< $bog_builderui_dialog['text'] >
-	>
-	type $bog_builderui_dialog__close_bog_builderui_studio_165 = $mol_type_enforce<
-		ReturnType< $bog_builderui_studio['dialog_close'] >
-		,
-		ReturnType< $bog_builderui_dialog['close'] >
-	>
-	type $bog_builderui_dialog__confirm_bog_builderui_studio_166 = $mol_type_enforce<
-		ReturnType< $bog_builderui_studio['dialog_confirm'] >
-		,
-		ReturnType< $bog_builderui_dialog['confirm'] >
-	>
-	type $bog_builderui_field__hint_bog_builderui_studio_167 = $mol_type_enforce<
-		string
-		,
-		ReturnType< $bog_builderui_field['hint'] >
-	>
-	type $bog_builderui_field__value_bog_builderui_studio_168 = $mol_type_enforce<
-		ReturnType< $bog_builderui_studio['namespace'] >
-		,
-		ReturnType< $bog_builderui_field['value'] >
-	>
-	type $bog_builderui_field__hint_bog_builderui_studio_169 = $mol_type_enforce<
-		string
-		,
-		ReturnType< $bog_builderui_field['hint'] >
-	>
-	type $bog_builderui_field__value_bog_builderui_studio_170 = $mol_type_enforce<
-		ReturnType< $bog_builderui_studio['app_name'] >
-		,
-		ReturnType< $bog_builderui_field['value'] >
-	>
 	type $bog_builderui_dialog__showed_bog_builderui_studio_171 = $mol_type_enforce<
-		ReturnType< $bog_builderui_studio['get_code_showed'] >
+		ReturnType< $bog_builderui_studio['dialog_showed'] >
 		,
 		ReturnType< $bog_builderui_dialog['showed'] >
 	>
@@ -7848,22 +7876,67 @@ declare namespace $ {
 		,
 		ReturnType< $bog_builderui_dialog['text'] >
 	>
-	type $bog_builderui_dialog__confirm_title_bog_builderui_studio_174 = $mol_type_enforce<
+	type $bog_builderui_dialog__close_bog_builderui_studio_174 = $mol_type_enforce<
+		ReturnType< $bog_builderui_studio['dialog_close'] >
+		,
+		ReturnType< $bog_builderui_dialog['close'] >
+	>
+	type $bog_builderui_dialog__confirm_bog_builderui_studio_175 = $mol_type_enforce<
+		ReturnType< $bog_builderui_studio['dialog_confirm'] >
+		,
+		ReturnType< $bog_builderui_dialog['confirm'] >
+	>
+	type $bog_builderui_field__hint_bog_builderui_studio_176 = $mol_type_enforce<
+		string
+		,
+		ReturnType< $bog_builderui_field['hint'] >
+	>
+	type $bog_builderui_field__value_bog_builderui_studio_177 = $mol_type_enforce<
+		ReturnType< $bog_builderui_studio['namespace'] >
+		,
+		ReturnType< $bog_builderui_field['value'] >
+	>
+	type $bog_builderui_field__hint_bog_builderui_studio_178 = $mol_type_enforce<
+		string
+		,
+		ReturnType< $bog_builderui_field['hint'] >
+	>
+	type $bog_builderui_field__value_bog_builderui_studio_179 = $mol_type_enforce<
+		ReturnType< $bog_builderui_studio['app_name'] >
+		,
+		ReturnType< $bog_builderui_field['value'] >
+	>
+	type $bog_builderui_dialog__showed_bog_builderui_studio_180 = $mol_type_enforce<
+		ReturnType< $bog_builderui_studio['get_code_showed'] >
+		,
+		ReturnType< $bog_builderui_dialog['showed'] >
+	>
+	type $bog_builderui_dialog__title_bog_builderui_studio_181 = $mol_type_enforce<
+		string
+		,
+		ReturnType< $bog_builderui_dialog['title'] >
+	>
+	type $bog_builderui_dialog__text_bog_builderui_studio_182 = $mol_type_enforce<
+		string
+		,
+		ReturnType< $bog_builderui_dialog['text'] >
+	>
+	type $bog_builderui_dialog__confirm_title_bog_builderui_studio_183 = $mol_type_enforce<
 		string
 		,
 		ReturnType< $bog_builderui_dialog['confirm_title'] >
 	>
-	type $bog_builderui_dialog__close_bog_builderui_studio_175 = $mol_type_enforce<
+	type $bog_builderui_dialog__close_bog_builderui_studio_184 = $mol_type_enforce<
 		ReturnType< $bog_builderui_studio['get_code_close'] >
 		,
 		ReturnType< $bog_builderui_dialog['close'] >
 	>
-	type $bog_builderui_dialog__confirm_bog_builderui_studio_176 = $mol_type_enforce<
+	type $bog_builderui_dialog__confirm_bog_builderui_studio_185 = $mol_type_enforce<
 		ReturnType< $bog_builderui_studio['get_code_confirm'] >
 		,
 		ReturnType< $bog_builderui_dialog['confirm'] >
 	>
-	type $bog_builderui_dialog__content_bog_builderui_studio_177 = $mol_type_enforce<
+	type $bog_builderui_dialog__content_bog_builderui_studio_186 = $mol_type_enforce<
 		readonly(any)[]
 		,
 		ReturnType< $bog_builderui_dialog['content'] >
@@ -7985,6 +8058,12 @@ declare namespace $ {
 		Menu_item_three( ): $bog_builderui_menu_item
 		Menu_demo( ): $bog_builderui_menu
 		Menu_card( ): $bog_builderui_card
+		Breadcrumbs_title( ): $mol_view
+		Breadcrumb_home( ): $bog_builderui_breadcrumbs_item
+		Breadcrumb_library( ): $bog_builderui_breadcrumbs_item
+		Breadcrumb_data( ): $bog_builderui_breadcrumbs_item
+		Breadcrumbs_demo( ): $bog_builderui_breadcrumbs
+		Breadcrumbs_card( ): $bog_builderui_card
 		Code_title( ): $mol_view
 		Code_preview( ): $mol_app_quine
 		Code_card( ): $bog_builderui_card
