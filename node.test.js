@@ -11792,7 +11792,7 @@ var $;
 "use strict";
 var $;
 (function ($) {
-    $mol_style_attach("bog/builderui/breadcrumbs/breadcrumbs.view.css", "[bog_builderui_breadcrumbs] > *:not(:first-child)::before {\n\tcontent: '›';\n\tcolor: var(--bog_builderui_shade);\n\tmargin-right: 0.5rem;\n\tfont-weight: 400;\n\topacity: 0.6;\n}\n\n[bog_builderui_breadcrumbs_item]:hover {\n\tcolor: var(--bog_builderui_text);\n}\n");
+    $mol_style_attach("bog/builderui/breadcrumbs/breadcrumbs.view.css", "[bog_builderui_breadcrumbs] > *:not(:first-child)::before {\n\tcontent: '›';\n\tcolor: var(--bog_builderui_shade);\n\tmargin-right: 0.5rem;\n\tfont-weight: 400;\n\topacity: 0.6;\n}\n");
 })($ || ($ = {}));
 
 ;
@@ -11844,6 +11844,9 @@ var $;
         flex: {
             grow: 0,
             shrink: 0,
+        },
+        ':hover': {
+            color: $bog_builderui_tokens.text,
         },
         '@': {
             bog_builderui_breadcrumbs_current: {
