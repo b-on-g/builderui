@@ -5,7 +5,3 @@
 	font-weight: 400;
 	opacity: 0.6;
 }
-
-[bog_builderui_breadcrumbs_item]:hover {
-	color: var(--bog_builderui_text);
-}

@@ -1,15 +1,128 @@
 <!doctype html>
-<html>
+<html lang="ru">
+<head>
 <meta charset="utf-8" />
-<title>BuilderUI Studio</title>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>404 — BuilderUI</title>
+<style>
+	*, *::before, *::after { box-sizing: border-box; }
+	html, body { margin: 0; padding: 0; height: 100%; }
+	body {
+		font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+		background: #0b1220;
+		color: #e2e8f0;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		min-height: 100dvh;
+		padding: 1rem;
+		-webkit-font-smoothing: antialiased;
+	}
+	.card {
+		background: #111827;
+		border: 1px solid #1e293b;
+		border-radius: 1rem;
+		padding: 2rem;
+		max-width: 28rem;
+		width: 100%;
+		text-align: center;
+		box-shadow: 0 10px 30px rgba(0,0,0,.4);
+	}
+	.code {
+		font-size: 4.5rem;
+		font-weight: 800;
+		letter-spacing: -.04em;
+		line-height: 1;
+		margin: 0 0 .5rem;
+		color: #f1f5f9;
+	}
+	.title {
+		font-size: 1.125rem;
+		margin: 0 0 1.5rem;
+		color: #cbd5e1;
+	}
+	.cat-frame {
+		width: 240px;
+		height: 240px;
+		margin: 0 auto 1.5rem;
+		border-radius: 1rem;
+		overflow: hidden;
+		background: #1e293b;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+	}
+	.cat {
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+		display: block;
+	}
+	.cat-fallback {
+		font-size: 5rem;
+		filter: grayscale(.1);
+	}
+	.actions {
+		display: flex;
+		gap: .5rem;
+		justify-content: center;
+		flex-wrap: wrap;
+	}
+	.btn {
+		appearance: none;
+		border: 1px solid #334155;
+		background: transparent;
+		color: #e2e8f0;
+		padding: .625rem 1.25rem;
+		border-radius: .5rem;
+		cursor: pointer;
+		font-family: inherit;
+		font-size: .9375rem;
+		text-decoration: none;
+		transition: background-color 120ms, border-color 120ms;
+		display: inline-flex;
+		align-items: center;
+		gap: .4rem;
+	}
+	.btn:hover { background: #1e293b; }
+	.btn.primary {
+		background: #38bdf8;
+		border-color: #38bdf8;
+		color: #0b1220;
+		font-weight: 600;
+	}
+	.btn.primary:hover {
+		background: #0ea5e9;
+		border-color: #0ea5e9;
+	}
+	.hint {
+		margin-top: 1.5rem;
+		font-size: .8125rem;
+		color: #64748b;
+	}
+	.hint a {
+		color: #38bdf8;
+		text-decoration: none;
+	}
+	.hint a:hover { text-decoration: underline; }
+</style>
+<body>
+	<div class="card">
+		<div class="code">404</div>
+		<p class="title">Страница не нашлась</p>
+		<div class="cat-frame">
+			<img class="cat" src="https://cataas.com/cat?width=240&height=240" alt="Утешительный котик" onerror="this.replaceWith(Object.assign(document.createElement('div'),{className:'cat-fallback',textContent:'🐱'}))" />
+		</div>
+		<div class="actions">
+			<button class="btn" type="button" onclick="history.length > 1 ? history.back() : (location.href = './')">← Назад</button>
+			<a class="btn primary" href="./">На главную</a>
+		</div>
+		<p class="hint">Открыли deep-link? <a href="#" id="spa">Загрузить как состояние приложения</a></p>
+	</div>
 <script>
-	// SPA fallback for GitHub Pages: GH Pages serves this file for unknown
-	// paths; we redirect to `<mount>/?/<original-path>` so the loaded
-	// index.html can rewrite back to a clean URL via History API.
-	// Pattern from https://github.com/rafgraph/spa-github-pages
-	;( function () {
-		// For project-level GH Pages (username.github.io/repo/) keep 1 segment.
-		// Adjust if hosting at a different depth.
+	// SPA-fallback по клику: rafgraph spa-github-pages pattern
+	document.getElementById( 'spa' ).addEventListener( 'click', function( e ) {
+		e.preventDefault()
 		var keep = 1
 		var l = window.location
 		l.replace(
@@ -19,6 +132,7 @@
 			( l.search ? '&' + l.search.slice( 1 ).replace( /&/g, '~and~' ) : '' ) +
 			l.hash
 		)
-	} )()
+	} )
 </script>
+</body>
 </html>

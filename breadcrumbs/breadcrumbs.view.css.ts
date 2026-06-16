@@ -47,6 +47,9 @@ namespace $ {
 			grow: 0,
 			shrink: 0,
 		},
+		':hover': {
+			color: $bog_builderui_tokens.text,
+		},
 		'@': {
 			bog_builderui_breadcrumbs_current: {
 				true: {
