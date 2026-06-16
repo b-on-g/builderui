@@ -88,19 +88,33 @@ namespace $ {
 
 		/**
 		 * Install as the global `$mol_state_arg`, mount `<base>`, intercept
-		 * in-app clicks and `popstate`. No-op when:
-		 * - not in a browser
-		 * - current pathname doesn't start with `mount`
-		 * - current pathname looks like a $mol dev artifact (`.html` / `/-/`),
-		 *   so `npx mam` dev mode keeps the original hash router
-		 * - this class is already installed
+		 * in-app clicks and `popstate`.
 		 *
-		 * Idempotent. Returns this class.
+		 * With no arg — auto-detects `mount` from the `web.js` script src,
+		 * which works both for mam dev (`/.../-/web.js` → contains `/-/` →
+		 * guard skips activation) and for prod deploys (`/myapp/web.js` →
+		 * mount = `/myapp/`).
+		 *
+		 * With explicit `mount` arg — equivalent to `.at(mount).activate()`.
+		 *
+		 * No-op when: no `window`/`document`, current pathname doesn't start
+		 * with `mount`, pathname looks like a $mol dev artifact (`.html` or
+		 * `/-/`), or already installed. Idempotent.
 		 */
-		static activate(): typeof $bog_builderui_router {
+		static activate( mount?: string ): typeof $bog_builderui_router {
 
 			if( typeof window === 'undefined' ) return this
 			if( typeof document === 'undefined' ) return this
+
+			if( mount ) return this.at( mount ).activate()
+
+			if( this.mount === '/' ) {
+				const script = $mol_dom.document.querySelector( 'script[src$="web.js"]' ) as HTMLScriptElement | null
+				const detected = script && script.src
+					? new URL( script.src ).pathname.replace( /web\.js$/, '' )
+					: decodeURIComponent( $mol_dom.location.pathname ).replace( /[^/]*$/, '' )
+				if( detected !== '/' ) return this.at( detected ).activate()
+			}
 
 			const path = decodeURIComponent( $mol_dom.location.pathname )
 			if( !path.startsWith( this.mount ) ) return this
@@ -116,6 +130,25 @@ namespace $ {
 				doc.head.insertBefore( base_el, doc.head.firstChild )
 			}
 			base_el.setAttribute( 'href', this.mount )
+
+			// GH Pages SPA fallback: 404.html redirects `/mount/k=v/foo` →
+			// `/mount/?/k=v/foo`. Convert back to the real path on cold load.
+			const s = $mol_dom.location.search
+			if( s.length > 1 && s.charAt( 1 ) === '/' ) {
+				const decoded = s.slice( 2 ).split( '&' ).map( p => p.replace( /~and~/g, '&' ) ).join( '?' )
+				const parts = decoded.split( '?' )
+				const segment = parts[ 0 ] || ''
+				const query = parts[ 1 ] ? '?' + parts[ 1 ] : ''
+				$mol_dom.history.replaceState( null, '', this.mount + segment + query + $mol_dom.location.hash )
+				this.href( $mol_dom.location.href )
+			}
+
+			// Migrate legacy `#!k=v/k=v` bookmarks to clean pathname.
+			const hash = $mol_dom.location.hash
+			if( hash.startsWith( '#!' ) ) {
+				$mol_dom.history.replaceState( null, '', this.mount + hash.slice( 2 ) + $mol_dom.location.search )
+				this.href( $mol_dom.location.href )
+			}
 
 			self.addEventListener( 'popstate', () => {
 				this.href( $mol_dom.location.href )

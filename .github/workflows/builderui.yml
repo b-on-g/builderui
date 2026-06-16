@@ -22,7 +22,11 @@ jobs:
       with:
         package: 'bog/builderui'
         modules: 'studio'
-        
+
+    - name: install SPA 404 fallback
+      if: github.ref == 'refs/heads/main'
+      run: cp bog/builderui/studio/404.html bog/builderui/studio/-/404.html
+
     - uses: hyoo-ru/gh-deploy@v4.4.1
       if: github.ref == 'refs/heads/main'
       with:

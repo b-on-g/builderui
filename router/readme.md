@@ -16,17 +16,26 @@ https://example.com/myapp/base=stone/theme=amber?ref=tw
 namespace $.$$ {
     export class $my_app extends $.$my_app {
         static {
-            $bog_builderui_router.at( '/myapp/' ).activate()
+            $bog_builderui_router.activate()                 // auto-detect mount
+            // or:
+            // $bog_builderui_router.activate( '/myapp/' )    // explicit mount
         }
         // ... дальше как обычно, $mol_state_arg.value() уже идёт через нас
     }
 }
 ```
 
-`activate()` идемпотентен и no-op в трёх случаях:
+Без аргумента `activate()` тащит mount из `<script src="web.js">`. Это работает и в mam-dev (`/.../-/web.js` → mount содержит `/-/` → guard скипает), и на проде (`/myapp/web.js` → mount `/myapp/`).
+
+`activate()` идемпотентен и no-op в четырёх случаях:
 - нет `window` / `document` (SSR, prerender)
 - текущий `pathname` не начинается с `mount`
 - `pathname` похож на $mol-dev-артефакт (`.html` или `/-/`) — `npx mam`-режим остаётся на стандартном хеш-роутере
+- класс уже установлен
+
+На холодном запуске активация автоматически:
+- мигрирует legacy `#!k=v/k=v` ссылки в чистый pathname
+- разворачивает GH-Pages `?/path` SPA-редирект из `404.html`
 
 ## Несколько роутеров в одном bundle
 
@@ -45,7 +54,7 @@ const Preview = $bog_builderui_router.at( '/studio/preview/' )
 
 - **Caddy**: `try_files {path} /index.html`
 - **nginx**: `try_files $uri $uri/ /index.html;`
-- **GitHub Pages**: `404.html` с SPA-редиректом ([rafrex/spa-github-pages](https://github.com/rafgraph/spa-github-pages))
+- **GitHub Pages**: положи `404.html` с rafgraph-redirect'ом ([spa-github-pages](https://github.com/rafgraph/spa-github-pages)) рядом с `index.html` — пример в `bog/builderui/studio/404.html`. Не забудь `pathSegmentsToKeep` (обычно `1` для project-pages `username.github.io/repo/`).
 - **Tauri**: уже работает из коробки
 
 ## Не путать с `bog/ui/router/path`

@@ -1,0 +1,24 @@
+<!doctype html>
+<html>
+<meta charset="utf-8" />
+<title>BuilderUI Studio</title>
+<script>
+	// SPA fallback for GitHub Pages: GH Pages serves this file for unknown
+	// paths; we redirect to `<mount>/?/<original-path>` so the loaded
+	// index.html can rewrite back to a clean URL via History API.
+	// Pattern from https://github.com/rafgraph/spa-github-pages
+	;( function () {
+		// For project-level GH Pages (username.github.io/repo/) keep 1 segment.
+		// Adjust if hosting at a different depth.
+		var keep = 1
+		var l = window.location
+		l.replace(
+			l.protocol + '//' + l.hostname + ( l.port ? ':' + l.port : '' ) +
+			l.pathname.split( '/' ).slice( 0, 1 + keep ).join( '/' ) + '/?/' +
+			l.pathname.slice( 1 ).split( '/' ).slice( keep ).join( '/' ).replace( /&/g, '~and~' ) +
+			( l.search ? '&' + l.search.slice( 1 ).replace( /&/g, '~and~' ) : '' ) +
+			l.hash
+		)
+	} )()
+</script>
+</html>
