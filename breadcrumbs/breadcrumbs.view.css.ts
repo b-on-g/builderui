@@ -40,11 +40,23 @@ namespace $ {
 			size: '0.875rem',
 			weight: 500,
 		},
+		textDecoration: 'none',
 		minWidth: 0,
 		whiteSpace: 'nowrap',
 		flex: {
 			grow: 0,
 			shrink: 0,
+		},
+		'@': {
+			bog_builderui_breadcrumbs_current: {
+				true: {
+					color: $bog_builderui_tokens.text,
+					pointerEvents: 'none',
+					font: {
+						weight: 600,
+					},
+				},
+			},
 		},
 	} )
 

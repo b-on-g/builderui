@@ -227,16 +227,13 @@ $bog_builderui_studio $bog_builderui_div
 					<= Breadcrumbs_demo $bog_builderui_breadcrumbs items /
 						<= Breadcrumb_home $bog_builderui_breadcrumbs_item
 							title \Home
-							arg *
-								crumb \home
+							path \home
 						<= Breadcrumb_library $bog_builderui_breadcrumbs_item
 							title \Library
-							arg *
-								crumb \library
+							path \home/library
 						<= Breadcrumb_data $bog_builderui_breadcrumbs_item
 							title \Data
-							arg *
-								crumb \data
+							path \home/library/data
 				<= Code_card $bog_builderui_card sub /
 					<= Code_title $mol_view sub / \Sources
 					<= Code_preview $mol_app_quine

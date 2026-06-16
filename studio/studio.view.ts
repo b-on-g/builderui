@@ -74,6 +74,7 @@ namespace $.$$ {
 		'toast/toast.view.css',
 		'tooltip/tooltip.view.tree',
 		'breadcrumbs/breadcrumbs.view.tree',
+		'breadcrumbs/breadcrumbs.view.ts',
 		'breadcrumbs/breadcrumbs.view.css.ts',
 		'breadcrumbs/breadcrumbs.view.css',
 		'router/router.web.ts',

@@ -118,7 +118,6 @@ namespace $ {
 
 			const path = decodeURIComponent( $mol_dom.location.pathname )
 			if( !path.startsWith( this.mount ) ) return this
-			if( /\.html?$/i.test( path ) || /\/-\//.test( path ) ) return this
 
 			if( ( $ as any ).$mol_state_arg === this ) return this
 			;( $ as any ).$mol_state_arg = this

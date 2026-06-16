@@ -9,9 +9,3 @@
 [bog_builderui_breadcrumbs_item]:hover {
 	color: var(--bog_builderui_text);
 }
-
-[bog_builderui_breadcrumbs_item][mol_link_current="true"] {
-	color: var(--bog_builderui_text);
-	pointer-events: none;
-	font-weight: 600;
-}

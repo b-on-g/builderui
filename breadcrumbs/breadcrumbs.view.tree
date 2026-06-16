@@ -2,6 +2,14 @@ $bog_builderui_breadcrumbs $mol_view
 	items /
 	sub <= items
 
-$bog_builderui_breadcrumbs_item $mol_link
+$bog_builderui_breadcrumbs_item $mol_view
+	dom_name \a
 	title \
-	arg *
+	path \
+	current false
+	sub /
+		<= title
+	attr *
+		^
+		href <= path
+		bog_builderui_breadcrumbs_current <= current
