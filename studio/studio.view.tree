@@ -222,6 +222,21 @@ $bog_builderui_studio $bog_builderui_div
 						<= Menu_item_one $bog_builderui_menu_item title \Profile
 						<= Menu_item_two $bog_builderui_menu_item title \Settings
 						<= Menu_item_three $bog_builderui_menu_item title \Sign out
+				<= Breadcrumbs_card $bog_builderui_card sub /
+					<= Breadcrumbs_title $mol_view sub / \Breadcrumbs
+					<= Breadcrumbs_demo $bog_builderui_breadcrumbs items /
+						<= Breadcrumb_home $bog_builderui_breadcrumbs_item
+							title \Home
+							arg *
+								crumb \home
+						<= Breadcrumb_library $bog_builderui_breadcrumbs_item
+							title \Library
+							arg *
+								crumb \library
+						<= Breadcrumb_data $bog_builderui_breadcrumbs_item
+							title \Data
+							arg *
+								crumb \data
 				<= Code_card $bog_builderui_card sub /
 					<= Code_title $mol_view sub / \Sources
 					<= Code_preview $mol_app_quine

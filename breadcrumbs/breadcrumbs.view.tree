@@ -1,0 +1,7 @@
+$bog_builderui_breadcrumbs $mol_view
+	items /
+	sub <= items
+
+$bog_builderui_breadcrumbs_item $mol_link
+	title \
+	arg *

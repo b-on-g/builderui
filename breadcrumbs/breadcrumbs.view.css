@@ -1,0 +1,17 @@
+[bog_builderui_breadcrumbs] > *:not(:first-child)::before {
+	content: '›';
+	color: var(--bog_builderui_shade);
+	margin-right: 0.5rem;
+	font-weight: 400;
+	opacity: 0.6;
+}
+
+[bog_builderui_breadcrumbs_item]:hover {
+	color: var(--bog_builderui_text);
+}
+
+[bog_builderui_breadcrumbs_item][mol_link_current="true"] {
+	color: var(--bog_builderui_text);
+	pointer-events: none;
+	font-weight: 600;
+}

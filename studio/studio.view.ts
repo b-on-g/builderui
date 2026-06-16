@@ -73,6 +73,9 @@ namespace $.$$ {
 		'toast/toast.view.css.ts',
 		'toast/toast.view.css',
 		'tooltip/tooltip.view.tree',
+		'breadcrumbs/breadcrumbs.view.tree',
+		'breadcrumbs/breadcrumbs.view.css.ts',
+		'breadcrumbs/breadcrumbs.view.css',
 		'router/router.web.ts',
 		'router/router.node.ts',
 		'router/readme.md',
@@ -93,7 +96,7 @@ Drop this whole \`builderui/\` folder into your bog/ namespace, then wrap your a
     bog_builderui_font_head="inter"
   >
 
-Components: $bog_builderui_div, $bog_builderui_button, $bog_builderui_card, $bog_builderui_field, $bog_builderui_badge, $bog_builderui_alert, $bog_builderui_menu, $bog_builderui_select, $bog_builderui_tabs, $bog_builderui_chart.
+Components: $bog_builderui_div, $bog_builderui_button, $bog_builderui_card, $bog_builderui_field, $bog_builderui_badge, $bog_builderui_alert, $bog_builderui_menu, $bog_builderui_select, $bog_builderui_tabs, $bog_builderui_chart, $bog_builderui_breadcrumbs (+ $bog_builderui_breadcrumbs_item).
 
 Path routing: call \`$bog_builderui_router.at('/your-app/').activate()\` in your app's static block to get clean URLs (\`/your-app/k=v/k=v\`) instead of \`#!\`. Requires SPA fallback on the server. See \`router/readme.md\`.
 
