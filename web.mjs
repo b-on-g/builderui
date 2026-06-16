@@ -16413,6 +16413,169 @@ var $;
 
 ;
 "use strict";
+var $;
+(function ($) {
+    /**
+     * Path-based router for BuilderUI apps.
+     *
+     * URL shape: `<origin><mount>k=v/k=v?search` — segments live directly in
+     * `pathname`, no `#!` fallback. Drop-in for `$mol_state_arg` once installed
+     * via `.activate()`. Subclass per mount with `.at('/admin/')` to host
+     * several routers in one bundle (nested mounts, preview frames).
+     *
+     * Server contract: any unknown path under `mount` must fall back to the
+     * app's `index.html` (Caddy `try_files`, nginx fallback, GH Pages 404.html,
+     * etc). Without that, deep-links 404 on first hit.
+     */
+    class $bog_builderui_router extends $mol_state_arg {
+        /** Mount prefix. Must start AND end with `/`. Override per subclass via `.at()`. */
+        static mount = '/';
+        /** Factory: subclass anchored at the given pathname mount. */
+        static at(mount) {
+            if (!mount.startsWith('/'))
+                mount = '/' + mount;
+            if (!mount.endsWith('/'))
+                mount = mount + '/';
+            const base = this;
+            const sub = class extends base {
+                static mount = mount;
+            };
+            Object.defineProperty(sub, 'name', {
+                value: `${base.name}_${mount.replace(/\W+/g, '_').replace(/^_|_$/g, '') || 'root'}`,
+            });
+            return sub;
+        }
+        static href(next) {
+            if (next === undefined)
+                return $mol_dom.location.href;
+            if (!/^about:srcdoc/.test(next)) {
+                new $mol_after_frame(() => {
+                    const target = this.href();
+                    const current = $mol_dom.location.href;
+                    if (target === current)
+                        return;
+                    const h = $mol_dom.history;
+                    h.replaceState(h.state, $mol_dom.document.title, target);
+                });
+            }
+            return next;
+        }
+        static dict(next) {
+            const href = this.href(next && this.make_link(next));
+            const url = new URL(href);
+            const path = decodeURIComponent(url.pathname);
+            const segment = path.startsWith(this.mount) ? path.slice(this.mount.length) : '';
+            const params = {};
+            for (const chunk of segment.split(this.separator)) {
+                if (!chunk)
+                    continue;
+                const vals = chunk.split('=').map(decodeURIComponent);
+                params[vals.shift()] = vals.join('=');
+            }
+            return params;
+        }
+        static make_link(next) {
+            const chunks = [];
+            for (const key in next) {
+                if (null == next[key])
+                    continue;
+                const val = next[key];
+                chunks.push([key].concat(val ? [val] : []).map(this.encode).join('='));
+            }
+            const segment = chunks.join(this.separator);
+            return $mol_dom.location.origin + this.mount + segment + $mol_dom.location.search;
+        }
+        static go(next) {
+            const link = this.link(next);
+            if (typeof window === 'undefined')
+                return;
+            $mol_dom.history.pushState(null, '', link);
+            this.href(link);
+        }
+        /**
+         * Install as the global `$mol_state_arg`, mount `<base>`, intercept
+         * in-app clicks and `popstate`. No-op when:
+         * - not in a browser
+         * - current pathname doesn't start with `mount`
+         * - current pathname looks like a $mol dev artifact (`.html` / `/-/`),
+         *   so `npx mam` dev mode keeps the original hash router
+         * - this class is already installed
+         *
+         * Idempotent. Returns this class.
+         */
+        static activate() {
+            if (typeof window === 'undefined')
+                return this;
+            if (typeof document === 'undefined')
+                return this;
+            const path = decodeURIComponent($mol_dom.location.pathname);
+            if (!path.startsWith(this.mount))
+                return this;
+            if (/\.html?$/i.test(path) || /\/-\//.test(path))
+                return this;
+            if ($.$mol_state_arg === this)
+                return this;
+            $.$mol_state_arg = this;
+            const doc = $mol_dom.document;
+            let base_el = doc.querySelector('base');
+            if (!base_el) {
+                base_el = doc.createElement('base');
+                doc.head.insertBefore(base_el, doc.head.firstChild);
+            }
+            base_el.setAttribute('href', this.mount);
+            self.addEventListener('popstate', () => {
+                this.href($mol_dom.location.href);
+            });
+            self.addEventListener('click', this.on_click.bind(this), true);
+            return this;
+        }
+        static on_click(e) {
+            if (e.defaultPrevented)
+                return;
+            if (e.button !== 0)
+                return;
+            if (e.metaKey || e.ctrlKey || e.shiftKey || e.altKey)
+                return;
+            let el = e.target;
+            while (el && el.tagName !== 'A')
+                el = el.parentElement;
+            if (!el)
+                return;
+            const a = el;
+            if (a.hasAttribute('download'))
+                return;
+            if (a.target && a.target !== '' && a.target !== '_self')
+                return;
+            if (a.origin !== $mol_dom.location.origin)
+                return;
+            if (!decodeURIComponent(a.pathname).startsWith(this.mount))
+                return;
+            const target = a.href;
+            const current = $mol_dom.location.href;
+            if (target === current)
+                return;
+            e.preventDefault();
+            $mol_dom.history.pushState(null, '', target);
+            this.href(target);
+        }
+    }
+    __decorate([
+        $mol_mem
+    ], $bog_builderui_router, "href", null);
+    __decorate([
+        $mol_mem
+    ], $bog_builderui_router, "dict", null);
+    __decorate([
+        $mol_mem_key
+    ], $bog_builderui_router, "make_link", null);
+    __decorate([
+        $mol_action
+    ], $bog_builderui_router, "go", null);
+    $.$bog_builderui_router = $bog_builderui_router;
+})($ || ($ = {}));
+
+;
+"use strict";
 
 
 ;
@@ -16481,6 +16644,9 @@ var $;
             'toast/toast.view.css.ts',
             'toast/toast.view.css',
             'tooltip/tooltip.view.tree',
+            'router/router.web.ts',
+            'router/router.node.ts',
+            'router/readme.md',
         ];
         const README = `# BuilderUI kit
 
@@ -16498,9 +16664,14 @@ Drop this whole \`builderui/\` folder into your bog/ namespace, then wrap your a
 
 Components: $bog_builderui_div, $bog_builderui_button, $bog_builderui_card, $bog_builderui_field, $bog_builderui_badge, $bog_builderui_alert, $bog_builderui_menu, $bog_builderui_select, $bog_builderui_tabs, $bog_builderui_chart.
 
+Path routing: call \`$bog_builderui_router.at('/your-app/').activate()\` in your app's static block to get clean URLs (\`/your-app/k=v/k=v\`) instead of \`#!\`. Requires SPA fallback on the server. See \`router/readme.md\`.
+
 Generated by BuilderUI Studio.
 `;
         class $bog_builderui_studio extends $.$bog_builderui_studio {
+            static {
+                $bog_builderui_router.at('/bog/builderui/studio/').activate();
+            }
             base(next) {
                 return ($mol_state_arg.value('base', next) || 'slate');
             }

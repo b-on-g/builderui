@@ -6929,6 +6929,15 @@ declare namespace $ {
 }
 
 declare namespace $ {
+    /** Node-side stub. Real impl in `router.web.ts`. */
+    class $bog_builderui_router extends $mol_state_arg {
+        static mount: string;
+        static at(mount: string): typeof $bog_builderui_router;
+        static activate(): typeof $bog_builderui_router;
+    }
+}
+
+declare namespace $ {
 
 	type $bog_favicon__Icon_bog_builderui_studio_1 = $mol_type_enforce<
 		ReturnType< $bog_builderui_studio['favicon_icon'] >

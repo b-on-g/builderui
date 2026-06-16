@@ -6836,6 +6836,50 @@ declare namespace $ {
 }
 
 declare namespace $ {
+    /**
+     * Path-based router for BuilderUI apps.
+     *
+     * URL shape: `<origin><mount>k=v/k=v?search` — segments live directly in
+     * `pathname`, no `#!` fallback. Drop-in for `$mol_state_arg` once installed
+     * via `.activate()`. Subclass per mount with `.at('/admin/')` to host
+     * several routers in one bundle (nested mounts, preview frames).
+     *
+     * Server contract: any unknown path under `mount` must fall back to the
+     * app's `index.html` (Caddy `try_files`, nginx fallback, GH Pages 404.html,
+     * etc). Without that, deep-links 404 on first hit.
+     */
+    class $bog_builderui_router extends $mol_state_arg {
+        /** Mount prefix. Must start AND end with `/`. Override per subclass via `.at()`. */
+        static mount: string;
+        /** Factory: subclass anchored at the given pathname mount. */
+        static at(mount: string): typeof $bog_builderui_router;
+        static href(next?: string): string;
+        static dict(next?: {
+            [key: string]: string | null;
+        }): Readonly<{
+            [key: string]: string;
+        }>;
+        static make_link(next: {
+            [key: string]: string | null;
+        }): string;
+        static go(next: Record<string, string | null>): void;
+        /**
+         * Install as the global `$mol_state_arg`, mount `<base>`, intercept
+         * in-app clicks and `popstate`. No-op when:
+         * - not in a browser
+         * - current pathname doesn't start with `mount`
+         * - current pathname looks like a $mol dev artifact (`.html` / `/-/`),
+         *   so `npx mam` dev mode keeps the original hash router
+         * - this class is already installed
+         *
+         * Idempotent. Returns this class.
+         */
+        static activate(): typeof $bog_builderui_router;
+        protected static on_click(e: MouseEvent): void;
+    }
+}
+
+declare namespace $ {
 
 	type $bog_favicon__Icon_bog_builderui_studio_1 = $mol_type_enforce<
 		ReturnType< $bog_builderui_studio['favicon_icon'] >
