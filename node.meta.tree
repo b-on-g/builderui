@@ -58,3 +58,4 @@
 \/bog/builderui/studio
 	deploy \/mol/offline/install
 	deploy \/bog/builderui/tokens/tokens.ts
+	deploy \/bog/builderui/studio/404.html
