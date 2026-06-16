@@ -114,25 +114,36 @@
 			<img class="cat" src="https://cataas.com/cat?width=240&height=240" alt="Утешительный котик" onerror="this.replaceWith(Object.assign(document.createElement('div'),{className:'cat-fallback',textContent:'🐱'}))" />
 		</div>
 		<div class="actions">
-			<button class="btn" type="button" onclick="history.length > 1 ? history.back() : (location.href = './')">← Назад</button>
-			<a class="btn primary" href="./">На главную</a>
+			<button class="btn" type="button" id="back">← Назад</button>
+			<a class="btn primary" id="home" href="./">На главную</a>
 		</div>
 		<p class="hint">Открыли deep-link? <a href="#" id="spa">Загрузить как состояние приложения</a></p>
 	</div>
 <script>
-	// SPA-fallback по клику: rafgraph spa-github-pages pattern
-	document.getElementById( 'spa' ).addEventListener( 'click', function( e ) {
-		e.preventDefault()
+	;( function () {
 		var keep = 1
 		var l = window.location
-		l.replace(
-			l.protocol + '//' + l.hostname + ( l.port ? ':' + l.port : '' ) +
-			l.pathname.split( '/' ).slice( 0, 1 + keep ).join( '/' ) + '/?/' +
-			l.pathname.slice( 1 ).split( '/' ).slice( keep ).join( '/' ).replace( /&/g, '~and~' ) +
-			( l.search ? '&' + l.search.slice( 1 ).replace( /&/g, '~and~' ) : '' ) +
-			l.hash
-		)
-	} )
+		var root = l.pathname.split( '/' ).slice( 0, 1 + keep ).join( '/' ) + '/'
+
+		document.getElementById( 'home' ).href = root
+
+		document.getElementById( 'back' ).addEventListener( 'click', function () {
+			var sameOrigin = document.referrer && new URL( document.referrer ).origin === l.origin
+			if( sameOrigin && history.length > 1 ) history.back()
+			else l.replace( root )
+		} )
+
+		document.getElementById( 'spa' ).addEventListener( 'click', function ( e ) {
+			e.preventDefault()
+			l.replace(
+				l.protocol + '//' + l.hostname + ( l.port ? ':' + l.port : '' ) +
+				root + '?/' +
+				l.pathname.slice( 1 ).split( '/' ).slice( keep ).join( '/' ).replace( /&/g, '~and~' ) +
+				( l.search ? '&' + l.search.slice( 1 ).replace( /&/g, '~and~' ) : '' ) +
+				l.hash
+			)
+		} )
+	} )()
 </script>
 </body>
 </html>
