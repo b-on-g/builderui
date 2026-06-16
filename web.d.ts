@@ -6865,16 +6865,20 @@ declare namespace $ {
         static go(next: Record<string, string | null>): void;
         /**
          * Install as the global `$mol_state_arg`, mount `<base>`, intercept
-         * in-app clicks and `popstate`. No-op when:
-         * - not in a browser
-         * - current pathname doesn't start with `mount`
-         * - current pathname looks like a $mol dev artifact (`.html` / `/-/`),
-         *   so `npx mam` dev mode keeps the original hash router
-         * - this class is already installed
+         * in-app clicks and `popstate`.
          *
-         * Idempotent. Returns this class.
+         * With no arg — auto-detects `mount` from the `web.js` script src,
+         * which works both for mam dev (`/.../-/web.js` → contains `/-/` →
+         * guard skips activation) and for prod deploys (`/myapp/web.js` →
+         * mount = `/myapp/`).
+         *
+         * With explicit `mount` arg — equivalent to `.at(mount).activate()`.
+         *
+         * No-op when: no `window`/`document`, current pathname doesn't start
+         * with `mount`, pathname looks like a $mol dev artifact (`.html` or
+         * `/-/`), or already installed. Idempotent.
          */
-        static activate(): typeof $bog_builderui_router;
+        static activate(mount?: string): typeof $bog_builderui_router;
         protected static on_click(e: MouseEvent): void;
     }
 }
