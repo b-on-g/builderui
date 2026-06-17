@@ -3,14 +3,32 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="color-scheme" content="light dark" />
 <title>404 — BuilderUI</title>
 <style>
+	:root {
+		color-scheme: light dark;
+		--bg: light-dark(#f8fafc, #0b1220);
+		--card: light-dark(#ffffff, #111827);
+		--border: light-dark(#e2e8f0, #1e293b);
+		--text: light-dark(#0f172a, #e2e8f0);
+		--code: light-dark(#020617, #f1f5f9);
+		--subtitle: light-dark(#475569, #cbd5e1);
+		--cat-bg: light-dark(#f1f5f9, #1e293b);
+		--btn-border: light-dark(#cbd5e1, #334155);
+		--btn-hover-bg: light-dark(#f1f5f9, #1e293b);
+		--primary: light-dark(#0284c7, #38bdf8);
+		--primary-text: light-dark(#ffffff, #0b1220);
+		--primary-hover: light-dark(#0369a1, #0ea5e9);
+		--shadow: light-dark(0 10px 30px rgba(15,23,42,.08), 0 10px 30px rgba(0,0,0,.4));
+	}
+
 	*, *::before, *::after { box-sizing: border-box; }
 	html, body { margin: 0; padding: 0; height: 100%; }
 	body {
 		font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
-		background: #0b1220;
-		color: #e2e8f0;
+		background: var(--bg);
+		color: var(--text);
 		display: flex;
 		align-items: center;
 		justify-content: center;
@@ -19,14 +37,14 @@
 		-webkit-font-smoothing: antialiased;
 	}
 	.card {
-		background: #111827;
-		border: 1px solid #1e293b;
+		background: var(--card);
+		border: 1px solid var(--border);
 		border-radius: 1rem;
 		padding: 2rem;
 		max-width: 28rem;
 		width: 100%;
 		text-align: center;
-		box-shadow: 0 10px 30px rgba(0,0,0,.4);
+		box-shadow: var(--shadow);
 	}
 	.code {
 		font-size: 4.5rem;
@@ -34,12 +52,12 @@
 		letter-spacing: -.04em;
 		line-height: 1;
 		margin: 0 0 .5rem;
-		color: #f1f5f9;
+		color: var(--code);
 	}
 	.title {
 		font-size: 1.125rem;
 		margin: 0 0 1.5rem;
-		color: #cbd5e1;
+		color: var(--subtitle);
 	}
 	.cat-frame {
 		width: 240px;
@@ -47,7 +65,7 @@
 		margin: 0 auto 1.5rem;
 		border-radius: 1rem;
 		overflow: hidden;
-		background: #1e293b;
+		background: var(--cat-bg);
 		display: flex;
 		align-items: center;
 		justify-content: center;
@@ -70,9 +88,9 @@
 	}
 	.btn {
 		appearance: none;
-		border: 1px solid #334155;
+		border: 1px solid var(--btn-border);
 		background: transparent;
-		color: #e2e8f0;
+		color: var(--text);
 		padding: .625rem 1.25rem;
 		border-radius: .5rem;
 		cursor: pointer;
@@ -84,27 +102,17 @@
 		align-items: center;
 		gap: .4rem;
 	}
-	.btn:hover { background: #1e293b; }
+	.btn:hover { background: var(--btn-hover-bg); }
 	.btn.primary {
-		background: #38bdf8;
-		border-color: #38bdf8;
-		color: #0b1220;
+		background: var(--primary);
+		border-color: var(--primary);
+		color: var(--primary-text);
 		font-weight: 600;
 	}
 	.btn.primary:hover {
-		background: #0ea5e9;
-		border-color: #0ea5e9;
+		background: var(--primary-hover);
+		border-color: var(--primary-hover);
 	}
-	.hint {
-		margin-top: 1.5rem;
-		font-size: .8125rem;
-		color: #64748b;
-	}
-	.hint a {
-		color: #38bdf8;
-		text-decoration: none;
-	}
-	.hint a:hover { text-decoration: underline; }
 </style>
 <body>
 	<div class="card">
@@ -114,10 +122,9 @@
 			<img class="cat" src="https://cataas.com/cat?width=240&height=240" alt="Утешительный котик" onerror="this.replaceWith(Object.assign(document.createElement('div'),{className:'cat-fallback',textContent:'🐱'}))" />
 		</div>
 		<div class="actions">
-			<button class="btn" type="button" id="back">← Назад</button>
-			<a class="btn primary" id="home" href="./">На главную</a>
+			<button class="btn" type="button" id="spa">← Назад</button>
+			<a class="btn primary" id="home" href="spa">На главную</a>
 		</div>
-		<p class="hint">Открыли deep-link? <a href="#" id="spa">Загрузить как состояние приложения</a></p>
 	</div>
 <script>
 	;( function () {
@@ -125,16 +132,8 @@
 		var l = window.location
 		var root = l.pathname.split( '/' ).slice( 0, 1 + keep ).join( '/' ) + '/'
 
-		document.getElementById( 'home' ).href = root
-
-		document.getElementById( 'back' ).addEventListener( 'click', function () {
-			var sameOrigin = document.referrer && new URL( document.referrer ).origin === l.origin
-			if( sameOrigin && history.length > 1 ) history.back()
-			else l.replace( root )
-		} )
-
-		document.getElementById( 'spa' ).addEventListener( 'click', function ( e ) {
-			e.preventDefault()
+		function spaFallback( e ) {
+			if( e ) e.preventDefault()
 			l.replace(
 				l.protocol + '//' + l.hostname + ( l.port ? ':' + l.port : '' ) +
 				root + '?/' +
@@ -142,7 +141,10 @@
 				( l.search ? '&' + l.search.slice( 1 ).replace( /&/g, '~and~' ) : '' ) +
 				l.hash
 			)
-		} )
+		}
+
+		document.getElementById( 'spa' ).addEventListener( 'click', spaFallback )
+		document.getElementById( 'home' ).addEventListener( 'click', spaFallback )
 	} )()
 </script>
 </body>
