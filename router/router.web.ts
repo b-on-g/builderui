@@ -174,7 +174,25 @@ namespace $ {
 			if( a.origin !== $mol_dom.location.origin ) return
 			if( !decodeURIComponent( a.pathname ).startsWith( this.mount ) ) return
 
-			const target = a.href
+			// Anchor segments: positional (no '=') replace current positional,
+			// k=v override matching current keys; unmatched current k=v preserved.
+			const a_segments = decodeURIComponent( a.pathname ).slice( this.mount.length ).split( '/' ).filter( Boolean )
+			const a_positional = a_segments.filter( s => !s.includes( '=' ) )
+			const a_kv = a_segments.filter( s => s.includes( '=' ) )
+
+			const cur_path = decodeURIComponent( $mol_dom.location.pathname ).slice( this.mount.length )
+			const cur_segments = cur_path.split( '/' ).filter( Boolean )
+			const cur_positional = cur_segments.filter( s => !s.includes( '=' ) )
+			const cur_kv = cur_segments.filter( s => s.includes( '=' ) )
+
+			const a_kv_keys = new Set( a_kv.map( s => s.split( '=' )[ 0 ] ) )
+			const kept_kv = cur_kv.filter( s => !a_kv_keys.has( s.split( '=' )[ 0 ] ) )
+
+			const new_positional = a_positional.length > 0 ? a_positional : cur_positional
+			const new_segments = [ ...new_positional, ...kept_kv, ...a_kv ]
+			const new_path = new_segments.join( '/' )
+
+			const target = $mol_dom.location.origin + this.mount + new_path + ( a.search || $mol_dom.location.search )
 			const current = $mol_dom.location.href
 			if( target === current ) return
 
