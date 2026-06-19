@@ -9540,8 +9540,6 @@ var $;
             color: $bog_builderui_tokens.line,
         },
         padding: {
-            top: '0.5rem',
-            bottom: '0.5rem',
             left: '0.75rem',
             right: '0.75rem',
         },
