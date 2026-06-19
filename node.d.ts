@@ -4163,9 +4163,6 @@ declare namespace $ {
 }
 
 declare namespace $ {
-}
-
-declare namespace $ {
 
 	export class $bog_builderui_select extends $mol_select {
 	}

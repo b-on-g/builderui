@@ -9511,13 +9511,6 @@ var $;
 
 ;
 "use strict";
-var $;
-(function ($) {
-    $mol_style_attach("bog/builderui/select/select.view.css", "[bog_builderui_select] {\n\ttransition: background-color 120ms, border-color 120ms;\n\tcursor: pointer;\n}\n\n[bog_builderui_select]:hover {\n\tbackground-color: var(--bog_builderui_hover);\n\tborder-color: var(--bog_builderui_focus);\n}\n\n[bog_builderui_select] [mol_select_trigger],\n[bog_builderui_select] [mol_select_trigger]:hover,\n[bog_builderui_select] [mol_select_trigger]:focus,\n[bog_builderui_select] [mol_select_trigger]:focus-visible,\n[bog_builderui_select] [mol_check],\n[bog_builderui_select] [mol_check]:hover,\n[bog_builderui_select] [mol_check]:focus,\n[bog_builderui_select] [mol_check]:focus-visible,\n[bog_builderui_select] [mol_button_typed],\n[bog_builderui_select] [mol_button_typed]:hover,\n[bog_builderui_select] [mol_button_typed]:focus,\n[bog_builderui_select] [mol_button_typed]:focus-visible {\n\tbackground-color: transparent !important;\n\tbox-shadow: none !important;\n\toutline: none !important;\n\tfilter: none !important;\n\tcolor: inherit !important;\n}\n\n[bog_builderui_select] [mol_pop_bubble] {\n\tbackground: var(--bog_builderui_card);\n\tcolor: var(--bog_builderui_text);\n\tborder: 1px solid var(--bog_builderui_line);\n\tborder-radius: var(--bog_builderui_radius);\n\tpadding: 0.25rem;\n\tbox-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);\n\toverflow: hidden;\n}\n\n[bog_builderui_select] [mol_pop_bubble] [mol_scroll] {\n\tborder-radius: var(--bog_builderui_radius);\n\tbackground: transparent;\n}\n\n[bog_builderui_select] [mol_pop_bubble] [mol_button_minor],\n[bog_builderui_select] [mol_pop_bubble] [mol_button_minor]:focus,\n[bog_builderui_select] [mol_pop_bubble] [mol_button_minor]:focus-visible {\n\tborder-radius: var(--bog_builderui_radius) !important;\n\tcolor: var(--bog_builderui_text) !important;\n\tbackground-color: transparent !important;\n\tbox-shadow: none !important;\n}\n\n[bog_builderui_select] [mol_pop_bubble] [mol_button_minor]:hover {\n\tbackground-color: var(--bog_builderui_hover) !important;\n\tbox-shadow: none !important;\n}\n");
-})($ || ($ = {}));
-
-;
-"use strict";
 
 
 ;
@@ -9542,6 +9535,80 @@ var $;
         padding: {
             left: '0.75rem',
             right: '0.75rem',
+        },
+        cursor: 'pointer',
+        transition: 'background-color 120ms, border-color 120ms',
+        ':hover': {
+            background: {
+                color: $bog_builderui_tokens.hover,
+            },
+            border: {
+                color: $bog_builderui_tokens.focus,
+            },
+        },
+        $mol_check: {
+            background: { color: 'transparent' },
+            boxShadow: 'none',
+            outline: 'none',
+            color: 'inherit',
+            ':hover': {
+                background: { color: 'transparent' },
+                boxShadow: 'none',
+            },
+            ':focus': {
+                background: { color: 'transparent' },
+                boxShadow: 'none',
+                outline: 'none',
+            },
+            ':focus-visible': {
+                background: { color: 'transparent' },
+                boxShadow: 'none',
+                outline: 'none',
+            },
+        },
+        $mol_pop_bubble: {
+            background: {
+                color: $bog_builderui_tokens.card,
+            },
+            color: $bog_builderui_tokens.text,
+            border: {
+                width: '1px',
+                style: 'solid',
+                color: $bog_builderui_tokens.line,
+                radius: $bog_builderui_tokens.radius,
+            },
+            padding: {
+                top: '0.25rem',
+                right: '0.25rem',
+                bottom: '0.25rem',
+                left: '0.25rem',
+            },
+            box: {
+                shadow: [{ x: 0, y: '4px', blur: '12px', spread: 0, color: '#00000026' }],
+            },
+            overflow: 'hidden',
+            $mol_scroll: {
+                background: { color: 'transparent' },
+                border: { radius: $bog_builderui_tokens.radius },
+            },
+            $mol_button_minor: {
+                border: { radius: $bog_builderui_tokens.radius },
+                color: $bog_builderui_tokens.text,
+                background: { color: 'transparent' },
+                boxShadow: 'none',
+                ':hover': {
+                    background: { color: $bog_builderui_tokens.hover },
+                    boxShadow: 'none',
+                },
+                ':focus': {
+                    background: { color: 'transparent' },
+                    boxShadow: 'none',
+                },
+                ':focus-visible': {
+                    background: { color: 'transparent' },
+                    boxShadow: 'none',
+                },
+            },
         },
     });
 })($ || ($ = {}));
