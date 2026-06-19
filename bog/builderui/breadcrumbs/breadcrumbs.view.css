@@ -1,0 +1,7 @@
+[bog_builderui_breadcrumbs] > *:not(:first-child)::before {
+	content: '›';
+	color: var(--bog_builderui_shade);
+	margin-right: 0.5rem;
+	font-weight: 400;
+	opacity: 0.6;
+}

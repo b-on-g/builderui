@@ -1,0 +1,28 @@
+[bog_builderui_select] {
+	transition: background-color 120ms, border-color 120ms;
+	cursor: pointer;
+}
+
+[bog_builderui_select]:hover {
+	background-color: var(--bog_builderui_hover);
+	border-color: var(--bog_builderui_focus);
+}
+
+[bog_builderui_select] [mol_select_trigger],
+[bog_builderui_select] [mol_select_trigger]:hover,
+[bog_builderui_select] [mol_select_trigger]:focus,
+[bog_builderui_select] [mol_select_trigger]:focus-visible,
+[bog_builderui_select] [mol_check],
+[bog_builderui_select] [mol_check]:hover,
+[bog_builderui_select] [mol_check]:focus,
+[bog_builderui_select] [mol_check]:focus-visible,
+[bog_builderui_select] [mol_button_typed],
+[bog_builderui_select] [mol_button_typed]:hover,
+[bog_builderui_select] [mol_button_typed]:focus,
+[bog_builderui_select] [mol_button_typed]:focus-visible {
+	background-color: transparent !important;
+	box-shadow: none !important;
+	outline: none !important;
+	filter: none !important;
+	color: inherit !important;
+}

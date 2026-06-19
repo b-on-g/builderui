@@ -1,0 +1,13 @@
+$bog_builderui_toast $bog_builderui_div
+	kind \info
+	title \
+	text \
+	attr *
+		bog_builderui_toast_kind <= kind
+	sub /
+		<= Dot $mol_view
+		<= Texts $mol_view sub /
+			<= Title $mol_view sub /
+				<= title
+			<= Text $mol_view sub /
+				<= text
