@@ -26,3 +26,32 @@
 	filter: none !important;
 	color: inherit !important;
 }
+
+[bog_builderui_select] [mol_pop_bubble] {
+	background: var(--bog_builderui_card);
+	color: var(--bog_builderui_text);
+	border: 1px solid var(--bog_builderui_line);
+	border-radius: var(--bog_builderui_radius);
+	padding: 0.25rem;
+	box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+	overflow: hidden;
+}
+
+[bog_builderui_select] [mol_pop_bubble] [mol_scroll] {
+	border-radius: var(--bog_builderui_radius);
+	background: transparent;
+}
+
+[bog_builderui_select] [mol_pop_bubble] [mol_button_minor],
+[bog_builderui_select] [mol_pop_bubble] [mol_button_minor]:focus,
+[bog_builderui_select] [mol_pop_bubble] [mol_button_minor]:focus-visible {
+	border-radius: var(--bog_builderui_radius) !important;
+	color: var(--bog_builderui_text) !important;
+	background-color: transparent !important;
+	box-shadow: none !important;
+}
+
+[bog_builderui_select] [mol_pop_bubble] [mol_button_minor]:hover {
+	background-color: var(--bog_builderui_hover) !important;
+	box-shadow: none !important;
+}
