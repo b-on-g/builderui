@@ -130,14 +130,15 @@
 	;( function () {
 		var keep = 1
 		var l = window.location
+		var segments = l.pathname.slice( 1 ).split( '/' )
 		var root = l.pathname.split( '/' ).slice( 0, 1 + keep ).join( '/' ) + '/'
+		var rest = segments.slice( keep ).filter( Boolean ).join( '/' ).replace( /&/g, '~and~' )
 
 		function spaFallback( e ) {
 			if( e ) e.preventDefault()
 			l.replace(
 				l.protocol + '//' + l.hostname + ( l.port ? ':' + l.port : '' ) +
-				root + '?/' +
-				l.pathname.slice( 1 ).split( '/' ).slice( keep ).join( '/' ).replace( /&/g, '~and~' ) +
+				root + '?/' + rest +
 				( l.search ? '&' + l.search.slice( 1 ).replace( /&/g, '~and~' ) : '' ) +
 				l.hash
 			)
@@ -145,6 +146,8 @@
 
 		document.getElementById( 'spa' ).addEventListener( 'click', spaFallback )
 		document.getElementById( 'home' ).addEventListener( 'click', spaFallback )
+
+		if( rest ) spaFallback()
 	} )()
 </script>
 </body>
