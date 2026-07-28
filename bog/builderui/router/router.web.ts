@@ -106,6 +106,12 @@ namespace $ {
 			if( typeof window === 'undefined' ) return this
 			if( typeof document === 'undefined' ) return this
 
+			// Dev-server guard: $mol dev artifacts (`/-/…/test.html`) are served by a
+			// plain file server with no SPA fallback, so pathname routing would 404 on
+			// navigation. Stay on the hash router there — no-op regardless of `mount`.
+			const here = decodeURIComponent( $mol_dom.location.pathname )
+			if( /\/-\/|\.html$/.test( here ) ) return this
+
 			if( mount ) return this.at( mount ).activate()
 
 			if( this.mount === '/' ) {

@@ -11606,13 +11606,6 @@ var $;
 
 ;
 "use strict";
-var $;
-(function ($) {
-    $mol_style_attach("bog/builderui/skeleton/skeleton.view.css", "");
-})($ || ($ = {}));
-
-;
-"use strict";
 
 
 ;
@@ -17080,7 +17073,7 @@ var $;
                 static mount = mount;
             };
         }
-        static activate() {
+        static activate(mount) {
             return this;
         }
     }

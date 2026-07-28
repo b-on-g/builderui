@@ -4791,9 +4791,6 @@ declare namespace $ {
 }
 
 declare namespace $ {
-}
-
-declare namespace $ {
 
 	export class $bog_builderui_skeleton extends $bog_builderui_div {
 		attr( ): ({ 
@@ -6965,7 +6962,7 @@ declare namespace $ {
     class $bog_builderui_router extends $mol_state_arg {
         static mount: string;
         static at(mount: string): typeof $bog_builderui_router;
-        static activate(): typeof $bog_builderui_router;
+        static activate(mount?: string): typeof $bog_builderui_router;
     }
 }
 

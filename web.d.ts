@@ -4689,9 +4689,6 @@ declare namespace $ {
 }
 
 declare namespace $ {
-}
-
-declare namespace $ {
 
 	export class $bog_builderui_skeleton extends $bog_builderui_div {
 		attr( ): ({ 
