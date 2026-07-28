@@ -12,7 +12,7 @@ namespace $ {
 			}
 		}
 
-		static activate(): typeof $bog_builderui_router {
+		static activate( mount?: string ): typeof $bog_builderui_router {
 			return this
 		}
 
