@@ -16710,19 +16710,6 @@ var $;
             }
             return params;
         }
-        /**
-         * Полное состояние роутера после перехода: текущие ключи плюс заданные,
-         * `null` убирает ключ (его выбросит make_link).
-         *
-         * Базовая реализация складывает `dict_cut( Object.keys( next ) )`, а та
-         * останавливает обход на ПЕРВОМ упомянутом ключе — всё, что в словаре
-         * идёт после него, из ссылки пропадает. В hash-роутере это компенсируется
-         * тем, что адрес всё равно собирается заново, а здесь ссылка становится
-         * единственным источником правды (см. on_click), и терять ключи нельзя.
-         */
-        static link(next) {
-            return this.make_link({ ...this.dict(), ...next });
-        }
         static make_link(next) {
             const chunks = [];
             for (const key in next) {
@@ -16734,32 +16721,12 @@ var $;
             const segment = chunks.join(this.separator);
             return $mol_dom.location.origin + this.mount + segment + $mol_dom.location.search;
         }
-        /**
-         * Роутер, чьё состояние читает приложение.
-         *
-         * `at()` заводит отдельный подкласс под каждый mount, и у каждого свой
-         * кеш `href`. Навигация может прийти на класс, который глобальным
-         * `$mol_state_arg` не является: тогда адрес в строке меняется, а
-         * приложение остаётся на прежнем состоянии и «переключается» только
-         * после ручной перезагрузки. Поэтому любое обновление адреса пишем
-         * туда, откуда его читают.
-         *
-         * Только для записи. В геттерах не звать: `dict()` и сам `href()`
-         * обязаны работать со своим кешем, иначе подкласс перестанет быть
-         * самостоятельным.
-         */
-        static active() {
-            if (typeof window === 'undefined')
-                return this;
-            const installed = $.$mol_state_arg;
-            return typeof installed?.href === 'function' ? installed : this;
-        }
         static go(next) {
             const link = this.link(next);
             if (typeof window === 'undefined')
                 return;
             $mol_dom.history.pushState(null, '', link);
-            this.active().href(link);
+            this.href(link);
         }
         /**
          * Install as the global `$mol_state_arg`, mount `<base>`, intercept
@@ -16819,18 +16786,16 @@ var $;
                 const segment = parts[0] || '';
                 const query = parts[1] ? '?' + parts[1] : '';
                 $mol_dom.history.replaceState(null, '', this.mount + segment + query + $mol_dom.location.hash);
-                this.active().href($mol_dom.location.href);
+                this.href($mol_dom.location.href);
             }
             // Migrate legacy `#!k=v/k=v` bookmarks to clean pathname.
             const hash = $mol_dom.location.hash;
             if (hash.startsWith('#!')) {
                 $mol_dom.history.replaceState(null, '', this.mount + hash.slice(2) + $mol_dom.location.search);
-                this.active().href($mol_dom.location.href);
+                this.href($mol_dom.location.href);
             }
-            // Кнопки «назад» и «вперёд» — тот же случай, что и клик по ссылке:
-            // слушатель подписан этим классом, а состояние читают у глобального.
             self.addEventListener('popstate', () => {
-                this.active().href($mol_dom.location.href);
+                this.href($mol_dom.location.href);
             });
             self.addEventListener('click', this.on_click.bind(this), true);
             return this;
@@ -16856,28 +16821,27 @@ var $;
                 return;
             if (!decodeURIComponent(a.pathname).startsWith(this.mount))
                 return;
-            // Адрес ссылки — цель целиком, без подмешивания текущих ключей.
-            //
-            // Раньше здесь склеивались ключи из href с ключами текущего адреса, и
-            // всё, чего в href нет, сохранялось. Выглядит удобно, но приводит к
-            // двум вещам. Первая: убрать ключ становится нечем. Приложение просит
-            // это через `arg * key null`, `null` — это «удалить», но в адрес такой
-            // ключ просто не попадает, а склейка читает отсутствие как «оставить
-            // как было» и возвращает его обратно. Вторая, хуже: одна и та же
-            // ссылка начинает значить разное, если по ней кликнуть и если открыть
-            // её в новой вкладке — при холодной загрузке никакой склейки нет.
-            //
-            // Ключи, которые надо сохранить, в ссылке уже есть: link() собирает её
-            // из полного текущего состояния. Так что здесь остаётся навигация.
-            const target = a.origin + a.pathname + (a.search || $mol_dom.location.search);
+            // Anchor segments: positional (no '=') replace current positional,
+            // k=v override matching current keys; unmatched current k=v preserved.
+            const a_segments = decodeURIComponent(a.pathname).slice(this.mount.length).split('/').filter(Boolean);
+            const a_positional = a_segments.filter(s => !s.includes('='));
+            const a_kv = a_segments.filter(s => s.includes('='));
+            const cur_path = decodeURIComponent($mol_dom.location.pathname).slice(this.mount.length);
+            const cur_segments = cur_path.split('/').filter(Boolean);
+            const cur_positional = cur_segments.filter(s => !s.includes('='));
+            const cur_kv = cur_segments.filter(s => s.includes('='));
+            const a_kv_keys = new Set(a_kv.map(s => s.split('=')[0]));
+            const kept_kv = cur_kv.filter(s => !a_kv_keys.has(s.split('=')[0]));
+            const new_positional = a_positional.length > 0 ? a_positional : cur_positional;
+            const new_segments = [...new_positional, ...kept_kv, ...a_kv];
+            const new_path = new_segments.join('/');
+            const target = $mol_dom.location.origin + this.mount + new_path + (a.search || $mol_dom.location.search);
             const current = $mol_dom.location.href;
-            // Совпало — пусть браузер делает своё дело: у ссылки может быть #якорь,
-            // и прокрутка к нему не наша забота.
             if (target === current)
                 return;
             e.preventDefault();
             $mol_dom.history.pushState(null, '', target);
-            this.active().href(target);
+            this.href(target);
         }
     }
     __decorate([
