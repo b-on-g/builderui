@@ -16734,12 +16734,32 @@ var $;
             const segment = chunks.join(this.separator);
             return $mol_dom.location.origin + this.mount + segment + $mol_dom.location.search;
         }
+        /**
+         * Роутер, чьё состояние читает приложение.
+         *
+         * `at()` заводит отдельный подкласс под каждый mount, и у каждого свой
+         * кеш `href`. Навигация может прийти на класс, который глобальным
+         * `$mol_state_arg` не является: тогда адрес в строке меняется, а
+         * приложение остаётся на прежнем состоянии и «переключается» только
+         * после ручной перезагрузки. Поэтому любое обновление адреса пишем
+         * туда, откуда его читают.
+         *
+         * Только для записи. В геттерах не звать: `dict()` и сам `href()`
+         * обязаны работать со своим кешем, иначе подкласс перестанет быть
+         * самостоятельным.
+         */
+        static active() {
+            if (typeof window === 'undefined')
+                return this;
+            const installed = $.$mol_state_arg;
+            return typeof installed?.href === 'function' ? installed : this;
+        }
         static go(next) {
             const link = this.link(next);
             if (typeof window === 'undefined')
                 return;
             $mol_dom.history.pushState(null, '', link);
-            this.href(link);
+            this.active().href(link);
         }
         /**
          * Install as the global `$mol_state_arg`, mount `<base>`, intercept
@@ -16799,16 +16819,18 @@ var $;
                 const segment = parts[0] || '';
                 const query = parts[1] ? '?' + parts[1] : '';
                 $mol_dom.history.replaceState(null, '', this.mount + segment + query + $mol_dom.location.hash);
-                this.href($mol_dom.location.href);
+                this.active().href($mol_dom.location.href);
             }
             // Migrate legacy `#!k=v/k=v` bookmarks to clean pathname.
             const hash = $mol_dom.location.hash;
             if (hash.startsWith('#!')) {
                 $mol_dom.history.replaceState(null, '', this.mount + hash.slice(2) + $mol_dom.location.search);
-                this.href($mol_dom.location.href);
+                this.active().href($mol_dom.location.href);
             }
+            // Кнопки «назад» и «вперёд» — тот же случай, что и клик по ссылке:
+            // слушатель подписан этим классом, а состояние читают у глобального.
             self.addEventListener('popstate', () => {
-                this.href($mol_dom.location.href);
+                this.active().href($mol_dom.location.href);
             });
             self.addEventListener('click', this.on_click.bind(this), true);
             return this;
@@ -16855,19 +16877,7 @@ var $;
                 return;
             e.preventDefault();
             $mol_dom.history.pushState(null, '', target);
-            // Обновлять надо тот роутер, который приложение читает как
-            // `$mol_state_arg`, а не обязательно `this`.
-            //
-            // `at()` заводит отдельный подкласс под каждый mount, и у каждого
-            // подкласса свой кеш `href`. Обработчик клика может оказаться
-            // подписан не тем классом, который в итоге встал глобально —
-            // тогда pushState проходит, адрес в строке меняется, а состояние
-            // приложения остаётся прежним: страница «переключается» только
-            // после ручной перезагрузки, когда href читается из location
-            // заново. Ровно это и наблюдалось на проде.
-            const active = $.$mol_state_arg;
-            const router = typeof active?.href === 'function' ? active : this;
-            router.href(target);
+            this.active().href(target);
         }
     }
     __decorate([
