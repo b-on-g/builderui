@@ -16710,6 +16710,19 @@ var $;
             }
             return params;
         }
+        /**
+         * Полное состояние роутера после перехода: текущие ключи плюс заданные,
+         * `null` убирает ключ (его выбросит make_link).
+         *
+         * Базовая реализация складывает `dict_cut( Object.keys( next ) )`, а та
+         * останавливает обход на ПЕРВОМ упомянутом ключе — всё, что в словаре
+         * идёт после него, из ссылки пропадает. В hash-роутере это компенсируется
+         * тем, что адрес всё равно собирается заново, а здесь ссылка становится
+         * единственным источником правды (см. on_click), и терять ключи нельзя.
+         */
+        static link(next) {
+            return this.make_link({ ...this.dict(), ...next });
+        }
         static make_link(next) {
             const chunks = [];
             for (const key in next) {
@@ -16821,22 +16834,23 @@ var $;
                 return;
             if (!decodeURIComponent(a.pathname).startsWith(this.mount))
                 return;
-            // Anchor segments: positional (no '=') replace current positional,
-            // k=v override matching current keys; unmatched current k=v preserved.
-            const a_segments = decodeURIComponent(a.pathname).slice(this.mount.length).split('/').filter(Boolean);
-            const a_positional = a_segments.filter(s => !s.includes('='));
-            const a_kv = a_segments.filter(s => s.includes('='));
-            const cur_path = decodeURIComponent($mol_dom.location.pathname).slice(this.mount.length);
-            const cur_segments = cur_path.split('/').filter(Boolean);
-            const cur_positional = cur_segments.filter(s => !s.includes('='));
-            const cur_kv = cur_segments.filter(s => s.includes('='));
-            const a_kv_keys = new Set(a_kv.map(s => s.split('=')[0]));
-            const kept_kv = cur_kv.filter(s => !a_kv_keys.has(s.split('=')[0]));
-            const new_positional = a_positional.length > 0 ? a_positional : cur_positional;
-            const new_segments = [...new_positional, ...kept_kv, ...a_kv];
-            const new_path = new_segments.join('/');
-            const target = $mol_dom.location.origin + this.mount + new_path + (a.search || $mol_dom.location.search);
+            // Адрес ссылки — цель целиком, без подмешивания текущих ключей.
+            //
+            // Раньше здесь склеивались ключи из href с ключами текущего адреса, и
+            // всё, чего в href нет, сохранялось. Выглядит удобно, но приводит к
+            // двум вещам. Первая: убрать ключ становится нечем. Приложение просит
+            // это через `arg * key null`, `null` — это «удалить», но в адрес такой
+            // ключ просто не попадает, а склейка читает отсутствие как «оставить
+            // как было» и возвращает его обратно. Вторая, хуже: одна и та же
+            // ссылка начинает значить разное, если по ней кликнуть и если открыть
+            // её в новой вкладке — при холодной загрузке никакой склейки нет.
+            //
+            // Ключи, которые надо сохранить, в ссылке уже есть: link() собирает её
+            // из полного текущего состояния. Так что здесь остаётся навигация.
+            const target = a.origin + a.pathname + (a.search || $mol_dom.location.search);
             const current = $mol_dom.location.href;
+            // Совпало — пусть браузер делает своё дело: у ссылки может быть #якорь,
+            // и прокрутка к нему не наша забота.
             if (target === current)
                 return;
             e.preventDefault();
