@@ -204,7 +204,20 @@ namespace $ {
 
 			e.preventDefault()
 			$mol_dom.history.pushState( null, '', target )
-			this.href( target )
+
+			// Новый адрес пишем туда, откуда его читает приложение.
+			//
+			// `at()` заводит подкласс под каждый mount, и кеш `href` у каждого
+			// свой. Запись отсюда попадала в кеш не того класса: в браузере
+			// было видно, как `location` уже сменился, установленный
+			// `$mol_state_arg` держит прежний адрес, а соседний класс — новый.
+			// Снаружи это выглядит как «ссылка меняет адрес, но не страницу»,
+			// причём стрелки браузера работают: popstate идёт другим путём.
+			//
+			// Склейку ключей это не трогает — только адресата записи.
+			const installed = ( $ as any ).$mol_state_arg
+			const router = typeof installed?.href === 'function' ? installed : this
+			router.href( target )
 		}
 
 	}
