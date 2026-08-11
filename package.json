@@ -257,6 +257,7 @@
     "$mol_icon_chevron",
     "$mol_link_iconed",
     "$mol_link",
+    "$mol_dom_safe",
     "$mol_embed_any",
     "$mol_embed",
     "$mol_embed_native",
