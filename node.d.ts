@@ -6972,6 +6972,19 @@ declare namespace $ {
         static mount: string;
         static at(mount: string): typeof $bog_builderui_router;
         static activate(mount?: string): typeof $bog_builderui_router;
+        /**
+         * Same merge as `router.web.ts`, kept in step by hand.
+         *
+         * Nothing on the node side dispatches a click, so this is never called
+         * here — but an app that overrides the seam compiles for both targets, and
+         * without the member `override` fails the node build. `activate()` is a
+         * no-op stub because it needs a DOM; this one is pure string work, so a
+         * degenerate version would only be a lie waiting to be discovered.
+         *
+         * The web file is the source of truth, and `router.web.test.ts` pins the
+         * behaviour. Change one, change the other.
+         */
+        static route_target(anchor_path: string, current_path: string): string;
     }
 }
 

@@ -6917,6 +6917,32 @@ declare namespace $ {
          * `/-/`), or already installed. Idempotent.
          */
         static activate(mount?: string): typeof $bog_builderui_router;
+        /**
+         * Path below `mount` that a click on `anchor_path` navigates to, given the
+         * current `current_path`. Both arrive decoded and already stripped of the
+         * mount prefix. Pure — no DOM, no state — so an app can override it and a
+         * test can call it directly.
+         *
+         * Default: anchor segments merge into the current ones. Positional segments
+         * (no `=`) replace the current positional ones, `k=v` segments override the
+         * current value of the same key, and a current `k=v` whose key the anchor
+         * never mentions is kept.
+         *
+         * That last rule is why a key set by one screen follows you into the next.
+         * Leaving `section=course/lesson=hello` through a link to
+         * `section=docs/page=views` lands on `lesson=hello/section=docs/page=views`,
+         * because no link in the top bar mentions `lesson`. An app that wants a link
+         * to mean exactly what it says overrides this in one line:
+         *
+         *     static override route_target( anchor_path: string ) { return anchor_path }
+         *
+         * Do not flip the default here. It was switched to href-following once
+         * (`2e4a474`) and reverted the same day (`73eb0d4`): four other apps ride on
+         * the merge, and the revert message spells out the rule — a shared module is
+         * not changed for the sake of one consumer. Anyone reopening that decision
+         * has to re-check journal, sample, forge and studio, not just their own app.
+         */
+        static route_target(anchor_path: string, current_path: string): string;
         protected static on_click(e: MouseEvent): void;
     }
 }

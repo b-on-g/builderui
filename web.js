@@ -16885,6 +16885,43 @@ var $;
             self.addEventListener('click', this.on_click.bind(this), true);
             return this;
         }
+        /**
+         * Path below `mount` that a click on `anchor_path` navigates to, given the
+         * current `current_path`. Both arrive decoded and already stripped of the
+         * mount prefix. Pure — no DOM, no state — so an app can override it and a
+         * test can call it directly.
+         *
+         * Default: anchor segments merge into the current ones. Positional segments
+         * (no `=`) replace the current positional ones, `k=v` segments override the
+         * current value of the same key, and a current `k=v` whose key the anchor
+         * never mentions is kept.
+         *
+         * That last rule is why a key set by one screen follows you into the next.
+         * Leaving `section=course/lesson=hello` through a link to
+         * `section=docs/page=views` lands on `lesson=hello/section=docs/page=views`,
+         * because no link in the top bar mentions `lesson`. An app that wants a link
+         * to mean exactly what it says overrides this in one line:
+         *
+         *     static override route_target( anchor_path: string ) { return anchor_path }
+         *
+         * Do not flip the default here. It was switched to href-following once
+         * (`2e4a474`) and reverted the same day (`73eb0d4`): four other apps ride on
+         * the merge, and the revert message spells out the rule — a shared module is
+         * not changed for the sake of one consumer. Anyone reopening that decision
+         * has to re-check journal, sample, forge and studio, not just their own app.
+         */
+        static route_target(anchor_path, current_path) {
+            const a_segments = anchor_path.split('/').filter(Boolean);
+            const a_positional = a_segments.filter(s => !s.includes('='));
+            const a_kv = a_segments.filter(s => s.includes('='));
+            const cur_segments = current_path.split('/').filter(Boolean);
+            const cur_positional = cur_segments.filter(s => !s.includes('='));
+            const cur_kv = cur_segments.filter(s => s.includes('='));
+            const a_kv_keys = new Set(a_kv.map(s => s.split('=')[0]));
+            const kept_kv = cur_kv.filter(s => !a_kv_keys.has(s.split('=')[0]));
+            const new_positional = a_positional.length > 0 ? a_positional : cur_positional;
+            return [...new_positional, ...kept_kv, ...a_kv].join('/');
+        }
         static on_click(e) {
             if (e.defaultPrevented)
                 return;
@@ -16906,20 +16943,7 @@ var $;
                 return;
             if (!decodeURIComponent(a.pathname).startsWith(this.mount))
                 return;
-            // Anchor segments: positional (no '=') replace current positional,
-            // k=v override matching current keys; unmatched current k=v preserved.
-            const a_segments = decodeURIComponent(a.pathname).slice(this.mount.length).split('/').filter(Boolean);
-            const a_positional = a_segments.filter(s => !s.includes('='));
-            const a_kv = a_segments.filter(s => s.includes('='));
-            const cur_path = decodeURIComponent($mol_dom.location.pathname).slice(this.mount.length);
-            const cur_segments = cur_path.split('/').filter(Boolean);
-            const cur_positional = cur_segments.filter(s => !s.includes('='));
-            const cur_kv = cur_segments.filter(s => s.includes('='));
-            const a_kv_keys = new Set(a_kv.map(s => s.split('=')[0]));
-            const kept_kv = cur_kv.filter(s => !a_kv_keys.has(s.split('=')[0]));
-            const new_positional = a_positional.length > 0 ? a_positional : cur_positional;
-            const new_segments = [...new_positional, ...kept_kv, ...a_kv];
-            const new_path = new_segments.join('/');
+            const new_path = this.route_target(decodeURIComponent(a.pathname).slice(this.mount.length), decodeURIComponent($mol_dom.location.pathname).slice(this.mount.length));
             const target = $mol_dom.location.origin + this.mount + new_path + (a.search || $mol_dom.location.search);
             const current = $mol_dom.location.href;
             if (target === current)
@@ -16936,6 +16960,16 @@ var $;
             // причём стрелки браузера работают: popstate идёт другим путём.
             //
             // Склейку ключей это не трогает — только адресата записи.
+            //
+            // ВНИМАНИЕ: починен только клик. Тот же промах по классу живёт в
+            // `go()`, в слушателе `popstate` и в обеих миграциях адреса на
+            // холодной загрузке — там адрес пишется в `this`, а не в активный
+            // роутер. Правка, которая закрывала все четыре места разом
+            // (`30bbd7a`), попала под общий откат `73eb0d4` и обратно не
+            // вернулась. Пока приложение поднимает один роутер, `this` и
+            // активный класс совпадают, поэтому баг не виден; он выстрелит на
+            // нескольких маунтах через `at()` — ровно тем же «адрес меняется,
+            // страница нет».
             const installed = $.$mol_state_arg;
             const router = typeof installed?.href === 'function' ? installed : this;
             router.href(target);
