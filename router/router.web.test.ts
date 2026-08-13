@@ -5,11 +5,22 @@ namespace $ {
 	 * says. Declared as a real subclass so these cases exercise the seam itself
 	 * rather than a copy of the algorithm.
 	 *
-	 * Not `$`-prefixed on purpose: MAM's dependor reads `$name` tokens as module
-	 * paths, and `$bog_builderui_router_literal` would send it looking for a
-	 * folder that does not exist.
+	 * Deliberately a plain local name, with no dollar prefix and no entry in the
+	 * global namespace. MAM's dependor scans doc comments for dollar-prefixed
+	 * tokens and resolves each one to a folder, so a name in this module's own
+	 * namespace would send the build looking for a directory that is not there.
+	 *
+	 * The same applies to this very paragraph, which is why it describes the rule
+	 * in words instead of spelling out an example: the first draft named one, and
+	 * the build went hunting for a package called after it.
+	 *
+	 * Typed as the base class on purpose. The opt-out an app writes takes only the
+	 * argument it uses, which narrows the static's signature on the subclass and
+	 * would make the two-argument calls below fail to compile. Widening it back
+	 * here keeps the override in the exact shape an app writes it, and the calls
+	 * in the shape the router itself makes them.
 	 */
-	const Literal = class extends $bog_builderui_router {
+	const Literal: typeof $bog_builderui_router = class extends $bog_builderui_router {
 		static override route_target( anchor_path: string ) { return anchor_path }
 	}
 
