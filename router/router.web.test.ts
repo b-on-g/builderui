@@ -26,6 +26,31 @@ namespace $ {
 
 	$mol_test({
 
+		// --- значения со слэшем внутри ------------------------------------------
+
+		'значение со слэшем переживает круг через pathname'( $ ) {
+
+			// `make_link` кодирует `/` в `%2F`, а `dict` раньше декодировал путь
+			// целиком до разбиения на сегменты — слэш оживал и резал значение.
+			// В песочнице это ломало любой view.tree: `sub /` есть в каждом.
+			const Mounted: typeof $bog_builderui_router = class extends $bog_builderui_router {
+				static override mount = '/app/'
+				static override href( next?: string ) { return next ?? 'https://example.com/app/' }
+			}
+
+			const code = 'a\n\tsub /\n\t\tb'
+			const link = Mounted.make_link({ code, tab: 'tree' })
+
+			$mol_assert_equal( link.includes( '%2F' ), true )
+
+			const Read: typeof $bog_builderui_router = class extends Mounted {
+				static override href( next?: string ) { return link }
+			}
+
+			$mol_assert_equal( Read.dict().code, code )
+			$mol_assert_equal( Read.dict().tab, 'tree' )
+		},
+
 		// --- default: the merge, pinned as it stands ---------------------------
 		//
 		// These four cases describe behaviour, not an ideal. The merge was switched

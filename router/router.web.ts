@@ -54,7 +54,15 @@ namespace $ {
 
 			const href = this.href( next && this.make_link( next ) )
 			const url = new URL( href )
-			const path = decodeURIComponent( url.pathname )
+
+			// Раскодируем КАЖДЫЙ сегмент отдельно, а не путь целиком.
+			// Значение может содержать `%2F` — в песочнице это любой view.tree
+			// со строкой `sub /`. При общем декодировании такой `/` становился
+			// настоящим и работал разделителем сегментов, поэтому хвост значения
+			// отрезало: в редакторе на первом же нажатии пропадала половина текста.
+			// Запись (make_link -> encode) кодирует правильно, ломалось только чтение.
+			const raw = url.pathname
+			const path = raw.startsWith( this.mount ) ? raw : decodeURIComponent( raw )
 			const segment = path.startsWith( this.mount ) ? path.slice( this.mount.length ) : ''
 
 			const params: { [ key: string ]: string } = {}
