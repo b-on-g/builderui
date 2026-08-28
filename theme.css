@@ -37,7 +37,8 @@
 
 /* === Slate (default) === */
 :root,
-[bog_builderui_base="slate"][bog_builderui_lights="dark"] {
+[bog_builderui_base="slate"][bog_builderui_lights="dark"],
+[bog_builderui_base="slate"][bog_builderui_lights="system"] {
 	--bog_builderui_back: #020817;
 	--bog_builderui_card: #0f172a;
 	--bog_builderui_field: #1e293b;
@@ -57,7 +58,8 @@
 }
 
 /* === Stone === */
-[bog_builderui_base="stone"][bog_builderui_lights="dark"] {
+[bog_builderui_base="stone"][bog_builderui_lights="dark"],
+[bog_builderui_base="stone"][bog_builderui_lights="system"] {
 	--bog_builderui_back: #0c0a09;
 	--bog_builderui_card: #1c1917;
 	--bog_builderui_field: #292524;
@@ -77,7 +79,8 @@
 }
 
 /* === Zinc === */
-[bog_builderui_base="zinc"][bog_builderui_lights="dark"] {
+[bog_builderui_base="zinc"][bog_builderui_lights="dark"],
+[bog_builderui_base="zinc"][bog_builderui_lights="system"] {
 	--bog_builderui_back: #09090b;
 	--bog_builderui_card: #18181b;
 	--bog_builderui_field: #27272a;
@@ -97,7 +100,8 @@
 }
 
 /* === Gray === */
-[bog_builderui_base="gray"][bog_builderui_lights="dark"] {
+[bog_builderui_base="gray"][bog_builderui_lights="dark"],
+[bog_builderui_base="gray"][bog_builderui_lights="system"] {
 	--bog_builderui_back: #030712;
 	--bog_builderui_card: #111827;
 	--bog_builderui_field: #1f2937;
@@ -114,6 +118,59 @@
 	--bog_builderui_shade: #6b7280;
 	--bog_builderui_line: #e5e7eb;
 	--bog_builderui_hover: #0000000a;
+}
+
+/* ============================================================
+   SYSTEM MODE — the reader has picked no theme, so the OS decides.
+
+   Without this, a page can only be light or dark once JavaScript has
+   run and set `lights`. A prerendered page therefore ships whatever
+   the snapshot was taken in, and a reader whose system is dark gets a
+   bright flash on every cold load. With `lights="system"` in the
+   markup, CSS alone paints the first frame correctly.
+
+   The rules above already give system mode the dark palette; this
+   block flips it to light when the OS asks for light. An explicit
+   `lights="light"` / `lights="dark"` carries the same specificity and
+   a different attribute value, so a deliberate choice is untouched.
+   ============================================================ */
+@media (prefers-color-scheme: light) {
+	[bog_builderui_base="slate"][bog_builderui_lights="system"] {
+		--bog_builderui_back: #ffffff;
+		--bog_builderui_card: #f8fafc;
+		--bog_builderui_field: #f1f5f9;
+		--bog_builderui_text: #0f172a;
+		--bog_builderui_shade: #64748b;
+		--bog_builderui_line: #e2e8f0;
+		--bog_builderui_hover: #0000000a;
+	}
+	[bog_builderui_base="stone"][bog_builderui_lights="system"] {
+		--bog_builderui_back: #fafaf9;
+		--bog_builderui_card: #ffffff;
+		--bog_builderui_field: #f5f5f4;
+		--bog_builderui_text: #0c0a09;
+		--bog_builderui_shade: #78716c;
+		--bog_builderui_line: #e7e5e4;
+		--bog_builderui_hover: #0000000a;
+	}
+	[bog_builderui_base="zinc"][bog_builderui_lights="system"] {
+		--bog_builderui_back: #ffffff;
+		--bog_builderui_card: #fafafa;
+		--bog_builderui_field: #f4f4f5;
+		--bog_builderui_text: #09090b;
+		--bog_builderui_shade: #71717a;
+		--bog_builderui_line: #e4e4e7;
+		--bog_builderui_hover: #0000000a;
+	}
+	[bog_builderui_base="gray"][bog_builderui_lights="system"] {
+		--bog_builderui_back: #ffffff;
+		--bog_builderui_card: #f9fafb;
+		--bog_builderui_field: #f3f4f6;
+		--bog_builderui_text: #030712;
+		--bog_builderui_shade: #6b7280;
+		--bog_builderui_line: #e5e7eb;
+		--bog_builderui_hover: #0000000a;
+	}
 }
 
 /* ============================================================
