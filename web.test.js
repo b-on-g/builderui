@@ -3350,6 +3350,62 @@ var $;
 ;
 "use strict";
 var $;
+(function ($_1) {
+    $mol_test({
+        'skin puts presets on the host node'($) {
+            class Host extends $mol_view {
+                Skin() {
+                    return $bog_builderui_skin.make({ $: this.$, base: () => 'stone' });
+                }
+                plugins() {
+                    return [this.Skin()];
+                }
+            }
+            __decorate([
+                $mol_mem
+            ], Host.prototype, "Skin", null);
+            const host = Host.make({ $ });
+            host.dom_tree();
+            const node = host.dom_node();
+            $mol_assert_equal(node.getAttribute('bog_builderui_base'), 'stone');
+            $mol_assert_equal(node.getAttribute('bog_builderui_lights'), 'system');
+            $mol_assert_equal(node.getAttribute('bog_builderui_theme'), 'sky');
+            $mol_assert_equal(node.getAttribute('bog_builderui_radius'), 'medium');
+            $mol_assert_equal(node.getAttribute('mol_theme'), null);
+            host.destructor();
+        },
+        'skin follows the host'($) {
+            class Host extends $mol_view {
+                lights(next) {
+                    return next ?? 'dark';
+                }
+                Skin() {
+                    return $bog_builderui_skin.make({ $: this.$, lights: () => this.lights() });
+                }
+                plugins() {
+                    return [this.Skin()];
+                }
+            }
+            __decorate([
+                $mol_mem
+            ], Host.prototype, "lights", null);
+            __decorate([
+                $mol_mem
+            ], Host.prototype, "Skin", null);
+            const host = Host.make({ $ });
+            host.dom_tree();
+            $mol_assert_equal(host.dom_node().getAttribute('bog_builderui_lights'), 'dark');
+            host.lights('light');
+            host.dom_tree();
+            $mol_assert_equal(host.dom_node().getAttribute('bog_builderui_lights'), 'light');
+            host.destructor();
+        },
+    });
+})($ || ($ = {}));
+
+;
+"use strict";
+var $;
 (function ($) {
     $mol_test({
         'null by default'() {

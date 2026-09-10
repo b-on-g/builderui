@@ -622,6 +622,23 @@ $mol_icon_palette $mol_icon path \M17.5,12A1.5,1.5 0 0,1 16,10.5A1.5,1.5 0 0,1 1
 $bog_favicon $mol_plugin
 	Icon $mol_view
 
+$bog_builderui_skin $mol_plugin
+	lights \system
+	base \slate
+	accent \sky
+	chart \blue
+	radius \medium
+	font_body \inter
+	font_head \inter
+	attr *
+		bog_builderui_lights <= lights
+		bog_builderui_base <= base
+		bog_builderui_theme <= accent
+		bog_builderui_chart <= chart
+		bog_builderui_radius <= radius
+		bog_builderui_font_body <= font_body
+		bog_builderui_font_head <= font_head
+
 $bog_builderui_studio_pick $mol_select
 	label \
 	dot_color \transparent
@@ -1344,14 +1361,14 @@ $bog_builderui_studio $bog_builderui_div
 	plugins /
 		<= Favicon $bog_favicon
 			Icon <= favicon_icon $mol_icon_palette
-	attr *
-		bog_builderui_lights <= lights? \dark
-		bog_builderui_base <= base? \slate
-		bog_builderui_theme <= theme? \sky
-		bog_builderui_chart <= chart? \blue
-		bog_builderui_radius <= radius? \medium
-		bog_builderui_font_body <= font_body? \inter
-		bog_builderui_font_head <= font_head? \inter
+		<= Skin $bog_builderui_skin
+			lights <= lights? \dark
+			base <= base? \slate
+			accent <= theme? \sky
+			chart <= chart? \blue
+			radius <= radius? \medium
+			font_body <= font_body? \inter
+			font_head <= font_head? \inter
 	sub /
 		<= Sidebar $mol_view sub /
 			<= Title $mol_view sub / \$mol BuilderUI Studio

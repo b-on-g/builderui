@@ -10300,6 +10300,47 @@ var $;
 })($ || ($ = {}));
 
 ;
+	($.$bog_builderui_skin) = class $bog_builderui_skin extends ($.$mol_plugin) {
+		lights(){
+			return "system";
+		}
+		base(){
+			return "slate";
+		}
+		accent(){
+			return "sky";
+		}
+		chart(){
+			return "blue";
+		}
+		radius(){
+			return "medium";
+		}
+		font_body(){
+			return "inter";
+		}
+		font_head(){
+			return "inter";
+		}
+		attr(){
+			return {
+				"bog_builderui_lights": (this.lights()), 
+				"bog_builderui_base": (this.base()), 
+				"bog_builderui_theme": (this.accent()), 
+				"bog_builderui_chart": (this.chart()), 
+				"bog_builderui_radius": (this.radius()), 
+				"bog_builderui_font_body": (this.font_body()), 
+				"bog_builderui_font_head": (this.font_head())
+			};
+		}
+	};
+
+
+;
+"use strict";
+
+
+;
 	($.$bog_builderui_studio_pick) = class $bog_builderui_studio_pick extends ($.$mol_select) {
 		Label(){
 			const obj = new this.$.$mol_view();
@@ -16146,6 +16187,17 @@ var $;
 			if(next !== undefined) return next;
 			return "inter";
 		}
+		Skin(){
+			const obj = new this.$.$bog_builderui_skin();
+			(obj.lights) = () => ((this.lights()));
+			(obj.base) = () => ((this.base()));
+			(obj.accent) = () => ((this.theme()));
+			(obj.chart) = () => ((this.chart()));
+			(obj.radius) = () => ((this.radius()));
+			(obj.font_body) = () => ((this.font_body()));
+			(obj.font_head) = () => ((this.font_head()));
+			return obj;
+		}
 		Title(){
 			const obj = new this.$.$mol_view();
 			(obj.sub) = () => (["$mol BuilderUI Studio"]);
@@ -17030,18 +17082,7 @@ var $;
 			return obj;
 		}
 		plugins(){
-			return [(this.Favicon())];
-		}
-		attr(){
-			return {
-				"bog_builderui_lights": (this.lights()), 
-				"bog_builderui_base": (this.base()), 
-				"bog_builderui_theme": (this.theme()), 
-				"bog_builderui_chart": (this.chart()), 
-				"bog_builderui_radius": (this.radius()), 
-				"bog_builderui_font_body": (this.font_body()), 
-				"bog_builderui_font_head": (this.font_head())
-			};
+			return [(this.Favicon()), (this.Skin())];
 		}
 		sub(){
 			return [
@@ -17061,6 +17102,7 @@ var $;
 	($mol_mem(($.$bog_builderui_studio.prototype), "radius"));
 	($mol_mem(($.$bog_builderui_studio.prototype), "font_body"));
 	($mol_mem(($.$bog_builderui_studio.prototype), "font_head"));
+	($mol_mem(($.$bog_builderui_studio.prototype), "Skin"));
 	($mol_mem(($.$bog_builderui_studio.prototype), "Title"));
 	($mol_mem(($.$bog_builderui_studio.prototype), "style_id"));
 	($mol_mem(($.$bog_builderui_studio.prototype), "Style_pick"));
