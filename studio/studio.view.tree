@@ -2,14 +2,14 @@ $bog_builderui_studio $bog_builderui_div
 	plugins /
 		<= Favicon $bog_favicon
 			Icon <= favicon_icon $mol_icon_palette
-	attr *
-		bog_builderui_lights <= lights? \dark
-		bog_builderui_base <= base? \slate
-		bog_builderui_theme <= theme? \sky
-		bog_builderui_chart <= chart? \blue
-		bog_builderui_radius <= radius? \medium
-		bog_builderui_font_body <= font_body? \inter
-		bog_builderui_font_head <= font_head? \inter
+		<= Skin $bog_builderui_skin
+			lights <= lights? \dark
+			base <= base? \slate
+			accent <= theme? \sky
+			chart <= chart? \blue
+			radius <= radius? \medium
+			font_body <= font_body? \inter
+			font_head <= font_head? \inter
 	sub /
 		<= Sidebar $mol_view sub /
 			<= Title $mol_view sub / \$mol BuilderUI Studio

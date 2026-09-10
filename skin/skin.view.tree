@@ -1,0 +1,16 @@
+$bog_builderui_skin $mol_plugin
+	lights \system
+	base \slate
+	accent \sky
+	chart \blue
+	radius \medium
+	font_body \inter
+	font_head \inter
+	attr *
+		bog_builderui_lights <= lights
+		bog_builderui_base <= base
+		bog_builderui_theme <= accent
+		bog_builderui_chart <= chart
+		bog_builderui_radius <= radius
+		bog_builderui_font_body <= font_body
+		bog_builderui_font_head <= font_head
