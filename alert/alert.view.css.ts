@@ -1,4 +1,3 @@
-/** @see $bog_builderui_tokens */
 namespace $ {
 	$mol_style_define( $bog_builderui_alert, {
 		border: {
