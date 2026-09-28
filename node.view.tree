@@ -694,13 +694,11 @@ $mol_switch $mol_check_list
 $bog_builderui_tabs $mol_switch
 
 $bog_builderui_alert $bog_builderui_card
-	title \
-	text \
 	sub /
 		<= Alert_title $mol_view sub /
-			<= title
+			<= title \
 		<= Alert_text $mol_view sub /
-			<= text
+			<= text \
 
 $bog_builderui_toast $bog_builderui_div
 	kind \info

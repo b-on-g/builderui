@@ -10496,21 +10496,21 @@ var $;
 
 ;
 	($.$bog_builderui_alert) = class $bog_builderui_alert extends ($.$bog_builderui_card) {
+		title(){
+			return "";
+		}
 		Alert_title(){
 			const obj = new this.$.$mol_view();
 			(obj.sub) = () => ([(this.title())]);
 			return obj;
 		}
+		text(){
+			return "";
+		}
 		Alert_text(){
 			const obj = new this.$.$mol_view();
 			(obj.sub) = () => ([(this.text())]);
 			return obj;
-		}
-		title(){
-			return "";
-		}
-		text(){
-			return "";
 		}
 		sub(){
 			return [(this.Alert_title()), (this.Alert_text())];
@@ -10526,7 +10526,6 @@ var $;
 
 ;
 "use strict";
-/** @see $bog_builderui_tokens */
 var $;
 (function ($) {
     $mol_style_define($bog_builderui_alert, {

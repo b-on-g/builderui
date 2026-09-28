@@ -4554,17 +4554,16 @@ declare namespace $ {
 		ReturnType< $mol_view['sub'] >
 	>
 	export class $bog_builderui_alert extends $bog_builderui_card {
-		Alert_title( ): $mol_view
-		Alert_text( ): $mol_view
 		title( ): string
+		Alert_title( ): $mol_view
 		text( ): string
+		Alert_text( ): $mol_view
 		sub( ): readonly(any)[]
 	}
 	
 }
 
 //# sourceMappingURL=alert.view.tree.d.ts.map
-/** @see $bog_builderui_tokens */
 declare namespace $ {
 }
 

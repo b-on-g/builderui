@@ -1,8 +1,6 @@
 $bog_builderui_alert $bog_builderui_card
-	title \
-	text \
 	sub /
 		<= Alert_title $mol_view sub /
-			<= title
+			<= title \
 		<= Alert_text $mol_view sub /
-			<= text
+			<= text \
