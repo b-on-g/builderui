@@ -319,3 +319,9 @@
 	min-width: 0;
 }
 
+
+[bog_builderui_lights] input,
+[bog_builderui_lights] textarea,
+[bog_builderui_lights] select {
+	font-size: max( 16px, 1rem );
+}
