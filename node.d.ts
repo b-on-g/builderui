@@ -4327,6 +4327,14 @@ declare namespace $ {
 }
 
 //# sourceMappingURL=skin.view.tree.d.ts.map
+declare namespace $.$$ {
+    class $bog_builderui_skin extends $.$bog_builderui_skin {
+        static ios_zoom_fixed: WeakSet<object>;
+        ios_zoom_fix(): void;
+        auto(): any;
+    }
+}
+
 declare namespace $ {
 
 	type $mol_view__sub_bog_builderui_studio_pick_1 = $mol_type_enforce<
